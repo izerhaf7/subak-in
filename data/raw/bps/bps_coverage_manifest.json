@@ -1,0 +1,812 @@
+[
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bogor",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 132.22
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bogor",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 4477.816000000001
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bogor",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 10745.552
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sukabumi",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 399.2
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sukabumi",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 16755.8
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sukabumi",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 21253.3
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cianjur",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 631.8
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cianjur",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 19482.9
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cianjur",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 37857.35
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 87632.6
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 37861.8
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 89328.1
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Garut",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 37082.2
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Garut",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 53357.2
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Garut",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 105729.7
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Tasikmalaya",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 29.855
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Tasikmalaya",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 3147.471
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Tasikmalaya",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 8074.464999999999
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Ciamis",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 174.5
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Ciamis",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 1723.5
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Ciamis",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 2664.6
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Kuningan",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 3956.3
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Kuningan",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 918.4
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Kuningan",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 707.6
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cirebon",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 32094.4
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cirebon",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 94.35
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cirebon",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 4162.4
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Majalengka",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 31978.25
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Majalengka",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 6279.9400000000005
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Majalengka",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 7669.63
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sumedang",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 1635.775
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sumedang",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 6339.632
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sumedang",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 7865.286
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Indramayu",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 2272.085
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Indramayu",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 1056.69
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Indramayu",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 3508.881
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Subang",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 423.56000000000006
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Subang",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 1531.25
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Subang",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 2900.35
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Purwakarta",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 7.5
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Purwakarta",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 2538.43
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Purwakarta",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 5017.12
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Karawang",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 0.0
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Karawang",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 44.8
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Karawang",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 2.7
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bekasi",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 216.45999999999998
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bekasi",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 571.086
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bekasi",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 767.019
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung Barat",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 823.55
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung Barat",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 5967.61
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung Barat",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 15152.05
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Pangandaran",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 94.7
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Pangandaran",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 255.6
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Pangandaran",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 301.2
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bogor",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 0.0
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bogor",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 253.5
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bogor",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 26.0
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Sukabumi",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 0.9099999999999999
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Sukabumi",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 1.379
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Sukabumi",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 7.755
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bandung",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 127.923
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bandung",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 21.038999999999998
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bandung",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 11.43
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cirebon",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 126.0
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cirebon",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 1.0
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cirebon",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 1.4
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bekasi",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 0.0
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bekasi",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 485.0
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bekasi",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 0.0
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Depok",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 0.16
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Depok",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 23.35
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Depok",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 17.236
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cimahi",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 3.16
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cimahi",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 8.156
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cimahi",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 2.793
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Tasikmalaya",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 16.578
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Tasikmalaya",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 116.68599999999999
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Tasikmalaya",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 147.094
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Banjar",
+    "commodity": "Bawang Merah",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 32.0
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Banjar",
+    "commodity": "Cabai Rawit",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 441.5
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Banjar",
+    "commodity": "Cabai Besar/Keriting",
+    "status": "consistent",
+    "years_with_data": 10,
+    "first_year": 2015,
+    "last_year": 2024,
+    "latest_produksi_ton": 307.5
+  }
+]

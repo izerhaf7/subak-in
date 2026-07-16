@@ -1,0 +1,18 @@
+{
+  "_status": "PLACEHOLDER kecuali dicatat lain. ongkos_petik_rp/biaya_produksi_rp untuk cabai_rawit diambil langsung dari contoh angka di subakin-contract.md v2 §3.1 (meta.json) — anggap sudah disepakati tim. Angka bawang_merah dan cabai_besar BELUM ada sumber, estimasi kasar proporsional dari cabai_rawit. WAJIB diisi/dikonfirmasi manusia sebelum dipakai di pitch/demo produksi.",
+  "cabai_rawit": {
+    "ongkos_petik_rp": 2500,
+    "biaya_produksi_rp": 12000,
+    "sitasi_ambang": "subakin-contract.md v2 §3.1 (meta.json contoh) — perlu ditelusuri ke sumber asli tim"
+  },
+  "bawang_merah": {
+    "ongkos_petik_rp": 3000,
+    "biaya_produksi_rp": 15000,
+    "sitasi_ambang": "PLACEHOLDER — belum ada sumber, estimasi kasar"
+  },
+  "cabai_besar": {
+    "ongkos_petik_rp": 2500,
+    "biaya_produksi_rp": 11000,
+    "sitasi_ambang": "PLACEHOLDER — Tier-2, belum ada sumber, estimasi kasar dari kekerabatan dengan cabai_rawit"
+  }
+}

@@ -1,0 +1,2084 @@
+{
+  "komoditas_id": "bawang_merah",
+  "kabupaten": [
+    {
+      "id": "bogor_kab",
+      "nama": "Kab. Bogor",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "sukabumi_kab",
+      "nama": "Kab. Sukabumi",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "cianjur",
+      "nama": "Kab. Cianjur",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": 31031
+    },
+    {
+      "id": "bandung_kab",
+      "nama": "Kab. Bandung",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 90
+        },
+        {
+          "minggu": 39,
+          "skor": 90
+        },
+        {
+          "minggu": 40,
+          "skor": 90
+        },
+        {
+          "minggu": 41,
+          "skor": 63
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 90,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": 28680
+    },
+    {
+      "id": "garut",
+      "nama": "Kab. Garut",
+      "status_data": "measured",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 34
+        },
+        {
+          "minggu": 39,
+          "skor": 41
+        },
+        {
+          "minggu": 40,
+          "skor": 43
+        },
+        {
+          "minggu": 41,
+          "skor": 34
+        },
+        {
+          "minggu": 42,
+          "skor": 11
+        },
+        {
+          "minggu": 43,
+          "skor": 10
+        },
+        {
+          "minggu": 44,
+          "skor": 10
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 43,
+        "minggu_puncak": 40,
+        "harga_proyeksi_puncak_rp": 28901
+      },
+      "estimasi_unit_lahan": 60453
+    },
+    {
+      "id": "tasikmalaya_kab",
+      "nama": "Kab. Tasikmalaya",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 90
+        },
+        {
+          "minggu": 39,
+          "skor": 90
+        },
+        {
+          "minggu": 40,
+          "skor": 90
+        },
+        {
+          "minggu": 41,
+          "skor": 90
+        },
+        {
+          "minggu": 42,
+          "skor": 31
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 90,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": 72684
+    },
+    {
+      "id": "ciamis",
+      "nama": "Kab. Ciamis",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "kuningan",
+      "nama": "Kab. Kuningan",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "cirebon_kab",
+      "nama": "Kab. Cirebon",
+      "status_data": "measured",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 27
+        },
+        {
+          "minggu": 30,
+          "skor": 29
+        },
+        {
+          "minggu": 31,
+          "skor": 30
+        },
+        {
+          "minggu": 32,
+          "skor": 30
+        },
+        {
+          "minggu": 33,
+          "skor": 31
+        },
+        {
+          "minggu": 34,
+          "skor": 37
+        },
+        {
+          "minggu": 35,
+          "skor": 41
+        },
+        {
+          "minggu": 36,
+          "skor": 41
+        },
+        {
+          "minggu": 37,
+          "skor": 42
+        },
+        {
+          "minggu": 38,
+          "skor": 74
+        },
+        {
+          "minggu": 39,
+          "skor": 76
+        },
+        {
+          "minggu": 40,
+          "skor": 59
+        },
+        {
+          "minggu": 41,
+          "skor": 44
+        },
+        {
+          "minggu": 42,
+          "skor": 42
+        },
+        {
+          "minggu": 43,
+          "skor": 40
+        },
+        {
+          "minggu": 44,
+          "skor": 41
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 76,
+        "minggu_puncak": 39,
+        "harga_proyeksi_puncak_rp": 10353
+      },
+      "estimasi_unit_lahan": 21241
+    },
+    {
+      "id": "majalengka",
+      "nama": "Kab. Majalengka",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": 30636
+    },
+    {
+      "id": "sumedang",
+      "nama": "Kab. Sumedang",
+      "status_data": "measured",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 9
+        },
+        {
+          "minggu": 30,
+          "skor": 12
+        },
+        {
+          "minggu": 31,
+          "skor": 14
+        },
+        {
+          "minggu": 32,
+          "skor": 14
+        },
+        {
+          "minggu": 33,
+          "skor": 14
+        },
+        {
+          "minggu": 34,
+          "skor": 22
+        },
+        {
+          "minggu": 35,
+          "skor": 26
+        },
+        {
+          "minggu": 36,
+          "skor": 26
+        },
+        {
+          "minggu": 37,
+          "skor": 26
+        },
+        {
+          "minggu": 38,
+          "skor": 58
+        },
+        {
+          "minggu": 39,
+          "skor": 60
+        },
+        {
+          "minggu": 40,
+          "skor": 60
+        },
+        {
+          "minggu": 41,
+          "skor": 51
+        },
+        {
+          "minggu": 42,
+          "skor": 28
+        },
+        {
+          "minggu": 43,
+          "skor": 27
+        },
+        {
+          "minggu": 44,
+          "skor": 27
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 60,
+        "minggu_puncak": 40,
+        "harga_proyeksi_puncak_rp": 18258
+      },
+      "estimasi_unit_lahan": 20815
+    },
+    {
+      "id": "indramayu",
+      "nama": "Kab. Indramayu",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "subang",
+      "nama": "Kab. Subang",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "purwakarta",
+      "nama": "Kab. Purwakarta",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "karawang",
+      "nama": "Kab. Karawang",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "bekasi_kab",
+      "nama": "Kab. Bekasi",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "bandung_barat",
+      "nama": "Kab. Bandung Barat",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "pangandaran",
+      "nama": "Kab. Pangandaran",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "bogor_kota",
+      "nama": "Kota Bogor",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "sukabumi_kota",
+      "nama": "Kota Sukabumi",
+      "status_data": "measured",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 18
+        },
+        {
+          "minggu": 30,
+          "skor": 17
+        },
+        {
+          "minggu": 31,
+          "skor": 15
+        },
+        {
+          "minggu": 32,
+          "skor": 17
+        },
+        {
+          "minggu": 33,
+          "skor": 15
+        },
+        {
+          "minggu": 34,
+          "skor": 15
+        },
+        {
+          "minggu": 35,
+          "skor": 17
+        },
+        {
+          "minggu": 36,
+          "skor": 27
+        },
+        {
+          "minggu": 37,
+          "skor": 33
+        },
+        {
+          "minggu": 38,
+          "skor": 66
+        },
+        {
+          "minggu": 39,
+          "skor": 66
+        },
+        {
+          "minggu": 40,
+          "skor": 69
+        },
+        {
+          "minggu": 41,
+          "skor": 73
+        },
+        {
+          "minggu": 42,
+          "skor": 53
+        },
+        {
+          "minggu": 43,
+          "skor": 42
+        },
+        {
+          "minggu": 44,
+          "skor": 39
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 73,
+        "minggu_puncak": 41,
+        "harga_proyeksi_puncak_rp": 11619
+      },
+      "estimasi_unit_lahan": 662
+    },
+    {
+      "id": "bandung_kota",
+      "nama": "Kota Bandung",
+      "status_data": "measured_stale",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 28
+        },
+        {
+          "minggu": 30,
+          "skor": 28
+        },
+        {
+          "minggu": 31,
+          "skor": 27
+        },
+        {
+          "minggu": 32,
+          "skor": 29
+        },
+        {
+          "minggu": 33,
+          "skor": 30
+        },
+        {
+          "minggu": 34,
+          "skor": 29
+        },
+        {
+          "minggu": 35,
+          "skor": 29
+        },
+        {
+          "minggu": 36,
+          "skor": 28
+        },
+        {
+          "minggu": 37,
+          "skor": 28
+        },
+        {
+          "minggu": 38,
+          "skor": 63
+        },
+        {
+          "minggu": 39,
+          "skor": 63
+        },
+        {
+          "minggu": 40,
+          "skor": 61
+        },
+        {
+          "minggu": 41,
+          "skor": 43
+        },
+        {
+          "minggu": 42,
+          "skor": 19
+        },
+        {
+          "minggu": 43,
+          "skor": 18
+        },
+        {
+          "minggu": 44,
+          "skor": 18
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 63,
+        "minggu_puncak": 39,
+        "harga_proyeksi_puncak_rp": 20278
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "cirebon_kota",
+      "nama": "Kota Cirebon",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "bekasi_kota",
+      "nama": "Kota Bekasi",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 0
+        },
+        {
+          "minggu": 39,
+          "skor": 0
+        },
+        {
+          "minggu": 40,
+          "skor": 0
+        },
+        {
+          "minggu": 41,
+          "skor": 0
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 0,
+        "minggu_puncak": 29,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "depok",
+      "nama": "Kota Depok",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "cimahi",
+      "nama": "Kota Cimahi",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "tasikmalaya_kota",
+      "nama": "Kota Tasikmalaya",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "banjar",
+      "nama": "Kota Banjar",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 0
+        },
+        {
+          "minggu": 30,
+          "skor": 0
+        },
+        {
+          "minggu": 31,
+          "skor": 0
+        },
+        {
+          "minggu": 32,
+          "skor": 0
+        },
+        {
+          "minggu": 33,
+          "skor": 0
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 100
+        },
+        {
+          "minggu": 39,
+          "skor": 100
+        },
+        {
+          "minggu": 40,
+          "skor": 100
+        },
+        {
+          "minggu": 41,
+          "skor": 70
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    }
+  ]
+}

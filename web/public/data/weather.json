@@ -1,0 +1,156 @@
+{
+  "sumber": "BMKG (cache scrape, bukan live)",
+  "diambil_pada": "2026-07-16T17:14:13+07:00",
+  "per_kabupaten": [
+    {
+      "id": "bandung_kab",
+      "lokasi_sampel": "Pangalengan",
+      "ringkas_3hari": [
+        {
+          "tanggal": "2026-07-14",
+          "kondisi": "Cerah",
+          "suhu_c": 19,
+          "hujan_flag": false
+        },
+        {
+          "tanggal": "2026-07-15",
+          "kondisi": "Berawan",
+          "suhu_c": 18,
+          "hujan_flag": false
+        },
+        {
+          "tanggal": "2026-07-16",
+          "kondisi": "Cerah",
+          "suhu_c": 15,
+          "hujan_flag": false
+        }
+      ],
+      "risk_modifier": -0.1
+    },
+    {
+      "id": "cirebon_kab",
+      "lokasi_sampel": "Pabedilan",
+      "ringkas_3hari": [
+        {
+          "tanggal": "2026-07-14",
+          "kondisi": "Cerah",
+          "suhu_c": 29,
+          "hujan_flag": false
+        },
+        {
+          "tanggal": "2026-07-15",
+          "kondisi": "Berawan",
+          "suhu_c": 28,
+          "hujan_flag": false
+        },
+        {
+          "tanggal": "2026-07-16",
+          "kondisi": "Cerah",
+          "suhu_c": 28,
+          "hujan_flag": false
+        }
+      ],
+      "risk_modifier": -0.1
+    },
+    {
+      "id": "garut",
+      "lokasi_sampel": "Cikajang",
+      "ringkas_3hari": [
+        {
+          "tanggal": "2026-07-14",
+          "kondisi": "Berawan",
+          "suhu_c": 20,
+          "hujan_flag": false
+        },
+        {
+          "tanggal": "2026-07-15",
+          "kondisi": "Berawan",
+          "suhu_c": 19,
+          "hujan_flag": true
+        },
+        {
+          "tanggal": "2026-07-16",
+          "kondisi": "Berawan",
+          "suhu_c": 15,
+          "hujan_flag": false
+        }
+      ],
+      "risk_modifier": -0.1
+    },
+    {
+      "id": "sukabumi_kota",
+      "lokasi_sampel": "Cikole",
+      "ringkas_3hari": [
+        {
+          "tanggal": "2026-07-14",
+          "kondisi": "Berawan",
+          "suhu_c": 24,
+          "hujan_flag": false
+        },
+        {
+          "tanggal": "2026-07-15",
+          "kondisi": "Berawan",
+          "suhu_c": 22,
+          "hujan_flag": false
+        },
+        {
+          "tanggal": "2026-07-16",
+          "kondisi": "Cerah",
+          "suhu_c": 23,
+          "hujan_flag": false
+        }
+      ],
+      "risk_modifier": -0.1
+    },
+    {
+      "id": "sumedang",
+      "lokasi_sampel": "Tanjungsari",
+      "ringkas_3hari": [
+        {
+          "tanggal": "2026-07-14",
+          "kondisi": "Cerah",
+          "suhu_c": 22,
+          "hujan_flag": false
+        },
+        {
+          "tanggal": "2026-07-15",
+          "kondisi": "Berawan",
+          "suhu_c": 21,
+          "hujan_flag": false
+        },
+        {
+          "tanggal": "2026-07-16",
+          "kondisi": "Cerah",
+          "suhu_c": 22,
+          "hujan_flag": false
+        }
+      ],
+      "risk_modifier": -0.1
+    },
+    {
+      "id": "tasikmalaya_kab",
+      "lokasi_sampel": "Cigalontang",
+      "ringkas_3hari": [
+        {
+          "tanggal": "2026-07-14",
+          "kondisi": "Berawan",
+          "suhu_c": 21,
+          "hujan_flag": false
+        },
+        {
+          "tanggal": "2026-07-15",
+          "kondisi": "Berawan",
+          "suhu_c": 21,
+          "hujan_flag": false
+        },
+        {
+          "tanggal": "2026-07-16",
+          "kondisi": "Berawan",
+          "suhu_c": 20,
+          "hujan_flag": false
+        }
+      ],
+      "risk_modifier": -0.1
+    }
+  ]
+}

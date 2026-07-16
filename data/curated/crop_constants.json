@@ -1,0 +1,24 @@
+{
+  "_status": "PLACEHOLDER — angka kernel_panen di bawah ini ESTIMASI ORDER-OF-MAGNITUDE dari pengetahuan agronomi umum, BUKAN kutipan langsung dari dokumen Balitsa/IPB. Field 'sitasi' WAJIB diisi manusia sebelum dipakai di pitch/demo produksi. bobot_mingguan sudah dijamin berjumlah 1.0 secara matematis (kurva bell asimetris), tapi bentuk kurva itu sendiri perlu divalidasi ke sitasi asli.",
+  "cabai_rawit": {
+    "semai_hari": 25,
+    "mulai_panen_hari": 95,
+    "panjang_panen_minggu": 20,
+    "bobot_mingguan": [0.0021, 0.0158, 0.0316, 0.0474, 0.0632, 0.079, 0.0948, 0.1021, 0.0936, 0.0851, 0.0766, 0.0681, 0.0596, 0.0511, 0.0426, 0.034, 0.0255, 0.017, 0.0085, 0.0023],
+    "sitasi": "PLACEHOLDER — butuh sitasi Balitsa/IPB untuk semai_hari/mulai_panen_hari/panjang_panen_minggu"
+  },
+  "bawang_merah": {
+    "semai_hari": 0,
+    "mulai_panen_hari": 58,
+    "panjang_panen_minggu": 4,
+    "bobot_mingguan": [0.0133, 0.6327, 0.3407, 0.0133],
+    "sitasi": "PLACEHOLDER — bawang merah tanam langsung dari umbi (tanpa semai), estimasi umur panen ~55-60 HST, panen terkonsentrasi ~3-4 minggu; butuh sitasi Balitsa/IPB"
+  },
+  "cabai_besar": {
+    "semai_hari": 30,
+    "mulai_panen_hari": 100,
+    "panjang_panen_minggu": 18,
+    "bobot_mingguan": [0.0023, 0.0197, 0.0394, 0.0591, 0.0788, 0.0985, 0.1167, 0.106, 0.0954, 0.0848, 0.0742, 0.0636, 0.053, 0.0424, 0.0318, 0.0212, 0.0106, 0.0025],
+    "sitasi": "PLACEHOLDER — Tier-2, tidak ada ground-truth farm-gate; kurva panen ikut pola cabai rawit dengan siklus sedikit lebih panjang, butuh sitasi Balitsa/IPB"
+  }
+}

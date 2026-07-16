@@ -1,0 +1,42 @@
+no_zom,zom_code,per_daerah_kabupaten,awal_musim_kemarau_2026
+173,JABAR_01,"Bekasi bagian utara, Karawang bagian utara, Kota Bekasi bagian utara",MAR II
+174,JABAR_02,"Bekasi bagian tengah, Karawang bagian tengah, Kota Bekasi bagian tenggara, sebagian kecil Purwakarta bagian timur laut",APR I
+175,JABAR_03,"Indramayu bagian barat laut, sebagian kecil Karawang bagian timur, Subang bagian utara",APR III
+176,JABAR_04,"Indramayu bagian tengah dan timur laut, sebagian kecil Subang bagian timur",APR III
+177,JABAR_05,"Sebagian kecil Cirebon bagian utara, Indramayu bagian tenggara",APR III
+178,JABAR_06,"Bekasi barat daya, sebagian Bogor bagian timur, sebagian kecil Cianjur bagian utara, sebagian kecil Karawang bagian barat daya, Kota Bekasi bagian selatan, sebagian besar Kota Depok",MEI II
+179,JABAR_07,"Bekasi bagian selatan, sebagian kecil Karawang bagian selatan, Purwakarta bagian timur laut, Subang bagian tengah",MEI I
+180,JABAR_08,"Cirebon bagian utara, Indramayu bagian selatan, sebagian kecil Majalengka bagian timur laut, sebagian kecil Subang bagian timur",MEI I
+181,JABAR_09,Bogor bagian barat laut,JUN II
+182,JABAR_10,"Sebagian kecil Bogor bagian utara dan sebagian Bogor bagian timur, sebagian kecil Kota Depok bagian selatan",JUN I
+183,JABAR_11,"Bandung Barat bagian barat laut, sebagian kecil Bogor bagian timur, Cianjur bagian utara, Karawang bagian barat daya, Purwakarta bagian barat",MEI III
+184,JABAR_12,"Purwakarta bagian tengah dan tenggara, sebagian kecil Subang bagian selatan",MEI II
+185,JABAR_13,"Sebagian kecil Bandung bagian utara, sebagian kecil Bandung Barat bagian timur laut, sebagian kecil Indramayu bagian barat daya, Subang bagian selatan, sebagian besar Sumedang",MEI II
+186,JABAR_14,"Cirebon bagian tengah, sebagian kecil Indramayu bagian selatan, Kota Cirebon bagian tengah, Majalengka bagian utara, sebagian kecil Sumedang bagian timur laut",MEI II
+187,JABAR_15,Sebagian kecil Bogor bagian barat,JUN II
+188,JABAR_16,"Bogor bagian barat daya dan tengah, sebagian besar Kota Bogor, sebagian kecil Sukabumi bagian utara",TIPE 1 MUSIM
+189,JABAR_17,"Sebagian kecil Bogor bagian selatan, sebagian kecil Cianjur bagian barat laut, Sukabumi bagian timur laut",JUN I
+190,JABAR_18,"Cianjur bagian tengah, sebagian kecil Sukabumi bagian tengah",JUN I
+191,JABAR_19,"Sebagian kecil Bandung bagian barat, Bandung Barat bagian selatan, sebagian kecil Cianjur bagian tengah",MEI III
+192,JABAR_20,"Bandung, Bandung Barat bagian timur, Kota Bandung, Kota Cimahi, sebagian kecil Sumedang bagian barat daya",JUN I
+193,JABAR_21,"Sebagian kecil Bandung bagian tengah dan timur, Garut bagian barat laut, sebagian kecil Sumedang bagian selatan",MEI I
+194,JABAR_22,"Ciamis bagian utara, sebagian kecil Cirebon bagian tenggara, Garut bagian timur laut, sebagian besar Kuningan, Majalengka bagian selatan, Sumedang bagian tenggara, Tasikmalaya bagian utara",MEI II
+195,JABAR_23,"Cirebon bagian selatan, Kuningan bagian barat, Majalengka bagian tengah, sebagian kecil Sumedang bagian timur",MEI II
+196,JABAR_24,Cirebon bagian timur,MEI II
+197,JABAR_25,Sukabumi bagian barat laut,JUN I
+198,JABAR_26,"Kota Sukabumi, Sukabumi bagian utara",JUN I
+199,JABAR_27,Sukabumi bagian tengah,MEI II
+200,JABAR_28,"Bandung bagian barat daya, sebagian kecil Bandung Barat bagian barat daya, Cianjur bagian tengah",JUN I
+201,JABAR_29,"Bandung bagian tenggara, sebagian kecil Garut bagian barat",MEI III
+202,JABAR_30,"Sebagian kecil Ciamis bagian utara, Garut bagian timur, Tasikmalaya bagian utara",MEI II
+203,JABAR_31,"Ciamis bagian tengah, sebagian kecil Kuningan bagian selatan",MEI II
+204,JABAR_32,Sukabumi bagian tengah,MEI III
+205,JABAR_33,Sukabumi bagian barat daya,MEI II
+206,JABAR_34,"Cianjur bagian selatan, sebagian kecil Garut bagian barat daya, Sukabumi bagian tenggara",MEI II
+207,JABAR_35,"Sebagian kecil Bandung bagian selatan dan tenggara, Cianjur bagian tenggara, Garut bagian barat daya",MEI II
+208,JABAR_36,"Sebagian kecil Garut bagian selatan, sebagian kecil Tasikmalaya bagian barat",JUN I
+209,JABAR_37,"Garut bagian tenggara, Tasikmalaya bagian barat daya dan tengah",JUN I
+210,JABAR_38,"Sebagian kecil Ciamis bagian barat, Kota Tasikmalaya, Tasikmalaya bagian tengah",MEI II
+211,JABAR_39,"Ciamis bagian barat daya, Kota Banjar bagian barat, Pangandaran bagian barat laut, sebagian kecil Tasikmalaya bagian timur",MEI II
+212,JABAR_40,"Pangandaran bagian barat, Tasikmalaya bagian tenggara",JUN I
+213,JABAR_41,"Kota Banjar bagian timur, Ciamis bagian tenggara, Pangandaran bagian timur",MEI I

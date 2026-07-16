@@ -1,0 +1,218 @@
+{
+  "komoditas_id": "cabai_rawit",
+  "kabupaten": [
+    {
+      "id": "garut",
+      "nama": "Kab. Garut",
+      "status_musim_hujan": "transisi_sebelum_cutoff",
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 537.2
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 402.9
+        },
+        {
+          "minggu_relatif": 2,
+          "luas_ha": 268.6
+        },
+        {
+          "minggu_relatif": 3,
+          "luas_ha": 134.3
+        }
+      ],
+      "geser_maks_minggu": 4,
+      "produktivitas_ton_per_ha": 19.86
+    },
+    {
+      "id": "cirebon_kab",
+      "nama": "Kab. Cirebon",
+      "status_musim_hujan": "onset_diskrit",
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 2.9
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 1.2
+        }
+      ],
+      "geser_maks_minggu": 2,
+      "produktivitas_ton_per_ha": 11.4
+    },
+    {
+      "id": "bandung_kab",
+      "nama": "Kab. Bandung",
+      "status_musim_hujan": "transisi_sebelum_cutoff",
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 290.8
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 218.1
+        },
+        {
+          "minggu_relatif": 2,
+          "luas_ha": 145.4
+        },
+        {
+          "minggu_relatif": 3,
+          "luas_ha": 72.7
+        }
+      ],
+      "geser_maks_minggu": 4,
+      "produktivitas_ton_per_ha": 26.04
+    },
+    {
+      "id": "sumedang",
+      "nama": "Kab. Sumedang",
+      "status_musim_hujan": "transisi_sebelum_cutoff",
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 62.6
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 46.9
+        },
+        {
+          "minggu_relatif": 2,
+          "luas_ha": 31.3
+        },
+        {
+          "minggu_relatif": 3,
+          "luas_ha": 15.6
+        }
+      ],
+      "geser_maks_minggu": 4,
+      "produktivitas_ton_per_ha": 20.26
+    },
+    {
+      "id": "tasikmalaya_kab",
+      "nama": "Kab. Tasikmalaya",
+      "status_musim_hujan": "basah_kontinu",
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 37.0
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 30.8
+        },
+        {
+          "minggu_relatif": 2,
+          "luas_ha": 24.6
+        },
+        {
+          "minggu_relatif": 3,
+          "luas_ha": 18.5
+        },
+        {
+          "minggu_relatif": 4,
+          "luas_ha": 8.6
+        },
+        {
+          "minggu_relatif": 5,
+          "luas_ha": 3.7
+        }
+      ],
+      "geser_maks_minggu": 6,
+      "produktivitas_ton_per_ha": 12.78
+    },
+    {
+      "id": "sukabumi_kota",
+      "nama": "Kota Sukabumi",
+      "status_musim_hujan": "basah_kontinu",
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 0.2
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 0.1
+        },
+        {
+          "minggu_relatif": 2,
+          "luas_ha": 0.1
+        },
+        {
+          "minggu_relatif": 3,
+          "luas_ha": 0.1
+        },
+        {
+          "minggu_relatif": 4,
+          "luas_ha": 0.0
+        },
+        {
+          "minggu_relatif": 5,
+          "luas_ha": 0.0
+        }
+      ],
+      "geser_maks_minggu": 6,
+      "produktivitas_ton_per_ha": 1.25
+    }
+  ],
+  "permintaan_mingguan_ton": 1938.5,
+  "elastisitas_display": {
+    "keterangan": "harga = f(rasio pasokan/permintaan); frontend interpolasi dari lookup",
+    "lookup": [
+      {
+        "rasio": 1.0,
+        "harga_rp": 25000
+      },
+      {
+        "rasio": 1.5,
+        "harga_rp": 12000
+      },
+      {
+        "rasio": 2.0,
+        "harga_rp": 6000
+      }
+    ]
+  },
+  "test_vector": {
+    "input_kohort": {
+      "garut": [
+        900,
+        400,
+        0,
+        0
+      ]
+    },
+    "expected_kurva_pasokan_ton": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      37.54,
+      299.14,
+      690.46,
+      1098.45,
+      1506.45,
+      1914.45,
+      2322.44,
+      2578.48,
+      2484.53,
+      2265.04
+    ]
+  },
+  "catatan_alokasi_luas": "luas per varian = estimasi proporsional dari rasio produksi (BPS hanya publish luas gabungan)"
+}

@@ -1,0 +1,28 @@
+id,nama_resmi,nama_pendek,jenis,pihps_regency,bps_kabupaten,bmkg_kabupaten,bmkg_zom_code,is_sentra_bmkg,lat,lng
+bogor_kab,Kab. Bogor,Bogor,kabupaten,Kab. Bogor,Kab. Bogor,,,False,-6.5944,106.7891
+sukabumi_kab,Kab. Sukabumi,Sukabumi,kabupaten,Kab. Sukabumi,Kab. Sukabumi,,,False,-6.9186,106.9271
+cianjur,Kab. Cianjur,Cianjur,kabupaten,Kab. Cianjur,Kab. Cianjur,,,False,-6.8168,107.1425
+bandung_kab,Kab. Bandung,Bandung,kabupaten,Kab. Bandung,Kab. Bandung,Kab. Bandung,JABAR_35 (ZOM 207),True,-7.0345,107.5416
+garut,Kab. Garut,Garut,kabupaten,Kab. Garut,Kab. Garut,Kab. Garut,JABAR_35 (ZOM 207),True,-7.214,107.9086
+tasikmalaya_kab,Kab. Tasikmalaya,Tasikmalaya,kabupaten,Kab. Tasikmalaya,Kab. Tasikmalaya,Kab. Tasikmalaya,JABAR_30 (ZOM 202),True,-7.3274,108.1806
+ciamis,Kab. Ciamis,Ciamis,kabupaten,Kab. Ciamis,Kab. Ciamis,,,False,-7.326,108.3535
+kuningan,Kab. Kuningan,Kuningan,kabupaten,Kab. Kuningan,Kab. Kuningan,,,False,-6.9754,108.4839
+cirebon_kab,Kab. Cirebon,Cirebon,kabupaten,Kab. Cirebon,Kab. Cirebon,Kab. Cirebon,JABAR_24 (ZOM 196),True,-6.732,108.5523
+majalengka,Kab. Majalengka,Majalengka,kabupaten,Kab. Majalengka,Kab. Majalengka,,,False,-6.836,108.2273
+sumedang,Kab. Sumedang,Sumedang,kabupaten,Kab. Sumedang,Kab. Sumedang,Kab. Sumedang,JABAR_20 (ZOM 192),True,-6.8583,107.9198
+indramayu,Kab. Indramayu,Indramayu,kabupaten,Kab. Indramayu,Kab. Indramayu,,,False,-6.3264,108.32
+subang,Kab. Subang,Subang,kabupaten,Kab. Subang,Kab. Subang,,,False,-6.5723,107.7601
+purwakarta,Kab. Purwakarta,Purwakarta,kabupaten,Kab. Purwakarta,Kab. Purwakarta,,,False,-6.5563,107.4433
+karawang,Kab. Karawang,Karawang,kabupaten,Kab. Karawang,Kab. Karawang,,,False,-6.3227,107.3376
+bekasi_kab,Kab. Bekasi,Bekasi,kabupaten,Kab. Bekasi,Kab. Bekasi,,,False,-6.2483,107.161
+bandung_barat,Kab. Bandung Barat,Bandung Barat,kabupaten,Kab. Bandung Barat,Kab. Bandung Barat,,,False,-6.8395,107.4854
+pangandaran,Kab. Pangandaran,Pangandaran,kabupaten,Kab. Pangandaran,Kab. Pangandaran,,,False,-7.6844,108.6511
+bogor_kota,Kota Bogor,Bogor,kota,Kota Bogor,Kota Bogor,,,False,-6.5971,106.806
+sukabumi_kota,Kota Sukabumi,Sukabumi,kota,Kota Sukabumi,Kota Sukabumi,Kota Sukabumi,JABAR_26 (ZOM 198),True,-6.9277,106.93
+bandung_kota,Kota Bandung,Bandung,kota,Kota Bandung,Kota Bandung,,,False,-6.9175,107.6191
+cirebon_kota,Kota Cirebon,Cirebon,kota,Kota Cirebon,Kota Cirebon,,,False,-6.7063,108.5571
+bekasi_kota,Kota Bekasi,Bekasi,kota,Kota Bekasi,Kota Bekasi,,,False,-6.2383,107.0
+depok,Kota Depok,Depok,kota,Kota Depok,Kota Depok,,,False,-6.4025,106.7942
+cimahi,Kota Cimahi,Cimahi,kota,Kota Cimahi,Kota Cimahi,,,False,-6.8841,107.5413
+tasikmalaya_kota,Kota Tasikmalaya,Tasikmalaya,kota,Kota Tasikmalaya,Kota Tasikmalaya,,,False,-7.3274,108.2207
+banjar,Kota Banjar,Banjar,kota,Kota Banjar,Kota Banjar,,,False,-7.3714,108.534

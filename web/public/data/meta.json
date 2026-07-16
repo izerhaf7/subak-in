@@ -1,0 +1,124 @@
+{
+  "generated_at": "2026-07-16T17:14:30+07:00",
+  "provinsi": "Jawa Barat",
+  "minggu_berjalan": 29,
+  "label_minggu": [
+    "2026-W30",
+    "2026-W31",
+    "2026-W32",
+    "2026-W33",
+    "2026-W34",
+    "2026-W35",
+    "2026-W36",
+    "2026-W37",
+    "2026-W38",
+    "2026-W39",
+    "2026-W40",
+    "2026-W41",
+    "2026-W42",
+    "2026-W43",
+    "2026-W44",
+    "2026-W45"
+  ],
+  "komoditas": [
+    {
+      "id": "cabai_rawit",
+      "nama": "Cabai Rawit",
+      "tier": 1,
+      "sumber_harga": "pihps_produsen",
+      "ongkos_petik_rp": 2500,
+      "biaya_produksi_rp": 12000,
+      "sitasi_ambang": "subakin-contract.md v2 §3.1 (meta.json contoh) — perlu ditelusuri ke sumber asli tim",
+      "kernel_panen": {
+        "semai_hari": 25,
+        "mulai_panen_hari": 95,
+        "panjang_panen_minggu": 20,
+        "bobot_mingguan": [
+          0.0021,
+          0.0158,
+          0.0316,
+          0.0474,
+          0.0632,
+          0.079,
+          0.0948,
+          0.1021,
+          0.0936,
+          0.0851,
+          0.0766,
+          0.0681,
+          0.0596,
+          0.0511,
+          0.0426,
+          0.034,
+          0.0255,
+          0.017,
+          0.0085,
+          0.0023
+        ],
+        "sitasi": "PLACEHOLDER — butuh sitasi Balitsa/IPB untuk semai_hari/mulai_panen_hari/panjang_panen_minggu"
+      }
+    },
+    {
+      "id": "bawang_merah",
+      "nama": "Bawang Merah",
+      "tier": 1,
+      "sumber_harga": "pihps_produsen",
+      "ongkos_petik_rp": 3000,
+      "biaya_produksi_rp": 15000,
+      "sitasi_ambang": "PLACEHOLDER — belum ada sumber, estimasi kasar",
+      "kernel_panen": {
+        "semai_hari": 0,
+        "mulai_panen_hari": 58,
+        "panjang_panen_minggu": 4,
+        "bobot_mingguan": [
+          0.0133,
+          0.6327,
+          0.3407,
+          0.0133
+        ],
+        "sitasi": "PLACEHOLDER — bawang merah tanam langsung dari umbi (tanpa semai), estimasi umur panen ~55-60 HST, panen terkonsentrasi ~3-4 minggu; butuh sitasi Balitsa/IPB"
+      }
+    },
+    {
+      "id": "cabai_besar",
+      "nama": "Cabai Besar",
+      "tier": 2,
+      "sumber_harga": null,
+      "ongkos_petik_rp": 2500,
+      "biaya_produksi_rp": 11000,
+      "sitasi_ambang": "PLACEHOLDER — Tier-2, belum ada sumber, estimasi kasar dari kekerabatan dengan cabai_rawit",
+      "kernel_panen": {
+        "semai_hari": 30,
+        "mulai_panen_hari": 100,
+        "panjang_panen_minggu": 18,
+        "bobot_mingguan": [
+          0.0023,
+          0.0197,
+          0.0394,
+          0.0591,
+          0.0788,
+          0.0985,
+          0.1167,
+          0.106,
+          0.0954,
+          0.0848,
+          0.0742,
+          0.0636,
+          0.053,
+          0.0424,
+          0.0318,
+          0.0212,
+          0.0106,
+          0.0025
+        ],
+        "sitasi": "PLACEHOLDER — Tier-2, tidak ada ground-truth farm-gate; kurva panen ikut pola cabai rawit dengan siklus sedikit lebih panjang, butuh sitasi Balitsa/IPB"
+      }
+    }
+  ],
+  "estimasi_unit_lahan_total": 266202,
+  "catatan_coverage": {
+    "bawang_merah": "PIHPS produsen menangkap ~35% produksi provinsi (2024); Kab. Bandung (#1, ~44%) NOL coverage - blind spot ditampilkan eksplisit",
+    "cabai_besar": "PIHPS produsen menangkap ~6% produksi provinsi (2024); Kab. Garut (#1, ~33%) NOL coverage - blind spot ditampilkan eksplisit"
+  },
+  "_catatan_unit_lahan": "estimasi_unit_lahan_total hanya menjumlahkan 8 kabupaten yang punya estimasi di bps_estimasi_unit_lahan.csv (proxy Sensus Pertanian 2023), BUKAN seluruh 27 kabupaten/kota - kabupaten lain null di map.json."
+}

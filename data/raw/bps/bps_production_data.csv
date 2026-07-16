@@ -1,0 +1,321 @@
+kabupaten,komoditas,tahun,produksi_ton,luas_panen_ha,produktivitas_ton_per_ha
+Kab. Bandung,Bawang Merah,2015,37259.0,3247.0,11.474899907607021
+Kab. Bandung,Bawang Merah,2016,30647.1,2633.0,11.639612609191037
+Kab. Bandung,Bawang Merah,2017,46830.0,2258.0,20.739592559787422
+Kab. Bandung,Bawang Merah,2018,64585.8,5288.0,12.213653555219365
+Kab. Bandung,Bawang Merah,2019,62100.1,5197.0,11.949220704252452
+Kab. Bandung,Bawang Merah,2020,60936.1,5049.0,12.068944345414934
+Kab. Bandung,Bawang Merah,2021,58900.3,5002.0,11.775349860055979
+Kab. Bandung,Bawang Merah,2022,77278.9,6595.5,11.716913046774314
+Kab. Bandung,Bawang Merah,2023,65514.7,5507.0,11.896622480479389
+Kab. Bandung,Bawang Merah,2024,87632.6,7011.0,12.499301098274142
+Kab. Cianjur,Bawang Merah,2015,130.0,18.0,7.222222222222222
+Kab. Cianjur,Bawang Merah,2016,40.0,4.0,10.0
+Kab. Cianjur,Bawang Merah,2017,133.0,2938.0,0.04526889040163377
+Kab. Cianjur,Bawang Merah,2018,299.8,32.0,9.36875
+Kab. Cianjur,Bawang Merah,2019,243.5,28.0,8.696428571428571
+Kab. Cianjur,Bawang Merah,2020,152.5,17.0,8.970588235294118
+Kab. Cianjur,Bawang Merah,2021,1066.0,128.5,8.295719844357977
+Kab. Cianjur,Bawang Merah,2022,596.0,67.0,8.895522388059701
+Kab. Cianjur,Bawang Merah,2023,922.75,107.5,8.583720930232559
+Kab. Cianjur,Bawang Merah,2024,631.8,70.2,8.999999999999998
+Kab. Cirebon,Bawang Merah,2015,31781.8,3237.0,9.818288538770465
+Kab. Cirebon,Bawang Merah,2016,40326.5,4017.0,10.038959422454568
+Kab. Cirebon,Bawang Merah,2017,38374.0,638.0,60.14733542319749
+Kab. Cirebon,Bawang Merah,2018,35307.2,3622.0,9.747984538928767
+Kab. Cirebon,Bawang Merah,2019,33471.5,3295.0,10.158270106221547
+Kab. Cirebon,Bawang Merah,2020,34636.0,3470.0,9.981556195965418
+Kab. Cirebon,Bawang Merah,2021,33463.6,3384.0,9.888770685579196
+Kab. Cirebon,Bawang Merah,2022,40024.4,3760.5,10.643371892035635
+Kab. Cirebon,Bawang Merah,2023,34301.9,3120.5,10.99243710943759
+Kab. Cirebon,Bawang Merah,2024,32094.4,3204.5,10.015415821501014
+Kab. Garut,Bawang Merah,2015,22038.5,2252.0,9.786190053285969
+Kab. Garut,Bawang Merah,2016,30146.1,3084.0,9.775
+Kab. Garut,Bawang Merah,2017,35384.9,8155.0,4.3390435315757205
+Kab. Garut,Bawang Merah,2018,28458.6,2935.0,9.696286201022145
+Kab. Garut,Bawang Merah,2019,32104.7,3317.0,9.678836297859512
+Kab. Garut,Bawang Merah,2020,27334.6,2857.0,9.56758837941897
+Kab. Garut,Bawang Merah,2021,35793.3,3604.0,9.931548279689235
+Kab. Garut,Bawang Merah,2022,35010.5,3517.0,9.954648848450384
+Kab. Garut,Bawang Merah,2023,34136.7,3464.0,9.854705542725172
+Kab. Garut,Bawang Merah,2024,37082.2,3756.0,9.872790202342918
+Kab. Majalengka,Bawang Merah,2015,32408.2,2696.0,12.020845697329378
+Kab. Majalengka,Bawang Merah,2016,32329.2,3344.0,9.667822966507178
+Kab. Majalengka,Bawang Merah,2017,37705.3,959.0,39.31730969760167
+Kab. Majalengka,Bawang Merah,2018,31980.6,2676.0,11.950896860986546
+Kab. Majalengka,Bawang Merah,2019,37973.1,2943.0,12.902854230377166
+Kab. Majalengka,Bawang Merah,2020,35166.8,2742.0,12.825237053245807
+Kab. Majalengka,Bawang Merah,2021,34068.3,2873.0,11.858092586146887
+Kab. Majalengka,Bawang Merah,2022,33319.2,2573.0,12.94955305091333
+Kab. Majalengka,Bawang Merah,2023,35811.176,2882.5,12.423651691240243
+Kab. Majalengka,Bawang Merah,2024,31978.25,2671.0,11.972388618494946
+Kab. Sumedang,Bawang Merah,2015,178.3,26.0,6.857692307692308
+Kab. Sumedang,Bawang Merah,2016,174.2,32.0,5.44375
+Kab. Sumedang,Bawang Merah,2017,328.0,515.0,0.6368932038834951
+Kab. Sumedang,Bawang Merah,2018,229.5,41.0,5.597560975609756
+Kab. Sumedang,Bawang Merah,2019,327.7,48.0,6.827083333333333
+Kab. Sumedang,Bawang Merah,2020,681.9,92.0,7.41195652173913
+Kab. Sumedang,Bawang Merah,2021,521.3,59.0,8.835593220338982
+Kab. Sumedang,Bawang Merah,2022,752.27,83.0,9.063493975903615
+Kab. Sumedang,Bawang Merah,2023,702.0,79.0,8.886075949367088
+Kab. Sumedang,Bawang Merah,2024,1635.775,136.0,12.027757352941178
+Kab. Tasikmalaya,Bawang Merah,2015,15.0,1.0,15.0
+Kab. Tasikmalaya,Bawang Merah,2016,65.5,5.0,13.1
+Kab. Tasikmalaya,Bawang Merah,2017,26.4,2003.0,0.013180229655516724
+Kab. Tasikmalaya,Bawang Merah,2018,89.6,23.0,3.895652173913043
+Kab. Tasikmalaya,Bawang Merah,2019,100.5,21.0,4.785714285714286
+Kab. Tasikmalaya,Bawang Merah,2020,140.1,28.0,5.003571428571428
+Kab. Tasikmalaya,Bawang Merah,2021,132.1,23.0,5.743478260869565
+Kab. Tasikmalaya,Bawang Merah,2022,122.30499999999999,21.6,5.662268518518518
+Kab. Tasikmalaya,Bawang Merah,2023,47.2,8.5,5.552941176470589
+Kab. Tasikmalaya,Bawang Merah,2024,29.855,6.3,4.738888888888889
+Kota Sukabumi,Bawang Merah,2015,0.0,,
+Kota Sukabumi,Bawang Merah,2016,0.0,,
+Kota Sukabumi,Bawang Merah,2017,0.0,12.0,0.0
+Kota Sukabumi,Bawang Merah,2018,50.0,5.0,10.0
+Kota Sukabumi,Bawang Merah,2019,5.0,1.0,5.0
+Kota Sukabumi,Bawang Merah,2020,10.0,1.0,10.0
+Kota Sukabumi,Bawang Merah,2021,0.0,,
+Kota Sukabumi,Bawang Merah,2022,0.0,,
+Kota Sukabumi,Bawang Merah,2023,4.0600000000000005,0.7,5.800000000000001
+Kota Sukabumi,Bawang Merah,2024,0.9099999999999999,4.35,0.20919540229885059
+Kab. Bandung,Cabai (Gabungan Rawit+Besar),2015,,849.0,
+Kab. Bandung,Cabai (Gabungan Rawit+Besar),2016,,822.0,
+Kab. Bandung,Cabai (Gabungan Rawit+Besar),2017,,,
+Kab. Bandung,Cabai (Gabungan Rawit+Besar),2018,,2157.0,
+Kab. Bandung,Cabai (Gabungan Rawit+Besar),2019,,2168.0,
+Kab. Bandung,Cabai (Gabungan Rawit+Besar),2020,,2566.0,
+Kab. Bandung,Cabai (Gabungan Rawit+Besar),2021,,5759.0,
+Kab. Bandung,Cabai (Gabungan Rawit+Besar),2022,,5041.0,
+Kab. Bandung,Cabai (Gabungan Rawit+Besar),2023,,4546.0,
+Kab. Bandung,Cabai (Gabungan Rawit+Besar),2024,,4884.0,
+Kab. Cianjur,Cabai (Gabungan Rawit+Besar),2015,,1257.0,
+Kab. Cianjur,Cabai (Gabungan Rawit+Besar),2016,,1976.0,
+Kab. Cianjur,Cabai (Gabungan Rawit+Besar),2017,,,
+Kab. Cianjur,Cabai (Gabungan Rawit+Besar),2018,,3005.0,
+Kab. Cianjur,Cabai (Gabungan Rawit+Besar),2019,,2487.0,
+Kab. Cianjur,Cabai (Gabungan Rawit+Besar),2020,,1758.0,
+Kab. Cianjur,Cabai (Gabungan Rawit+Besar),2021,,2387.0,
+Kab. Cianjur,Cabai (Gabungan Rawit+Besar),2022,,2994.0,
+Kab. Cianjur,Cabai (Gabungan Rawit+Besar),2023,,2706.5,
+Kab. Cianjur,Cabai (Gabungan Rawit+Besar),2024,,2919.8,
+Kab. Cirebon,Cabai (Gabungan Rawit+Besar),2015,,398.0,
+Kab. Cirebon,Cabai (Gabungan Rawit+Besar),2016,,694.0,
+Kab. Cirebon,Cabai (Gabungan Rawit+Besar),2017,,,
+Kab. Cirebon,Cabai (Gabungan Rawit+Besar),2018,,671.0,
+Kab. Cirebon,Cabai (Gabungan Rawit+Besar),2019,,655.0,
+Kab. Cirebon,Cabai (Gabungan Rawit+Besar),2020,,713.0,
+Kab. Cirebon,Cabai (Gabungan Rawit+Besar),2021,,631.0,
+Kab. Cirebon,Cabai (Gabungan Rawit+Besar),2022,,680.0,
+Kab. Cirebon,Cabai (Gabungan Rawit+Besar),2023,,374.25,
+Kab. Cirebon,Cabai (Gabungan Rawit+Besar),2024,,373.5,
+Kab. Garut,Cabai (Gabungan Rawit+Besar),2015,,5625.0,
+Kab. Garut,Cabai (Gabungan Rawit+Besar),2016,,6001.0,
+Kab. Garut,Cabai (Gabungan Rawit+Besar),2017,,,
+Kab. Garut,Cabai (Gabungan Rawit+Besar),2018,,7206.0,
+Kab. Garut,Cabai (Gabungan Rawit+Besar),2019,,6680.0,
+Kab. Garut,Cabai (Gabungan Rawit+Besar),2020,,6646.0,
+Kab. Garut,Cabai (Gabungan Rawit+Besar),2021,,7018.0,
+Kab. Garut,Cabai (Gabungan Rawit+Besar),2022,,7672.0,
+Kab. Garut,Cabai (Gabungan Rawit+Besar),2023,,6902.0,
+Kab. Garut,Cabai (Gabungan Rawit+Besar),2024,,8009.0,
+Kab. Majalengka,Cabai (Gabungan Rawit+Besar),2015,,1233.0,
+Kab. Majalengka,Cabai (Gabungan Rawit+Besar),2016,,1251.0,
+Kab. Majalengka,Cabai (Gabungan Rawit+Besar),2017,,,
+Kab. Majalengka,Cabai (Gabungan Rawit+Besar),2018,,918.0,
+Kab. Majalengka,Cabai (Gabungan Rawit+Besar),2019,,852.0,
+Kab. Majalengka,Cabai (Gabungan Rawit+Besar),2020,,669.0,
+Kab. Majalengka,Cabai (Gabungan Rawit+Besar),2021,,571.0,
+Kab. Majalengka,Cabai (Gabungan Rawit+Besar),2022,,503.0,
+Kab. Majalengka,Cabai (Gabungan Rawit+Besar),2023,,620.5,
+Kab. Majalengka,Cabai (Gabungan Rawit+Besar),2024,,1167.0,
+Kab. Sumedang,Cabai (Gabungan Rawit+Besar),2015,,449.0,
+Kab. Sumedang,Cabai (Gabungan Rawit+Besar),2016,,462.0,
+Kab. Sumedang,Cabai (Gabungan Rawit+Besar),2017,,,
+Kab. Sumedang,Cabai (Gabungan Rawit+Besar),2018,,471.0,
+Kab. Sumedang,Cabai (Gabungan Rawit+Besar),2019,,581.0,
+Kab. Sumedang,Cabai (Gabungan Rawit+Besar),2020,,606.0,
+Kab. Sumedang,Cabai (Gabungan Rawit+Besar),2021,,464.0,
+Kab. Sumedang,Cabai (Gabungan Rawit+Besar),2022,,515.0,
+Kab. Sumedang,Cabai (Gabungan Rawit+Besar),2023,,676.0,
+Kab. Sumedang,Cabai (Gabungan Rawit+Besar),2024,,701.0,
+Kab. Tasikmalaya,Cabai (Gabungan Rawit+Besar),2015,,1434.0,
+Kab. Tasikmalaya,Cabai (Gabungan Rawit+Besar),2016,,1344.0,
+Kab. Tasikmalaya,Cabai (Gabungan Rawit+Besar),2017,,,
+Kab. Tasikmalaya,Cabai (Gabungan Rawit+Besar),2018,,1428.0,
+Kab. Tasikmalaya,Cabai (Gabungan Rawit+Besar),2019,,1118.0,
+Kab. Tasikmalaya,Cabai (Gabungan Rawit+Besar),2020,,1071.0,
+Kab. Tasikmalaya,Cabai (Gabungan Rawit+Besar),2021,,1055.74,
+Kab. Tasikmalaya,Cabai (Gabungan Rawit+Besar),2022,,876.8,
+Kab. Tasikmalaya,Cabai (Gabungan Rawit+Besar),2023,,887.61,
+Kab. Tasikmalaya,Cabai (Gabungan Rawit+Besar),2024,,878.3,
+Kota Sukabumi,Cabai (Gabungan Rawit+Besar),2015,,12.0,
+Kota Sukabumi,Cabai (Gabungan Rawit+Besar),2016,,7.0,
+Kota Sukabumi,Cabai (Gabungan Rawit+Besar),2017,,,
+Kota Sukabumi,Cabai (Gabungan Rawit+Besar),2018,,8.0,
+Kota Sukabumi,Cabai (Gabungan Rawit+Besar),2019,,4.0,
+Kota Sukabumi,Cabai (Gabungan Rawit+Besar),2020,,7.0,
+Kota Sukabumi,Cabai (Gabungan Rawit+Besar),2021,,3.0,
+Kota Sukabumi,Cabai (Gabungan Rawit+Besar),2022,,,
+Kota Sukabumi,Cabai (Gabungan Rawit+Besar),2023,,8.39,
+Kota Sukabumi,Cabai (Gabungan Rawit+Besar),2024,,7.28,
+Kab. Bandung,Cabai Besar/Keriting,2015,24970.6,,
+Kab. Bandung,Cabai Besar/Keriting,2016,17224.3,,
+Kab. Bandung,Cabai Besar/Keriting,2017,40532.8,,
+Kab. Bandung,Cabai Besar/Keriting,2018,49654.6,,
+Kab. Bandung,Cabai Besar/Keriting,2019,43426.1,,
+Kab. Bandung,Cabai Besar/Keriting,2020,58665.6,,
+Kab. Bandung,Cabai Besar/Keriting,2021,120629.2,,
+Kab. Bandung,Cabai Besar/Keriting,2022,100094.9,,
+Kab. Bandung,Cabai Besar/Keriting,2023,90052.4,,
+Kab. Bandung,Cabai Besar/Keriting,2024,89328.1,,
+Kab. Cianjur,Cabai Besar/Keriting,2015,59019.9,,
+Kab. Cianjur,Cabai Besar/Keriting,2016,61703.7,,
+Kab. Cianjur,Cabai Besar/Keriting,2017,44394.3,,
+Kab. Cianjur,Cabai Besar/Keriting,2018,36550.1,,
+Kab. Cianjur,Cabai Besar/Keriting,2019,29914.2,,
+Kab. Cianjur,Cabai Besar/Keriting,2020,28194.8,,
+Kab. Cianjur,Cabai Besar/Keriting,2021,26203.3,,
+Kab. Cianjur,Cabai Besar/Keriting,2022,34111.7,,
+Kab. Cianjur,Cabai Besar/Keriting,2023,32456.55,,
+Kab. Cianjur,Cabai Besar/Keriting,2024,37857.35,,
+Kab. Cirebon,Cabai Besar/Keriting,2015,4153.2,,
+Kab. Cirebon,Cabai Besar/Keriting,2016,6048.9,,
+Kab. Cirebon,Cabai Besar/Keriting,2017,5549.9,,
+Kab. Cirebon,Cabai Besar/Keriting,2018,6498.7,,
+Kab. Cirebon,Cabai Besar/Keriting,2019,5564.7,,
+Kab. Cirebon,Cabai Besar/Keriting,2020,6173.2,,
+Kab. Cirebon,Cabai Besar/Keriting,2021,5643.9,,
+Kab. Cirebon,Cabai Besar/Keriting,2022,5897.75,,
+Kab. Cirebon,Cabai Besar/Keriting,2023,2912.31,,
+Kab. Cirebon,Cabai Besar/Keriting,2024,4162.4,,
+Kab. Garut,Cabai Besar/Keriting,2015,75720.8,,
+Kab. Garut,Cabai Besar/Keriting,2016,80742.8,,
+Kab. Garut,Cabai Besar/Keriting,2017,102385.1,,
+Kab. Garut,Cabai Besar/Keriting,2018,91135.4,,
+Kab. Garut,Cabai Besar/Keriting,2019,92569.0,,
+Kab. Garut,Cabai Besar/Keriting,2020,101318.4,,
+Kab. Garut,Cabai Besar/Keriting,2021,105629.7,,
+Kab. Garut,Cabai Besar/Keriting,2022,120158.5,,
+Kab. Garut,Cabai Besar/Keriting,2023,113345.4,,
+Kab. Garut,Cabai Besar/Keriting,2024,105729.7,,
+Kab. Majalengka,Cabai Besar/Keriting,2015,9750.0,,
+Kab. Majalengka,Cabai Besar/Keriting,2016,11931.9,,
+Kab. Majalengka,Cabai Besar/Keriting,2017,12451.7,,
+Kab. Majalengka,Cabai Besar/Keriting,2018,13048.9,,
+Kab. Majalengka,Cabai Besar/Keriting,2019,12431.4,,
+Kab. Majalengka,Cabai Besar/Keriting,2020,7282.6,,
+Kab. Majalengka,Cabai Besar/Keriting,2021,9848.2,,
+Kab. Majalengka,Cabai Besar/Keriting,2022,6934.0,,
+Kab. Majalengka,Cabai Besar/Keriting,2023,7440.75,,
+Kab. Majalengka,Cabai Besar/Keriting,2024,7669.63,,
+Kab. Sumedang,Cabai Besar/Keriting,2015,4831.7,,
+Kab. Sumedang,Cabai Besar/Keriting,2016,5024.0,,
+Kab. Sumedang,Cabai Besar/Keriting,2017,5117.4,,
+Kab. Sumedang,Cabai Besar/Keriting,2018,4203.3,,
+Kab. Sumedang,Cabai Besar/Keriting,2019,5034.8,,
+Kab. Sumedang,Cabai Besar/Keriting,2020,6907.1,,
+Kab. Sumedang,Cabai Besar/Keriting,2021,4655.6,,
+Kab. Sumedang,Cabai Besar/Keriting,2022,4950.8150000000005,,
+Kab. Sumedang,Cabai Besar/Keriting,2023,7151.819,,
+Kab. Sumedang,Cabai Besar/Keriting,2024,7865.286,,
+Kab. Tasikmalaya,Cabai Besar/Keriting,2015,18019.4,,
+Kab. Tasikmalaya,Cabai Besar/Keriting,2016,16824.9,,
+Kab. Tasikmalaya,Cabai Besar/Keriting,2017,20026.8,,
+Kab. Tasikmalaya,Cabai Besar/Keriting,2018,16897.7,,
+Kab. Tasikmalaya,Cabai Besar/Keriting,2019,15183.2,,
+Kab. Tasikmalaya,Cabai Besar/Keriting,2020,12297.9,,
+Kab. Tasikmalaya,Cabai Besar/Keriting,2021,11111.975999999999,,
+Kab. Tasikmalaya,Cabai Besar/Keriting,2022,8904.626,,
+Kab. Tasikmalaya,Cabai Besar/Keriting,2023,8110.219999999999,,
+Kab. Tasikmalaya,Cabai Besar/Keriting,2024,8074.464999999999,,
+Kota Sukabumi,Cabai Besar/Keriting,2015,159.5,,
+Kota Sukabumi,Cabai Besar/Keriting,2016,83.0,,
+Kota Sukabumi,Cabai Besar/Keriting,2017,200.5,,
+Kota Sukabumi,Cabai Besar/Keriting,2018,98.0,,
+Kota Sukabumi,Cabai Besar/Keriting,2019,66.5,,
+Kota Sukabumi,Cabai Besar/Keriting,2020,123.2,,
+Kota Sukabumi,Cabai Besar/Keriting,2021,35.833999999999996,,
+Kota Sukabumi,Cabai Besar/Keriting,2022,0.0,,
+Kota Sukabumi,Cabai Besar/Keriting,2023,13.322999999999999,,
+Kota Sukabumi,Cabai Besar/Keriting,2024,7.755,,
+Kab. Bandung,Cabai Rawit,2015,13310.8,,
+Kab. Bandung,Cabai Rawit,2016,9300.3,,
+Kab. Bandung,Cabai Rawit,2017,58073.0,,
+Kab. Bandung,Cabai Rawit,2018,18891.1,,
+Kab. Bandung,Cabai Rawit,2019,21044.6,,
+Kab. Bandung,Cabai Rawit,2020,21258.3,,
+Kab. Bandung,Cabai Rawit,2021,23679.9,,
+Kab. Bandung,Cabai Rawit,2022,30760.1,,
+Kab. Bandung,Cabai Rawit,2023,27637.8,,
+Kab. Bandung,Cabai Rawit,2024,37861.8,,
+Kab. Cianjur,Cabai Rawit,2015,19713.5,,
+Kab. Cianjur,Cabai Rawit,2016,14644.7,,
+Kab. Cianjur,Cabai Rawit,2017,62442.5,,
+Kab. Cianjur,Cabai Rawit,2018,22309.9,,
+Kab. Cianjur,Cabai Rawit,2019,15101.2,,
+Kab. Cianjur,Cabai Rawit,2020,15265.0,,
+Kab. Cianjur,Cabai Rawit,2021,19843.6,,
+Kab. Cianjur,Cabai Rawit,2022,18684.05,,
+Kab. Cianjur,Cabai Rawit,2023,22015.15,,
+Kab. Cianjur,Cabai Rawit,2024,19482.9,,
+Kab. Cirebon,Cabai Rawit,2015,16.3,,
+Kab. Cirebon,Cabai Rawit,2016,120.0,,
+Kab. Cirebon,Cabai Rawit,2017,5716.5,,
+Kab. Cirebon,Cabai Rawit,2018,14.0,,
+Kab. Cirebon,Cabai Rawit,2019,23.0,,
+Kab. Cirebon,Cabai Rawit,2020,37.7,,
+Kab. Cirebon,Cabai Rawit,2021,31.919999999999998,,
+Kab. Cirebon,Cabai Rawit,2022,17.3,,
+Kab. Cirebon,Cabai Rawit,2023,22.29,,
+Kab. Cirebon,Cabai Rawit,2024,94.35,,
+Kab. Garut,Cabai Rawit,2015,31858.7,,
+Kab. Garut,Cabai Rawit,2016,33720.2,,
+Kab. Garut,Cabai Rawit,2017,153665.3,,
+Kab. Garut,Cabai Rawit,2018,39130.4,,
+Kab. Garut,Cabai Rawit,2019,45990.7,,
+Kab. Garut,Cabai Rawit,2020,46206.0,,
+Kab. Garut,Cabai Rawit,2021,46945.4,,
+Kab. Garut,Cabai Rawit,2022,48427.9,,
+Kab. Garut,Cabai Rawit,2023,65160.3,,
+Kab. Garut,Cabai Rawit,2024,53357.2,,
+Kab. Majalengka,Cabai Rawit,2015,3438.0,,
+Kab. Majalengka,Cabai Rawit,2016,7966.7,,
+Kab. Majalengka,Cabai Rawit,2017,19959.7,,
+Kab. Majalengka,Cabai Rawit,2018,8107.7,,
+Kab. Majalengka,Cabai Rawit,2019,7782.8,,
+Kab. Majalengka,Cabai Rawit,2020,6700.4,,
+Kab. Majalengka,Cabai Rawit,2021,8869.7,,
+Kab. Majalengka,Cabai Rawit,2022,6977.6,,
+Kab. Majalengka,Cabai Rawit,2023,4541.4400000000005,,
+Kab. Majalengka,Cabai Rawit,2024,6279.9400000000005,,
+Kab. Sumedang,Cabai Rawit,2015,3284.3,,
+Kab. Sumedang,Cabai Rawit,2016,4115.2,,
+Kab. Sumedang,Cabai Rawit,2017,8590.6,,
+Kab. Sumedang,Cabai Rawit,2018,2757.8,,
+Kab. Sumedang,Cabai Rawit,2019,3324.1,,
+Kab. Sumedang,Cabai Rawit,2020,4333.8330000000005,,
+Kab. Sumedang,Cabai Rawit,2021,3107.73,,
+Kab. Sumedang,Cabai Rawit,2022,3559.821,,
+Kab. Sumedang,Cabai Rawit,2023,4259.3150000000005,,
+Kab. Sumedang,Cabai Rawit,2024,6339.632,,
+Kab. Tasikmalaya,Cabai Rawit,2015,5858.1,,
+Kab. Tasikmalaya,Cabai Rawit,2016,3446.3,,
+Kab. Tasikmalaya,Cabai Rawit,2017,24015.7,,
+Kab. Tasikmalaya,Cabai Rawit,2018,3788.9,,
+Kab. Tasikmalaya,Cabai Rawit,2019,2891.9,,
+Kab. Tasikmalaya,Cabai Rawit,2020,2911.3,,
+Kab. Tasikmalaya,Cabai Rawit,2021,2678.6040000000003,,
+Kab. Tasikmalaya,Cabai Rawit,2022,2437.311,,
+Kab. Tasikmalaya,Cabai Rawit,2023,2767.701,,
+Kab. Tasikmalaya,Cabai Rawit,2024,3147.471,,
+Kota Sukabumi,Cabai Rawit,2015,0.0,,
+Kota Sukabumi,Cabai Rawit,2016,0.0,,
+Kota Sukabumi,Cabai Rawit,2017,200.5,,
+Kota Sukabumi,Cabai Rawit,2018,26.5,,
+Kota Sukabumi,Cabai Rawit,2019,22.7,,
+Kota Sukabumi,Cabai Rawit,2020,0.0,,
+Kota Sukabumi,Cabai Rawit,2021,0.0,,
+Kota Sukabumi,Cabai Rawit,2022,0.0,,
+Kota Sukabumi,Cabai Rawit,2023,4.032,,
+Kota Sukabumi,Cabai Rawit,2024,1.379,,
