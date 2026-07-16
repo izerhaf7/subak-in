@@ -11,10 +11,37 @@ price here, never `retail_overlay`.
 import numpy as np
 
 
+def magnitude_factor(share_pct: float, reference_share_pct: float = 5.0) -> float:
+    """Dampener for score_overlap - see its docstring for why this exists.
+    A kabupaten producing >= reference_share_pct of the province's annual
+    output for this commodity gets full weight (1.0); smaller producers scale
+    down linearly, so a 0.0006%-share kabupaten (found in the real data:
+    cirebon_kota/cabai_rawit) doesn't show the same alarm as an 11.9%-share
+    one (cianjur) just because both happen to share the same default harvest
+    timing. ASUMSI: 5% chosen as "clearly a real sentra" cutoff - not cited,
+    a reasonable round number given shares in the real data range from ~33%
+    (garut) down to ~0.0006%."""
+    return float(np.clip(share_pct / reference_share_pct, 0, 1))
+
+
 def score_overlap(weekly_ton: np.ndarray) -> np.ndarray:
     """How much a given week's supply stands out above the local cycle's
     average - the "multiple cohorts landing at once" signal. ratio=1 (flat,
-    no glut wave) -> 0; ratio>=2.67 -> saturates at 100."""
+    no glut wave) -> 0; ratio>=2.67 -> saturates at 100.
+
+    BUG FOUND (via user inspecting map.json): this ratio is computed against
+    the series' OWN mean, which is mathematically scale-invariant - a
+    kabupaten growing 1 ha and one growing 10,000 ha get IDENTICAL scores as
+    long as the harvest timing shape matches (verified: ~20 "modeled"
+    kabupaten in map.json shared byte-identical risk_mingguan curves, because
+    they all fall back to the same default status_musim_hujan -> same cohort
+    shape -> same kernel -> ratio-to-own-mean cancels out the actual
+    magnitude entirely). A province-wide glut signal has to account for HOW
+    MUCH a kabupaten produces, not just whether its own tiny harvest looks
+    "concentrated" relative to itself - so callers MUST multiply this
+    function's output by magnitude_factor() before feeding it into
+    composite_risk. This function alone is now just the timing/concentration
+    half of the signal, not a complete risk score."""
     baseline = weekly_ton.mean()
     if baseline <= 0:
         return np.zeros_like(weekly_ton)

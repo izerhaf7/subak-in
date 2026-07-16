@@ -8,23 +8,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 66
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 66
         },
         {
           "minggu": 31,
-          "skor": 100
+          "skor": 66
         },
         {
           "minggu": 32,
-          "skor": 67
+          "skor": 45
         },
         {
           "minggu": 33,
-          "skor": 25
+          "skor": 16
         },
         {
           "minggu": 34,
@@ -72,7 +72,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 66,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
@@ -393,23 +393,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 32
+          "skor": 16
         },
         {
           "minggu": 30,
-          "skor": 32
+          "skor": 16
         },
         {
           "minggu": 31,
-          "skor": 32
+          "skor": 16
         },
         {
           "minggu": 32,
-          "skor": 21
+          "skor": 11
         },
         {
           "minggu": 33,
-          "skor": 10
+          "skor": 5
         },
         {
           "minggu": 34,
@@ -457,7 +457,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 32,
+        "risk_puncak": 16,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": 32062
       },
@@ -470,23 +470,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 16
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 16
         },
         {
           "minggu": 31,
-          "skor": 100
+          "skor": 16
         },
         {
           "minggu": 32,
-          "skor": 67
+          "skor": 11
         },
         {
           "minggu": 33,
-          "skor": 25
+          "skor": 4
         },
         {
           "minggu": 34,
@@ -534,7 +534,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 16,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
@@ -547,23 +547,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 4
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 4
         },
         {
           "minggu": 31,
-          "skor": 100
+          "skor": 4
         },
         {
           "minggu": 32,
-          "skor": 67
+          "skor": 3
         },
         {
           "minggu": 33,
-          "skor": 25
+          "skor": 1
         },
         {
           "minggu": 34,
@@ -611,7 +611,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 4,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
@@ -624,27 +624,27 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 34
+          "skor": 12
         },
         {
           "minggu": 30,
-          "skor": 32
+          "skor": 8
         },
         {
           "minggu": 31,
-          "skor": 32
+          "skor": 8
         },
         {
           "minggu": 32,
-          "skor": 19
+          "skor": 5
         },
         {
           "minggu": 33,
-          "skor": 2
+          "skor": 1
         },
         {
           "minggu": 34,
-          "skor": 8
+          "skor": 9
         },
         {
           "minggu": 35,
@@ -652,45 +652,45 @@
         },
         {
           "minggu": 36,
-          "skor": 16
-        },
-        {
-          "minggu": 37,
           "skor": 17
         },
         {
+          "minggu": 37,
+          "skor": 19
+        },
+        {
           "minggu": 38,
-          "skor": 23
+          "skor": 25
         },
         {
           "minggu": 39,
-          "skor": 25
+          "skor": 26
         },
         {
           "minggu": 40,
-          "skor": 25
+          "skor": 27
         },
         {
           "minggu": 41,
-          "skor": 26
+          "skor": 29
         },
         {
           "minggu": 42,
-          "skor": 26
+          "skor": 27
         },
         {
           "minggu": 43,
-          "skor": 25
+          "skor": 26
         },
         {
           "minggu": 44,
-          "skor": 31
+          "skor": 28
         }
       ],
       "kpi": {
-        "risk_puncak": 34,
-        "minggu_puncak": 29,
-        "harga_proyeksi_puncak_rp": 25805
+        "risk_puncak": 29,
+        "minggu_puncak": 41,
+        "harga_proyeksi_puncak_rp": 13691
       },
       "estimasi_unit_lahan": 21241
     },
@@ -701,23 +701,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 47
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 47
         },
         {
           "minggu": 31,
-          "skor": 100
+          "skor": 47
         },
         {
           "minggu": 32,
-          "skor": 67
+          "skor": 32
         },
         {
           "minggu": 33,
-          "skor": 25
+          "skor": 12
         },
         {
           "minggu": 34,
@@ -765,7 +765,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 47,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
@@ -778,15 +778,246 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 32
+          "skor": 15
         },
         {
           "minggu": 30,
-          "skor": 32
+          "skor": 15
         },
         {
           "minggu": 31,
-          "skor": 32
+          "skor": 15
+        },
+        {
+          "minggu": 32,
+          "skor": 10
+        },
+        {
+          "minggu": 33,
+          "skor": 4
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 0
+        },
+        {
+          "minggu": 39,
+          "skor": 0
+        },
+        {
+          "minggu": 40,
+          "skor": 0
+        },
+        {
+          "minggu": 41,
+          "skor": 0
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 15,
+        "minggu_puncak": 29,
+        "harga_proyeksi_puncak_rp": 37558
+      },
+      "estimasi_unit_lahan": 20815
+    },
+    {
+      "id": "indramayu",
+      "nama": "Kab. Indramayu",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 22
+        },
+        {
+          "minggu": 30,
+          "skor": 22
+        },
+        {
+          "minggu": 31,
+          "skor": 22
+        },
+        {
+          "minggu": 32,
+          "skor": 15
+        },
+        {
+          "minggu": 33,
+          "skor": 5
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 0
+        },
+        {
+          "minggu": 39,
+          "skor": 0
+        },
+        {
+          "minggu": 40,
+          "skor": 0
+        },
+        {
+          "minggu": 41,
+          "skor": 0
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 22,
+        "minggu_puncak": 29,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "subang",
+      "nama": "Kab. Subang",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 18
+        },
+        {
+          "minggu": 30,
+          "skor": 18
+        },
+        {
+          "minggu": 31,
+          "skor": 18
+        },
+        {
+          "minggu": 32,
+          "skor": 12
+        },
+        {
+          "minggu": 33,
+          "skor": 4
+        },
+        {
+          "minggu": 34,
+          "skor": 0
+        },
+        {
+          "minggu": 35,
+          "skor": 0
+        },
+        {
+          "minggu": 36,
+          "skor": 0
+        },
+        {
+          "minggu": 37,
+          "skor": 0
+        },
+        {
+          "minggu": 38,
+          "skor": 0
+        },
+        {
+          "minggu": 39,
+          "skor": 0
+        },
+        {
+          "minggu": 40,
+          "skor": 0
+        },
+        {
+          "minggu": 41,
+          "skor": 0
+        },
+        {
+          "minggu": 42,
+          "skor": 0
+        },
+        {
+          "minggu": 43,
+          "skor": 0
+        },
+        {
+          "minggu": 44,
+          "skor": 0
+        }
+      ],
+      "kpi": {
+        "risk_puncak": 18,
+        "minggu_puncak": 29,
+        "harga_proyeksi_puncak_rp": null
+      },
+      "estimasi_unit_lahan": null
+    },
+    {
+      "id": "purwakarta",
+      "nama": "Kab. Purwakarta",
+      "status_data": "modeled",
+      "risk_mingguan": [
+        {
+          "minggu": 29,
+          "skor": 31
+        },
+        {
+          "minggu": 30,
+          "skor": 31
+        },
+        {
+          "minggu": 31,
+          "skor": 31
         },
         {
           "minggu": 32,
@@ -842,238 +1073,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 32,
-        "minggu_puncak": 29,
-        "harga_proyeksi_puncak_rp": 37267
-      },
-      "estimasi_unit_lahan": 20815
-    },
-    {
-      "id": "indramayu",
-      "nama": "Kab. Indramayu",
-      "status_data": "modeled",
-      "risk_mingguan": [
-        {
-          "minggu": 29,
-          "skor": 100
-        },
-        {
-          "minggu": 30,
-          "skor": 100
-        },
-        {
-          "minggu": 31,
-          "skor": 100
-        },
-        {
-          "minggu": 32,
-          "skor": 67
-        },
-        {
-          "minggu": 33,
-          "skor": 25
-        },
-        {
-          "minggu": 34,
-          "skor": 0
-        },
-        {
-          "minggu": 35,
-          "skor": 0
-        },
-        {
-          "minggu": 36,
-          "skor": 0
-        },
-        {
-          "minggu": 37,
-          "skor": 0
-        },
-        {
-          "minggu": 38,
-          "skor": 0
-        },
-        {
-          "minggu": 39,
-          "skor": 0
-        },
-        {
-          "minggu": 40,
-          "skor": 0
-        },
-        {
-          "minggu": 41,
-          "skor": 0
-        },
-        {
-          "minggu": 42,
-          "skor": 0
-        },
-        {
-          "minggu": 43,
-          "skor": 0
-        },
-        {
-          "minggu": 44,
-          "skor": 0
-        }
-      ],
-      "kpi": {
-        "risk_puncak": 100,
-        "minggu_puncak": 29,
-        "harga_proyeksi_puncak_rp": null
-      },
-      "estimasi_unit_lahan": null
-    },
-    {
-      "id": "subang",
-      "nama": "Kab. Subang",
-      "status_data": "modeled",
-      "risk_mingguan": [
-        {
-          "minggu": 29,
-          "skor": 100
-        },
-        {
-          "minggu": 30,
-          "skor": 100
-        },
-        {
-          "minggu": 31,
-          "skor": 100
-        },
-        {
-          "minggu": 32,
-          "skor": 67
-        },
-        {
-          "minggu": 33,
-          "skor": 25
-        },
-        {
-          "minggu": 34,
-          "skor": 0
-        },
-        {
-          "minggu": 35,
-          "skor": 0
-        },
-        {
-          "minggu": 36,
-          "skor": 0
-        },
-        {
-          "minggu": 37,
-          "skor": 0
-        },
-        {
-          "minggu": 38,
-          "skor": 0
-        },
-        {
-          "minggu": 39,
-          "skor": 0
-        },
-        {
-          "minggu": 40,
-          "skor": 0
-        },
-        {
-          "minggu": 41,
-          "skor": 0
-        },
-        {
-          "minggu": 42,
-          "skor": 0
-        },
-        {
-          "minggu": 43,
-          "skor": 0
-        },
-        {
-          "minggu": 44,
-          "skor": 0
-        }
-      ],
-      "kpi": {
-        "risk_puncak": 100,
-        "minggu_puncak": 29,
-        "harga_proyeksi_puncak_rp": null
-      },
-      "estimasi_unit_lahan": null
-    },
-    {
-      "id": "purwakarta",
-      "nama": "Kab. Purwakarta",
-      "status_data": "modeled",
-      "risk_mingguan": [
-        {
-          "minggu": 29,
-          "skor": 100
-        },
-        {
-          "minggu": 30,
-          "skor": 100
-        },
-        {
-          "minggu": 31,
-          "skor": 100
-        },
-        {
-          "minggu": 32,
-          "skor": 67
-        },
-        {
-          "minggu": 33,
-          "skor": 25
-        },
-        {
-          "minggu": 34,
-          "skor": 0
-        },
-        {
-          "minggu": 35,
-          "skor": 0
-        },
-        {
-          "minggu": 36,
-          "skor": 0
-        },
-        {
-          "minggu": 37,
-          "skor": 0
-        },
-        {
-          "minggu": 38,
-          "skor": 0
-        },
-        {
-          "minggu": 39,
-          "skor": 0
-        },
-        {
-          "minggu": 40,
-          "skor": 0
-        },
-        {
-          "minggu": 41,
-          "skor": 0
-        },
-        {
-          "minggu": 42,
-          "skor": 0
-        },
-        {
-          "minggu": 43,
-          "skor": 0
-        },
-        {
-          "minggu": 44,
-          "skor": 0
-        }
-      ],
-      "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 31,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
@@ -1086,23 +1086,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 31,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 32,
-          "skor": 67
+          "skor": 0
         },
         {
           "minggu": 33,
-          "skor": 25
+          "skor": 0
         },
         {
           "minggu": 34,
@@ -1150,7 +1150,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 0,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
@@ -1163,23 +1163,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 5
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 5
         },
         {
           "minggu": 31,
-          "skor": 100
+          "skor": 5
         },
         {
           "minggu": 32,
-          "skor": 67
+          "skor": 3
         },
         {
           "minggu": 33,
-          "skor": 25
+          "skor": 1
         },
         {
           "minggu": 34,
@@ -1227,7 +1227,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 5,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
@@ -1240,23 +1240,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 93
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 93
         },
         {
           "minggu": 31,
-          "skor": 100
+          "skor": 93
         },
         {
           "minggu": 32,
-          "skor": 67
+          "skor": 63
         },
         {
           "minggu": 33,
-          "skor": 25
+          "skor": 23
         },
         {
           "minggu": 34,
@@ -1304,7 +1304,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 93,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
@@ -1317,23 +1317,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 2
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 2
         },
         {
           "minggu": 31,
-          "skor": 100
+          "skor": 2
         },
         {
           "minggu": 32,
-          "skor": 67
+          "skor": 1
         },
         {
           "minggu": 33,
-          "skor": 25
+          "skor": 0
         },
         {
           "minggu": 34,
@@ -1381,7 +1381,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 2,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
@@ -1394,23 +1394,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 31,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 32,
-          "skor": 67
+          "skor": 0
         },
         {
           "minggu": 33,
-          "skor": 25
+          "skor": 0
         },
         {
           "minggu": 34,
@@ -1458,7 +1458,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 0,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
@@ -1471,23 +1471,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 32
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 32
+          "skor": 0
         },
         {
           "minggu": 31,
-          "skor": 32
+          "skor": 0
         },
         {
           "minggu": 32,
-          "skor": 21
+          "skor": 0
         },
         {
           "minggu": 33,
-          "skor": 10
+          "skor": 0
         },
         {
           "minggu": 34,
@@ -1535,9 +1535,9 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 32,
+        "risk_puncak": 0,
         "minggu_puncak": 29,
-        "harga_proyeksi_puncak_rp": 44157
+        "harga_proyeksi_puncak_rp": 43510
       },
       "estimasi_unit_lahan": 662
     },
@@ -1548,23 +1548,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 31,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 32,
-          "skor": 67
+          "skor": 0
         },
         {
           "minggu": 33,
-          "skor": 25
+          "skor": 0
         },
         {
           "minggu": 34,
@@ -1612,7 +1612,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 0,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
@@ -1625,23 +1625,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 31,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 32,
-          "skor": 67
+          "skor": 0
         },
         {
           "minggu": 33,
-          "skor": 25
+          "skor": 0
         },
         {
           "minggu": 34,
@@ -1689,7 +1689,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 0,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
@@ -1702,23 +1702,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 31,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 32,
-          "skor": 67
+          "skor": 0
         },
         {
           "minggu": 33,
-          "skor": 25
+          "skor": 0
         },
         {
           "minggu": 34,
@@ -1766,7 +1766,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 0,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
@@ -1779,23 +1779,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 31,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 32,
-          "skor": 67
+          "skor": 0
         },
         {
           "minggu": 33,
-          "skor": 25
+          "skor": 0
         },
         {
           "minggu": 34,
@@ -1843,7 +1843,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 0,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
@@ -1856,23 +1856,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 31,
-          "skor": 100
+          "skor": 0
         },
         {
           "minggu": 32,
-          "skor": 67
+          "skor": 0
         },
         {
           "minggu": 33,
-          "skor": 25
+          "skor": 0
         },
         {
           "minggu": 34,
@@ -1920,7 +1920,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 0,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
@@ -1933,23 +1933,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 1
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 1
         },
         {
           "minggu": 31,
-          "skor": 100
+          "skor": 1
         },
         {
           "minggu": 32,
-          "skor": 67
+          "skor": 1
         },
         {
           "minggu": 33,
-          "skor": 25
+          "skor": 0
         },
         {
           "minggu": 34,
@@ -1997,7 +1997,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 1,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
@@ -2010,23 +2010,23 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 2
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 2
         },
         {
           "minggu": 31,
-          "skor": 100
+          "skor": 2
         },
         {
           "minggu": 32,
-          "skor": 67
+          "skor": 1
         },
         {
           "minggu": 33,
-          "skor": 25
+          "skor": 0
         },
         {
           "minggu": 34,
@@ -2074,7 +2074,7 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 2,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
