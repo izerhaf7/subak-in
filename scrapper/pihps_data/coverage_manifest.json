@@ -1,0 +1,1622 @@
+[
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bandung",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cirebon",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Tasikmalaya",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bekasi",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bogor",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Depok",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Sukabumi",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cimahi",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Banjar",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Indramayu",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Garut",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2020",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cianjur",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Majalengka",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Ciamis",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Karawang",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Subang",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cirebon",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung Barat",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Kuningan",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Tasikmalaya",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bogor",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bekasi",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sumedang",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sukabumi",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Pangandaran",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Purwakarta",
+    "commodity": "Cabai Rawit Hijau",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bandung",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cirebon",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Tasikmalaya",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bekasi",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bogor",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Depok",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Sukabumi",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cimahi",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Banjar",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Indramayu",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Garut",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cianjur",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Majalengka",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Ciamis",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Karawang",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Subang",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cirebon",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung Barat",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Kuningan",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Tasikmalaya",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bogor",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bekasi",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sumedang",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sukabumi",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Pangandaran",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Purwakarta",
+    "commodity": "Cabai Rawit Merah",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bandung",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_discontinued",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Sep 2020"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cirebon",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Tasikmalaya",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bekasi",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bogor",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Depok",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Sukabumi",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Jun 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cimahi",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Banjar",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Indramayu",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Garut",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cianjur",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Majalengka",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Ciamis",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Karawang",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Subang",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cirebon",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung Barat",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Kuningan",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Tasikmalaya",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bogor",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bekasi",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sumedang",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2020",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sukabumi",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Pangandaran",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Purwakarta",
+    "commodity": "Bawang Merah Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bandung",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_discontinued",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Sep 2020"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cirebon",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Tasikmalaya",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bekasi",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bogor",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Depok",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Sukabumi",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cimahi",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Banjar",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Indramayu",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Garut",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cianjur",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Majalengka",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Ciamis",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Karawang",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Subang",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cirebon",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung Barat",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Kuningan",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Tasikmalaya",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bogor",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bekasi",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sumedang",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2020",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sukabumi",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Pangandaran",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Purwakarta",
+    "commodity": "Cabai Merah Besar",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bandung",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_discontinued",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Sep 2020"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cirebon",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Tasikmalaya",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bekasi",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bogor",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Depok",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Sukabumi",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cimahi",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Banjar",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Indramayu",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Garut",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cianjur",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Majalengka",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Ciamis",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Karawang",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Subang",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cirebon",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung Barat",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Kuningan",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Tasikmalaya",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2018",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bogor",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bekasi",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sumedang",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "measured_active",
+    "first_real_month": "Sep 2020",
+    "last_real_month": "Jul 2026"
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sukabumi",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Pangandaran",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Purwakarta",
+    "commodity": "Cabai Merah Keriting",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bandung",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cirebon",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Tasikmalaya",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bekasi",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Bogor",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Depok",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Sukabumi",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Cimahi",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kota Banjar",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Indramayu",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Garut",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cianjur",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Majalengka",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Ciamis",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Karawang",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Subang",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Cirebon",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bandung Barat",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Kuningan",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Tasikmalaya",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bogor",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Bekasi",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sumedang",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Sukabumi",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Pangandaran",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  },
+  {
+    "province": "Jawa Barat",
+    "regency": "Kab. Purwakarta",
+    "commodity": "Bawang Putih Ukuran Sedang",
+    "price_type_id": 4,
+    "price_type": "Produsen",
+    "status": "no_data",
+    "first_real_month": null,
+    "last_real_month": null
+  }
+]
