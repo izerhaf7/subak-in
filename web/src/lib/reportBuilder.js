@@ -40,3 +40,60 @@ export function buildProvinsiReport({ mapData, meta, komoditasId, minggu, covera
     },
   };
 }
+
+function resolveKualitasCatatan(kabupatenDetail, statusData, nama, t) {
+  if (!kabupatenDetail) return null;
+  if (statusData === "modeled" && kabupatenDetail.proxy_eceran) {
+    return t("proxy_caption", { sumber: kabupatenDetail.proxy_eceran.sumber_nama });
+  }
+  if (statusData === "modeled") {
+    return t("blind_spot", { nama });
+  }
+  if (statusData === "measured_stale" && kabupatenDetail.harga.forecast.length === 0) {
+    return t("stale_note");
+  }
+  return null;
+}
+
+export function buildKabupatenReport({ mapData, kabupatenDetail, kabupatenId, simulasi, geser, meta, komoditasId, minggu, t }) {
+  const komoditas = meta.komoditas.find((k) => k.id === komoditasId);
+  const kabMap = mapData.kabupaten.find((k) => k.id === kabupatenId);
+  const entry = kabMap.risk_mingguan.find((r) => r.minggu === minggu);
+
+  const simulasiKabupaten = simulasi.kabupaten.find((k) => k.id === kabupatenId) ?? null;
+  const geserMinggu = geser[kabupatenId] ?? 0;
+  let simulasiSection = null;
+  if (simulasiKabupaten && geserMinggu > 0) {
+    const kernel = komoditas.kernel_panen;
+    const { chartData, penurunanPuncakPct, minHargaSebelum, minHargaSesudah } = summarizeSimulationImpact(
+      simulasi.kabupaten,
+      kernel.bobot_mingguan,
+      kernel.mulai_panen_hari,
+      geser,
+      simulasi.permintaan_mingguan_ton,
+      simulasi.elastisitas_display.lookup,
+      SIMULASI_WEEKS_OUT
+    );
+    simulasiSection = { geserMinggu, penurunanPuncakPct, hargaDasarSebelum: minHargaSebelum, hargaDasarSesudah: minHargaSesudah, chartData };
+  }
+
+  return {
+    mode: "kabupaten",
+    generatedAt: new Date().toISOString(),
+    provinsi: meta.provinsi,
+    komoditas: { id: komoditas.id, nama: komoditas.nama },
+    kabupaten: { id: kabMap.id, nama: kabMap.nama, statusData: kabMap.status_data },
+    mingguKonteks: buildMingguKonteks(meta, minggu),
+    risiko: {
+      skorSekarang: entry ? entry.skor : 0,
+      mingguPuncak: kabMap.kpi.minggu_puncak,
+      hargaProyeksiPuncakRp: kabMap.kpi.harga_proyeksi_puncak_rp,
+      trend: kabMap.risk_mingguan,
+    },
+    kualitasData: {
+      statusData: kabMap.status_data,
+      catatan: resolveKualitasCatatan(kabupatenDetail, kabMap.status_data, kabMap.nama, t),
+    },
+    simulasi: simulasiSection,
+  };
+}
