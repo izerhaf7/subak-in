@@ -382,7 +382,7 @@
       "kpi": {
         "risk_puncak": 43,
         "minggu_puncak": 40,
-        "harga_proyeksi_puncak_rp": 28901
+        "harga_proyeksi_puncak_rp": 28898
       },
       "estimasi_unit_lahan": 60453
     },
@@ -628,7 +628,7 @@
         },
         {
           "minggu": 30,
-          "skor": 29
+          "skor": 30
         },
         {
           "minggu": 31,
@@ -648,15 +648,15 @@
         },
         {
           "minggu": 35,
-          "skor": 41
+          "skor": 40
         },
         {
           "minggu": 36,
-          "skor": 41
+          "skor": 40
         },
         {
           "minggu": 37,
-          "skor": 42
+          "skor": 41
         },
         {
           "minggu": 38,
@@ -664,15 +664,15 @@
         },
         {
           "minggu": 39,
-          "skor": 76
+          "skor": 75
         },
         {
           "minggu": 40,
-          "skor": 59
+          "skor": 58
         },
         {
           "minggu": 41,
-          "skor": 44
+          "skor": 43
         },
         {
           "minggu": 42,
@@ -688,9 +688,9 @@
         }
       ],
       "kpi": {
-        "risk_puncak": 76,
+        "risk_puncak": 75,
         "minggu_puncak": 39,
-        "harga_proyeksi_puncak_rp": 10353
+        "harga_proyeksi_puncak_rp": 10542
       },
       "estimasi_unit_lahan": 21241
     },
@@ -786,65 +786,65 @@
         },
         {
           "minggu": 31,
-          "skor": 14
+          "skor": 15
         },
         {
           "minggu": 32,
-          "skor": 14
+          "skor": 15
         },
         {
           "minggu": 33,
-          "skor": 14
+          "skor": 15
         },
         {
           "minggu": 34,
-          "skor": 22
+          "skor": 23
         },
         {
           "minggu": 35,
-          "skor": 26
+          "skor": 27
         },
         {
           "minggu": 36,
-          "skor": 26
+          "skor": 27
         },
         {
           "minggu": 37,
-          "skor": 26
-        },
-        {
-          "minggu": 38,
-          "skor": 58
-        },
-        {
-          "minggu": 39,
-          "skor": 60
-        },
-        {
-          "minggu": 40,
-          "skor": 60
-        },
-        {
-          "minggu": 41,
-          "skor": 51
-        },
-        {
-          "minggu": 42,
           "skor": 28
         },
         {
+          "minggu": 38,
+          "skor": 60
+        },
+        {
+          "minggu": 39,
+          "skor": 62
+        },
+        {
+          "minggu": 40,
+          "skor": 63
+        },
+        {
+          "minggu": 41,
+          "skor": 54
+        },
+        {
+          "minggu": 42,
+          "skor": 31
+        },
+        {
           "minggu": 43,
-          "skor": 27
+          "skor": 30
         },
         {
           "minggu": 44,
-          "skor": 27
+          "skor": 30
         }
       ],
       "kpi": {
-        "risk_puncak": 60,
+        "risk_puncak": 63,
         "minggu_puncak": 40,
-        "harga_proyeksi_puncak_rp": 18258
+        "harga_proyeksi_puncak_rp": 17032
       },
       "estimasi_unit_lahan": 20815
     },
@@ -1548,73 +1548,73 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 28
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 28
+          "skor": 0
         },
         {
           "minggu": 31,
-          "skor": 27
+          "skor": 0
         },
         {
           "minggu": 32,
-          "skor": 29
+          "skor": 0
         },
         {
           "minggu": 33,
-          "skor": 30
+          "skor": 0
         },
         {
           "minggu": 34,
-          "skor": 29
+          "skor": 0
         },
         {
           "minggu": 35,
-          "skor": 29
+          "skor": 0
         },
         {
           "minggu": 36,
-          "skor": 28
+          "skor": 0
         },
         {
           "minggu": 37,
-          "skor": 28
+          "skor": 0
         },
         {
           "minggu": 38,
-          "skor": 63
+          "skor": 100
         },
         {
           "minggu": 39,
-          "skor": 63
+          "skor": 100
         },
         {
           "minggu": 40,
-          "skor": 61
+          "skor": 100
         },
         {
           "minggu": 41,
-          "skor": 43
+          "skor": 70
         },
         {
           "minggu": 42,
-          "skor": 19
+          "skor": 0
         },
         {
           "minggu": 43,
-          "skor": 18
+          "skor": 0
         },
         {
           "minggu": 44,
-          "skor": 18
+          "skor": 0
         }
       ],
       "kpi": {
-        "risk_puncak": 63,
-        "minggu_puncak": 39,
-        "harga_proyeksi_puncak_rp": 20278
+        "risk_puncak": 100,
+        "minggu_puncak": 38,
+        "harga_proyeksi_puncak_rp": null
       },
       "estimasi_unit_lahan": null
     },

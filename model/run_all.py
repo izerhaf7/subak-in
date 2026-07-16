@@ -38,6 +38,15 @@ DISPLAY_FORECAST = 12   # kabupaten/*.json's shorter displayed price forecast
 HISTORIS_WEEKS = 52
 DEFAULT_ZOM_STATUS = "transisi_sebelum_cutoff"  # ASUMSI fallback for the 21 kabupaten with no BMKG onset row
 
+# Kota bukan wilayah analisis produksi (peta menampilkannya "tidak
+# dianalisis"); data eceran kota justru dipakai sebagai sumber proxy untuk
+# kabupaten pasangannya lewat KOTA_PROXY.
+KOTA_IDS = {"bogor_kota", "sukabumi_kota", "bandung_kota", "cirebon_kota",
+            "bekasi_kota", "depok", "cimahi", "tasikmalaya_kota", "banjar"}
+KOTA_PROXY = {"bogor_kab": "bogor_kota", "bekasi_kab": "bekasi_kota",
+              "bandung_kab": "bandung_kota", "sukabumi_kab": "sukabumi_kota",
+              "tasikmalaya_kab": "tasikmalaya_kota", "cirebon_kab": "cirebon_kota"}
+
 
 def iso_week_labels(start: pd.Timestamp, n: int) -> list:
     return [seasonality.iso_week_label(start + pd.Timedelta(weeks=i)) for i in range(n)]
@@ -77,6 +86,34 @@ def main():
     coverage_lookup = {(r["region_id"], r["komoditas_id"]): r["status_data"]
                         for r in coverage.to_dict(orient="records")}
     weekly_producer = seasonality.to_weekly(producer, group_cols=["region_id", "komoditas_id"])
+    weekly_retail = seasonality.to_weekly(retail, group_cols=["region_id", "komoditas_id"])
+
+    # --- Rasio transmisi eceran -> produsen, untuk proxy kabupaten buta ------
+    # Dihitung dari wilayah yang punya KEDUA seri (produsen & eceran) pada
+    # komoditas yang sama; dipakai sebagai rentang (p25-p75), bukan angka
+    # tunggal, karena rasio ini melebar saat pasar bergejolak (harga eceran
+    # "lengket" saat harga produsen jatuh).
+    ratio_stats = {}
+    for komoditas_id in export.KOMODITAS_IDS:
+        ratios = []
+        prod_k = weekly_producer[weekly_producer.komoditas_id == komoditas_id]
+        ret_k = weekly_retail[weekly_retail.komoditas_id == komoditas_id]
+        for rid in prod_k.region_id.unique():
+            p = prod_k[prod_k.region_id == rid][["date", "nominal_price"]]
+            r = ret_k[ret_k.region_id == rid][["date", "nominal_price"]]
+            if not len(r):
+                continue
+            m = p.merge(r, on="date", suffixes=("_p", "_r")).dropna()
+            m = m[m["nominal_price_r"] > 0]
+            ratios.extend((m["nominal_price_p"] / m["nominal_price_r"]).tolist())
+        if len(ratios) >= 30:
+            ratio_stats[komoditas_id] = {
+                "p25": float(np.percentile(ratios, 25)),
+                "p50": float(np.percentile(ratios, 50)),
+                "p75": float(np.percentile(ratios, 75)),
+                "n": len(ratios),
+            }
+    print(f"  rasio transmisi tersedia untuk: {list(ratio_stats.keys())}")
 
     now = datetime.now(WIB)
     minggu_berjalan = now.isocalendar().week
@@ -91,13 +128,44 @@ def main():
         for komoditas_id in export.KOMODITAS_IDS:
             status_data = coverage_lookup.get((region_id, komoditas_id), "modeled")
             entry = {"status_data": status_data, "historis": [], "forecast_16": None,
-                      "mape_pct": None, "keyakinan": None, "retail_overlay": []}
+                      "forecast_start": None, "mape_pct": None, "keyakinan": None, "retail_overlay": []}
 
             if status_data in ("measured", "measured_stale"):
                 sub = weekly_producer[
                     (weekly_producer.region_id == region_id) & (weekly_producer.komoditas_id == komoditas_id)
                 ].set_index("date")["nominal_price"].asfreq("W-MON")
 
+                entry["historis"] = [
+                    {"minggu": seasonality.iso_week_label(d), "rp": round(v)}
+                    for d, v in sub.tail(HISTORIS_WEEKS).dropna().items()
+                ]
+
+                retail_sub = retail[(retail.region_id == region_id) & (retail.komoditas_id == komoditas_id)]
+                if len(retail_sub):
+                    retail_weekly = seasonality.to_weekly(retail_sub, group_cols=["region_id", "komoditas_id"])
+                    retail_weekly = retail_weekly.set_index("date")["nominal_price"].tail(HISTORIS_WEEKS)
+                    entry["retail_overlay"] = [
+                        {"minggu": seasonality.iso_week_label(d), "rp": round(v)}
+                        for d, v in retail_weekly.dropna().items()
+                    ]
+
+                # measured_stale = PIHPS stopped collecting this series years
+                # ago (bandung_kota/{bawang_merah,cabai_besar}: last real point
+                # 2020). Forecasting "the next 16 weeks" from data that old and
+                # labeling it as if it projects TODAY's market would be
+                # dishonest - the contract's own UI treatment for stale data is
+                # a "data berhenti [tahun]" tooltip, not a live projection.
+                # Bug this fixes: run_all.py used to label every region's
+                # forecast weeks off one GLOBAL last-date (~2026), which for a
+                # 2020-frozen series meant a model trained on 2018-2020 data
+                # got mislabeled as a 2026 forecast AND extrapolated 6 "years"
+                # of steps past its own data -> drove point forecasts negative
+                # (bandung_kota/cabai_besar). Found via pressure test.
+                if status_data == "measured_stale":
+                    forecast_cache[(region_id, komoditas_id)] = entry
+                    continue
+
+                series_last_date = sub.dropna().index.max()
                 mape = forecast.rolling_backtest_mape(sub)
                 point, lo, hi = forecast.forecast_with_interval(sub, horizon=FORECAST_HORIZON)
 
@@ -114,24 +182,12 @@ def main():
                 else:
                     keyakinan = keyakinan_from_mape(mape)
 
-                entry["historis"] = [
-                    {"minggu": seasonality.iso_week_label(d), "rp": round(v)}
-                    for d, v in sub.tail(HISTORIS_WEEKS).dropna().items()
-                ]
                 entry["forecast_16"] = point
                 entry["forecast_16_lo"] = lo
                 entry["forecast_16_hi"] = hi
+                entry["forecast_start"] = series_last_date  # per-series anchor, NOT the global last_real_date
                 entry["mape_pct"] = _r1(mape)
                 entry["keyakinan"] = keyakinan
-
-                retail_sub = retail[(retail.region_id == region_id) & (retail.komoditas_id == komoditas_id)]
-                if len(retail_sub):
-                    retail_weekly = seasonality.to_weekly(retail_sub, group_cols=["region_id", "komoditas_id"])
-                    retail_weekly = retail_weekly.set_index("date")["nominal_price"].tail(HISTORIS_WEEKS)
-                    entry["retail_overlay"] = [
-                        {"minggu": seasonality.iso_week_label(d), "rp": round(v)}
-                        for d, v in retail_weekly.dropna().items()
-                    ]
 
             forecast_cache[(region_id, komoditas_id)] = entry
     print("  done.")
@@ -221,7 +277,7 @@ def main():
             if fc["forecast_16"] is not None:
                 for i in range(DISPLAY_FORECAST):
                     forecast_arr.append({
-                        "minggu": seasonality.iso_week_label(last_real_date + pd.Timedelta(weeks=i + 1)),
+                        "minggu": seasonality.iso_week_label(fc["forecast_start"] + pd.Timedelta(weeks=i + 1)),
                         "rp": round(fc["forecast_16"][i]),
                         "lo": round(fc["forecast_16_lo"][i]),
                         "hi": round(fc["forecast_16_hi"][i]),
@@ -233,6 +289,58 @@ def main():
             )
             export.write_json(f"kabupaten/{region_id}__{komoditas_id}.json", detail)
             written_for_region.append((komoditas_id, detail))
+
+        # Proxy eceran untuk kabupaten buta: kalau kabupaten ini modeled untuk
+        # sebuah komoditas TAPI ada seri eceran (milik sendiri, atau dari kota
+        # pasangannya via KOTA_PROXY), tulis file detail berisi sinyal eceran +
+        # rentang estimasi produsen (eceran x rasio p25-p75). Kota sendiri
+        # bukan target (di peta kota ditampilkan sebagai "tidak dianalisis").
+        if region_id not in KOTA_IDS:
+            for komoditas_id in export.KOMODITAS_IDS:
+                status = coverage_lookup.get((region_id, komoditas_id), "modeled")
+                if status in ("measured", "measured_stale"):
+                    continue
+                rs = ratio_stats.get(komoditas_id)
+                if rs is None:
+                    continue
+                sumber_id = None
+                for cand in (region_id, KOTA_PROXY.get(region_id)):
+                    if cand is None:
+                        continue
+                    sub = weekly_retail[
+                        (weekly_retail.region_id == cand) & (weekly_retail.komoditas_id == komoditas_id)
+                    ]
+                    if len(sub):
+                        sumber_id = cand
+                        retail_series = sub.set_index("date")["nominal_price"].tail(HISTORIS_WEEKS).dropna()
+                        break
+                if sumber_id is None or len(retail_series) < 8:
+                    continue
+                detail = {
+                    "id": region_id,
+                    "nama": ra.nama_resmi(region_id),
+                    "status_data": "modeled",
+                    "harga": {"historis": [], "forecast": [], "mape_pct": None, "keyakinan": None},
+                    "retail_overlay": [
+                        {"minggu": seasonality.iso_week_label(d), "rp": round(v)}
+                        for d, v in retail_series.items()
+                    ],
+                    "proxy_eceran": {
+                        "sumber_id": sumber_id,
+                        "sumber_nama": ra.nama_resmi(sumber_id),
+                        "rasio": {k: round(v, 3) for k, v in rs.items() if k != "n"},
+                        "n_rasio": rs["n"],
+                        "band": [
+                            {"minggu": seasonality.iso_week_label(d),
+                             "rp_lo": round(v * rs["p25"]), "rp_hi": round(v * rs["p75"])}
+                            for d, v in retail_series.items()
+                        ],
+                        "catatan": ("Estimasi tidak langsung: rentang harga produsen p25-p75 dari "
+                                     "rasio transmisi eceran->produsen. BUKAN harga terukur."),
+                    },
+                }
+                export.write_json(f"kabupaten/{region_id}__{komoditas_id}.json", detail)
+                written_for_region.append((komoditas_id, detail))
 
         if written_for_region:
             # literal-contract-compliant default: prefer cabai_rawit, else first available
@@ -253,7 +361,14 @@ def main():
             "status_musim_hujan": status,
             "kohort_tanam": [{"minggu_relatif": w, "luas_ha": round(ha, 1)} for w, ha in cohort],
             "geser_maks_minggu": supply.GESER_MAKS_MINGGU[status],
-            "produktivitas_ton_per_ha": round(produktivitas, 2),
+            # 6dp, not the usual display-rounded 2dp: this value feeds the JS
+            # port's convolution directly, and test_vector's
+            # expected_kurva_pasokan_ton was computed from the unrounded
+            # produktivitas - rounding to 2dp here made the frontend port
+            # unable to reproduce it exactly (~0.1-0.4 ton drift by the tail
+            # of the curve). 6dp closes that gap to well under display
+            # precision.
+            "produktivitas_ton_per_ha": round(produktivitas, 6),
         })
 
     # permintaan_mingguan_ton: ASUMSI - no real consumption dataset, so demand

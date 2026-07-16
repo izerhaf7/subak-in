@@ -48,10 +48,20 @@ waktu habis.
   selesai dalam hitungan menit karena semua input sudah ada di repo. Trade-
   off: bentuk sel gak 100% sama persis batas administratif asli, tapi tetap
   terlihat sebagai peta wilayah yang masuk akal dan tetap bisa diklik per
-  kabupaten. Detail implementasi ada di
-  `docs/superpowers/plans/2026-07-16-foundation-f1.md` Task 4. Tetap
-  pekerjaan data-prep satu kali oleh Claude, bukan task belajar untuk
-  developer.
+  kabupaten.
+
+  **Update kedua (2026-07-16, sesudahnya)**: developer melihat hasil Voronoi
+  di browser dan menilai gak cukup bagus (gak kebentuk kayak Jawa Barat).
+  Setelah jaringan yang tadinya bermasalah pulih, diputuskan pindah ke
+  **geometri kabupaten/kota asli** — GADM-derived GeoJSON dari repo publik
+  `mahendrayudha/indonesia-geojson`, disederhanakan pakai Douglas-Peucker.
+  Dataset itu mendahului pemekaran Pangandaran (2012) dari Ciamis, jadi
+  Ciamis di-split manual jadi dua pakai perpendicular bisector antar
+  centroid Ciamis/Pangandaran. Waduk Cirata (reservoir, bukan kabupaten)
+  dirender terpisah sebagai badan air non-interaktif, bukan di-skip (kalau
+  di-skip meninggalkan lubang di peta). Detail implementasi final ada di
+  `scripts/geo/generate.mjs` — source GeoJSON mentah gitignored, ada
+  `scripts/geo/source/README.md` buat cara re-download.
 
 ## Temuan penting dari data nyata (M1 output, sudah ada di `web/public/data/`)
 

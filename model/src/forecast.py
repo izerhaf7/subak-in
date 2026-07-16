@@ -96,4 +96,11 @@ def forecast_with_interval(series: pd.Series, horizon: int = 12,
         # band +-15% dari titik forecast supaya kontrak JSON tetap terisi.
         lo = point * 0.85
         hi = point * 1.15
+
+    # Harga tidak bisa negatif - additive Holt-Winters tidak tahu itu dan bisa
+    # ekstrapolasi ke bawah nol pada seri pendek/volatil (ditemukan saat
+    # pressure test: bandung_kota/cabai_besar, hi horizon minggu terakhir).
+    point = np.clip(point, 0, None)
+    lo = np.clip(lo, 0, None)
+    hi = np.clip(hi, 0, None)
     return point, lo, hi

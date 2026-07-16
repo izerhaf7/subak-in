@@ -24,7 +24,7 @@
         }
       ],
       "geser_maks_minggu": 4,
-      "produktivitas_ton_per_ha": 19.86
+      "produktivitas_ton_per_ha": 19.863516
     },
     {
       "id": "cirebon_kab",
@@ -41,7 +41,7 @@
         }
       ],
       "geser_maks_minggu": 2,
-      "produktivitas_ton_per_ha": 11.4
+      "produktivitas_ton_per_ha": 11.396921
     },
     {
       "id": "bandung_kab",
@@ -66,7 +66,7 @@
         }
       ],
       "geser_maks_minggu": 4,
-      "produktivitas_ton_per_ha": 26.04
+      "produktivitas_ton_per_ha": 26.042158
     },
     {
       "id": "sumedang",
@@ -91,7 +91,7 @@
         }
       ],
       "geser_maks_minggu": 4,
-      "produktivitas_ton_per_ha": 20.26
+      "produktivitas_ton_per_ha": 20.263792
     },
     {
       "id": "tasikmalaya_kab",
@@ -124,7 +124,7 @@
         }
       ],
       "geser_maks_minggu": 6,
-      "produktivitas_ton_per_ha": 12.78
+      "produktivitas_ton_per_ha": 12.776883
     },
     {
       "id": "sukabumi_kota",
@@ -157,7 +157,7 @@
         }
       ],
       "geser_maks_minggu": 6,
-      "produktivitas_ton_per_ha": 1.25
+      "produktivitas_ton_per_ha": 1.25467
     }
   ],
   "permintaan_mingguan_ton": 1938.5,
