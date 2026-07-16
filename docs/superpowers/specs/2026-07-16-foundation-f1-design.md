@@ -36,11 +36,22 @@ waktu habis.
   plain CSS cukup.
 - **Peta = SVG inline**, bukan Leaflet/Mapbox (kontrak tim, demi offline &
   kontrol visual). Data geometri kabupaten (`web/public/geo/jabar_kabupaten.svg.json`)
-  **belum ada di repo** — akan disourcing dari dataset batas administrasi
-  terbuka Indonesia (level kabupaten/kota), disederhanakan (simplify) jadi
-  path SVG per kabupaten dengan id yang match `id` kabupaten di `map.json`
-  (mis. `bogor_kab`, `bandung_kota`). Ini pekerjaan data-prep satu kali oleh
-  Claude, bukan task belajar untuk developer.
+  **belum ada di repo**.
+
+  **Update (2026-07-16, setelah spec ini ditulis)**: ketemu
+  `data/curated/region_aliases.csv` (output M1, 27 baris, sudah punya `id`,
+  `nama_resmi`, dan centroid `lat`/`lng` per kabupaten). Diputuskan bersama
+  developer: **bangun geometri sebagai diagram Voronoi dari 27 centroid itu**
+  (`d3-delaunay`, build-time only), bukan sourcing dataset batas
+  administratif eksternal — nol resiko lisensi/data-tidak-ketemu/nama-tidak-
+  cocok (ada 6 pasang nama kembar Kab./Kota yang rawan mismatch), dan bisa
+  selesai dalam hitungan menit karena semua input sudah ada di repo. Trade-
+  off: bentuk sel gak 100% sama persis batas administratif asli, tapi tetap
+  terlihat sebagai peta wilayah yang masuk akal dan tetap bisa diklik per
+  kabupaten. Detail implementasi ada di
+  `docs/superpowers/plans/2026-07-16-foundation-f1.md` Task 4. Tetap
+  pekerjaan data-prep satu kali oleh Claude, bukan task belajar untuk
+  developer.
 
 ## Temuan penting dari data nyata (M1 output, sudah ada di `web/public/data/`)
 
