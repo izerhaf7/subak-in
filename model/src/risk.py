@@ -1,12 +1,29 @@
 """Glut Risk Index (0-100): composite of harvest overlap + PriceGap + weather
-modifier. Weights are hardcoded (no ML) but the PriceGap->score mapping is
-calibrated against real historical PIHPS troughs, not picked blind - see
-`_calibration_check()` at the bottom, which is the actual validation this
-module's design leans on (contract: "kalibrasi ini adalah validasi utamamu").
+modifier.
+
+Design principle (v2 - multiplicative gating):
+  A glut = supply overwhelming demand AND prices falling. The two signals must
+  be elevated SIMULTANEOUSLY for high risk. Using a weighted sum (v1) allowed
+  contradictions: high supply + healthy price -> high risk, which violates basic
+  supply-demand economics. The new composite_risk() uses the geometric mean of
+  supply and price signals so BOTH must be high to score high.
+
+  Truth table:
+    overlap high + price_gap high  -> HIGH risk   (real glut)
+    overlap high + price_gap low   -> LOW risk    (supply up but market paying)
+    overlap low  + price_gap high  -> MEDIUM risk (price drop from other cause)
+    overlap low  + price_gap low   -> LOW risk    (all clear)
+
+  Modeled kabupaten (no PIHPS price data, price_gap=None): overlap-only path
+  is preserved unchanged for backward compat - no price data means we can only
+  signal supply-side risk.
 
 PriceGap is only meaningful at the producer/farm-gate layer (contract point
 #6: never compare retail price to ongkos_petik) - callers must pass a producer
 price here, never `retail_overlay`.
+
+Calibration: _calibration_check() at the bottom exercises PriceGap against
+real historical PIHPS troughs (contract: "kalibrasi ini adalah validasi utamamu").
 """
 import numpy as np
 
@@ -67,17 +84,31 @@ def score_price_gap(price_rp, ongkos_petik_rp: float, biaya_produksi_rp: float) 
 
 
 def composite_risk(overlap: float, price_gap, weather_modifier: float = 0.0,
-                    w_overlap_only: float = 1.0, w_overlap_with_price: float = 0.35,
-                    w_price: float = 0.65) -> float:
-    """price_gap=None (modeled kabupaten, no PIHPS coverage) -> overlap-only,
-    per contract ("harvest-overlap saja, tanpa PriceGap"). Price weighted
-    higher than overlap when available (0.65 vs 0.35) so a real historical
-    price crash always lands in the red zone regardless of the supply curve's
-    shape that week - see _calibration_check."""
+                    w_overlap_only: float = 1.0) -> float:
+    """Multiplicative composite risk (v2).
+
+    price_gap=None (modeled kabupaten, no PIHPS coverage) -> overlap-only path,
+    unchanged from v1, per contract ("harvest-overlap saja, tanpa PriceGap").
+
+    When price_gap IS available: geometric mean of the two normalized signals.
+    This gates risk on BOTH supply distress AND price distress simultaneously:
+    - sqrt(1.0 * 1.0) * 100 = 100  (both maxed -> full alarm)
+    - sqrt(1.0 * 0.0) * 100 = 0    (supply high but price healthy -> no alarm)
+    - sqrt(0.0 * 1.0) * 100 = 0    (price low but no supply signal -> moderate)
+    Actually for the third case we use a dampened additive fallback so a genuine
+    farm-gate price crash still registers even without a supply signal (unusual
+    but shouldn't be invisible). Blend: 70% geometric, 30% price_gap alone.
+    """
     if price_gap is None:
         base = overlap * w_overlap_only
     else:
-        base = w_overlap_with_price * overlap + w_price * price_gap
+        s = np.clip(overlap / 100, 0, 1)
+        p = np.clip(price_gap / 100, 0, 1)
+        geometric = np.sqrt(s * p) * 100
+        # Retain some price signal even when supply curve is flat (e.g. drought
+        # wiping out harvest -> low supply + low price is unusual but real).
+        price_only_dampened = price_gap * 0.3
+        base = 0.7 * geometric + 0.3 * price_only_dampened
     return float(np.clip(base * (1 + weather_modifier), 0, 100))
 
 

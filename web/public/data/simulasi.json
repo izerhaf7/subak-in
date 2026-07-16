@@ -24,7 +24,27 @@
         }
       ],
       "geser_maks_minggu": 4,
-      "produktivitas_ton_per_ha": 19.86
+      "produktivitas_ton_per_ha": 19.86,
+      "harvest_peak_week_iso": 40,
+      "baseline_tanam_minggu": 26,
+      "pasokan_baseline_ton": [
+        6.1,
+        0.0,
+        0.0,
+        0.0,
+        22.4,
+        185.4,
+        474.9,
+        848.6,
+        1264.6,
+        1686.1,
+        2107.6,
+        2438.4,
+        2532.6,
+        2455.0,
+        2270.3,
+        2043.6
+      ]
     },
     {
       "id": "cirebon_kab",
@@ -41,7 +61,27 @@
         }
       ],
       "geser_maks_minggu": 2,
-      "produktivitas_ton_per_ha": 11.4
+      "produktivitas_ton_per_ha": 11.4,
+      "harvest_peak_week_iso": 51,
+      "baseline_tanam_minggu": 37,
+      "pasokan_baseline_ton": [
+        3.3,
+        2.9,
+        2.5,
+        2.1,
+        1.7,
+        1.3,
+        0.9,
+        0.5,
+        0.2,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.1
+      ]
     },
     {
       "id": "bandung_kab",
@@ -66,7 +106,27 @@
         }
       ],
       "geser_maks_minggu": 4,
-      "produktivitas_ton_per_ha": 26.04
+      "produktivitas_ton_per_ha": 26.04,
+      "harvest_peak_week_iso": 45,
+      "baseline_tanam_minggu": 31,
+      "pasokan_baseline_ton": [
+        482.9,
+        321.8,
+        178.3,
+        77.4,
+        24.8,
+        4.4,
+        0.0,
+        0.0,
+        0.0,
+        15.9,
+        131.6,
+        337.0,
+        602.2,
+        897.3,
+        1196.4,
+        1495.5
+      ]
     },
     {
       "id": "sumedang",
@@ -91,7 +151,27 @@
         }
       ],
       "geser_maks_minggu": 4,
-      "produktivitas_ton_per_ha": 20.26
+      "produktivitas_ton_per_ha": 20.26,
+      "harvest_peak_week_iso": 45,
+      "baseline_tanam_minggu": 31,
+      "pasokan_baseline_ton": [
+        80.9,
+        53.9,
+        29.9,
+        13.0,
+        4.2,
+        0.7,
+        0.0,
+        0.0,
+        0.0,
+        2.7,
+        22.0,
+        56.4,
+        100.8,
+        150.2,
+        200.3,
+        250.4
+      ]
     },
     {
       "id": "tasikmalaya_kab",
@@ -124,7 +204,27 @@
         }
       ],
       "geser_maks_minggu": 6,
-      "produktivitas_ton_per_ha": 12.78
+      "produktivitas_ton_per_ha": 12.78,
+      "harvest_peak_week_iso": 51,
+      "baseline_tanam_minggu": 37,
+      "pasokan_baseline_ton": [
+        126.9,
+        114.3,
+        100.9,
+        87.5,
+        74.1,
+        60.7,
+        47.3,
+        33.9,
+        21.6,
+        12.0,
+        5.8,
+        2.3,
+        0.7,
+        0.1,
+        0.0,
+        1.0
+      ]
     },
     {
       "id": "sukabumi_kota",
@@ -157,7 +257,27 @@
         }
       ],
       "geser_maks_minggu": 6,
-      "produktivitas_ton_per_ha": 1.25
+      "produktivitas_ton_per_ha": 1.25,
+      "harvest_peak_week_iso": 28,
+      "baseline_tanam_minggu": 14,
+      "pasokan_baseline_ton": [
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
     }
   ],
   "permintaan_mingguan_ton": 1938.5,
@@ -214,5 +334,28 @@
       2265.04
     ]
   },
-  "catatan_alokasi_luas": "luas per varian = estimasi proporsional dari rasio produksi (BPS hanya publish luas gabungan)"
+  "catatan_alokasi_luas": "luas per varian = estimasi proporsional dari rasio produksi (BPS hanya publish luas gabungan)",
+  "pasokan_provinsi_baseline": {
+    "ton_per_minggu": [
+      1500.0,
+      1025.9,
+      607.0,
+      308.3,
+      168.3,
+      259.7,
+      523.1,
+      883.1,
+      1286.3,
+      1743.0,
+      2484.9,
+      3392.2,
+      4233.6,
+      4988.7,
+      5648.5,
+      6267.3
+    ],
+    "catatan": "jumlah supply model 27 kabupaten Jabar pada jadwal tanam baseline. Frontend: untuk simulasi staggering satu kabupaten, hitung pasokan_provinsi_baseline - kabupaten.pasokan_baseline_ton + convolve_single_cohort(kohort_digeser) agar agregat provinsi ikut berubah."
+  },
+  "permintaan_provinsi_mingguan_ton": 3149.2,
+  "_catatan_permintaan_provinsi": "proxy: total produksi tahunan cabai_rawit seluruh 27 kab (BPS tahun terbaru) / 52. ASUMSI rough equilibrium — tidak ada dataset konsumsi per-kabupaten."
 }

@@ -37,6 +37,15 @@ FORECAST_HORIZON = 16   # covers map.json / pasokan_mingguan's 16-week window
 DISPLAY_FORECAST = 12   # kabupaten/*.json's shorter displayed price forecast
 HISTORIS_WEEKS = 52
 DEFAULT_ZOM_STATUS = "transisi_sebelum_cutoff"  # ASUMSI fallback for the 21 kabupaten with no BMKG onset row
+# DEFAULT_HARVEST_PEAK_WEEK: fallback when STL trough can't be computed (not
+# enough price history, or modeled kabupaten with no PIHPS data at all).
+# Derived as median across measured kabupaten per commodity in run_all() below,
+# but this constant is used if even that median isn't available.
+DEFAULT_HARVEST_PEAK_WEEK = {
+    "cabai_rawit": 40,   # STL trough garut=W40, consistent across measured series
+    "bawang_merah": 46,  # STL trough sukabumi_kota=W46
+    "cabai_besar": 40,   # No measured farm-gate data; mirror cabai_rawit
+}
 
 
 def iso_week_labels(start: pd.Timestamp, n: int) -> list:
@@ -85,7 +94,36 @@ def main():
     last_real_date = weekly_producer["date"].max()
     label_minggu = iso_week_labels(last_real_date + pd.Timedelta(weeks=1), FORECAST_HORIZON)
 
-    print(f"\n[3/6] forecasting per (region x komoditas)... minggu_berjalan={minggu_berjalan}")
+    # Compute STL-derived harvest peak weeks BEFORE the forecast loop, so they
+    # can be passed into supply_weekly_ton later. Only measured kabupaten have
+    # enough price data; modeled kabupaten use the commodity-wide median.
+    print("\n[3/6] computing STL harvest-peak weeks (supply timing anchor)...")
+    harvest_peak_weeks = {}  # (region_id, komoditas_id) -> ISO week
+    for komoditas_id in export.KOMODITAS_IDS:
+        measured_troughs = []
+        for region_id in ra.all_ids():
+            sub = weekly_producer[
+                (weekly_producer.region_id == region_id) &
+                (weekly_producer.komoditas_id == komoditas_id)
+            ].set_index("date")["nominal_price"].asfreq("W-MON")
+            week = seasonality.find_harvest_peak_week(sub)
+            if week is not None:
+                harvest_peak_weeks[(region_id, komoditas_id)] = week
+                measured_troughs.append(week)
+        # Median of measured kabupaten for this commodity -> fallback for modeled ones
+        if measured_troughs:
+            # Circular median for week-of-year
+            import statistics
+            fallback = int(statistics.median(measured_troughs))
+        else:
+            fallback = DEFAULT_HARVEST_PEAK_WEEK[komoditas_id]
+        for region_id in ra.all_ids():
+            if (region_id, komoditas_id) not in harvest_peak_weeks:
+                harvest_peak_weeks[(region_id, komoditas_id)] = fallback
+        print(f"  {komoditas_id}: measured trough weeks={measured_troughs}, fallback=W{fallback}")
+    print("  done.")
+
+    print(f"\n[4/6] forecasting per (region x komoditas)... minggu_berjalan={minggu_berjalan}")
     forecast_cache = {}  # (region_id, komoditas_id) -> dict
     for region_id in ra.all_ids():
         for komoditas_id in export.KOMODITAS_IDS:
@@ -155,7 +193,7 @@ def main():
             forecast_cache[(region_id, komoditas_id)] = entry
     print("  done.")
 
-    print("\n[4/6] supply + risk per (region x komoditas)...")
+    print("\n[5/6] supply + risk per (region x komoditas)...")
     # Bug found via user inspecting map.json: ~20 "modeled" kabupaten showed
     # byte-identical risk_mingguan curves regardless of actual production
     # size, because score_overlap normalizes against each series' OWN mean
@@ -183,7 +221,9 @@ def main():
         w_mod = weather_mod.get(region_id, 0.0)
         for komoditas_id in export.KOMODITAS_IDS:
             ton, luas_ha, produktivitas, tahun_sumber = supply.supply_weekly_ton(
-                bps_allocated, region_id, komoditas_id, status_musim, weeks_out=FORECAST_HORIZON
+                bps_allocated, region_id, komoditas_id, status_musim,
+                harvest_peak_week=harvest_peak_weeks[(region_id, komoditas_id)],
+                weeks_out=FORECAST_HORIZON
             )
             supply_cache[(region_id, komoditas_id)] = {
                 "ton": ton, "luas_ha": luas_ha, "produktivitas": produktivitas, "tahun_sumber": tahun_sumber,
@@ -210,7 +250,7 @@ def main():
             risk_cache[(region_id, komoditas_id)] = weekly_scores
     print("  done.")
 
-    print("\n[5/6] writing map.json (+ per-commodity siblings) and kabupaten/*.json...")
+    print("\n[6/6] writing map.json (+ per-commodity siblings) and kabupaten/*.json...")
     unit_lahan_lookup = dict(zip(unit_lahan["region_id"], unit_lahan["estimasi_unit_lahan_cabai_bawang"]))
 
     for komoditas_id in export.KOMODITAS_IDS:
@@ -301,7 +341,27 @@ def main():
             written_for_region.sort(key=_priority)
             export.write_json(f"kabupaten/{region_id}.json", written_for_region[0][1])
 
-    print("\n[6/6] writing simulasi.json, absorbers.json, meta.json...")
+    print("\n[7/6] writing simulasi.json, absorbers.json, meta.json...")
+
+    # --- Provincial aggregate supply (all 27 kab, cabai_rawit) ---
+    # Sum supply curves from supply_cache for the full province so the frontend
+    # can show how the AGGREGATE supply changes when one kabupaten shifts.
+    provincial_supply = np.zeros(FORECAST_HORIZON)
+    for region_id in ra.all_ids():
+        ton = supply_cache.get((region_id, "cabai_rawit"), {}).get("ton")
+        if ton is not None:
+            provincial_supply += ton
+    pasokan_provinsi_baseline = [round(float(t), 1) for t in provincial_supply]
+
+    # Provincial demand proxy: ALL 27 kab annual production / 52
+    total_provincial_ton = 0
+    for region_id in ra.all_ids():
+        sub = bps_allocated[(bps_allocated.region_id == region_id) & (bps_allocated.komoditas_id == "cabai_rawit")]
+        if len(sub):
+            total_provincial_ton += sub.sort_values("tahun").iloc[-1]["produksi_ton"]
+    permintaan_provinsi_mingguan_ton = round(total_provincial_ton / 52, 1)
+
+    # --- Build simulasi rows (6 sentra) ---
     simulasi_rows = []
     for region_id in export.SENTRA_SIMULASI:
         status = zom_status.get(region_id, DEFAULT_ZOM_STATUS)
@@ -309,6 +369,15 @@ def main():
         if luas_ha is None:
             continue
         cohort = supply.build_cohort_ha(luas_ha, "cabai_rawit", status)
+        harvest_peak_w = harvest_peak_weeks.get((region_id, "cabai_rawit"),
+                                                 DEFAULT_HARVEST_PEAK_WEEK["cabai_rawit"])
+        baseline_tanam = supply.baseline_tanam_minggu_dari_trough(harvest_peak_w, "cabai_rawit")
+
+        # Per-sentra baseline supply curve (so frontend can subtract old + add
+        # shifted without needing the full model to recompute provincially)
+        sentra_ton = supply_cache.get((region_id, "cabai_rawit"), {}).get("ton")
+        pasokan_baseline = [round(float(t), 1) for t in sentra_ton] if sentra_ton is not None else None
+
         simulasi_rows.append({
             "id": region_id,
             "nama": ra.nama_resmi(region_id),
@@ -316,18 +385,18 @@ def main():
             "kohort_tanam": [{"minggu_relatif": w, "luas_ha": round(ha, 1)} for w, ha in cohort],
             "geser_maks_minggu": supply.GESER_MAKS_MINGGU[status],
             "produktivitas_ton_per_ha": round(produktivitas, 2),
+            "harvest_peak_week_iso": harvest_peak_w,
+            "baseline_tanam_minggu": baseline_tanam,
+            "pasokan_baseline_ton": pasokan_baseline,
         })
 
-    # permintaan_mingguan_ton: ASUMSI - no real consumption dataset, so demand
-    # is proxied as the sentra's own average weekly production (i.e. assume
-    # rough historical supply/demand equilibrium as the reference baseline the
-    # simulasi screen perturbs away from).
-    total_annual_ton = 0
+    # Sentra-only demand proxy (for the per-kabupaten simulasi chart)
+    total_sentra_ton = 0
     for region_id in export.SENTRA_SIMULASI:
         sub = bps_allocated[(bps_allocated.region_id == region_id) & (bps_allocated.komoditas_id == "cabai_rawit")]
         if len(sub):
-            total_annual_ton += sub.sort_values("tahun").iloc[-1]["produksi_ton"]
-    permintaan_mingguan_ton = round(total_annual_ton / 52, 1)
+            total_sentra_ton += sub.sort_values("tahun").iloc[-1]["produksi_ton"]
+    permintaan_mingguan_ton = round(total_sentra_ton / 52, 1)
 
     test_input_kohort = {"garut": [900, 400, 0, 0]}
     garut_luas, garut_prod, _ = supply.latest_luas_dan_produktivitas(bps_allocated, "garut", "cabai_rawit")
@@ -341,6 +410,8 @@ def main():
             "input_kohort": test_input_kohort,
             "expected_kurva_pasokan_ton": [round(v, 2) for v in expected_curve],
         },
+        pasokan_provinsi_baseline=pasokan_provinsi_baseline,
+        permintaan_provinsi_mingguan_ton=permintaan_provinsi_mingguan_ton,
     )
     export.write_json("simulasi.json", simulasi_json)
 

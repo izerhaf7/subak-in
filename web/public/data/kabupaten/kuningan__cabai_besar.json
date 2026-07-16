@@ -11,67 +11,67 @@
   "pasokan_mingguan": [
     {
       "minggu": "2026-W30",
-      "ton": 22.5
+      "ton": 34.6
     },
     {
       "minggu": "2026-W31",
-      "ton": 18.8
+      "ton": 37.1
     },
     {
       "minggu": "2026-W32",
-      "ton": 15.0
+      "ton": 36.5
     },
     {
       "minggu": "2026-W33",
-      "ton": 11.3
+      "ton": 33.8
     },
     {
       "minggu": "2026-W34",
-      "ton": 7.5
+      "ton": 30.0
     },
     {
       "minggu": "2026-W35",
-      "ton": 4.1
+      "ton": 26.3
     },
     {
       "minggu": "2026-W36",
-      "ton": 1.8
+      "ton": 22.5
     },
     {
       "minggu": "2026-W37",
-      "ton": 0.6
+      "ton": 18.8
     },
     {
       "minggu": "2026-W38",
-      "ton": 0.1
+      "ton": 15.0
     },
     {
       "minggu": "2026-W39",
-      "ton": 0.0
+      "ton": 11.3
     },
     {
       "minggu": "2026-W40",
-      "ton": 0.0
+      "ton": 7.5
     },
     {
       "minggu": "2026-W41",
-      "ton": 0.0
+      "ton": 4.1
     },
     {
       "minggu": "2026-W42",
-      "ton": 0.0
+      "ton": 1.8
     },
     {
       "minggu": "2026-W43",
-      "ton": 0.0
+      "ton": 0.6
     },
     {
       "minggu": "2026-W44",
-      "ton": 0.3
+      "ton": 0.1
     },
     {
       "minggu": "2026-W45",
-      "ton": 3.0
+      "ton": 0.0
     }
   ]
 }

@@ -119,8 +119,25 @@ def build_kabupaten_detail(region_id: str, nama: str, status_data: str,
 
 
 def build_simulasi(komoditas_id: str, kabupaten_rows: list, permintaan_mingguan_ton: float,
-                    lookup: list, test_vector: dict) -> dict:
-    return {
+                    lookup: list, test_vector: dict,
+                    pasokan_provinsi_baseline: list = None,
+                    permintaan_provinsi_mingguan_ton: float = None) -> dict:
+    """Builds simulasi.json.
+
+    pasokan_provinsi_baseline: 16-week supply curve summed across ALL 27
+    kabupaten at their default planting timing. Used by the frontend to show
+    the provincial aggregate supply curve and compute the effect of staggering
+    one kabupaten's planting window: subtract the kabupaten's pasokan_baseline_ton
+    from the provincial baseline, add the shifted curve, compare to demand.
+
+    permintaan_provinsi_mingguan_ton: provincial weekly demand proxy (total
+    annual production / 52), for the aggregate supply vs demand chart.
+
+    Each kabupaten entry in kabupaten_rows must have a pasokan_baseline_ton
+    field (list of 16 weekly ton values) so the frontend can perform the
+    subtraction without re-running the convolution in Python.
+    """
+    out = {
         "komoditas_id": komoditas_id,
         "kabupaten": kabupaten_rows,
         "permintaan_mingguan_ton": permintaan_mingguan_ton,
@@ -134,3 +151,20 @@ def build_simulasi(komoditas_id: str, kabupaten_rows: list, permintaan_mingguan_
             "(BPS hanya publish luas gabungan)"
         ),
     }
+    if pasokan_provinsi_baseline is not None:
+        out["pasokan_provinsi_baseline"] = {
+            "ton_per_minggu": pasokan_provinsi_baseline,
+            "catatan": (
+                "jumlah supply model 27 kabupaten Jabar pada jadwal tanam baseline. "
+                "Frontend: untuk simulasi staggering satu kabupaten, hitung "
+                "pasokan_provinsi_baseline - kabupaten.pasokan_baseline_ton + "
+                "convolve_single_cohort(kohort_digeser) agar agregat provinsi ikut berubah."
+            ),
+        }
+    if permintaan_provinsi_mingguan_ton is not None:
+        out["permintaan_provinsi_mingguan_ton"] = permintaan_provinsi_mingguan_ton
+        out["_catatan_permintaan_provinsi"] = (
+            "proxy: total produksi tahunan cabai_rawit seluruh 27 kab (BPS tahun terbaru) / 52. "
+            "ASUMSI rough equilibrium — tidak ada dataset konsumsi per-kabupaten."
+        )
+    return out
