@@ -18,8 +18,6 @@ WIB = timezone(timedelta(hours=7))
 
 
 def _risk_modifier(total_rain_mm: float, rain_days: int) -> float:
-    if rain_days >= 3 and total_rain_mm > 30:
-        return 0.2
     if rain_days >= 2 or total_rain_mm > 15:
         return 0.1
     if total_rain_mm < 1.0:

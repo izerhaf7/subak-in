@@ -27,7 +27,7 @@ export default function JabarMap({ geo, mapData, minggu, selectedId, onSelect })
   }
 
   const hoverInfo = hover ? byId[hover.id] : null;
-  const hoverIsKotaWhitelist = false;
+  const hoverIsKotaWhitelist = hover ? KOTA_IDS.has(hover.id) : false;
 
   return (
     <div className="jabar-map-wrap" ref={wrapRef} onMouseLeave={() => setHover(null)}>

@@ -465,6 +465,13 @@ def main():
         all_thresholds = export.json.load(f)
     BASE_LOOKUP_CABAI_RAWIT = [
         {"rasio": 1.0, "harga_rp": 25000}, {"rasio": 1.5, "harga_rp": 12000}, {"rasio": 2.0, "harga_rp": 6000},
+        # ASUMSI: extrapolated continuation of the ~0.5x price decay per +0.5
+        # ratio step observed in the 3 contract-sourced points above - not
+        # independently sourced beyond ratio 2.0, same epistemic status as
+        # price_thresholds.json's flagged placeholders. Added because real
+        # glut scenarios (e.g. Kab. Bandung staggering) commonly hit ratios
+        # of 2.0-2.5+, where the old table had zero price resolution.
+        {"rasio": 2.5, "harga_rp": 3000}, {"rasio": 3.0, "harga_rp": 1500},
     ]
     base_full_cost = all_thresholds["cabai_rawit"]["ongkos_petik_rp"] + all_thresholds["cabai_rawit"]["biaya_produksi_rp"]
 

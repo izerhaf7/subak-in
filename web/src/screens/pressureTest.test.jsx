@@ -9,7 +9,7 @@
 // doesn't guard), not the click wiring, which is already covered by manual
 // QA.
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { render, cleanup, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, cleanup, screen, fireEvent, waitFor, within } from "@testing-library/react";
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -17,7 +17,6 @@ import JabarMap from "../components/JabarMap.jsx";
 import KabupatenPanel from "../components/KabupatenPanel.jsx";
 import BlindSpotNotice from "../components/BlindSpotNotice.jsx";
 import RankedList from "../components/RankedList.jsx";
-import SimulasiTanam from "./SimulasiTanam.jsx";
 import PanenDarurat from "./PanenDarurat.jsx";
 import PetaSimulasi from "./PetaSimulasi.jsx";
 import { aggregateSupplyCurve } from "../lib/supplyMath.js";
@@ -63,7 +62,7 @@ describe("pressure test: JabarMap across all 3 komoditas", () => {
       spy.mockRestore();
     });
 
-    it(`ranked list for ${komoditasId} lists all 27 regions sorted by score`, () => {
+    it(`ranked list for ${komoditasId} lists all 18 kabupaten sorted by score, excluding kota`, () => {
       const mapData = readJson(DATA_DIR, file);
       const errors = [];
       const spy = vi.spyOn(console, "error").mockImplementation((...args) => errors.push(args));
@@ -73,7 +72,7 @@ describe("pressure test: JabarMap across all 3 komoditas", () => {
       );
 
       const rows = container.querySelectorAll(".ranked-list__row");
-      expect(rows.length).toBe(27);
+      expect(rows.length).toBe(18);
       const scores = [...rows].map((r) => Number(r.querySelector(".ranked-list__score").textContent));
       const sorted = [...scores].sort((a, b) => b - a);
       expect(scores).toEqual(sorted);
@@ -138,27 +137,7 @@ function mockFetchFromDisk() {
   });
 }
 
-describe("pressure test: SimulasiTanam with every kabupaten pushed to its max shift", () => {
-  it("renders and lets every slider reach geser_maks_minggu without throwing", async () => {
-    mockFetchFromDisk();
-    const meta = readJson(DATA_DIR, "meta.json");
-    const simulasi = readJson(DATA_DIR, "simulasi.json");
-    const errors = [];
-    const spy = vi.spyOn(console, "error").mockImplementation((...args) => errors.push(args));
-
-    render(<SimulasiTanam meta={meta} />);
-    await waitFor(() => screen.getByText(/Geser Jadwal Tanam/i));
-
-    const sliders = document.querySelectorAll('input[type="range"]');
-    expect(sliders.length).toBe(simulasi.kabupaten.length);
-    sliders.forEach((slider) => {
-      fireEvent.change(slider, { target: { value: slider.max } });
-    });
-
-    expect(errors).toEqual([]);
-    spy.mockRestore();
-  });
-
+describe("pressure test: supply curve math across every sentra's max shift", () => {
   it("aggregateSupplyCurve never goes negative or NaN at any shift combination (0..max for every sentra)", () => {
     const meta = readJson(DATA_DIR, "meta.json");
     const simulasi = readJson(DATA_DIR, "simulasi.json");
@@ -216,8 +195,12 @@ describe("pressure test: merged PetaSimulasi screen (map + planting popup + resu
     expect(screen.getByText(/Ranking risiko/i)).toBeTruthy();
     expect(document.querySelector(".hasil-simulasi-panel")).toBeNull();
 
-    // Click garut (a sentra) - popup should appear with its baseline + slider
-    const garutPath = screen.getByRole("button", { name: /Kab\. Garut/i });
+    // Click garut (a sentra) - popup should appear with its baseline + slider.
+    // Scoped to the map SVG: "Kab. Garut" also matches the ranked-list row
+    // button (its accessible name is its concatenated text content), so an
+    // unscoped screen.getByRole would find both and throw.
+    const mapRegion = within(document.querySelector(".jabar-map"));
+    const garutPath = mapRegion.getByRole("button", { name: /Kab\. Garut/i });
     fireEvent.click(garutPath);
     await waitFor(() => screen.getByText(/Tanam biasanya mulai minggu/i));
     expect(document.querySelector(".timeline__band--tanam")).not.toBeNull();
