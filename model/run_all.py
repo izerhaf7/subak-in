@@ -47,6 +47,15 @@ DEFAULT_HARVEST_PEAK_WEEK = {
     "cabai_besar": 40,   # No measured farm-gate data; mirror cabai_rawit
 }
 
+# Kota bukan wilayah analisis produksi (peta menampilkannya "tidak
+# dianalisis"); data eceran kota justru dipakai sebagai sumber proxy untuk
+# kabupaten pasangannya lewat KOTA_PROXY.
+KOTA_IDS = {"bogor_kota", "sukabumi_kota", "bandung_kota", "cirebon_kota",
+            "bekasi_kota", "depok", "cimahi", "tasikmalaya_kota", "banjar"}
+KOTA_PROXY = {"bogor_kab": "bogor_kota", "bekasi_kab": "bekasi_kota",
+              "bandung_kab": "bandung_kota", "sukabumi_kab": "sukabumi_kota",
+              "tasikmalaya_kab": "tasikmalaya_kota", "cirebon_kab": "cirebon_kota"}
+
 
 def iso_week_labels(start: pd.Timestamp, n: int) -> list:
     return [seasonality.iso_week_label(start + pd.Timedelta(weeks=i)) for i in range(n)]
@@ -86,6 +95,34 @@ def main():
     coverage_lookup = {(r["region_id"], r["komoditas_id"]): r["status_data"]
                         for r in coverage.to_dict(orient="records")}
     weekly_producer = seasonality.to_weekly(producer, group_cols=["region_id", "komoditas_id"])
+    weekly_retail = seasonality.to_weekly(retail, group_cols=["region_id", "komoditas_id"])
+
+    # --- Rasio transmisi eceran -> produsen, untuk proxy kabupaten buta ------
+    # Dihitung dari wilayah yang punya KEDUA seri (produsen & eceran) pada
+    # komoditas yang sama; dipakai sebagai rentang (p25-p75), bukan angka
+    # tunggal, karena rasio ini melebar saat pasar bergejolak (harga eceran
+    # "lengket" saat harga produsen jatuh).
+    ratio_stats = {}
+    for komoditas_id in export.KOMODITAS_IDS:
+        ratios = []
+        prod_k = weekly_producer[weekly_producer.komoditas_id == komoditas_id]
+        ret_k = weekly_retail[weekly_retail.komoditas_id == komoditas_id]
+        for rid in prod_k.region_id.unique():
+            p = prod_k[prod_k.region_id == rid][["date", "nominal_price"]]
+            r = ret_k[ret_k.region_id == rid][["date", "nominal_price"]]
+            if not len(r):
+                continue
+            m = p.merge(r, on="date", suffixes=("_p", "_r")).dropna()
+            m = m[m["nominal_price_r"] > 0]
+            ratios.extend((m["nominal_price_p"] / m["nominal_price_r"]).tolist())
+        if len(ratios) >= 30:
+            ratio_stats[komoditas_id] = {
+                "p25": float(np.percentile(ratios, 25)),
+                "p50": float(np.percentile(ratios, 50)),
+                "p75": float(np.percentile(ratios, 75)),
+                "n": len(ratios),
+            }
+    print(f"  rasio transmisi tersedia untuk: {list(ratio_stats.keys())}")
 
     now = datetime.now(WIB)
     minggu_berjalan = now.isocalendar().week
@@ -328,6 +365,58 @@ def main():
             export.write_json(f"kabupaten/{region_id}__{komoditas_id}.json", detail)
             written_for_region.append((komoditas_id, detail))
 
+        # Proxy eceran untuk kabupaten buta: kalau kabupaten ini modeled untuk
+        # sebuah komoditas TAPI ada seri eceran (milik sendiri, atau dari kota
+        # pasangannya via KOTA_PROXY), tulis file detail berisi sinyal eceran +
+        # rentang estimasi produsen (eceran x rasio p25-p75). Kota sendiri
+        # bukan target (di peta kota ditampilkan sebagai "tidak dianalisis").
+        if region_id not in KOTA_IDS:
+            for komoditas_id in export.KOMODITAS_IDS:
+                status = coverage_lookup.get((region_id, komoditas_id), "modeled")
+                if status in ("measured", "measured_stale"):
+                    continue
+                rs = ratio_stats.get(komoditas_id)
+                if rs is None:
+                    continue
+                sumber_id = None
+                for cand in (region_id, KOTA_PROXY.get(region_id)):
+                    if cand is None:
+                        continue
+                    sub = weekly_retail[
+                        (weekly_retail.region_id == cand) & (weekly_retail.komoditas_id == komoditas_id)
+                    ]
+                    if len(sub):
+                        sumber_id = cand
+                        retail_series = sub.set_index("date")["nominal_price"].tail(HISTORIS_WEEKS).dropna()
+                        break
+                if sumber_id is None or len(retail_series) < 8:
+                    continue
+                detail = {
+                    "id": region_id,
+                    "nama": ra.nama_resmi(region_id),
+                    "status_data": "modeled",
+                    "harga": {"historis": [], "forecast": [], "mape_pct": None, "keyakinan": None},
+                    "retail_overlay": [
+                        {"minggu": seasonality.iso_week_label(d), "rp": round(v)}
+                        for d, v in retail_series.items()
+                    ],
+                    "proxy_eceran": {
+                        "sumber_id": sumber_id,
+                        "sumber_nama": ra.nama_resmi(sumber_id),
+                        "rasio": {k: round(v, 3) for k, v in rs.items() if k != "n"},
+                        "n_rasio": rs["n"],
+                        "band": [
+                            {"minggu": seasonality.iso_week_label(d),
+                             "rp_lo": round(v * rs["p25"]), "rp_hi": round(v * rs["p75"])}
+                            for d, v in retail_series.items()
+                        ],
+                        "catatan": ("Estimasi tidak langsung: rentang harga produsen p25-p75 dari "
+                                     "rasio transmisi eceran->produsen. BUKAN harga terukur."),
+                    },
+                }
+                export.write_json(f"kabupaten/{region_id}__{komoditas_id}.json", detail)
+                written_for_region.append((komoditas_id, detail))
+
         if written_for_region:
             # default bare file: prefer a commodity with real price data (any
             # status_data other than "modeled"), then cabai_rawit, then
@@ -384,7 +473,14 @@ def main():
             "status_musim_hujan": status,
             "kohort_tanam": [{"minggu_relatif": w, "luas_ha": round(ha, 1)} for w, ha in cohort],
             "geser_maks_minggu": supply.GESER_MAKS_MINGGU[status],
-            "produktivitas_ton_per_ha": round(produktivitas, 2),
+            # 6dp, not the usual display-rounded 2dp: this value feeds the JS
+            # port's convolution directly, and test_vector's
+            # expected_kurva_pasokan_ton was computed from the unrounded
+            # produktivitas - rounding to 2dp here made the frontend port
+            # unable to reproduce it exactly (~0.1-0.4 ton drift by the tail
+            # of the curve). 6dp closes that gap to well under display
+            # precision.
+            "produktivitas_ton_per_ha": round(produktivitas, 6),
             "harvest_peak_week_iso": harvest_peak_w,
             "baseline_tanam_minggu": baseline_tanam,
             "pasokan_baseline_ton": pasokan_baseline,

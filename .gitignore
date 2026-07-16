@@ -1,3 +1,5 @@
 scrapper/bmkg_data/raw/pdf/
 *.pdf
 CLAUDE.md
+__pycache__/
+*.pyc

@@ -1,0 +1,785 @@
+:root {
+  --bg: #eeece6;
+  /* Aksen interaktif = hijau logo Subak.In (#00A10D), digelapkan supaya teks
+     putih di atasnya lolos WCAG 4.5:1 (terukur 5.3:1). Kuning logo (#FBFF00)
+     dipakai sebagai warna sorot/seleksi non-teks. Terakota (#8a3f28) tetap
+     dipakai KHUSUS untuk data risiko (ramp peta & garis chart) — itu skala
+     tervalidasi, bukan bagian dari brand chrome. */
+  --aksen: #007d0b;
+  --brand-green: #00a10d;
+  --brand-yellow: #fbff00;
+  --ink-primary: #232323;
+  /* .65/.55 alpha (bukan .55/.45): dinaikkan setelah audit WCAG — teks kecil
+     (label KPI, status slider, ujung timeline) di atas krem butuh >= 4.5:1;
+     alpha lama cuma sampai 3.2-3.4:1. */
+  --ink-secondary: rgba(0, 0, 0, 0.65);
+  --ink-muted: rgba(0, 0, 0, 0.55);
+  --surface-card: #fbfaf7;
+  --surface-sidebar: #f4f2ec;
+  --border-hairline: rgba(0, 0, 0, 0.1);
+  --border-strong: rgba(0, 0, 0, 0.18);
+  /* Hijau brand diturunkan dari hijau logo Subak.In (#00A10D), digelapkan
+     sampai teks putih di atasnya lolos 4.5:1 (terukur 5.3:1). */
+  --sawah: #007d0b;
+  /* Badge "data berhenti" tidak memakai --risk-mid (4.46:1, gagal tipis
+     dengan teks putih) — versi lebih gelap ini terukur 5.5:1. */
+  --stale-badge: #9d5540;
+  --risk-low: #a3e2b2;
+  --risk-mid: #fcd34d;
+  --risk-high: #f97316;
+  --risk-critical: #be123c;
+
+  --font-ui: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-data: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:focus-visible {
+  outline: 2px solid var(--aksen);
+  outline-offset: 2px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink-primary);
+  font-family: var(--font-ui);
+}
+
+/* Numbers with a known, counted source (historical prices) read in a
+   tabular monospace — the same treatment this app uses for every other
+   data figure (KPIs, ranked-list scores). Estimated/modeled numbers keep
+   the same face but stay muted and carry a "~" — a lighter cue than a
+   typeface swap, consistent with an interface that's otherwise all one
+   sans family. */
+.angka-terukur {
+  font-family: var(--font-data);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-primary);
+}
+
+.angka-estimasi {
+  font-family: var(--font-data);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-secondary);
+}
+
+.angka-estimasi::before {
+  content: "~";
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-topbar {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 0.6rem 1.1rem;
+  border-bottom: 1px solid var(--border-hairline);
+  background: #fff;
+  font-size: 0.8rem;
+}
+
+.app-topbar__logo {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+
+.app-topbar__title {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  font-size: 0.85rem;
+}
+
+.app-topbar__product {
+  font-size: 0.8rem;
+  color: var(--ink-secondary);
+  letter-spacing: 0.01em;
+}
+
+.lang-toggle {
+  display: flex;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lang-toggle__btn {
+  border: none;
+  background: var(--surface-card);
+  color: var(--ink-secondary);
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+}
+
+.lang-toggle__btn--active {
+  background: var(--aksen);
+  color: #fff;
+}
+
+.app-topbar__divider {
+  width: 1px;
+  height: 1.1rem;
+  background: var(--border-hairline);
+}
+
+.app-topbar__spacer {
+  flex: 1;
+}
+
+.app-topbar__meta {
+  color: var(--ink-secondary);
+}
+
+.app-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.app-sidebar {
+  width: 168px;
+  flex: none;
+  border-right: 1px solid var(--border-hairline);
+  background: var(--surface-sidebar);
+  padding: 0.75rem 0;
+}
+
+.app-sidebar__item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-left: 3px solid transparent;
+  background: none;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.8rem;
+  font-family: var(--font-ui);
+  color: var(--ink-muted);
+  cursor: pointer;
+}
+
+.app-sidebar__item:hover {
+  color: var(--ink-primary);
+  background: color-mix(in srgb, var(--aksen) 6%, transparent);
+}
+
+.app-sidebar__item--active {
+  font-weight: 700;
+  color: var(--ink-primary);
+  border-left-color: var(--aksen);
+  background: var(--surface-card);
+}
+
+.coverage-note {
+  font-size: 0.72rem;
+  color: var(--ink-secondary);
+  background: color-mix(in srgb, var(--aksen) 8%, var(--surface-card));
+  border-bottom: 1px solid var(--border-hairline);
+  padding: 0.4rem 1.1rem;
+}
+
+.app-loading,
+.app-error {
+  padding: 2rem;
+  color: var(--ink-secondary);
+}
+
+.app-error {
+  color: var(--risk-critical);
+}
+
+.komoditas-switcher {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.komoditas-switcher__tab {
+  border: 1px solid var(--border-strong);
+  background: var(--surface-card);
+  color: var(--ink-secondary);
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.komoditas-switcher__tab:hover {
+  background: color-mix(in srgb, var(--aksen) 10%, var(--surface-card));
+}
+
+.komoditas-switcher__tab--active {
+  background: var(--aksen);
+  color: #fff;
+  border-color: var(--aksen);
+}
+
+.peta-risiko {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.kpi-row {
+  display: flex;
+  border-bottom: 1px solid var(--border-hairline);
+  background: #fff;
+}
+
+.kpi-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.6rem 1.1rem;
+  border-right: 1px solid var(--border-hairline);
+}
+
+.kpi-chip__label {
+  font-size: 0.68rem;
+  color: var(--ink-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.kpi-chip__value {
+  font-family: var(--font-data);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.kpi-chip__sub {
+  font-size: 0.68rem;
+  color: var(--ink-muted);
+}
+
+.kpi-chip__value--empty {
+  font-family: var(--font-ui);
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  font-style: normal;
+}
+
+.peta-risiko__body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.peta-risiko__map-col {
+  flex: 1 1 60%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.peta-risiko__map-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.peta-risiko__map-head-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* Tinggi 100% (bukan auto): SVG mengikuti kotak pembungkusnya dan menyusut
+   lewat preserveAspectRatio — height:auto membuat SVG setinggi rasio
+   aslinya sehingga meluber dan menimpa slider timeline di bawahnya. */
+.jabar-map {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: perspective(1000px) rotateX(20deg) rotateY(-10deg) rotateZ(2deg);
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), filter 0.5s ease;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+}
+
+.jabar-map-wrap:hover .jabar-map {
+  transform: perspective(1000px) rotateX(15deg) rotateY(-5deg) rotateZ(1deg);
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.22));
+}
+
+.jabar-map__region {
+  cursor: pointer;
+  transition: filter 0.15s ease, fill 0.3s ease;
+}
+
+.jabar-map__region:hover {
+  filter: brightness(1.08);
+}
+
+.jabar-map__region--selected {
+  stroke: var(--brand-yellow);
+  stroke-width: 3.5;
+}
+
+.jabar-map-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Tooltip peta menggantikan label teks permanen: nama + indeks + status
+   muncul mengikuti kursor saat hover, jadi peta bersih tanpa teks numpuk. */
+.map-tooltip {
+  position: absolute;
+  pointer-events: none;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  background: var(--surface-card);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
+  padding: 0.4rem 0.6rem;
+  max-width: 220px;
+}
+
+.map-tooltip__nama {
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.map-tooltip__detail {
+  font-size: 0.7rem;
+  z-index: 1000;
+  font-family: var(--font-data);
+  color: var(--ink-secondary);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  border-top: 1px solid var(--border-hairline);
+  padding-top: 0.6rem;
+}
+
+.timeline__caption {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--ink-secondary);
+}
+
+.timeline__label {
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.timeline__iso {
+  font-family: var(--font-data);
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+.timeline input[type="range"] {
+  width: 100%;
+  accent-color: var(--aksen);
+  cursor: pointer;
+}
+
+.timeline__ends {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  font-family: var(--font-data);
+  color: var(--ink-muted);
+}
+
+.weather-badge {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--ink-secondary);
+  white-space: nowrap;
+}
+
+.risk-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-family: var(--font-data);
+  color: var(--ink-secondary);
+}
+
+.risk-legend__bar {
+  width: 110px;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--risk-low), var(--risk-mid), var(--risk-high), var(--risk-critical));
+}
+
+.side-col {
+  width: 260px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.side-col__title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--ink-secondary);
+  padding: 0 0 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.side-col__back {
+  background: none;
+  border: none;
+  color: var(--aksen);
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-family: var(--font-ui);
+  padding: 0;
+}
+
+.side-col__hint {
+  font-size: 0.68rem;
+  color: var(--ink-muted);
+  margin: 0 0 0.4rem;
+}
+
+.ranked-list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.ranked-list__row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid var(--border-hairline);
+  font-size: 0.75rem;
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  color: var(--ink-primary);
+  font-family: var(--font-ui);
+}
+
+.ranked-list__row:hover {
+  background: color-mix(in srgb, var(--aksen) 6%, transparent);
+}
+
+.ranked-list__row--active {
+  background: var(--surface-card);
+  font-weight: 700;
+  border-left: 3px solid var(--aksen);
+  padding-left: calc(0.5rem - 3px);
+}
+
+.ranked-list__rank {
+  width: 14px;
+  font-family: var(--font-data);
+  color: var(--ink-muted);
+  font-size: 0.7rem;
+}
+
+.ranked-list__swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex: none;
+}
+
+.ranked-list__name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ranked-list__score {
+  font-family: var(--font-data);
+  font-weight: 700;
+}
+
+.kabupaten-panel {
+  background: var(--surface-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.kabupaten-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.75rem;
+}
+
+.kabupaten-panel__header h2 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.status-badge {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.status-badge--measured {
+  background: var(--sawah);
+}
+
+.status-badge--stale {
+  background: var(--stale-badge);
+}
+
+.status-badge--modeled {
+  background: var(--ink-secondary);
+}
+
+.kabupaten-panel__kpi {
+  display: flex;
+  gap: 1.25rem;
+  margin: 0 0 1rem;
+}
+
+.kabupaten-panel__kpi dt {
+  font-size: 0.65rem;
+  color: var(--ink-secondary);
+  margin-bottom: 0.15rem;
+}
+
+.kabupaten-panel__kpi dd {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.blind-spot-notice__text {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--ink-secondary);
+  margin: 0;
+}
+
+.simulasi-tanam__chart-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.simulasi-tanam__sliders {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 0.25rem 0.1rem;
+}
+
+.sim-guide-card {
+  background: color-mix(in srgb, var(--aksen) 5%, var(--surface-card));
+  border: 1px solid color-mix(in srgb, var(--aksen) 15%, var(--border-hairline));
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.sim-guide-card h3 {
+  margin: 0 0 0.3rem 0;
+  font-size: 0.85rem;
+  color: var(--aksen);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sim-guide-card p {
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--ink-secondary);
+}
+
+.simulasi-tanam__slider-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.simulasi-tanam__slider-row--active {
+  background: color-mix(in srgb, var(--aksen) 5%, var(--surface-card));
+  border-color: color-mix(in srgb, var(--aksen) 15%, var(--border-hairline));
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.simulasi-tanam__slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+}
+
+.simulasi-tanam__slider-value {
+  font-family: var(--font-data);
+  color: var(--aksen);
+}
+
+.simulasi-tanam__slider-row input[type="range"] {
+  width: 100%;
+  accent-color: var(--aksen);
+}
+
+.simulasi-tanam__slider-status {
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+}
+
+.absorber-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.absorber-table th {
+  text-align: left;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ink-secondary);
+  border-bottom: 1px solid var(--border-strong);
+  padding: 0.4rem 0.5rem;
+}
+
+.absorber-table td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.absorber-table__diff--positif {
+  color: var(--sawah);
+  font-family: var(--font-data);
+}
+
+.absorber-table__diff--negatif {
+  color: var(--risk-critical);
+  font-family: var(--font-data);
+}
+
+.map-hint {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+.jabar-map__region:focus {
+  outline: none;
+}
+
+.jabar-map__region:focus-visible {
+  outline: none;
+  stroke: var(--brand-yellow);
+  stroke-width: 3.5;
+}
+
+/* WCAG 2.3.3 / prefers-reduced-motion: pengguna yang menonaktifkan animasi
+   di OS-nya tidak boleh melihat transisi warna/filter apa pun. */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Layar sempit (tablet portrait / ponsel): sidebar jadi strip horizontal di
+   atas, kolom peta & panel samping ditumpuk, KPI membungkus. Tanpa ini layout
+   desktop 3-kolom pecah di bawah ~900px. */
+@media (max-width: 900px) {
+  .app-body {
+    flex-direction: column;
+  }
+
+  .app-sidebar {
+    width: 100%;
+    display: flex;
+    padding: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border-hairline);
+  }
+
+  .app-sidebar__item {
+    flex: 1;
+    text-align: center;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    padding: 0.7rem 0.5rem;
+  }
+
+  .app-sidebar__item--active {
+    border-left: none;
+    border-bottom-color: var(--aksen);
+  }
+
+  .peta-risiko__body {
+    flex-direction: column;
+  }
+
+  .side-col {
+    width: 100%;
+  }
+
+  .kpi-row {
+    flex-wrap: wrap;
+  }
+
+  .kpi-chip {
+    flex: 1 1 40%;
+  }
+
+  .app-topbar {
+    flex-wrap: wrap;
+    row-gap: 0.4rem;
+  }
+
+  .app-topbar__meta {
+    display: none;
+  }
+}
