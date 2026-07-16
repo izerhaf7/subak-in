@@ -27,7 +27,7 @@ export default function JabarMap({ geo, mapData, minggu, selectedId, onSelect })
   }
 
   const hoverInfo = hover ? byId[hover.id] : null;
-  const hoverIsKota = hover ? KOTA_IDS.has(hover.id) : false;
+  const hoverIsKotaWhitelist = false;
 
   return (
     <div className="jabar-map-wrap" ref={wrapRef} onMouseLeave={() => setHover(null)}>
@@ -75,7 +75,7 @@ export default function JabarMap({ geo, mapData, minggu, selectedId, onSelect })
         <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}>
           <span className="map-tooltip__nama">{hoverInfo.nama}</span>
           <span className="map-tooltip__detail">
-            {hoverIsKota
+            {hoverIsKotaWhitelist
               ? t("kota_status")
               : `${t("kpi_index", { n: hoverInfo.skor })} · ${t(STATUS_KEY[hoverInfo.status] ?? "badge_modeled")}`}
           </span>

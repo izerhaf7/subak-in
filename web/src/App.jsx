@@ -23,7 +23,7 @@ function AppShell() {
     loadMeta().then(setMeta).catch((e) => setError(e.message));
     // Badge cuaca dari cache scrape — kegagalan bukan alasan blokir app,
     // cukup badge-nya saja yang tidak muncul.
-    loadWeather().then(setWeather).catch(() => {});
+    loadWeather().then(setWeather).catch(() => { });
   }, []);
 
   function weatherBadgeText(w) {
@@ -39,10 +39,7 @@ function AppShell() {
   return (
     <div className="app-shell">
       <header className="app-topbar">
-        <img src="/brand/subakin-mark.svg" alt="Logo Subak.In" className="app-topbar__logo" />
-        <span className="app-topbar__title">Subak.In</span>
-        <div className="app-topbar__divider" />
-        <span className="app-topbar__product">{t("product")}</span>
+        <img src="/brand/subakin-logo.svg" alt="Logo Subak.In" className="app-topbar__logo" />
         <div className="app-topbar__spacer" />
         {weather && <span className="weather-badge">☁ {weatherBadgeText(weather)}</span>}
         {meta && (
