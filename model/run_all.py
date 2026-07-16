@@ -156,6 +156,26 @@ def main():
     print("  done.")
 
     print("\n[4/6] supply + risk per (region x komoditas)...")
+    # Bug found via user inspecting map.json: ~20 "modeled" kabupaten showed
+    # byte-identical risk_mingguan curves regardless of actual production
+    # size, because score_overlap normalizes against each series' OWN mean
+    # (mathematically scale-invariant) and most modeled kabupaten share the
+    # same default status_musim_hujan (-> same cohort shape -> same kernel ->
+    # same ratio-to-own-mean). Fix: scale overlap by each kabupaten's share of
+    # the province's annual production for that commodity, so a
+    # 0.0006%-share kabupaten (cirebon_kota/cabai_rawit, confirmed in real
+    # data) stops showing the same alarm as an 11.9%-share one (cianjur).
+    production_share = {}  # (region_id, komoditas_id) -> share of province annual produksi_ton (%)
+    for komoditas_id in export.KOMODITAS_IDS:
+        sub = bps_allocated[bps_allocated.komoditas_id == komoditas_id]
+        latest_year = sub["tahun"].max()
+        latest = sub[sub["tahun"] == latest_year]
+        total = latest["produksi_ton"].sum()
+        for _, row in latest.iterrows():
+            production_share[(row["region_id"], komoditas_id)] = (
+                100 * row["produksi_ton"] / total if total > 0 else 0.0
+            )
+
     supply_cache = {}
     risk_cache = {}
     for region_id in ra.all_ids():
@@ -173,7 +193,8 @@ def main():
                 risk_cache[(region_id, komoditas_id)] = None
                 continue
 
-            overlap = risk.score_overlap(ton)
+            share_pct = production_share.get((region_id, komoditas_id), 0.0)
+            overlap = risk.score_overlap(ton) * risk.magnitude_factor(share_pct)
             fc = forecast_cache[(region_id, komoditas_id)]
             price_series = fc["forecast_16"]
             thresholds = export.json.load(open(export.DATA_CURATED / "price_thresholds.json", encoding="utf-8"))[komoditas_id]
@@ -223,15 +244,29 @@ def main():
         filename = "map.json" if komoditas_id == "cabai_rawit" else f"map_{komoditas_id}.json"
         export.write_json(filename, export.build_map(komoditas_id, region_rows))
 
+    # Bug found via user question: previously only wrote a kabupaten detail
+    # file when status_data was measured/measured_stale, so a kabupaten that's
+    # "modeled" for EVERY commodity (e.g. Kab. Bandung - the #1 bawang merah
+    # producer, zero PIHPS coverage) had NO kabupaten/*.json at all. map.json
+    # still rendered it fine (choropleth reads map.json directly), but the
+    # frontend's click-through detail panel would 404 - exactly the kabupaten
+    # the blind-spot pitch narrative most needs to click into. Fix: write a
+    # detail file whenever there's price data OR supply data (BPS production
+    # still exists for modeled kabupaten - only the PRICE is missing), with
+    # `harga` left honestly empty/null so the frontend can render a "tidak ada
+    # data harga" state instead of a failed fetch.
     for region_id in ra.all_ids():
         written_for_region = []
         for komoditas_id in export.KOMODITAS_IDS:
             fc = forecast_cache[(region_id, komoditas_id)]
-            if fc["status_data"] not in ("measured", "measured_stale"):
-                continue
             sc = supply_cache[(region_id, komoditas_id)]
+            has_price = fc["status_data"] in ("measured", "measured_stale")
+            has_supply = sc["ton"] is not None
+            if not has_price and not has_supply:
+                continue  # genuinely nothing to show for this (region, komoditas)
+
             pasokan_mingguan = []
-            if sc["ton"] is not None:
+            if has_supply:
                 pasokan_mingguan = [
                     {"minggu": seasonality.iso_week_label(last_real_date + pd.Timedelta(weeks=i + 1)), "ton": round(t, 1)}
                     for i, t in enumerate(sc["ton"])
@@ -254,8 +289,16 @@ def main():
             written_for_region.append((komoditas_id, detail))
 
         if written_for_region:
-            # literal-contract-compliant default: prefer cabai_rawit, else first available
-            written_for_region.sort(key=lambda kv: 0 if kv[0] == "cabai_rawit" else 1)
+            # default bare file: prefer a commodity with real price data (any
+            # status_data other than "modeled"), then cabai_rawit, then
+            # whatever's first - so kabupaten with SOME measured commodity
+            # still default to that, and pure-modeled kabupaten still get a
+            # usable default instead of nothing.
+            def _priority(kv):
+                komoditas_id, detail = kv
+                return (0 if detail["status_data"] != "modeled" else 1,
+                        0 if komoditas_id == "cabai_rawit" else 1)
+            written_for_region.sort(key=_priority)
             export.write_json(f"kabupaten/{region_id}.json", written_for_region[0][1])
 
     print("\n[6/6] writing simulasi.json, absorbers.json, meta.json...")
