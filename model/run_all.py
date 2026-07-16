@@ -333,7 +333,18 @@ def main():
     # `harga` left honestly empty/null so the frontend can render a "tidak ada
     # data harga" state instead of a failed fetch.
     for region_id in ra.all_ids():
-        written_for_region = []
+        # BUG FIXED (found while reviewing this diff): the proxy-eceran block
+        # below used to build a brand-new `detail` dict and write it to the
+        # SAME path the main loop just wrote - silently overwriting the file
+        # and dropping `pasokan_mingguan` entirely (real BPS supply data),
+        # since the proxy-only dict never included that key. Verified this
+        # regressed exactly the Kab. Bandung/bawang_merah fix from earlier in
+        # the session (and 4 other kabupaten: bogor_kab, bekasi_kab,
+        # sukabumi_kab, tasikmalaya_kab - all lost pasokan_mingguan on
+        # re-run). Fix: collect details in a dict keyed by komoditas_id first,
+        # MERGE proxy fields into the existing dict instead of replacing it,
+        # write to disk exactly once per file at the end.
+        details_by_komoditas = {}
         for komoditas_id in export.KOMODITAS_IDS:
             fc = forecast_cache[(region_id, komoditas_id)]
             sc = supply_cache[(region_id, komoditas_id)]
@@ -362,14 +373,14 @@ def main():
                 fc["historis"], forecast_arr, fc["mape_pct"], fc["keyakinan"],
                 pasokan_mingguan, fc["retail_overlay"] or None,
             )
-            export.write_json(f"kabupaten/{region_id}__{komoditas_id}.json", detail)
-            written_for_region.append((komoditas_id, detail))
+            details_by_komoditas[komoditas_id] = detail
 
         # Proxy eceran untuk kabupaten buta: kalau kabupaten ini modeled untuk
         # sebuah komoditas TAPI ada seri eceran (milik sendiri, atau dari kota
-        # pasangannya via KOTA_PROXY), tulis file detail berisi sinyal eceran +
-        # rentang estimasi produsen (eceran x rasio p25-p75). Kota sendiri
-        # bukan target (di peta kota ditampilkan sebagai "tidak dianalisis").
+        # pasangannya via KOTA_PROXY), TAMBAHKAN sinyal eceran + rentang
+        # estimasi produsen (eceran x rasio p25-p75) ke detail yang SUDAH ada
+        # (kalau ada) - bukan bikin dict baru yang menimpa pasokan_mingguan.
+        # Kota sendiri bukan target (di peta kota ditampilkan "tidak dianalisis").
         if region_id not in KOTA_IDS:
             for komoditas_id in export.KOMODITAS_IDS:
                 status = coverage_lookup.get((region_id, komoditas_id), "modeled")
@@ -391,11 +402,8 @@ def main():
                         break
                 if sumber_id is None or len(retail_series) < 8:
                     continue
-                detail = {
-                    "id": region_id,
-                    "nama": ra.nama_resmi(region_id),
-                    "status_data": "modeled",
-                    "harga": {"historis": [], "forecast": [], "mape_pct": None, "keyakinan": None},
+
+                proxy_fields = {
                     "retail_overlay": [
                         {"minggu": seasonality.iso_week_label(d), "rp": round(v)}
                         for d, v in retail_series.items()
@@ -414,8 +422,20 @@ def main():
                                      "rasio transmisi eceran->produsen. BUKAN harga terukur."),
                     },
                 }
-                export.write_json(f"kabupaten/{region_id}__{komoditas_id}.json", detail)
-                written_for_region.append((komoditas_id, detail))
+                if komoditas_id in details_by_komoditas:
+                    details_by_komoditas[komoditas_id].update(proxy_fields)
+                else:
+                    details_by_komoditas[komoditas_id] = {
+                        "id": region_id,
+                        "nama": ra.nama_resmi(region_id),
+                        "status_data": "modeled",
+                        "harga": {"historis": [], "forecast": [], "mape_pct": None, "keyakinan": None},
+                        **proxy_fields,
+                    }
+
+        for komoditas_id, detail in details_by_komoditas.items():
+            export.write_json(f"kabupaten/{region_id}__{komoditas_id}.json", detail)
+        written_for_region = list(details_by_komoditas.items())
 
         if written_for_region:
             # default bare file: prefer a commodity with real price data (any
