@@ -51,3 +51,32 @@ export function aggregateSupplyCurve(kabupatenList, kernel, mulaiPanenHari, gese
   }
   return total;
 }
+
+// Combines aggregateSupplyCurve + interpolateHarga into the exact before/after
+// summary HasilSimulasiPanel.jsx shows on screen. Extracted here (rather than
+// left inline in the component) so reportBuilder.js can produce the identical
+// numbers for the PDF report without duplicating the math.
+export function summarizeSimulationImpact(kabupatenList, kernel, mulaiPanenHari, geserById, permintaanMingguanTon, lookup, weeksOut) {
+  const zeroShift = Object.fromEntries(kabupatenList.map((k) => [k.id, 0]));
+  const sebelum = aggregateSupplyCurve(kabupatenList, kernel, mulaiPanenHari, zeroShift, weeksOut);
+  const sesudah = aggregateSupplyCurve(kabupatenList, kernel, mulaiPanenHari, geserById, weeksOut);
+
+  const chartData = sebelum.map((ton, i) => {
+    const tonSesudah = sesudah[i];
+    const rasioSebelum = ton / permintaanMingguanTon;
+    const rasioSesudah = tonSesudah / permintaanMingguanTon;
+    return {
+      minggu: `M${i}`,
+      hargaSebelum: Math.round(interpolateHarga(rasioSebelum, lookup)),
+      hargaSesudah: Math.round(interpolateHarga(rasioSesudah, lookup)),
+    };
+  });
+
+  const puncakSebelum = Math.max(...sebelum);
+  const puncakSesudah = Math.max(...sesudah);
+  const penurunanPuncakPct = puncakSebelum > 0 ? Math.round((1 - puncakSesudah / puncakSebelum) * 100) : 0;
+  const minHargaSebelum = Math.min(...chartData.map((d) => d.hargaSebelum));
+  const minHargaSesudah = Math.min(...chartData.map((d) => d.hargaSesudah));
+
+  return { chartData, penurunanPuncakPct, minHargaSebelum, minHargaSesudah };
+}

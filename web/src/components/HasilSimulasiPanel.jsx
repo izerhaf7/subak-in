@@ -1,5 +1,5 @@
 import { ComposedChart, Line, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-import { aggregateSupplyCurve, interpolateHarga } from "../lib/supplyMath.js";
+import { summarizeSimulationImpact } from "../lib/supplyMath.js";
 import { TOOLTIP_PROPS } from "../lib/chartStyle.js";
 import { useT } from "../lib/i18n.jsx";
 
@@ -11,27 +11,15 @@ const WEEKS_OUT = 24;
 // one overlaid chart since this panel lives in the narrow side column.
 export default function HasilSimulasiPanel({ simulasi, geser, kernel }) {
   const { t, lang } = useT();
-  const zeroShift = Object.fromEntries(simulasi.kabupaten.map((k) => [k.id, 0]));
-
-  const sebelum = aggregateSupplyCurve(simulasi.kabupaten, kernel.bobot_mingguan, kernel.mulai_panen_hari, zeroShift, WEEKS_OUT);
-  const sesudah = aggregateSupplyCurve(simulasi.kabupaten, kernel.bobot_mingguan, kernel.mulai_panen_hari, geser, WEEKS_OUT);
-
-  const chartData = sebelum.map((ton, i) => {
-    const tonSesudah = sesudah[i];
-    const rasioSebelum = ton / simulasi.permintaan_mingguan_ton;
-    const rasioSesudah = tonSesudah / simulasi.permintaan_mingguan_ton;
-    return {
-      minggu: `M${i}`,
-      hargaSebelum: Math.round(interpolateHarga(rasioSebelum, simulasi.elastisitas_display.lookup)),
-      hargaSesudah: Math.round(interpolateHarga(rasioSesudah, simulasi.elastisitas_display.lookup)),
-    };
-  });
-
-  const puncakSebelum = Math.max(...sebelum);
-  const puncakSesudah = Math.max(...sesudah);
-  const penurunanPuncakPct = puncakSebelum > 0 ? Math.round((1 - puncakSesudah / puncakSebelum) * 100) : 0;
-  const minHargaSebelum = Math.min(...chartData.map((d) => d.hargaSebelum));
-  const minHargaSesudah = Math.min(...chartData.map((d) => d.hargaSesudah));
+  const { chartData, penurunanPuncakPct, minHargaSebelum, minHargaSesudah } = summarizeSimulationImpact(
+    simulasi.kabupaten,
+    kernel.bobot_mingguan,
+    kernel.mulai_panen_hari,
+    geser,
+    simulasi.permintaan_mingguan_ton,
+    simulasi.elastisitas_display.lookup,
+    WEEKS_OUT
+  );
   const lebihStabil = minHargaSesudah > minHargaSebelum;
 
   return (

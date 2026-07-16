@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { convolveSingleCohort, interpolateHarga, aggregateSupplyCurve } from "./supplyMath.js";
+import { convolveSingleCohort, interpolateHarga, aggregateSupplyCurve, summarizeSimulationImpact } from "./supplyMath.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = path.join(__dirname, "..", "..", "public", "data");
@@ -86,5 +86,33 @@ describe("interpolateHarga", () => {
   it("clamps to the table's edges instead of extrapolating", () => {
     expect(interpolateHarga(0.5, lookup)).toBe(25000);
     expect(interpolateHarga(3, lookup)).toBe(6000);
+  });
+});
+
+describe("summarizeSimulationImpact", () => {
+  const kernel = [1]; // single-week kernel keeps the arithmetic hand-checkable
+  const lookup = [
+    { rasio: 1, harga_rp: 25000 },
+    { rasio: 2, harga_rp: 6000 },
+  ];
+
+  it("computes before/after peak reduction and price impact from a shifted cohort", () => {
+    const kabupaten = [
+      { id: "a", kohort_tanam: [{ minggu_relatif: 0, luas_ha: 10 }], produktivitas_ton_per_ha: 2 },
+      { id: "b", kohort_tanam: [{ minggu_relatif: 0, luas_ha: 10 }], produktivitas_ton_per_ha: 2 },
+    ];
+    // Unshifted: both cohorts harvest week 0 -> peak = 20+20 = 40 ton.
+    // Shifting "b" by 2 weeks moves its 20 ton to week 2 -> peak becomes 20 ton.
+    const result = summarizeSimulationImpact(kabupaten, kernel, 0, { b: 2 }, 20, lookup, 4);
+
+    expect(result.penurunanPuncakPct).toBe(50);
+    expect(result.chartData).toEqual([
+      { minggu: "M0", hargaSebelum: 6000, hargaSesudah: 25000 },
+      { minggu: "M1", hargaSebelum: 25000, hargaSesudah: 25000 },
+      { minggu: "M2", hargaSebelum: 25000, hargaSesudah: 25000 },
+      { minggu: "M3", hargaSebelum: 25000, hargaSesudah: 25000 },
+    ]);
+    expect(result.minHargaSebelum).toBe(6000);
+    expect(result.minHargaSesudah).toBe(25000);
   });
 });
