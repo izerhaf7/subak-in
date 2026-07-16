@@ -1548,11 +1548,11 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 91
+          "skor": 100
         },
         {
           "minggu": 30,
-          "skor": 98
+          "skor": 100
         },
         {
           "minggu": 31,
@@ -1560,61 +1560,61 @@
         },
         {
           "minggu": 32,
-          "skor": 88
+          "skor": 67
         },
         {
           "minggu": 33,
-          "skor": 74
+          "skor": 25
         },
         {
           "minggu": 34,
-          "skor": 65
+          "skor": 0
         },
         {
           "minggu": 35,
-          "skor": 65
+          "skor": 0
         },
         {
           "minggu": 36,
-          "skor": 65
+          "skor": 0
         },
         {
           "minggu": 37,
-          "skor": 65
+          "skor": 0
         },
         {
           "minggu": 38,
-          "skor": 65
+          "skor": 0
         },
         {
           "minggu": 39,
-          "skor": 65
+          "skor": 0
         },
         {
           "minggu": 40,
-          "skor": 65
+          "skor": 0
         },
         {
           "minggu": 41,
-          "skor": 60
+          "skor": 0
         },
         {
           "minggu": 42,
-          "skor": 60
+          "skor": 0
         },
         {
           "minggu": 43,
-          "skor": 56
+          "skor": 0
         },
         {
           "minggu": 44,
-          "skor": 50
+          "skor": 0
         }
       ],
       "kpi": {
         "risk_puncak": 100,
-        "minggu_puncak": 31,
-        "harga_proyeksi_puncak_rp": 2639
+        "minggu_puncak": 29,
+        "harga_proyeksi_puncak_rp": null
       },
       "estimasi_unit_lahan": null
     },

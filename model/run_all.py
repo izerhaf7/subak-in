@@ -91,13 +91,44 @@ def main():
         for komoditas_id in export.KOMODITAS_IDS:
             status_data = coverage_lookup.get((region_id, komoditas_id), "modeled")
             entry = {"status_data": status_data, "historis": [], "forecast_16": None,
-                      "mape_pct": None, "keyakinan": None, "retail_overlay": []}
+                      "forecast_start": None, "mape_pct": None, "keyakinan": None, "retail_overlay": []}
 
             if status_data in ("measured", "measured_stale"):
                 sub = weekly_producer[
                     (weekly_producer.region_id == region_id) & (weekly_producer.komoditas_id == komoditas_id)
                 ].set_index("date")["nominal_price"].asfreq("W-MON")
 
+                entry["historis"] = [
+                    {"minggu": seasonality.iso_week_label(d), "rp": round(v)}
+                    for d, v in sub.tail(HISTORIS_WEEKS).dropna().items()
+                ]
+
+                retail_sub = retail[(retail.region_id == region_id) & (retail.komoditas_id == komoditas_id)]
+                if len(retail_sub):
+                    retail_weekly = seasonality.to_weekly(retail_sub, group_cols=["region_id", "komoditas_id"])
+                    retail_weekly = retail_weekly.set_index("date")["nominal_price"].tail(HISTORIS_WEEKS)
+                    entry["retail_overlay"] = [
+                        {"minggu": seasonality.iso_week_label(d), "rp": round(v)}
+                        for d, v in retail_weekly.dropna().items()
+                    ]
+
+                # measured_stale = PIHPS stopped collecting this series years
+                # ago (bandung_kota/{bawang_merah,cabai_besar}: last real point
+                # 2020). Forecasting "the next 16 weeks" from data that old and
+                # labeling it as if it projects TODAY's market would be
+                # dishonest - the contract's own UI treatment for stale data is
+                # a "data berhenti [tahun]" tooltip, not a live projection.
+                # Bug this fixes: run_all.py used to label every region's
+                # forecast weeks off one GLOBAL last-date (~2026), which for a
+                # 2020-frozen series meant a model trained on 2018-2020 data
+                # got mislabeled as a 2026 forecast AND extrapolated 6 "years"
+                # of steps past its own data -> drove point forecasts negative
+                # (bandung_kota/cabai_besar). Found via pressure test.
+                if status_data == "measured_stale":
+                    forecast_cache[(region_id, komoditas_id)] = entry
+                    continue
+
+                series_last_date = sub.dropna().index.max()
                 mape = forecast.rolling_backtest_mape(sub)
                 point, lo, hi = forecast.forecast_with_interval(sub, horizon=FORECAST_HORIZON)
 
@@ -114,24 +145,12 @@ def main():
                 else:
                     keyakinan = keyakinan_from_mape(mape)
 
-                entry["historis"] = [
-                    {"minggu": seasonality.iso_week_label(d), "rp": round(v)}
-                    for d, v in sub.tail(HISTORIS_WEEKS).dropna().items()
-                ]
                 entry["forecast_16"] = point
                 entry["forecast_16_lo"] = lo
                 entry["forecast_16_hi"] = hi
+                entry["forecast_start"] = series_last_date  # per-series anchor, NOT the global last_real_date
                 entry["mape_pct"] = _r1(mape)
                 entry["keyakinan"] = keyakinan
-
-                retail_sub = retail[(retail.region_id == region_id) & (retail.komoditas_id == komoditas_id)]
-                if len(retail_sub):
-                    retail_weekly = seasonality.to_weekly(retail_sub, group_cols=["region_id", "komoditas_id"])
-                    retail_weekly = retail_weekly.set_index("date")["nominal_price"].tail(HISTORIS_WEEKS)
-                    entry["retail_overlay"] = [
-                        {"minggu": seasonality.iso_week_label(d), "rp": round(v)}
-                        for d, v in retail_weekly.dropna().items()
-                    ]
 
             forecast_cache[(region_id, komoditas_id)] = entry
     print("  done.")
@@ -221,7 +240,7 @@ def main():
             if fc["forecast_16"] is not None:
                 for i in range(DISPLAY_FORECAST):
                     forecast_arr.append({
-                        "minggu": seasonality.iso_week_label(last_real_date + pd.Timedelta(weeks=i + 1)),
+                        "minggu": seasonality.iso_week_label(fc["forecast_start"] + pd.Timedelta(weeks=i + 1)),
                         "rp": round(fc["forecast_16"][i]),
                         "lo": round(fc["forecast_16_lo"][i]),
                         "hi": round(fc["forecast_16_hi"][i]),
