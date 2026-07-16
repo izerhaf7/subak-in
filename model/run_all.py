@@ -452,84 +452,112 @@ def main():
 
     print("\n[7/6] writing simulasi.json, absorbers.json, meta.json...")
 
-    # --- Provincial aggregate supply (all 27 kab, cabai_rawit) ---
-    # Sum supply curves from supply_cache for the full province so the frontend
-    # can show how the AGGREGATE supply changes when one kabupaten shifts.
-    provincial_supply = np.zeros(FORECAST_HORIZON)
-    for region_id in ra.all_ids():
-        ton = supply_cache.get((region_id, "cabai_rawit"), {}).get("ton")
-        if ton is not None:
-            provincial_supply += ton
-    pasokan_provinsi_baseline = [round(float(t), 1) for t in provincial_supply]
+    # --- Build simulasi rows, per commodity (6 sentra x 3 komoditas) ---
+    # (Provincial aggregate supply/demand is computed PER-commodity inside the
+    # loop below - pasokan_provinsi_baseline_k / permintaan_provinsi_mingguan_ton_k.)
+    # Base lookup (cabai_rawit) is the team-approved reference curve from the
+    # contract example; other commodities scale it by their own full-cost
+    # (ongkos_petik+biaya_produksi) relative to cabai_rawit's, so the SHAPE of
+    # the ratio->price curve stays consistent but the price level matches each
+    # commodity's own cost structure. ASUMSI: linear scaling, not independently
+    # sourced per commodity - flagged like the other price_thresholds numbers.
+    with open(export.DATA_CURATED / "price_thresholds.json", encoding="utf-8") as f:
+        all_thresholds = export.json.load(f)
+    BASE_LOOKUP_CABAI_RAWIT = [
+        {"rasio": 1.0, "harga_rp": 25000}, {"rasio": 1.5, "harga_rp": 12000}, {"rasio": 2.0, "harga_rp": 6000},
+    ]
+    base_full_cost = all_thresholds["cabai_rawit"]["ongkos_petik_rp"] + all_thresholds["cabai_rawit"]["biaya_produksi_rp"]
 
-    # Provincial demand proxy: ALL 27 kab annual production / 52
-    total_provincial_ton = 0
-    for region_id in ra.all_ids():
-        sub = bps_allocated[(bps_allocated.region_id == region_id) & (bps_allocated.komoditas_id == "cabai_rawit")]
-        if len(sub):
-            total_provincial_ton += sub.sort_values("tahun").iloc[-1]["produksi_ton"]
-    permintaan_provinsi_mingguan_ton = round(total_provincial_ton / 52, 1)
+    for komoditas_id in export.KOMODITAS_IDS:
+        simulasi_rows = []
+        for region_id in export.SENTRA_SIMULASI:
+            status = zom_status.get(region_id, DEFAULT_ZOM_STATUS)
+            luas_ha, produktivitas, tahun = supply.latest_luas_dan_produktivitas(bps_allocated, region_id, komoditas_id)
+            if luas_ha is None:
+                continue
+            cohort = supply.build_cohort_ha(luas_ha, komoditas_id, status)
+            harvest_peak_w = harvest_peak_weeks.get((region_id, komoditas_id),
+                                                     DEFAULT_HARVEST_PEAK_WEEK[komoditas_id])
+            baseline_tanam = supply.baseline_tanam_minggu_dari_trough(harvest_peak_w, komoditas_id)
+            geser_maks = supply.GESER_MAKS_MINGGU[status]
+            windows = supply.jendela_tanam_dan_panen(harvest_peak_w, komoditas_id, geser_maks)
 
-    # --- Build simulasi rows (6 sentra) ---
-    simulasi_rows = []
-    for region_id in export.SENTRA_SIMULASI:
-        status = zom_status.get(region_id, DEFAULT_ZOM_STATUS)
-        luas_ha, produktivitas, tahun = supply.latest_luas_dan_produktivitas(bps_allocated, region_id, "cabai_rawit")
-        if luas_ha is None:
+            # Per-sentra baseline supply curve (so frontend can subtract old +
+            # add shifted without needing the full model to recompute provincially)
+            sentra_ton = supply_cache.get((region_id, komoditas_id), {}).get("ton")
+            pasokan_baseline = [round(float(t), 1) for t in sentra_ton] if sentra_ton is not None else None
+
+            simulasi_rows.append({
+                "id": region_id,
+                "nama": ra.nama_resmi(region_id),
+                "status_musim_hujan": status,
+                "kohort_tanam": [{"minggu_relatif": w, "luas_ha": round(ha, 1)} for w, ha in cohort],
+                "geser_maks_minggu": geser_maks,
+                # 6dp, not the usual display-rounded 2dp: this value feeds the JS
+                # port's convolution directly, and test_vector's
+                # expected_kurva_pasokan_ton was computed from the unrounded
+                # produktivitas - rounding to 2dp here made the frontend port
+                # unable to reproduce it exactly (~0.1-0.4 ton drift by the tail
+                # of the curve). 6dp closes that gap to well under display
+                # precision.
+                "produktivitas_ton_per_ha": round(produktivitas, 6),
+                "harvest_peak_week_iso": harvest_peak_w,
+                "baseline_tanam_minggu": baseline_tanam,
+                "pasokan_baseline_ton": pasokan_baseline,
+                **windows,
+            })
+
+        if not simulasi_rows:
+            print(f"  {komoditas_id}: tidak ada sentra dengan data luas - simulasi_{komoditas_id}.json dilewati")
             continue
-        cohort = supply.build_cohort_ha(luas_ha, "cabai_rawit", status)
-        harvest_peak_w = harvest_peak_weeks.get((region_id, "cabai_rawit"),
-                                                 DEFAULT_HARVEST_PEAK_WEEK["cabai_rawit"])
-        baseline_tanam = supply.baseline_tanam_minggu_dari_trough(harvest_peak_w, "cabai_rawit")
 
-        # Per-sentra baseline supply curve (so frontend can subtract old + add
-        # shifted without needing the full model to recompute provincially)
-        sentra_ton = supply_cache.get((region_id, "cabai_rawit"), {}).get("ton")
-        pasokan_baseline = [round(float(t), 1) for t in sentra_ton] if sentra_ton is not None else None
+        # Sentra-only demand proxy (for the per-kabupaten simulasi chart)
+        total_sentra_ton = 0
+        for region_id in export.SENTRA_SIMULASI:
+            sub = bps_allocated[(bps_allocated.region_id == region_id) & (bps_allocated.komoditas_id == komoditas_id)]
+            if len(sub):
+                total_sentra_ton += sub.sort_values("tahun").iloc[-1]["produksi_ton"]
+        permintaan_mingguan_ton = round(total_sentra_ton / 52, 1)
 
-        simulasi_rows.append({
-            "id": region_id,
-            "nama": ra.nama_resmi(region_id),
-            "status_musim_hujan": status,
-            "kohort_tanam": [{"minggu_relatif": w, "luas_ha": round(ha, 1)} for w, ha in cohort],
-            "geser_maks_minggu": supply.GESER_MAKS_MINGGU[status],
-            # 6dp, not the usual display-rounded 2dp: this value feeds the JS
-            # port's convolution directly, and test_vector's
-            # expected_kurva_pasokan_ton was computed from the unrounded
-            # produktivitas - rounding to 2dp here made the frontend port
-            # unable to reproduce it exactly (~0.1-0.4 ton drift by the tail
-            # of the curve). 6dp closes that gap to well under display
-            # precision.
-            "produktivitas_ton_per_ha": round(produktivitas, 6),
-            "harvest_peak_week_iso": harvest_peak_w,
-            "baseline_tanam_minggu": baseline_tanam,
-            "pasokan_baseline_ton": pasokan_baseline,
-        })
+        test_input_kohort = {"garut": [900, 400, 0, 0]}
+        garut_luas, garut_prod, _ = supply.latest_luas_dan_produktivitas(bps_allocated, "garut", komoditas_id)
+        expected_curve = None
+        if garut_prod is not None:
+            test_cohort = [(i, ha) for i, ha in enumerate(test_input_kohort["garut"]) if ha > 0]
+            expected_curve = supply.convolve_single_cohort(test_cohort, komoditas_id, garut_prod, weeks_out=24)
 
-    # Sentra-only demand proxy (for the per-kabupaten simulasi chart)
-    total_sentra_ton = 0
-    for region_id in export.SENTRA_SIMULASI:
-        sub = bps_allocated[(bps_allocated.region_id == region_id) & (bps_allocated.komoditas_id == "cabai_rawit")]
-        if len(sub):
-            total_sentra_ton += sub.sort_values("tahun").iloc[-1]["produksi_ton"]
-    permintaan_mingguan_ton = round(total_sentra_ton / 52, 1)
+        full_cost = all_thresholds[komoditas_id]["ongkos_petik_rp"] + all_thresholds[komoditas_id]["biaya_produksi_rp"]
+        scale = full_cost / base_full_cost
+        lookup = [{"rasio": p["rasio"], "harga_rp": round(p["harga_rp"] * scale, -2)} for p in BASE_LOOKUP_CABAI_RAWIT]
 
-    test_input_kohort = {"garut": [900, 400, 0, 0]}
-    garut_luas, garut_prod, _ = supply.latest_luas_dan_produktivitas(bps_allocated, "garut", "cabai_rawit")
-    test_cohort = [(i, ha) for i, ha in enumerate(test_input_kohort["garut"]) if ha > 0]
-    expected_curve = supply.convolve_single_cohort(test_cohort, "cabai_rawit", garut_prod, weeks_out=24)
+        provincial_supply_k = np.zeros(FORECAST_HORIZON)
+        for region_id in ra.all_ids():
+            ton = supply_cache.get((region_id, komoditas_id), {}).get("ton")
+            if ton is not None:
+                provincial_supply_k += ton
+        pasokan_provinsi_baseline_k = [round(float(t), 1) for t in provincial_supply_k]
 
-    simulasi_json = export.build_simulasi(
-        "cabai_rawit", simulasi_rows, permintaan_mingguan_ton,
-        lookup=[{"rasio": 1.0, "harga_rp": 25000}, {"rasio": 1.5, "harga_rp": 12000}, {"rasio": 2.0, "harga_rp": 6000}],
-        test_vector={
-            "input_kohort": test_input_kohort,
-            "expected_kurva_pasokan_ton": [round(v, 2) for v in expected_curve],
-        },
-        pasokan_provinsi_baseline=pasokan_provinsi_baseline,
-        permintaan_provinsi_mingguan_ton=permintaan_provinsi_mingguan_ton,
-    )
-    export.write_json("simulasi.json", simulasi_json)
+        total_provincial_ton_k = 0
+        for region_id in ra.all_ids():
+            sub = bps_allocated[(bps_allocated.region_id == region_id) & (bps_allocated.komoditas_id == komoditas_id)]
+            if len(sub):
+                total_provincial_ton_k += sub.sort_values("tahun").iloc[-1]["produksi_ton"]
+        permintaan_provinsi_mingguan_ton_k = round(total_provincial_ton_k / 52, 1)
+
+        simulasi_json = export.build_simulasi(
+            komoditas_id, simulasi_rows, permintaan_mingguan_ton,
+            lookup=lookup,
+            test_vector={
+                "input_kohort": test_input_kohort,
+                "expected_kurva_pasokan_ton": (
+                    [round(v, 2) for v in expected_curve] if expected_curve is not None else None
+                ),
+            },
+            pasokan_provinsi_baseline=pasokan_provinsi_baseline_k,
+            permintaan_provinsi_mingguan_ton=permintaan_provinsi_mingguan_ton_k,
+        )
+        filename = "simulasi.json" if komoditas_id == "cabai_rawit" else f"simulasi_{komoditas_id}.json"
+        export.write_json(filename, simulasi_json)
 
     # absorbers.json: selisih_vs_pasar uses each kabupaten's current-week (i=0)
     # cabai_rawit forecast price where available.

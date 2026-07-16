@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
-import PetaRisiko from "./screens/PetaRisiko.jsx";
-import SimulasiTanam from "./screens/SimulasiTanam.jsx";
+import PetaSimulasi from "./screens/PetaSimulasi.jsx";
 import PanenDarurat from "./screens/PanenDarurat.jsx";
 import { loadMeta, loadWeather } from "./lib/loadData.js";
 import { LangContext, useT } from "./lib/i18n.jsx";
 import "./styles/tokens.css";
 
 const NAV_ITEMS = [
-  { id: "peta_risiko", labelKey: "nav_peta" },
-  { id: "simulasi_tanam", labelKey: "nav_simulasi" },
+  { id: "peta_simulasi", labelKey: "nav_peta_simulasi" },
   { id: "panen_darurat", labelKey: "nav_darurat" },
 ];
 
@@ -17,7 +15,7 @@ function AppShell() {
   const [meta, setMeta] = useState(null);
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState(null);
-  const [screen, setScreen] = useState("peta_risiko");
+  const [screen, setScreen] = useState("peta_simulasi");
 
   useEffect(() => {
     loadMeta().then(setMeta).catch((e) => setError(e.message));
@@ -69,8 +67,7 @@ function AppShell() {
         </nav>
         {error && <p className="app-error">{t("load_error", { msg: error })}</p>}
         {!error && !meta && <p className="app-loading">{t("loading")}</p>}
-        {!error && meta && screen === "peta_risiko" && <PetaRisiko meta={meta} />}
-        {!error && meta && screen === "simulasi_tanam" && <SimulasiTanam meta={meta} />}
+        {!error && meta && screen === "peta_simulasi" && <PetaSimulasi meta={meta} />}
         {!error && meta && screen === "panen_darurat" && <PanenDarurat />}
       </div>
     </div>

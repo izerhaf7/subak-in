@@ -61,10 +61,16 @@ describe("loadGeo", () => {
 });
 
 describe("loadSimulasi", () => {
-  it("fetches simulasi.json", async () => {
+  it("uses simulasi.json for cabai_rawit (the default, no suffix)", async () => {
     globalThis.fetch.mockResolvedValue({ ok: true, json: async () => ({ kabupaten: [] }) });
     await loadSimulasi();
     expect(globalThis.fetch).toHaveBeenCalledWith("/data/simulasi.json");
+  });
+
+  it("uses simulasi_<komoditas>.json for other komoditas", async () => {
+    globalThis.fetch.mockResolvedValue({ ok: true, json: async () => ({ kabupaten: [] }) });
+    await loadSimulasi("bawang_merah");
+    expect(globalThis.fetch).toHaveBeenCalledWith("/data/simulasi_bawang_merah.json");
   });
 });
 

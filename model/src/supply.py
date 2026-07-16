@@ -237,9 +237,46 @@ def baseline_tanam_minggu_dari_trough(harvest_peak_week: int, komoditas_id: str)
     const = CROP_CONSTANTS[komoditas_id]
     mulai_panen_minggu = round(const["mulai_panen_hari"] / 7)
     baseline = harvest_peak_week - mulai_panen_minggu
-    # Wrap to 1-52
-    if baseline < 1:
-        baseline += 52
-    if baseline > 52:
-        baseline -= 52
-    return int(baseline)
+    return _wrap_iso_week(baseline)
+
+
+def _wrap_iso_week(week: int) -> int:
+    """Wraps an ISO week-of-year to [1, 52], carrying across the year boundary."""
+    week = int(week)
+    while week < 1:
+        week += 52
+    while week > 52:
+        week -= 52
+    return week
+
+
+def jendela_tanam_dan_panen(harvest_peak_week: int, komoditas_id: str, geser_maks_minggu: int) -> dict:
+    """Explicit planting-window / harvest-window ISO week ranges, for UI
+    timeline markers (contract: pengguna butuh isyarat "kenapa glut naik" dan
+    "kapan biasanya tanam", bukan cuma satu titik minggu).
+
+    jendela_tanam: [baseline_tanam, baseline_tanam + geser_maks_minggu - 1] -
+    the window a farmer could plant in and still land in the same cycle,
+    width = geser_maks_minggu (2/4/6 depending on status_musim_hujan).
+
+    jendela_panen: [harvest_start, harvest_start + panjang_panen_minggu - 1],
+    where harvest_start = harvest_peak_week - argmax(bobot_mingguan) (the
+    kernel's peak week IS harvest_peak_week by construction of
+    harvest_convolution's anchor equation - see that function's docstring).
+    """
+    const = CROP_CONSTANTS[komoditas_id]
+    kernel = const["bobot_mingguan"]
+    kernel_peak_idx = int(np.argmax(kernel))
+    panjang = len(kernel)
+
+    baseline_tanam = baseline_tanam_minggu_dari_trough(harvest_peak_week, komoditas_id)
+    tanam_mulai = _wrap_iso_week(baseline_tanam)
+    tanam_akhir = _wrap_iso_week(baseline_tanam + geser_maks_minggu - 1)
+
+    panen_mulai = _wrap_iso_week(harvest_peak_week - kernel_peak_idx)
+    panen_akhir = _wrap_iso_week(harvest_peak_week - kernel_peak_idx + panjang - 1)
+
+    return {
+        "jendela_tanam": {"mulai_iso": tanam_mulai, "akhir_iso": tanam_akhir},
+        "jendela_panen": {"mulai_iso": panen_mulai, "akhir_iso": panen_akhir},
+    }

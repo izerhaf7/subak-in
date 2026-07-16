@@ -135,7 +135,11 @@ def build_simulasi(komoditas_id: str, kabupaten_rows: list, permintaan_mingguan_
 
     Each kabupaten entry in kabupaten_rows must have a pasokan_baseline_ton
     field (list of 16 weekly ton values) so the frontend can perform the
-    subtraction without re-running the convolution in Python.
+    subtraction without re-running the convolution in Python. Each entry also
+    carries jendela_tanam/jendela_panen ({mulai_iso, akhir_iso}) - computed by
+    supply.jendela_tanam()/jendela_panen() in run_all.py - so the frontend
+    timeline can render planting/harvest window bands without recomputing the
+    kernel-peak-offset arithmetic client-side.
     """
     out = {
         "komoditas_id": komoditas_id,

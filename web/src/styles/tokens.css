@@ -408,6 +408,41 @@ body {
   color: var(--ink-muted);
 }
 
+.timeline__bands {
+  position: relative;
+  height: 1.1rem;
+  margin-bottom: 0.1rem;
+}
+
+.timeline__band {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 0.85;
+}
+
+.timeline__band--tanam {
+  background: var(--sawah);
+}
+
+.timeline__band--panen {
+  background: var(--risk-high);
+}
+
+.timeline__band-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  padding: 0 0.3rem;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
 .weather-badge {
   font-size: 0.72rem;
   padding: 0.2rem 0.6rem;
@@ -782,4 +817,77 @@ body {
   .app-topbar__meta {
     display: none;
   }
+}
+
+/* PlantingPopup — docked card for shifting a sentra's planting schedule */
+.planting-popup__baseline {
+  font-size: 0.8rem;
+  margin: 0 0 0.2rem;
+}
+
+.planting-popup__status {
+  font-size: 0.7rem;
+  color: var(--ink-secondary);
+  margin: 0 0 0.75rem;
+}
+
+.planting-popup__slider-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.planting-popup__slider-row input[type="range"] {
+  width: 100%;
+  accent-color: var(--aksen);
+  cursor: pointer;
+}
+
+.planting-popup__slider-value {
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-family: var(--font-data);
+}
+
+.planting-popup__hint {
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+/* HasilSimulasiPanel — Before/After price result, side-col width */
+.hasil-simulasi-panel__kpis {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.hasil-simulasi-panel__kpi {
+  display: flex;
+  flex-direction: column;
+}
+
+.hasil-simulasi-panel__kpi-label {
+  font-size: 0.65rem;
+  color: var(--ink-secondary);
+}
+
+.hasil-simulasi-panel__kpi-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: var(--font-data);
+}
+
+.hasil-simulasi-panel__kpi-sub {
+  font-size: 0.68rem;
+  color: var(--sawah);
+  font-weight: 700;
+}
+
+.hasil-simulasi-panel__note {
+  font-size: 0.68rem;
+  color: var(--ink-muted);
+  margin-top: 0.5rem;
 }

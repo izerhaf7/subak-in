@@ -75,6 +75,22 @@ run_all.py orchestrates semuanya → export.py menulis web/public/data/*.json
    (`pasokan_provinsi_baseline`, `permintaan_provinsi_mingguan_ton`) — jumlah kurva
    supply 27 kabupaten, supaya frontend bisa hitung efek pergeseran tanam SATU
    kabupaten terhadap agregat provinsi tanpa perlu Python.
+10. **M2 (`web/src/`) ternyata SUDAH DIBANGUN** (oleh AI agent lain, di luar sesi
+    ini) — CLAUDE.md sempat salah bilang "M2 belum ada sama sekali", sudah
+    dikoreksi. Diverifikasi langsung: `npm test` 143/143 lolos (termasuk
+    verifikasi port `convolveSingleCohort` JS vs `simulasi.json.test_vector`
+    Python - cocok persis), `npm run build` sukses, zero live call (satu-satunya
+    `fetch()` di `loadData.js` manggil `/data/*.json` lokal). Screens: PetaRisiko,
+    SimulasiTanam, PanenDarurat (bukan DecisionBrief - lihat hutang teknis #8 baru).
+    Geo SVG (`web/public/geo/jabar_kabupaten.svg.json`) juga sudah ada.
+    **Ditemukan (belum diperbaiki, ditahan sengaja)**: `wilayah.js`'s `KOTA_IDS`
+    kosong padahal komentarnya bilang harus cermin backend `KOTA_IDS` (9 kota)
+    dan ada `KotaNotice.jsx` siap pakai. Coba isi -> 3 test di
+    `pressureTest.test.jsx` gagal (test itu eksplisit "lists all 27 regions").
+    Jadi kosong ini kemungkinan keputusan sadar, BUKAN saya putuskan sepihak -
+    di-revert ke kosong. Lihat hutang teknis #1 (sudah ada sebelumnya, sekarang
+    dengan info tambahan bahwa ini bukan cuma backend, frontend juga perlu
+    diputuskan+test-nya diupdate bareng.
 
 ## Cara menjalankan
 
@@ -87,11 +103,19 @@ cache CSV, bukan API BMKG).
 
 ## Hutang teknis / belum selesai (prioritas menurun)
 
-1. **Komentar "kota tidak dianalisis" di `run_all.py` line ~383 BELUM diimplementasi.**
-   Kota (bogor_kota, dst.) masih diproses identik dengan kabupaten di semua tempat
-   (map.json, risk scoring) — tidak ada `status_data` khusus "tidak_dianalisis".
-   Kalau ini memang intent product (kota bukan sentra produksi, harusnya
-   di-exclude/diberi label beda di peta), perlu diimplementasi, bukan cuma dikomentari.
+1. **Kota-exclusion setengah jalan di DUA sisi, saling kontradiksi.** Backend
+   (`run_all.py` line ~383) cuma komentar "kota tidak dianalisis", belum
+   diimplementasi (kota diproses identik kabupaten di semua tempat, tidak ada
+   `status_data` khusus). Frontend (`web/src/lib/wilayah.js`) punya `KOTA_IDS`
+   Set KOSONG + komentar yang bilang harus cermin backend, PLUS komponen
+   `KotaNotice.jsx` yang sudah jadi tapi tidak pernah ke-trigger. TAPI 3 test di
+   `pressureTest.test.jsx` eksplisit mengetes "ranked list lists all 27 regions"
+   (termasuk kota) - jadi kosong ini mungkin sengaja. **Butuh keputusan produk
+   dulu**: kota exclude atau tidak? Kalau exclude: isi `KOTA_IDS` di
+   `wilayah.js` (9 kota, sama seperti `model/run_all.py`'s `KOTA_IDS`) DAN update
+   3 test yang expect 27 jadi 18, DAN implementasikan exclusion beneran di
+   backend juga (bukan cuma komentar). Kalau tidak exclude: hapus komentar
+   menyesatkan di kedua file + putuskan nasib `KotaNotice.jsx` (dead code atau dipakai untuk hal lain).
 2. **`CYCLES_PER_YEAR` (`supply.py`) masih tebakan tanpa sitasi** (cabai_rawit=2,
    bawang_merah=3, cabai_besar=2). Sekarang timing KALENDER-nya sudah benar (via STL
    anchor), tapi JUMLAH siklus per tahun ini masih pengaruhi bentuk/lebar kurva -
@@ -104,25 +128,30 @@ cache CSV, bukan API BMKG).
 4. **`crop_constants.json` dan `absorbers.csv` masih placeholder berlabel** —
    `crop_constants.json`'s `sitasi` fields dan `absorbers.csv`'s `[PLACEHOLDER]`
    prefix bilang persis apa yang perlu diverifikasi/diganti M3.
-5. **Belum ada M2 (`web/src/`) sama sekali** — semua kerjaan di atas adalah data
-   layer saja. `simulasi.json.test_vector` + `convolve_single_cohort` (Python) perlu
-   di-port ke JS dan diverifikasi cocok persis sebelum layar Simulasi Tanam jalan.
-6. **Deviasi id `region_aliases.csv` dari contoh kontrak** (poin 2 di atas) belum
-   dikonfirmasi ke M2 — kalau frontend sudah mulai hardcode id "cirebon"/"tasikmalaya"
-   tanpa suffix, perlu disamakan ke `cirebon_kab`/`tasikmalaya_kab`.
+5. **M2 (`web/src/`) SUDAH ADA** (dibangun agent lain) - koreksi dari draft
+   sebelumnya yang bilang "belum ada". `simulasi.json.test_vector` vs
+   `convolveSingleCohort` (JS) SUDAH diverifikasi cocok persis lewat
+   `supplyMath.test.js`. Tidak perlu dikerjakan ulang.
+6. **Deviasi id `region_aliases.csv` dari contoh kontrak** (poin 2 di atas) -
+   SUDAH DICEK, frontend TIDAK hardcode id bare "cirebon"/"tasikmalaya" tanpa
+   suffix. Aman.
 7. **Median STL trough pakai `statistics.median()` yang membulatkan ke bawah**
    untuk jumlah data genap (mis. `[28,40,51,51]` → 45.5 → `int()` → 45, bukan
    dibulatkan). Minor, tidak mempengaruhi kebenaran hasil, tapi kurang presisi.
+8. **Layar Decision Brief (kontrak §3.7) status tidak jelas.** Yang ada di
+   `web/src/screens/` cuma PetaRisiko, SimulasiTanam, PanenDarurat (PanenDarurat
+   = layar matching absorber, konsumsi `absorbers.json`+`map.json` - BUKAN
+   Decision Brief). `briefBuilder.js` juga tidak ada di `lib/`. Perlu dicek ke
+   pembuat M2: apa Decision Brief sengaja belum dikerjakan, atau ganti nama/digabung
+   ke screen lain?
 
 ## Next steps yang disarankan (urut prioritas)
 
-1. Putuskan status "kota" di peta (poin 1 hutang teknis) — ini keputusan produk,
-   bukan cuma teknis.
-2. Minta M3 isi angka real untuk `price_thresholds.json` dan `crop_constants.json`
+1. Putuskan status "kota" di peta (hutang teknis #1) — keputusan produk,
+   perlu update backend DAN frontend (termasuk 3 test) bareng.
+2. Cek status layar Decision Brief ke pembuat M2 (hutang teknis #8).
+3. Minta M3 isi angka real untuk `price_thresholds.json` dan `crop_constants.json`
    (kalau tidak, jelaskan di pitch bahwa angka2 itu ilustratif).
-3. Mulai `web/src/` (M2) — `loadData.js` baca `web/public/data/*.json` langsung,
-   verifikasi `supplyMath.js`'s port dari `convolve_single_cohort` cocok dengan
-   `simulasi.json.test_vector`.
 4. Kalau ada waktu: validasi `CYCLES_PER_YEAR` terhadap pola musiman BPS
    (produksi bulanan kalau tersedia, atau minimal sanity-check lebar kurva kernel
    panen vs `panjang_panen_minggu` dari `crop_constants.json`).

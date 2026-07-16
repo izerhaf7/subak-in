@@ -37,8 +37,9 @@ export function loadGeo() {
   return fetchJson("/geo/jabar_kabupaten.svg.json", "geometri peta");
 }
 
-export function loadSimulasi() {
-  return fetchJson(`${DATA_BASE}/simulasi.json`, "simulasi.json");
+export function loadSimulasi(komoditasId = "cabai_rawit") {
+  const file = komoditasId === "cabai_rawit" ? "simulasi.json" : `simulasi_${komoditasId}.json`;
+  return fetchJson(`${DATA_BASE}/${file}`, file);
 }
 
 export function loadAbsorbers() {

@@ -78,6 +78,7 @@ const STRINGS = {
     dar_pick: "Pilih kabupaten",
     dar_pick_hint: "Angka = jumlah absorber yang cocok",
     map_hint: "Klik wilayah pada peta atau daftar ranking untuk melihat detail",
+    map_hint_sim: "Klik wilayah untuk detail — klik sentra (garis tebal saat dipilih) untuk simulasikan jadwal tanam",
     kota_status: "Tidak dianalisis",
     kota_notice:
       "{nama} adalah wilayah kota — bukan wilayah produksi hortikultura, jadi tidak ikut dianalisis di peta risiko. Data harga eceran dari kota justru dipakai sebagai sinyal proxy untuk kabupaten di sekitarnya.",
@@ -85,6 +86,18 @@ const STRINGS = {
       "Kabupaten ini tidak punya data harga produsen. Garis di bawah adalah harga eceran {sumber} (data asli), dan pita adalah rentang estimasi harga produsen (rasio transmisi p25–p75) — estimasi tidak langsung, BUKAN harga terukur.",
     proxy_band_label: "Rentang estimasi produsen",
     retail_line_label: "Harga eceran {sumber}",
+    nav_peta_simulasi: "Peta & Simulasi",
+    band_tanam: "Jendela Tanam",
+    band_panen: "Panen Raya",
+    popup_close: "✕ Tutup",
+    popup_baseline: "Tanam biasanya mulai minggu W{w}",
+    popup_no_shift: "Sesuai jadwal tanam biasa",
+    popup_slider_aria: "Geser jadwal tanam — {nama}",
+    popup_hint: "Geser slider untuk menunda tanam beberapa minggu dan lihat efeknya di panel hasil simulasi.",
+    popup_not_sentra: "Kabupaten ini bukan sentra ter-scrape untuk simulasi tanam — belum ada data jadwal tanam untuk disimulasikan di sini.",
+    hasil_simulasi_title: "Hasil simulasi tanam",
+    hasil_simulasi_note:
+      "Kurva menunjukkan dampak provinsi dari jadwal tanam yang digeser terhadap kurva tanpa perubahan (baseline).",
   },
   en: {
     product: "Panen Radar",
@@ -159,6 +172,7 @@ const STRINGS = {
     dar_pick: "Select regency",
     dar_pick_hint: "Number = matching absorbers",
     map_hint: "Click a region on the map or in the ranking list to see details",
+    map_hint_sim: "Click a region for details — click a sentra (bold outline when selected) to simulate its planting schedule",
     kota_status: "Not analysed",
     kota_notice:
       "{nama} is a city — not a horticulture production area, so it is excluded from the risk map analysis. Its retail price data is instead used as a proxy signal for the surrounding regencies.",
@@ -166,6 +180,18 @@ const STRINGS = {
       "This regency has no producer price data. The line below is {sumber} retail prices (real data), and the band is an estimated producer price range (p25–p75 transmission ratio) — an indirect estimate, NOT a measured price.",
     proxy_band_label: "Estimated producer range",
     retail_line_label: "{sumber} retail price",
+    nav_peta_simulasi: "Map & Simulation",
+    band_tanam: "Planting Window",
+    band_panen: "Peak Harvest",
+    popup_close: "✕ Close",
+    popup_baseline: "Planting usually starts week W{w}",
+    popup_no_shift: "Following the usual planting schedule",
+    popup_slider_aria: "Shift planting schedule — {nama}",
+    popup_hint: "Drag the slider to delay planting by a few weeks and see the effect in the simulation result panel.",
+    popup_not_sentra: "This regency isn't one of the scraped sentra for planting simulation — there's no planting-schedule data to simulate here yet.",
+    hasil_simulasi_title: "Planting simulation result",
+    hasil_simulasi_note:
+      "The curve shows the province-wide effect of the shifted planting schedule against the unchanged baseline.",
   },
 };
 

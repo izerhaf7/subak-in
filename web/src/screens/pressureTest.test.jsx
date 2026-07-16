@@ -19,6 +19,7 @@ import BlindSpotNotice from "../components/BlindSpotNotice.jsx";
 import RankedList from "../components/RankedList.jsx";
 import SimulasiTanam from "./SimulasiTanam.jsx";
 import PanenDarurat from "./PanenDarurat.jsx";
+import PetaSimulasi from "./PetaSimulasi.jsx";
 import { aggregateSupplyCurve } from "../lib/supplyMath.js";
 
 // jsdom has no ResizeObserver — Recharts' ResponsiveContainer needs one to
@@ -194,6 +195,57 @@ describe("pressure test: PanenDarurat across every kabupaten with matches", () =
     expect(rows.length).toBe(Object.keys(absorbers.matches_per_kabupaten).length);
     for (const row of rows) {
       fireEvent.click(row);
+    }
+
+    expect(errors).toEqual([]);
+    spy.mockRestore();
+  });
+});
+
+describe("pressure test: merged PetaSimulasi screen (map + planting popup + result)", () => {
+  it("clicking a sentra opens the planting popup, and shifting it reveals the result panel", async () => {
+    mockFetchFromDisk();
+    const meta = readJson(DATA_DIR, "meta.json");
+    const errors = [];
+    const spy = vi.spyOn(console, "error").mockImplementation((...args) => errors.push(args));
+
+    render(<PetaSimulasi meta={meta} />);
+    await waitFor(() => document.querySelectorAll(".jabar-map__region").length === 27);
+
+    // Idle state: ranked list shown, no result panel, no bands rendered without a driver signal yet
+    expect(screen.getByText(/Ranking risiko/i)).toBeTruthy();
+    expect(document.querySelector(".hasil-simulasi-panel")).toBeNull();
+
+    // Click garut (a sentra) - popup should appear with its baseline + slider
+    const garutPath = screen.getByRole("button", { name: /Kab\. Garut/i });
+    fireEvent.click(garutPath);
+    await waitFor(() => screen.getByText(/Tanam biasanya mulai minggu/i));
+    expect(document.querySelector(".timeline__band--tanam")).not.toBeNull();
+    expect(document.querySelector(".timeline__band--panen")).not.toBeNull();
+
+    // Shift the popup's slider (NOT the timeline's - both are input[type=range])
+    const popupSlider = screen.getByLabelText(/Geser jadwal tanam — Kab\. Garut/i);
+    fireEvent.change(popupSlider, { target: { value: popupSlider.max } });
+    await waitFor(() => document.querySelector(".hasil-simulasi-panel"));
+    expect(screen.getByText(/Hasil simulasi tanam/i)).toBeTruthy();
+
+    expect(errors).toEqual([]);
+    spy.mockRestore();
+  });
+
+  it("switching komoditas reloads simulasi data without throwing, for all 3 komoditas", async () => {
+    mockFetchFromDisk();
+    const meta = readJson(DATA_DIR, "meta.json");
+    const errors = [];
+    const spy = vi.spyOn(console, "error").mockImplementation((...args) => errors.push(args));
+
+    render(<PetaSimulasi meta={meta} />);
+    await waitFor(() => document.querySelectorAll(".jabar-map__region").length === 27);
+
+    for (const label of [/Bawang Merah/i, /Cabai Besar/i, /Cabai Rawit/i]) {
+      const tab = screen.getByRole("tab", { name: label });
+      fireEvent.click(tab);
+      await waitFor(() => document.querySelectorAll(".jabar-map__region").length === 27);
     }
 
     expect(errors).toEqual([]);
