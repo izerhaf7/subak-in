@@ -2,8 +2,13 @@
 is locked as an M1 pre-compute, browser only renders `matches_per_kabupaten`).
 Sederhana - hardcoded weights, no ML, per the brief.
 
-# ASUMSI: absorbers.csv is currently the PLACEHOLDER directory (see its
-# header) - scores/uplift below are only as real as that data. selisih_vs_pasar
+# ASUMSI: absorbers.csv names real organizations (named pasar induk
+# wholesale markets, a named cooperative, named processors/retailers/food
+# bank) - the 3 rows with no confirmed real match were dropped rather than
+# left as fabricated placeholders. kapasitas_ton/harga_tawar_rp for every
+# row remain illustrative estimates, not confirmed operational figures -
+# nobody has actually contacted these organizations to ask their real
+# buying capacity/price. selisih_vs_pasar
 # uses cabai_rawit's current-week forecast price where available, falling back
 # to the full production-cost floor (ongkos_petik+biaya_produksi) for
 # kabupaten with no price series - documented, not hidden.
@@ -14,6 +19,15 @@ import numpy as np
 import pandas as pd
 
 from aliases import DATA_CURATED
+
+
+# ASUMSI: 80km dipilih sebagai batas jarak "realistis buat panen darurat" -
+# angkutan hasil panen segar (cabai/bawang) dalam sehari di jalan Jawa Barat,
+# bukan hasil kalibrasi/sitasi. Sebelum ada batas ini, kabupaten yang jauh
+# dari SEMUA absorber (mis. Bogor, 27 kabupaten cuma ada 12 absorber yang
+# mengelompok di selatan/tengah) tetap dipaksa dapat "top-5 terdekat" walau
+# jaraknya 150-200km - jelas bukan opsi darurat yang masuk akal.
+MAX_JARAK_ABSORBER_KM = 80
 
 
 def haversine_km(lat1, lng1, lat2, lng2) -> float:
@@ -61,6 +75,8 @@ def build_absorbers_json(ra, harga_referensi_per_kabupaten: dict = None) -> dict
         rows = []
         for _, a in absorbers.iterrows():
             jarak = haversine_km(lat, lng, a["lat"], a["lng"])
+            if jarak > MAX_JARAK_ABSORBER_KM:
+                continue
             score = match_score(jarak, a["kapasitas_ton"], a["harga_tawar_rp"], max_harga_tawar)
             selisih = a["harga_tawar_rp"] - harga_pasar
             uplift_juta = (selisih * a["kapasitas_ton"] * 1000) / 1_000_000
