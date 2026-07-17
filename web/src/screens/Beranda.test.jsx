@@ -62,11 +62,19 @@ describe("Beranda", () => {
     expect(screen.getByText(/PIHPS/)).toBeTruthy();
   });
 
-  it("hanya memuat file kabupaten yang measured — bukan semua 27", async () => {
+  it("hanya memuat id kabupaten measured yang eksplisit — kota measured dikecualikan", async () => {
+    // Bukan sekadar mencocokkan COUNT hasil filter implementasi (itu lolos
+    // untuk filter APAPUN, termasuk yang lupa mengecualikan kota — persis
+    // bug yang lolos sebelumnya). Kunci ID persisnya: sukabumi_kota
+    // status_data "measured" di map.json tapi ada di KOTA_IDS, jadi
+    // file-nya TIDAK BOLEH pernah diminta sama sekali.
     render(<Beranda meta={meta} onMasuk={() => {}} />);
     await waitFor(() => expect(loadKabupaten).toHaveBeenCalled());
-    const measured = mapData.kabupaten.filter((k) => k.status_data === "measured").length;
-    expect(loadKabupaten).toHaveBeenCalledTimes(measured);
+    expect(loadKabupaten).toHaveBeenCalledTimes(3);
+    expect(loadKabupaten).toHaveBeenCalledWith("garut", "cabai_rawit");
+    expect(loadKabupaten).toHaveBeenCalledWith("tasikmalaya_kab", "cabai_rawit");
+    expect(loadKabupaten).toHaveBeenCalledWith("cirebon_kab", "cabai_rawit");
+    expect(loadKabupaten).not.toHaveBeenCalledWith("sukabumi_kota", "cabai_rawit");
   });
 
   it("CTA utama membawa ke peta", async () => {

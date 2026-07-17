@@ -27,7 +27,11 @@ export default function Beranda({ meta, onMasuk }) {
         if (batal) return;
         setMapData(m);
 
-        const measured = m.kabupaten.filter((k) => k.status_data === "measured");
+        // Kota dikecualikan di sini juga: bukan cuma di sorotanHarga, supaya
+        // file-nya tidak diambil sama sekali — bukan cuma kalah skor.
+        const measured = m.kabupaten.filter(
+          (k) => k.status_data === "measured" && !KOTA_IDS.has(k.id)
+        );
         const files = await Promise.all(
           measured.map((k) => loadKabupaten(k.id, KOMODITAS_ID).catch(() => null))
         );

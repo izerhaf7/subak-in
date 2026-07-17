@@ -20,7 +20,7 @@ export default function AngkaMasalah({ sorotan, horizonMinggu, mingguPuncak, kom
                 {t("beranda_stat_turun_label", {
                   komoditas: komoditasNama,
                   nama: sorotan.nama,
-                  n: sorotan.nMinggu,
+                  n: sorotan.nMingguJatuh,
                 })}
               </div>
             </div>

@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { sorotanHarga, mingguPuncakRisiko } from "./sorotan.js";
+import { KOTA_IDS } from "./wilayah.js";
 
 // Fixture kecil buatan tangan, BUKAN data asli: tes ini mengunci logikanya,
 // bukan angka hari ini. Angka asli berubah tiap kali run_all.py jalan.
@@ -46,7 +47,7 @@ describe("sorotanHarga", () => {
     expect(sorotanHarga(mapData, files).id).toBe("b");
   });
 
-  it("mengembalikan puncak, dasar, persen, dan jumlah minggu", () => {
+  it("mengembalikan puncak, dasar, persen, jumlah minggu jatuh, dan total minggu", () => {
     const mapData = mapDataOf([kab("a", "measured")]);
     const files = [fileHarga("a", [70000, 40000, 19850])];
     expect(sorotanHarga(mapData, files)).toEqual({
@@ -55,8 +56,48 @@ describe("sorotanHarga", () => {
       puncakRp: 70000,
       dasarRp: 19850,
       turunPersen: 72, // (1 - 19850/70000) * 100 = 71.6 -> dibulatkan 72
+      nMingguJatuh: 2, // indeks puncak (0) ke indeks dasar (2)
+      nMinggu: 3, // total panjang seri, beda dari nMingguJatuh
+    });
+  });
+
+  it("BUG LAMA: dasar sebelum puncak (seri naik) TIDAK dilaporkan sebagai penurunan 80%", () => {
+    // Math.max/Math.min butuh urutan waktu diabaikan: max=100, min=20, jadi
+    // implementasi lama melaporkan "turun 80%" padahal harga NAIK dari 20 ke
+    // 100. Maximum drawdown yang benar: tidak ada dasar SETELAH puncak
+    // berjalan, jadi tidak ada penurunan sama sekali -> null.
+    const mapData = mapDataOf([kab("a", "measured")]);
+    const files = [fileHarga("a", [20, 100])];
+    const hasil = sorotanHarga(mapData, files);
+    expect(hasil).not.toEqual(expect.objectContaining({ turunPersen: 80 }));
+    expect(hasil).toBeNull();
+  });
+
+  it("menemukan puncak-lalu-dasar dengan benar di tengah seri", () => {
+    // 50 -> 100 (puncak) -> 40 (dasar): turun (1 - 40/100) * 100 = 60%,
+    // jarak puncak(idx1) ke dasar(idx2) = 1 minggu.
+    const mapData = mapDataOf([kab("a", "measured")]);
+    const files = [fileHarga("a", [50, 100, 40])];
+    expect(sorotanHarga(mapData, files)).toEqual({
+      id: "a",
+      nama: "Kab. a",
+      puncakRp: 100,
+      dasarRp: 40,
+      turunPersen: 60,
+      nMingguJatuh: 1,
       nMinggu: 3,
     });
+  });
+
+  it("mengecualikan kota dari kumpulan sorotan walau status_data measured", () => {
+    // depok ada di KOTA_IDS. Kalau ikut dihitung, drawdown 90%-nya akan
+    // menang atas garut (30%) — kota bukan wilayah produksi, dipetakan putih
+    // "tidak dianalisis", jadi headline tidak boleh menyorotnya.
+    const kotaId = "depok";
+    expect(KOTA_IDS.has(kotaId)).toBe(true);
+    const mapData = mapDataOf([kab(kotaId, "measured"), kab("garut", "measured")]);
+    const files = [fileHarga(kotaId, [100, 10]), fileHarga("garut", [100, 70])];
+    expect(sorotanHarga(mapData, files).id).toBe("garut");
   });
 
   it("mengembalikan null kalau tidak ada kabupaten measured sama sekali", () => {
