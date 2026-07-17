@@ -459,7 +459,7 @@
       "kpi": {
         "risk_puncak": 17,
         "minggu_puncak": 44,
-        "harga_proyeksi_puncak_rp": 23333
+        "harga_proyeksi_puncak_rp": 23338
       },
       "estimasi_unit_lahan": 72684
     },
@@ -624,7 +624,7 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 8
+          "skor": 7
         },
         {
           "minggu": 30,
@@ -644,7 +644,7 @@
         },
         {
           "minggu": 34,
-          "skor": 8
+          "skor": 7
         },
         {
           "minggu": 35,
@@ -656,7 +656,7 @@
         },
         {
           "minggu": 37,
-          "skor": 3
+          "skor": 2
         },
         {
           "minggu": 38,
@@ -664,7 +664,7 @@
         },
         {
           "minggu": 39,
-          "skor": 4
+          "skor": 3
         },
         {
           "minggu": 40,
@@ -680,7 +680,7 @@
         },
         {
           "minggu": 43,
-          "skor": 4
+          "skor": 3
         },
         {
           "minggu": 44,
@@ -690,7 +690,7 @@
       "kpi": {
         "risk_puncak": 8,
         "minggu_puncak": 35,
-        "harga_proyeksi_puncak_rp": 20089
+        "harga_proyeksi_puncak_rp": 20145
       },
       "estimasi_unit_lahan": 21241
     },
@@ -844,7 +844,7 @@
       "kpi": {
         "risk_puncak": 0,
         "minggu_puncak": 29,
-        "harga_proyeksi_puncak_rp": 37558
+        "harga_proyeksi_puncak_rp": 37267
       },
       "estimasi_unit_lahan": 20815
     },
@@ -1537,7 +1537,7 @@
       "kpi": {
         "risk_puncak": 0,
         "minggu_puncak": 29,
-        "harga_proyeksi_puncak_rp": 43510
+        "harga_proyeksi_puncak_rp": 44157
       },
       "estimasi_unit_lahan": 662
     },

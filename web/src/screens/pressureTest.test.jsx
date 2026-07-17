@@ -9,7 +9,7 @@
 // doesn't guard), not the click wiring, which is already covered by manual
 // QA.
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { render, cleanup, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, cleanup, screen, fireEvent, waitFor, within } from "@testing-library/react";
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -62,7 +62,7 @@ describe("pressure test: JabarMap across all 3 komoditas", () => {
       spy.mockRestore();
     });
 
-    it(`ranked list for ${komoditasId} lists all 27 regions sorted by score`, () => {
+    it(`ranked list for ${komoditasId} lists all 18 kabupaten sorted by score, excluding kota`, () => {
       const mapData = readJson(DATA_DIR, file);
       const errors = [];
       const spy = vi.spyOn(console, "error").mockImplementation((...args) => errors.push(args));
@@ -72,7 +72,7 @@ describe("pressure test: JabarMap across all 3 komoditas", () => {
       );
 
       const rows = container.querySelectorAll(".ranked-list__row");
-      expect(rows.length).toBe(27);
+      expect(rows.length).toBe(18);
       const scores = [...rows].map((r) => Number(r.querySelector(".ranked-list__score").textContent));
       const sorted = [...scores].sort((a, b) => b - a);
       expect(scores).toEqual(sorted);
@@ -137,6 +137,29 @@ function mockFetchFromDisk() {
   });
 }
 
+describe("pressure test: supply curve math across every sentra's max shift", () => {
+  it("aggregateSupplyCurve never goes negative or NaN at any shift combination (0..max for every sentra)", () => {
+    const meta = readJson(DATA_DIR, "meta.json");
+    const simulasi = readJson(DATA_DIR, "simulasi.json");
+    const kernel = meta.komoditas.find((k) => k.id === "cabai_rawit").kernel_panen;
+
+    // Full combinatorial sweep over 6 sentra would be geser_maks_minggu^6 —
+    // instead sweep each sentra to its own max one at a time (holding the
+    // rest at 0), which is what a user actually does one slider at a time,
+    // and also check the all-max combination once.
+    const allMax = Object.fromEntries(simulasi.kabupaten.map((k) => [k.id, k.geser_maks_minggu]));
+    const scenarios = [allMax, ...simulasi.kabupaten.map((k) => ({ [k.id]: k.geser_maks_minggu }))];
+
+    for (const geser of scenarios) {
+      const curve = aggregateSupplyCurve(simulasi.kabupaten, kernel.bobot_mingguan, kernel.mulai_panen_hari, geser, 24);
+      curve.forEach((v) => {
+        expect(Number.isFinite(v)).toBe(true);
+        expect(v).toBeGreaterThanOrEqual(0);
+      });
+    }
+  });
+});
+
 describe("pressure test: PanenDarurat across every kabupaten with matches", () => {
   it("renders the absorber table for every kabupaten in matches_per_kabupaten without throwing", async () => {
     mockFetchFromDisk();
@@ -172,9 +195,13 @@ describe("pressure test: merged PetaSimulasi screen (map + planting popup + resu
     expect(screen.getByText(/Ranking risiko/i)).toBeTruthy();
     expect(document.querySelector(".hasil-simulasi-panel")).toBeNull();
 
-    // Click garut (a sentra) - popup should appear with its baseline + slider
-    const garutButtons = screen.getAllByRole("button", { name: /Kab\. Garut/i });
-    fireEvent.click(garutButtons[0]);
+    // Click garut (a sentra) - popup should appear with its baseline + slider.
+    // Scoped to the map SVG: "Kab. Garut" also matches the ranked-list row
+    // button (its accessible name is its concatenated text content), so an
+    // unscoped screen.getByRole would find both and throw.
+    const mapRegion = within(document.querySelector(".jabar-map"));
+    const garutPath = mapRegion.getByRole("button", { name: /Kab\. Garut/i });
+    fireEvent.click(garutPath);
     await waitFor(() => screen.getByText(/Tanam biasanya mulai minggu/i));
     expect(document.querySelector(".timeline__band--tanam")).not.toBeNull();
     expect(document.querySelector(".timeline__band--panen")).not.toBeNull();

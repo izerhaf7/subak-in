@@ -30,9 +30,14 @@ function topRisikoKpi(mapData, minggu) {
 
 // Picks which sentra's jendela_tanam/jendela_panen to show as timeline bands:
 // the currently-selected sentra if one is picked, otherwise the sentra with
-// the highest risk score this week (ties the "kenapa glut naik" narrative to
-// the same region already driving the top-risk KPI chip).
-function pickBandKabupaten(simulasi, mapData, minggu, selectedId) {
+// the highest PEAK risk across the whole visible horizon (kpi.risk_puncak) -
+// deliberately NOT recomputed per scrubbed week. An earlier version picked
+// "highest risk THIS week", which flips between two closely-matched sentra
+// on a single-week nudge (e.g. Bandung vs Garut swapping lead at W33/W34) -
+// the whole band identity/size/position would teleport with no transition,
+// reading as a glitch. Peak-risk is fixed per komoditas, so the reference
+// sentra only changes when the user actually clicks a different one.
+function pickBandKabupaten(simulasi, mapData, selectedId) {
   if (!simulasi) return null;
   if (selectedId) {
     const sel = simulasi.kabupaten.find((k) => k.id === selectedId);
@@ -43,9 +48,8 @@ function pickBandKabupaten(simulasi, mapData, minggu, selectedId) {
   let best = null;
   for (const k of mapData.kabupaten) {
     if (!sentraIds.has(k.id)) continue;
-    const entry = k.risk_mingguan.find((r) => r.minggu === minggu);
-    const skor = entry ? entry.skor : 0;
-    if (!best || skor > best.skor) best = { id: k.id, skor };
+    const puncak = k.kpi?.risk_puncak ?? 0;
+    if (!best || puncak > best.puncak) best = { id: k.id, puncak };
   }
   return best ? simulasi.kabupaten.find((k) => k.id === best.id) ?? null : null;
 }
@@ -123,7 +127,7 @@ export default function PetaSimulasi({ meta }) {
       : t("coverage_fallback", { m: measuredCount });
 
   const kernel = meta.komoditas.find((k) => k.id === komoditasId).kernel_panen;
-  const bandKab = pickBandKabupaten(simulasi, mapData, minggu, selectedId);
+  const bandKab = pickBandKabupaten(simulasi, mapData, selectedId);
   const bands = bandKab
     ? [
         { label: `${t("band_tanam")} · ${bandKab.nama}`, mulai: bandKab.jendela_tanam.mulai_iso, akhir: bandKab.jendela_tanam.akhir_iso, jenis: "tanam" },

@@ -3,3 +3,5 @@ scrapper/bmkg_data/raw/pdf/
 CLAUDE.md
 __pycache__/
 *.pyc
+.gstack/
+docs/superpowers/
