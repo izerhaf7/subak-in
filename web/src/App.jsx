@@ -16,6 +16,8 @@ function AppShell() {
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState(null);
   const [screen, setScreen] = useState("peta_simulasi");
+  const [komoditasId, setKomoditasId] = useState("cabai_rawit");
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   useEffect(() => {
     loadMeta().then(setMeta).catch((e) => setError(e.message));
@@ -37,18 +39,34 @@ function AppShell() {
   return (
     <div className="app-shell">
       <header className="app-topbar">
-        <img src="/brand/subakin-logo.svg" alt="Logo Subak.In" className="app-topbar__logo" />
-        <div className="app-topbar__spacer" />
+        {/* Brand section: hamburger + logo grouped together, matching the
+            sidebar's own footprint - collapsing the sidebar hides ONLY the
+            logo alongside it (per user's explicit direction), leaving just
+            the toggle visible so the control is never lost. Toggle is drawn
+            as three CSS bars, not a Unicode/emoji glyph. */}
+        <div className="app-topbar__brand">
+          <button
+            type="button"
+            className="app-topbar__sidebar-toggle"
+            onClick={() => setSidebarCollapsed((v) => !v)}
+            aria-label={t(sidebarCollapsed ? "sidebar_expand" : "sidebar_collapse")}
+            title={t(sidebarCollapsed ? "sidebar_expand" : "sidebar_collapse")}
+            aria-expanded={!sidebarCollapsed}
+          >
+            <span className="app-topbar__sidebar-toggle-bar" />
+            <span className="app-topbar__sidebar-toggle-bar" />
+            <span className="app-topbar__sidebar-toggle-bar" />
+          </button>
+          {!sidebarCollapsed && (
+            <img src="/brand/subakin-logo.svg" alt="Logo Subak.In" className="app-topbar__logo" />
+          )}
+        </div>
         {weather && <span className="weather-badge">☁ {weatherBadgeText(weather)}</span>}
-        {meta && (
-          <span className="app-topbar__meta">
-            {t("topbar_week", { prov: meta.provinsi, n: meta.minggu_berjalan })}
-          </span>
-        )}
+        <div className="app-topbar__spacer" />
         <LangToggle />
       </header>
       <div className="app-body">
-        <nav className="app-sidebar">
+        <nav className={sidebarCollapsed ? "app-sidebar app-sidebar--collapsed" : "app-sidebar"}>
           {NAV_ITEMS.map((item) => (
             <button
               key={item.id}
@@ -61,13 +79,15 @@ function AppShell() {
               aria-current={item.id === screen ? "page" : undefined}
               onClick={() => setScreen(item.id)}
             >
-              {t(item.labelKey)}
+              <span className="app-sidebar__label">{t(item.labelKey)}</span>
             </button>
           ))}
         </nav>
         {error && <p className="app-error">{t("load_error", { msg: error })}</p>}
         {!error && !meta && <p className="app-loading">{t("loading")}</p>}
-        {!error && meta && screen === "peta_simulasi" && <PetaSimulasi meta={meta} />}
+        {!error && meta && screen === "peta_simulasi" && (
+          <PetaSimulasi meta={meta} komoditasId={komoditasId} onKomoditasChange={setKomoditasId} />
+        )}
         {!error && meta && screen === "panen_darurat" && <PanenDarurat />}
       </div>
     </div>

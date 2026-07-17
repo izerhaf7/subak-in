@@ -3,20 +3,34 @@ import StatusBadge from "./StatusBadge.jsx";
 import { TOOLTIP_PROPS } from "../lib/chartStyle.js";
 import { useT } from "../lib/i18n.jsx";
 
-// Panel untuk kabupaten buta produsen yang punya sinyal eceran: garis harga
-// eceran (data asli) + rentang estimasi harga produsen (eceran x rasio
-// transmisi p25-p75). Rentang, bukan angka tunggal — kejujuran tentang
-// ketidakpastian adalah bagian dari desain.
+// Panel untuk kabupaten buta produsen yang punya sinyal eceran: rentang
+// estimasi harga PRODUSEN (eceran x rasio transmisi p25-p75) sebagai fokus
+// utama - ini yang relevan buat petani, bukan harga eceran yang mereka tidak
+// pernah terima langsung. Garis eceran (satu-satunya data ASLI/measured di
+// sini - pita produsen adalah turunannya) tetap digambar untuk transparansi
+// asal-usul data, tapi didemote jadi garis tipis putus-putus di belakang,
+// bukan elemen utama seperti sebelumnya.
+//
+// BUG FOUND (via user: chart nampilin Rp50-80rb padahal panel simulasi bilang
+// Rp14-15rb - dua angka itu BEDA PASAR (eceran konsumen vs produsen) DAN
+// beda skop (satu kabupaten spesifik vs agregat provinsi), bukan salah
+// hitung, tapi tampilannya menyesatkan karena eceran digambar sebagai garis
+// utama tegas sementara justru produsen (yang relevan ke petani) cuma jadi
+// pita transparan di background.
 export default function ProxyPanel({ kabupaten, compact = false }) {
   const { t } = useT();
   const proxy = kabupaten.proxy_eceran;
   const bandByMinggu = new Map(proxy.band.map((b) => [b.minggu, [b.rp_lo, b.rp_hi]]));
 
-  const data = kabupaten.retail_overlay.map((r) => ({
-    minggu: r.minggu,
-    eceran: r.rp,
-    band: bandByMinggu.get(r.minggu) ?? null,
-  }));
+  const data = kabupaten.retail_overlay.map((r) => {
+    const band = bandByMinggu.get(r.minggu) ?? null;
+    return {
+      minggu: r.minggu,
+      eceran: r.rp,
+      band,
+      produsenTengah: band ? (band[0] + band[1]) / 2 : null,
+    };
+  });
 
   return (
     <aside className="kabupaten-panel">
@@ -46,8 +60,9 @@ export default function ProxyPanel({ kabupaten, compact = false }) {
               Array.isArray(value) ? [`Rp${value[0].toLocaleString("id-ID")}–${value[1].toLocaleString("id-ID")}`, name] : [`Rp${Number(value).toLocaleString("id-ID")}`, name]
             }
           />
-          <Area dataKey="band" name={t("proxy_band_label")} stroke="none" fill="#8a3f28" fillOpacity={0.14} />
-          <Line dataKey="eceran" name={t("retail_line_label", { sumber: proxy.sumber_nama })} stroke="#52514e" dot={false} strokeWidth={2} />
+          <Area dataKey="band" name={t("proxy_band_label")} stroke="none" fill="#8a3f28" fillOpacity={0.18} />
+          <Line dataKey="produsenTengah" name={t("proxy_band_label")} stroke="#8a3f28" dot={false} strokeWidth={2.5} />
+          <Line dataKey="eceran" name={t("retail_line_label", { sumber: proxy.sumber_nama })} stroke="#a9a6a0" dot={false} strokeWidth={1} strokeDasharray="3 3" />
         </ComposedChart>
       </ResponsiveContainer>
     </aside>

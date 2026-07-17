@@ -12,15 +12,46 @@ import PlantingPopup from "../components/PlantingPopup.jsx";
 import HasilSimulasiPanel from "../components/HasilSimulasiPanel.jsx";
 import LaporanModal from "../components/LaporanModal.jsx";
 import { buildKabupatenReport, buildProvinsiReport } from "../lib/reportBuilder.js";
+import { summarizeSimulationImpact } from "../lib/supplyMath.js";
 import { loadGeo, loadMap, loadKabupaten, loadSimulasi } from "../lib/loadData.js";
 import { KOTA_IDS } from "../lib/wilayah.js";
 import { recomputeAllRiskMingguan } from "../lib/riskMath.js";
+import { riskColor, riskTextColor } from "../lib/riskColor.js";
 import { useT } from "../lib/i18n.jsx";
 
 const MEASURED_STATUSES = new Set(["measured", "measured_stale"]);
 
 function formatRp(rp) {
   return rp == null ? "—" : `Rp${rp.toLocaleString("id-ID")}`;
+}
+
+const SIM_WEEKS_OUT = 20; // matches model/run_all.py's FORECAST_HORIZON
+
+// Fallback for the "proyeksi harga saat panen raya" KPI when the top-risk
+// kabupaten has no PIHPS forecast of its own (harga_proyeksi_puncak_rp is
+// null - most kabupaten with real production volume aren't PIHPS price
+// points). Deliberately the SAME NUMBER as HasilSimulasiPanel's "Harga
+// dasar" - the lowest interpolated province-wide price anywhere across the
+// whole horizon - and LIVE to the same `geser` shifts: if the user is
+// mid-simulation, this KPI reflects the shifted ("sesudah") curve too,
+// instead of freezing at the unshifted baseline while the sidebar panel
+// moves. Three earlier versions each used a different definition (flat
+// lookup-table minimum, price at one specific peak-risk week, then a static
+// unshifted minimum) and each one drifted out of sync with whatever the
+// simulation panel showed once the user actually dragged a slider - found
+// via user confusion comparing this card to the panel below it mid-shift.
+function fallbackHargaRp(simulasi, geser) {
+  if (!simulasi?.pasokan_provinsi_baseline?.ton_per_minggu || !simulasi?.elastisitas_display?.lookup) return null;
+  const { minHargaSebelum, minHargaSesudah } = summarizeSimulationImpact(
+    simulasi.pasokan_provinsi_baseline.ton_per_minggu,
+    simulasi.kabupaten,
+    geser,
+    simulasi.permintaan_provinsi_mingguan_ton,
+    simulasi.elastisitas_display.lookup,
+    SIM_WEEKS_OUT
+  );
+  const hasShift = Object.values(geser).some((v) => v > 0);
+  return hasShift ? minHargaSesudah : minHargaSebelum;
 }
 
 function topRisikoKpi(mapData, minggu) {
@@ -155,10 +186,9 @@ function withLiveRisk(mapData, simulasi, geser, mingguBerjalan) {
   return { ...mapData, kabupaten };
 }
 
-export default function PetaSimulasi({ meta }) {
+export default function PetaSimulasi({ meta, komoditasId, onKomoditasChange }) {
   const { t, lang } = useT();
   const [geo, setGeo] = useState(null);
-  const [komoditasId, setKomoditasId] = useState("cabai_rawit");
   const [mapData, setMapData] = useState(null);
   const [simulasi, setSimulasi] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
@@ -176,6 +206,12 @@ export default function PetaSimulasi({ meta }) {
   useEffect(() => {
     setMapData(null);
     loadMap(komoditasId).then(setMapData).catch((e) => setError(e.message));
+    // Komoditas switcher now lives in the app topbar (persists across nav),
+    // not inside this screen - reset selection here in response to the prop
+    // changing, instead of an in-component handler that used to also flip
+    // local komoditasId state.
+    setSelectedId(null);
+    setKabupatenDetail(null);
   }, [komoditasId]);
 
   useEffect(() => {
@@ -200,7 +236,7 @@ export default function PetaSimulasi({ meta }) {
   const selectedIsKota = selectedId ? KOTA_IDS.has(selectedId) : false;
 
   useEffect(() => {
-    if (!selectedId || selectedIsKota) return;
+    if (!selectedId || selectedIsSentra || selectedIsKota) return;
     setKabupatenDetail(null);
     // Loads for BOTH measured (real forecast) and modeled (possible
     // proxy_eceran) kabupaten - the backend writes a detail file whenever
@@ -208,20 +244,17 @@ export default function PetaSimulasi({ meta }) {
     // (no proxy signal, no BPS supply) has no file at all; that 404 is an
     // expected "nothing to show" state here, not an app-level failure, so it
     // resolves to null rather than surfacing the blocking error banner.
-    // Also loaded for SENTRA kabupaten now (previously skipped): clicking a
-    // sentra used to show ONLY the planting-shift slider, with no price info
-    // until a shift was made (found via user: "bisa gak tampilin harga...
-    // gak cuma ketika kita geser slider simulasi tanam?"). Sentra can be
-    // measured/modeled/proxy just like any other kabupaten, independent of
-    // whether it's also simulasi-eligible.
-    loadKabupaten(selectedId, komoditasId).then(setKabupatenDetail).catch(() => setKabupatenDetail(null));
-  }, [selectedId, komoditasId, selectedIsKota]);
-
-  function handleKomoditasChange(id) {
-    setKomoditasId(id);
-    setSelectedId(null);
-    setKabupatenDetail(null);
-  }
+    // NOT loaded for sentra kabupaten: an earlier version loaded this for
+    // sentra too, to show a separate historical price chart alongside the
+    // planting popup and HasilSimulasiPanel - found via user feedback this
+    // produced 3 stacked cards fighting for space, with TWO different-looking
+    // prices (raw historical/forecast trend vs. the simulation's provincial
+    // "harga dasar") that read as contradictory even though they measure
+    // different things. Fix: sentra now show exactly 2 cards - the planting
+    // popup (PlantingPopup) and the simulation result (HasilSimulasiPanel,
+    // now always visible once a sentra is selected, not just after a shift)
+    // - one single price narrative instead of two.
+  }, [selectedId, komoditasId, selectedIsSentra, selectedIsKota]);
 
   const hasActiveSimulation = Object.values(geser).some((v) => v > 0);
 
@@ -235,6 +268,7 @@ export default function PetaSimulasi({ meta }) {
   if (!geo || !mapData || !simulasi) return <p className="app-loading">{t("loading_map")}</p>;
 
   const top = topRisikoKpi(liveMapData, minggu);
+  const fallbackPrice = fallbackHargaRp(simulasi, geser);
   const measuredCount = mapData.kabupaten.filter((k) => MEASURED_STATUSES.has(k.status_data)).length;
   const coverageNote =
     lang === "id"
@@ -269,34 +303,64 @@ export default function PetaSimulasi({ meta }) {
     }
   }
 
+  const todayLabel = new Intl.DateTimeFormat(lang === "id" ? "id-ID" : "en-GB", {
+    day: "numeric",
+    month: "short",
+  }).format(new Date());
+
   return (
     <div className="peta-risiko">
-      <div className="coverage-note">{coverageNote}</div>
-      <div className="kpi-row">
-        <div className="kpi-chip">
-          <span className="kpi-chip__label">{t("kpi_top_risk")}</span>
-          <span className="kpi-chip__value">{top.nama}</span>
-          <span className="kpi-chip__sub">{t("kpi_index", { n: top.skorMingguIni })}</span>
+      {/* Filter bar: location + date are DISABLED selects, not live filters -
+          this app only ever analyzes Jawa Barat (hardcoded provincewide
+          across the whole backend, no other province exists to switch to)
+          and the "date" is already driven by the timeline slider below the
+          map + meta.minggu_berjalan, not a separate control. Rendered
+          disabled/visual-only to match the reference layout's filter-bar
+          shape without implying a filter that doesn't actually do anything -
+          an enabled-but-inert dropdown would be more misleading than a
+          disabled one. */}
+      <div className="filter-bar">
+        <div className="filter-bar__selects">
+          <select className="filter-bar__select" disabled value={meta.provinsi}>
+            <option value={meta.provinsi}>{meta.provinsi}</option>
+          </select>
+          <select className="filter-bar__select" disabled value={todayLabel}>
+            <option value={todayLabel}>{todayLabel}</option>
+          </select>
         </div>
-        <div className="kpi-chip">
-          <span className="kpi-chip__label">{t("kpi_peak_price")}</span>
-          <span className={top.kpi.harga_proyeksi_puncak_rp == null ? "kpi-chip__value kpi-chip__value--empty" : "kpi-chip__value angka-estimasi"}>
-            {top.kpi.harga_proyeksi_puncak_rp == null ? t("kpi_no_data") : formatRp(top.kpi.harga_proyeksi_puncak_rp)}
-          </span>
-        </div>
-        <div className="kpi-chip">
-          <span className="kpi-chip__label">{t("kpi_peak_week")}</span>
-          <span className="kpi-chip__value">
-            {top.kpi.minggu_puncak === meta.minggu_berjalan ? t("now") : t("week_n", { n: top.kpi.minggu_puncak })}
-          </span>
-        </div>
-        <div className="kpi-chip">
-          <KomoditasSwitcher activeId={komoditasId} onChange={handleKomoditasChange} />
-        </div>
-        <div className="kpi-chip" style={{ borderRight: "none" }}>
-          <button type="button" className="btn-primary" onClick={handleBuatLaporan} disabled={laporanLoading}>
-            {laporanLoading ? t("laporan_membuat") : t("laporan_buat")}
-          </button>
+        <KomoditasSwitcher activeId={komoditasId} onChange={onKomoditasChange} />
+        <div className="filter-bar__spacer" />
+        <button type="button" className="btn-primary" onClick={handleBuatLaporan} disabled={laporanLoading}>
+          {laporanLoading ? t("laporan_membuat") : t("laporan_buat")}
+        </button>
+      </div>
+      <div className="kpi-section">
+        <p className="kpi-section__note">{coverageNote}</p>
+        <div className="kpi-row__cards">
+          <div className="kpi-chip" style={{ "--kpi-accent": riskColor(top.skorMingguIni) }}>
+            <span className="kpi-chip__label">{t("kpi_top_risk")}</span>
+            <span className="kpi-chip__value" style={{ color: riskTextColor(top.skorMingguIni) }}>{top.nama}</span>
+            <span className="kpi-chip__sub">{t("kpi_index", { n: top.skorMingguIni })}</span>
+          </div>
+          <div className="kpi-chip" style={{ "--kpi-accent": "var(--aksen)" }}>
+            <span className="kpi-chip__label">{t("kpi_peak_price")}</span>
+            {top.kpi.harga_proyeksi_puncak_rp != null ? (
+              <span className="kpi-chip__value angka-estimasi">{formatRp(top.kpi.harga_proyeksi_puncak_rp)}</span>
+            ) : fallbackPrice != null ? (
+              <>
+                <span className="kpi-chip__value angka-estimasi">{formatRp(fallbackPrice)}</span>
+                <span className="kpi-chip__sub">{t("kpi_peak_price_floor_note")}</span>
+              </>
+            ) : (
+              <span className="kpi-chip__value kpi-chip__value--empty">{t("kpi_no_data")}</span>
+            )}
+          </div>
+          <div className="kpi-chip" style={{ "--kpi-accent": "var(--risk-high)" }}>
+            <span className="kpi-chip__label">{t("kpi_peak_week")}</span>
+            <span className="kpi-chip__value">
+              {top.kpi.minggu_puncak === meta.minggu_berjalan ? t("now") : t("week_n", { n: top.kpi.minggu_puncak })}
+            </span>
+          </div>
         </div>
       </div>
       <div className="peta-risiko__body">
@@ -339,19 +403,12 @@ export default function PetaSimulasi({ meta }) {
           </div>
 
           {selectedIsSentra && (
-            <>
-              {selectedIsMeasured ? (
-                kabupatenDetail && <KabupatenPanel kabupaten={kabupatenDetail} compact />
-              ) : kabupatenDetail?.proxy_eceran ? (
-                <ProxyPanel kabupaten={kabupatenDetail} compact />
-              ) : null}
-              <PlantingPopup
-                kabupaten={selectedSentra}
-                geser={geser[selectedId] ?? 0}
-                onChange={(v) => setGeser((prev) => ({ ...prev, [selectedId]: v }))}
-                onClose={() => setSelectedId(null)}
-              />
-            </>
+            <PlantingPopup
+              kabupaten={selectedSentra}
+              geser={geser[selectedId] ?? 0}
+              onChange={(v) => setGeser((prev) => ({ ...prev, [selectedId]: v }))}
+              onClose={() => setSelectedId(null)}
+            />
           )}
 
           {!selectedIsSentra && selectedId && (
@@ -366,7 +423,7 @@ export default function PetaSimulasi({ meta }) {
             )
           )}
 
-          {hasActiveSimulation && (
+          {(selectedIsSentra || hasActiveSimulation) && (
             <HasilSimulasiPanel
               simulasi={simulasi}
               geser={geser}

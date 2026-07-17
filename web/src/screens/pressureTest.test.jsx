@@ -9,6 +9,7 @@
 // doesn't guard), not the click wiring, which is already covered by manual
 // QA.
 import { describe, it, expect, vi, afterEach } from "vitest";
+import { useState } from "react";
 import { render, cleanup, screen, fireEvent, waitFor, within } from "@testing-library/react";
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
@@ -183,6 +184,18 @@ describe("pressure test: PanenDarurat across every kabupaten with matches", () =
   });
 });
 
+// PetaSimulasi doesn't own komoditasId state itself - it's lifted to
+// AppShell (parent) so other chrome could theoretically read/react to it,
+// but the switcher control itself renders inside PetaSimulasi's own filter
+// bar. Tests exercising komoditas switching need a small stand-in that
+// mimics AppShell's state lift, without rendering a second switcher.
+function PetaSimulasiHarness({ meta }) {
+  const [komoditasId, setKomoditasId] = useState("cabai_rawit");
+  return (
+    <PetaSimulasi meta={meta} komoditasId={komoditasId} onKomoditasChange={setKomoditasId} />
+  );
+}
+
 describe("pressure test: merged PetaSimulasi screen (map + planting popup + result)", () => {
   it("clicking a sentra opens the planting popup, and shifting it reveals the result panel", async () => {
     mockFetchFromDisk();
@@ -190,7 +203,7 @@ describe("pressure test: merged PetaSimulasi screen (map + planting popup + resu
     const errors = [];
     const spy = vi.spyOn(console, "error").mockImplementation((...args) => errors.push(args));
 
-    render(<PetaSimulasi meta={meta} />);
+    render(<PetaSimulasiHarness meta={meta} />);
     await waitFor(() => document.querySelectorAll(".jabar-map__region").length === 27);
 
     // Idle state: ranked list shown, no result panel, no bands rendered without a driver signal yet
@@ -214,17 +227,17 @@ describe("pressure test: merged PetaSimulasi screen (map + planting popup + resu
     await waitFor(() => document.querySelector(".hasil-simulasi-panel"));
     expect(screen.getByText(/Hasil simulasi tanam/i)).toBeTruthy();
 
-    // Regression: HasilSimulasiPanel used to have no way to dismiss itself
-    // once triggered (it's driven purely by "does any kabupaten have an
-    // active shift", not by selection state) - closing/deselecting the
-    // planting popup left it stuck forever. It must expose a reset control
-    // that clears every shift. Garut stays selected (its popup is still
-    // relevant), so check the popup's own slider fell back to "no shift"
-    // rather than asserting the ranked list reappears.
+    // Regression: HasilSimulasiPanel must expose a reset control that clears
+    // every shift. HasilSimulasiPanel is now ALWAYS shown once a sentra is
+    // selected (not just after a shift - found via user feedback that 3
+    // stacked cards with 2 different-looking prices, historical trend vs.
+    // simulation "harga dasar", read as contradictory), so resetting while
+    // Garut is still selected keeps the panel mounted - it just falls back
+    // to before===after (0% reduction) rather than disappearing.
     const resetButton = screen.getByText(/Reset semua/i);
     fireEvent.click(resetButton);
-    await waitFor(() => expect(document.querySelector(".hasil-simulasi-panel")).toBeNull());
-    expect(screen.getByText(/Tidak digeser \(tanam W\d+\)/i)).toBeTruthy();
+    await waitFor(() => expect(screen.getByText(/Tidak digeser \(tanam W\d+\)/i)).toBeTruthy());
+    expect(document.querySelector(".hasil-simulasi-panel")).not.toBeNull();
 
     expect(errors).toEqual([]);
     spy.mockRestore();
@@ -236,7 +249,7 @@ describe("pressure test: merged PetaSimulasi screen (map + planting popup + resu
     const errors = [];
     const spy = vi.spyOn(console, "error").mockImplementation((...args) => errors.push(args));
 
-    render(<PetaSimulasi meta={meta} />);
+    render(<PetaSimulasiHarness meta={meta} />);
     await waitFor(() => document.querySelectorAll(".jabar-map__region").length === 27);
 
     for (const label of [/Bawang Merah/i, /Cabai Besar/i, /Cabai Rawit/i]) {

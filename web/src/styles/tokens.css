@@ -74,23 +74,64 @@ body {
 .app-shell {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
+/* Faint green tint (same mix used for .kpi-section-adjacent surfaces
+   elsewhere) per user's direction to bleed a green tone into the topbar
+   rather than leaving it plain white. */
 .app-topbar {
   display: flex;
   align-items: center;
   gap: 1.1rem;
   padding: 0.6rem 1.1rem;
   border-bottom: 1px solid var(--border-hairline);
-  background: #fff;
+  background: color-mix(in srgb, var(--aksen) 8%, var(--surface-card));
   font-size: 0.8rem;
+}
+
+.app-topbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
 }
 
 .app-topbar__logo {
   height: 50px;
   width: auto;
   display: block;
+}
+
+/* Sidebar collapse toggle: three plain CSS bars (no Unicode/emoji glyph,
+   per explicit user preference against any emoji in this UI - past or
+   future). Lives beside the logo in the SAME brand section, so collapsing
+   the sidebar can also hide the logo (per user's direction) while the
+   toggle itself stays put and reachable. */
+.app-topbar__sidebar-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 28px;
+  height: 28px;
+  padding: 6px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  flex: none;
+}
+
+.app-topbar__sidebar-toggle-bar {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--ink-secondary);
+  border-radius: 1px;
+  transition: background-color 0.15s ease;
+}
+
+.app-topbar__sidebar-toggle:hover .app-topbar__sidebar-toggle-bar {
+  background: var(--ink-primary);
 }
 
 .app-topbar__title {
@@ -138,14 +179,11 @@ body {
   flex: 1;
 }
 
-.app-topbar__meta {
-  color: var(--ink-secondary);
-}
-
 .app-body {
   display: flex;
   flex: 1;
   min-height: 0;
+  align-items: stretch;
 }
 
 .app-sidebar {
@@ -154,6 +192,18 @@ body {
   border-right: 1px solid var(--border-hairline);
   background: var(--surface-sidebar);
   padding: 0.75rem 0;
+  overflow: hidden;
+  transition: width 0.2s ease, padding 0.2s ease, border-color 0.2s ease;
+}
+
+/* Collapsed: fully hidden (0 width, no icon strip left behind) - toggled
+   from the hamburger button in the topbar's brand section (which also
+   hides the logo alongside it, per user's direction), state lives in
+   AppShell (not persisted across reloads; a per-session preference). */
+.app-sidebar--collapsed {
+  width: 0;
+  padding: 0.75rem 0;
+  border-right-color: transparent;
 }
 
 .app-sidebar__item {
@@ -168,6 +218,13 @@ body {
   font-family: var(--font-ui);
   color: var(--ink-muted);
   cursor: pointer;
+  white-space: nowrap;
+}
+
+.app-sidebar__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .app-sidebar__item:hover {
@@ -182,12 +239,60 @@ body {
   background: var(--surface-card);
 }
 
-.coverage-note {
-  font-size: 0.72rem;
-  color: var(--ink-secondary);
-  background: color-mix(in srgb, var(--aksen) 8%, var(--surface-card));
+/* Filter bar: location/date are DISABLED selects (see PetaSimulasi.jsx's
+   comment - this app only ever analyzes one province, and "date" is already
+   the timeline slider below the map, not a separate live filter). Komoditas
+   switcher + "Buat Laporan" share the row, matching the reference layout's
+   filter-bar shape (selects left, tabs middle, button right). */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.1rem;
+  background: #fff;
   border-bottom: 1px solid var(--border-hairline);
-  padding: 0.4rem 1.1rem;
+}
+
+.filter-bar__selects {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.filter-bar__select {
+  border: 1px solid var(--border-strong);
+  background: var(--surface-card);
+  color: var(--ink-secondary);
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  /* disabled, not interactive - see the comment on .filter-bar above */
+  cursor: default;
+  opacity: 0.85;
+}
+
+.filter-bar__spacer {
+  flex: 1;
+}
+
+/* KPI section: left 25% is the PIHPS coverage note, right 75% the 3 KPI
+   cards - per the reference layout's explicit width split. */
+.kpi-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.1rem;
+  background: var(--surface-sidebar);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.kpi-section__note {
+  flex: 0 0 25%;
+  margin: 0;
+  padding-top: 0.4rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ink-secondary);
 }
 
 .app-loading,
@@ -227,30 +332,64 @@ body {
   border-color: var(--aksen);
 }
 
+/* Page scrolls as a normal document (no viewport clamp): the filter bar +
+   KPI section scroll away with the rest of the page instead of being pinned,
+   and .peta-risiko__body is sized by its content instead of "whatever's left
+   in 100vh" - so once the header sections scroll out of view, the map has
+   room to read as bigger rather than staying squeezed into a fixed slot. */
 .peta-risiko {
   flex: 1;
   display: flex;
   flex-direction: column;
   min-width: 0;
-  min-height: 0;
 }
 
-.kpi-row {
-  display: flex;
-  border-bottom: 1px solid var(--border-hairline);
-  background: #fff;
+/* 3 equal columns, filling the remaining 75% next to .kpi-section__note
+   (per the reference layout's explicit grid spec). */
+.kpi-row__cards {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
 }
 
+/* Each KPI is its own card (per user's layout sketch: 3 separate boxes with
+   a gap, not one flat strip with border-right dividers), enlarged and given
+   more presence per the reference image (bigger padding, bolder/larger
+   value, stronger shadow, colored top accent) - background lifts off
+   .kpi-row's surface-sidebar tone. --kpi-accent is set inline per card
+   (risk color for the top-risk card, brand/risk tones for the others) so
+   the SAME low-value data (e.g. index 0 this early in the week) still reads
+   as a deliberately designed, "alive" card rather than a plain empty box -
+   found via user feedback the flat un-accented cards read as too bare when
+   values happen to be near-zero. No emoji anywhere in this UI (explicit
+   user preference) - the accent bar carries that visual weight instead. */
 .kpi-chip {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
-  padding: 0.6rem 1.1rem;
-  border-right: 1px solid var(--border-hairline);
+  gap: 0.3rem;
+  min-width: 0;
+  padding: 1.1rem 1.4rem 1rem;
+  background: var(--surface-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.09);
+  overflow: hidden;
+}
+
+.kpi-chip::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--kpi-accent, var(--aksen));
 }
 
 .kpi-chip__label {
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   color: var(--ink-secondary);
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -259,11 +398,11 @@ body {
 .kpi-chip__value {
   font-family: var(--font-data);
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
 }
 
 .kpi-chip__sub {
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   color: var(--ink-muted);
 }
 
@@ -278,13 +417,13 @@ body {
 .peta-risiko__body {
   display: flex;
   flex: 1;
-  min-height: 0;
+  min-height: 640px;
   padding: 1rem;
   gap: 1rem;
 }
 
 .peta-risiko__map-col {
-  flex: 1 1 60%;
+  flex: 1 1 70%;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -336,7 +475,7 @@ body {
 .jabar-map-wrap {
   position: relative;
   flex: 1;
-  min-height: 0;
+  min-height: 480px;
 }
 
 /* Tooltip peta menggantikan label teks permanen: nama + indeks + status
@@ -531,8 +670,8 @@ body {
 }
 
 .side-col {
-  width: 260px;
-  flex: none;
+  flex: 1 1 30%;
+  min-width: 240px;
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -697,6 +836,59 @@ body {
   margin: 0;
 }
 
+/* Absorber table (Panen Darurat) - was a bare unbordered table, gathered
+   into a card matching the rest of the app's surfaces/typography. */
+.absorber-table__scroll {
+  overflow-x: auto;
+}
+
+.absorber-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.78rem;
+}
+
+.absorber-table th,
+.absorber-table td {
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-hairline);
+  white-space: nowrap;
+}
+
+.absorber-table th {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ink-secondary);
+  background: var(--surface-sidebar);
+  font-weight: 700;
+}
+
+.absorber-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.absorber-table tbody tr:hover {
+  background: color-mix(in srgb, var(--aksen) 5%, transparent);
+}
+
+.absorber-table__diff--positif {
+  color: var(--aksen);
+  font-family: var(--font-data);
+  font-weight: 700;
+}
+
+.absorber-table__diff--negatif {
+  color: var(--risk-critical);
+  font-family: var(--font-data);
+  font-weight: 700;
+}
+
 .simulasi-tanam__chart-block {
   display: flex;
   flex-direction: column;
@@ -773,37 +965,6 @@ body {
   color: var(--ink-muted);
 }
 
-.absorber-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.78rem;
-}
-
-.absorber-table th {
-  text-align: left;
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: var(--ink-secondary);
-  border-bottom: 1px solid var(--border-strong);
-  padding: 0.4rem 0.5rem;
-}
-
-.absorber-table td {
-  padding: 0.4rem 0.5rem;
-  border-bottom: 1px solid var(--border-hairline);
-}
-
-.absorber-table__diff--positif {
-  color: var(--sawah);
-  font-family: var(--font-data);
-}
-
-.absorber-table__diff--negatif {
-  color: var(--risk-critical);
-  font-family: var(--font-data);
-}
-
 .map-hint {
   font-size: 0.72rem;
   color: var(--ink-muted);
@@ -840,7 +1001,12 @@ body {
     flex-direction: column;
   }
 
-  .app-sidebar {
+  /* Collapse doesn't make sense once the sidebar is already a horizontal
+     strip (own layout below ~900px) - force it always visible, ignoring
+     the collapsed state, rather than letting it disappear entirely on a
+     small screen with no room for a topbar hamburger reachable elsewhere. */
+  .app-sidebar,
+  .app-sidebar--collapsed {
     width: 100%;
     display: flex;
     padding: 0;
@@ -848,7 +1014,12 @@ body {
     border-bottom: 1px solid var(--border-hairline);
   }
 
-  .app-sidebar__item {
+  .app-topbar__sidebar-toggle {
+    display: none;
+  }
+
+  .app-sidebar__item,
+  .app-sidebar--collapsed .app-sidebar__item {
     flex: 1;
     text-align: center;
     border-left: none;
@@ -869,21 +1040,26 @@ body {
     width: 100%;
   }
 
-  .kpi-row {
+  .filter-bar {
     flex-wrap: wrap;
+    row-gap: 0.6rem;
   }
 
-  .kpi-chip {
-    flex: 1 1 40%;
+  .kpi-section {
+    flex-direction: column;
+  }
+
+  .kpi-section__note {
+    flex: none;
+  }
+
+  .kpi-row__cards {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .app-topbar {
     flex-wrap: wrap;
     row-gap: 0.4rem;
-  }
-
-  .app-topbar__meta {
-    display: none;
   }
 }
 
