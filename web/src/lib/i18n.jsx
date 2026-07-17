@@ -114,6 +114,7 @@ const STRINGS = {
     laporan_top_ranking_title: "Top 5 Kabupaten Berisiko",
     laporan_coverage_title: "Cakupan Data",
     laporan_geser_label: "Jadwal tanam digeser",
+    laporan_harga_dasar: "Harga dasar",
     laporan_footer_disclaimer:
       "Laporan ini dihasilkan otomatis dari model estimasi Panen Radar berdasarkan data PIHPS, BPS, dan BMKG. Angka bisa berbeda dari kondisi lapangan aktual.",
   },
@@ -226,6 +227,7 @@ const STRINGS = {
     laporan_top_ranking_title: "Top 5 Highest-Risk Regencies",
     laporan_coverage_title: "Data Coverage",
     laporan_geser_label: "Planting schedule shifted",
+    laporan_harga_dasar: "Base price",
     laporan_footer_disclaimer:
       "This report is generated automatically from Panen Radar's estimation model using PIHPS, BPS, and BMKG data. Figures may differ from actual field conditions.",
   },

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LineChart, Line, ComposedChart, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { TOOLTIP_PROPS } from "../lib/chartStyle.js";
 import { exportLaporanToPdf } from "../lib/exportPdf.js";
@@ -24,7 +24,12 @@ function statusBadgeKey(statusData) {
 export default function LaporanModal({ report, onClose }) {
   const { t, lang } = useT();
   const previewRef = useRef(null);
+  const panelRef = useRef(null);
   const [status, setStatus] = useState("idle"); // "idle" | "exporting" | "error"
+
+  useEffect(() => {
+    panelRef.current?.focus();
+  }, []);
 
   async function handleExport() {
     setStatus("exporting");
@@ -47,7 +52,7 @@ export default function LaporanModal({ report, onClose }) {
       aria-label={t("laporan_preview_title")}
       onKeyDown={(e) => { if (e.key === "Escape") onClose(); }}
     >
-      <div className="modal-panel">
+      <div className="modal-panel" ref={panelRef} tabIndex={-1}>
         <div className="modal-panel__header">
           <span>{t("laporan_preview_title")}</span>
           <button type="button" className="modal-panel__close" onClick={onClose} aria-label={t("laporan_kembali")}>
@@ -129,7 +134,7 @@ export default function LaporanModal({ report, onClose }) {
                     <span className="laporan-preview__kpi-value">{report.simulasi.penurunanPuncakPct}%</span>
                   </div>
                   <div>
-                    <span className="laporan-preview__kpi-label">{lang === "id" ? "Harga dasar" : "Base price"}</span>
+                    <span className="laporan-preview__kpi-label">{t("laporan_harga_dasar")}</span>
                     <span className="laporan-preview__kpi-value">
                       {formatRp(report.simulasi.hargaDasarSebelum)} → {formatRp(report.simulasi.hargaDasarSesudah)}
                     </span>

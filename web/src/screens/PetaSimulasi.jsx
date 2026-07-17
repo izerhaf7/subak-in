@@ -141,19 +141,22 @@ export default function PetaSimulasi({ meta }) {
 
   async function handleBuatLaporan() {
     setLaporanLoading(true);
-    let detailForReport = kabupatenDetail;
-    if (selectedId && !selectedIsKota && !detailForReport) {
-      try {
-        detailForReport = await loadKabupaten(selectedId, komoditasId);
-      } catch {
-        detailForReport = null;
+    try {
+      let detailForReport = kabupatenDetail;
+      if (selectedId && !selectedIsKota && !detailForReport) {
+        try {
+          detailForReport = await loadKabupaten(selectedId, komoditasId);
+        } catch {
+          detailForReport = null;
+        }
       }
+      const report = selectedId && !selectedIsKota
+        ? buildKabupatenReport({ mapData, kabupatenDetail: detailForReport, kabupatenId: selectedId, simulasi, geser, meta, komoditasId, minggu, t })
+        : buildProvinsiReport({ mapData, meta, komoditasId, minggu, coverageNote });
+      setLaporanData(report);
+    } finally {
+      setLaporanLoading(false);
     }
-    const report = selectedId && !selectedIsKota
-      ? buildKabupatenReport({ mapData, kabupatenDetail: detailForReport, kabupatenId: selectedId, simulasi, geser, meta, komoditasId, minggu, t })
-      : buildProvinsiReport({ mapData, meta, komoditasId, minggu, coverageNote });
-    setLaporanData(report);
-    setLaporanLoading(false);
   }
 
   return (
