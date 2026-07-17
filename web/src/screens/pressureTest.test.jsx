@@ -214,6 +214,18 @@ describe("pressure test: merged PetaSimulasi screen (map + planting popup + resu
     await waitFor(() => document.querySelector(".hasil-simulasi-panel"));
     expect(screen.getByText(/Hasil simulasi tanam/i)).toBeTruthy();
 
+    // Regression: HasilSimulasiPanel used to have no way to dismiss itself
+    // once triggered (it's driven purely by "does any kabupaten have an
+    // active shift", not by selection state) - closing/deselecting the
+    // planting popup left it stuck forever. It must expose a reset control
+    // that clears every shift. Garut stays selected (its popup is still
+    // relevant), so check the popup's own slider fell back to "no shift"
+    // rather than asserting the ranked list reappears.
+    const resetButton = screen.getByText(/Reset semua/i);
+    fireEvent.click(resetButton);
+    await waitFor(() => expect(document.querySelector(".hasil-simulasi-panel")).toBeNull());
+    expect(screen.getByText(/Sesuai jadwal tanam biasa/i)).toBeTruthy();
+
     expect(errors).toEqual([]);
     spy.mockRestore();
   });

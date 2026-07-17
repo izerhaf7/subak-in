@@ -250,7 +250,12 @@ export default function PetaSimulasi({ meta }) {
           )}
 
           {hasActiveSimulation && (
-            <HasilSimulasiPanel simulasi={simulasi} geser={geser} kernel={kernel} />
+            <HasilSimulasiPanel
+              simulasi={simulasi}
+              geser={geser}
+              kernel={kernel}
+              onReset={() => setGeser(Object.fromEntries(simulasi.kabupaten.map((k) => [k.id, 0])))}
+            />
           )}
 
           {!selectedId && !hasActiveSimulation && (

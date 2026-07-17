@@ -9,7 +9,7 @@ const WEEKS_OUT = 16;
 // supply+price effect of the active `geser` shifts — the same computation
 // SimulasiTanam.jsx used to show across two full-width charts, condensed into
 // one overlaid chart since this panel lives in the narrow side column.
-export default function HasilSimulasiPanel({ simulasi, geser, kernel }) {
+export default function HasilSimulasiPanel({ simulasi, geser, kernel, onReset }) {
   const { t, lang } = useT();
   const { chartData, penurunanPuncakPct, minHargaSebelum, minHargaSesudah } = summarizeSimulationImpact(
     simulasi.pasokan_provinsi_baseline.ton_per_minggu,
@@ -25,6 +25,9 @@ export default function HasilSimulasiPanel({ simulasi, geser, kernel }) {
     <aside className="kabupaten-panel hasil-simulasi-panel">
       <header className="kabupaten-panel__header">
         <h2>{t("hasil_simulasi_title")}</h2>
+        <button type="button" className="side-col__back" onClick={onReset}>
+          {t("reset_all")}
+        </button>
       </header>
       <div className="hasil-simulasi-panel__kpis">
         <div className="hasil-simulasi-panel__kpi">
