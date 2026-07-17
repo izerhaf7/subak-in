@@ -19,7 +19,7 @@ import { useT } from "../lib/i18n.jsx";
 const MEASURED_STATUSES = new Set(["measured", "measured_stale"]);
 
 function formatRp(rp) {
-  return rp == null ? "—" : `Rp${rp.toLocaleString("id-ID")}`;
+  return rp == null ? "-" : `Rp${rp.toLocaleString("id-ID")}`;
 }
 
 function topRisikoKpi(mapData, minggu) {

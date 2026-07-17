@@ -209,7 +209,7 @@ describe("pressure test: merged PetaSimulasi screen (map + planting popup + resu
     expect(document.querySelector(".timeline__band--panen")).not.toBeNull();
 
     // Shift the popup's slider (NOT the timeline's - both are input[type=range])
-    const popupSlider = screen.getByLabelText(/Geser jadwal tanam — Kab\. Garut/i);
+    const popupSlider = screen.getByLabelText(/Geser jadwal tanam.*Kab\. Garut/i);
     fireEvent.change(popupSlider, { target: { value: popupSlider.max } });
     await waitFor(() => document.querySelector(".hasil-simulasi-panel"));
     expect(screen.getByText(/Hasil simulasi tanam/i)).toBeTruthy();

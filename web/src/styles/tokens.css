@@ -767,35 +767,57 @@ body {
   color: var(--ink-muted);
 }
 
+.absorber-table-wrap {
+  background: var(--surface-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
 .absorber-table {
   width: 100%;
-  border-collapse: collapse;
-  font-size: 0.78rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.8rem;
 }
 
 .absorber-table th {
   text-align: left;
-  font-size: 0.68rem;
+  font-size: 0.7rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: var(--ink-secondary);
-  border-bottom: 1px solid var(--border-strong);
-  padding: 0.4rem 0.5rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+  background: var(--surface-sidebar);
+  border-bottom: 1px solid var(--border-hairline);
+  padding: 0.65rem 0.85rem;
 }
 
 .absorber-table td {
-  padding: 0.4rem 0.5rem;
+  padding: 0.65rem 0.85rem;
   border-bottom: 1px solid var(--border-hairline);
+  transition: background-color 0.15s ease;
+}
+
+.absorber-table tr:hover td {
+  background: var(--surface-hover);
+}
+
+.absorber-table tr:last-child td {
+  border-bottom: none;
 }
 
 .absorber-table__diff--positif {
   color: var(--sawah);
   font-family: var(--font-data);
+  font-weight: 700;
 }
 
 .absorber-table__diff--negatif {
   color: var(--risk-critical);
   font-family: var(--font-data);
+  font-weight: 700;
 }
 
 .map-hint {

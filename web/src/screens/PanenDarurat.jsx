@@ -46,7 +46,7 @@ export default function PanenDarurat() {
         </div>
         <div className="kpi-chip" style={{ borderRight: "none" }}>
           <span className="kpi-chip__label">{t("dar_best")}</span>
-          <span className="kpi-chip__value">{topMatch ? topMatch.nama : "—"}</span>
+          <span className="kpi-chip__value">{topMatch ? topMatch.nama : "-"}</span>
         </div>
       </div>
       <div className="peta-risiko__body">
@@ -59,43 +59,45 @@ export default function PanenDarurat() {
           {matches.length === 0 ? (
             <p className="blind-spot-notice__text">{t("dar_none")}</p>
           ) : (
-            <table className="absorber-table">
-              <thead>
-                <tr>
-                  <th>{t("th_name")}</th>
-                  <th>{t("th_type")}</th>
-                  <th>{t("th_dist")}</th>
-                  <th>{t("th_cap")}</th>
-                  <th>{t("th_offer")}</th>
-                  <th>{t("th_diff")}</th>
-                  <th>{t("th_uplift")}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {matches.map((m) => {
-                  const ab = absorberById[m.absorber_id];
-                  if (!ab) return null;
-                  const positif = m.selisih_vs_pasar_rp_per_kg >= 0;
-                  return (
-                    <tr key={m.absorber_id}>
-                      <td>{ab.nama}</td>
-                      <td>{translateJenis(ab.jenis, lang)}</td>
-                      <td>{m.jarak_km} km</td>
-                      <td>{ab.kapasitas_ton} ton</td>
-                      <td className="angka-terukur">{formatRp(ab.harga_tawar_rp)}</td>
-                      <td className={positif ? "absorber-table__diff--positif" : "absorber-table__diff--negatif"}>
-                        {positif ? "+" : ""}
-                        {formatRp(m.selisih_vs_pasar_rp_per_kg)}/kg
-                      </td>
-                      <td className={positif ? "absorber-table__diff--positif" : "absorber-table__diff--negatif"}>
-                        {m.estimasi_uplift_juta >= 0 ? "+" : ""}
-                        {m.estimasi_uplift_juta} {t("juta")}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+            <div className="absorber-table-wrap">
+              <table className="absorber-table">
+                <thead>
+                  <tr>
+                    <th>{t("th_name")}</th>
+                    <th>{t("th_type")}</th>
+                    <th>{t("th_dist")}</th>
+                    <th>{t("th_cap")}</th>
+                    <th>{t("th_offer")}</th>
+                    <th>{t("th_diff")}</th>
+                    <th>{t("th_uplift")}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {matches.map((m) => {
+                    const ab = absorberById[m.absorber_id];
+                    if (!ab) return null;
+                    const positif = m.selisih_vs_pasar_rp_per_kg >= 0;
+                    return (
+                      <tr key={m.absorber_id}>
+                        <td>{ab.nama}</td>
+                        <td>{translateJenis(ab.jenis, lang)}</td>
+                        <td>{m.jarak_km} km</td>
+                        <td>{ab.kapasitas_ton} ton</td>
+                        <td className="angka-terukur">{formatRp(ab.harga_tawar_rp)}</td>
+                        <td className={positif ? "absorber-table__diff--positif" : "absorber-table__diff--negatif"}>
+                          {positif ? "+" : ""}
+                          {formatRp(m.selisih_vs_pasar_rp_per_kg)}/kg
+                        </td>
+                        <td className={positif ? "absorber-table__diff--positif" : "absorber-table__diff--negatif"}>
+                          {m.estimasi_uplift_juta >= 0 ? "+" : ""}
+                          {m.estimasi_uplift_juta} {t("juta")}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           )}
         </div>
         <div className="side-col">
