@@ -1,5 +1,5 @@
 import { ComposedChart, Line, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-import { aggregateSupplyCurve, interpolateHarga } from "../lib/supplyMath.js";
+import { summarizeSimulationImpact } from "../lib/supplyMath.js";
 import { TOOLTIP_PROPS } from "../lib/chartStyle.js";
 import { useT } from "../lib/i18n.jsx";
 
@@ -11,40 +11,14 @@ const WEEKS_OUT = 16;
 // one overlaid chart since this panel lives in the narrow side column.
 export default function HasilSimulasiPanel({ simulasi, geser, kernel }) {
   const { t, lang } = useT();
-
-  const sebelum = simulasi.pasokan_provinsi_baseline.ton_per_minggu;
-  
-  // Sesudah = sebelum - baseline_lama + baseline_lama_digeser
-  const sesudah = [...sebelum];
-  for (const k of simulasi.kabupaten) {
-    const shift = geser[k.id] || 0;
-    if (shift === 0) continue;
-    
-    const oldCurve = k.pasokan_baseline_ton || new Array(WEEKS_OUT).fill(0);
-    for (let i = 0; i < WEEKS_OUT; i++) {
-      sesudah[i] -= oldCurve[i];
-      if (i >= shift) {
-        sesudah[i] += oldCurve[i - shift];
-      }
-    }
-  }
-
-  const chartData = sebelum.map((ton, i) => {
-    const tonSesudah = sesudah[i];
-    const rasioSebelum = ton / simulasi.permintaan_provinsi_mingguan_ton;
-    const rasioSesudah = tonSesudah / simulasi.permintaan_provinsi_mingguan_ton;
-    return {
-      minggu: `M${i}`,
-      hargaSebelum: Math.round(interpolateHarga(rasioSebelum, simulasi.elastisitas_display.lookup)),
-      hargaSesudah: Math.round(interpolateHarga(rasioSesudah, simulasi.elastisitas_display.lookup)),
-    };
-  });
-
-  const puncakSebelum = Math.max(...sebelum);
-  const puncakSesudah = Math.max(...sesudah);
-  const penurunanPuncakPct = puncakSebelum > 0 ? Math.round((1 - puncakSesudah / puncakSebelum) * 100) : 0;
-  const minHargaSebelum = Math.min(...chartData.map((d) => d.hargaSebelum));
-  const minHargaSesudah = Math.min(...chartData.map((d) => d.hargaSesudah));
+  const { chartData, penurunanPuncakPct, minHargaSebelum, minHargaSesudah } = summarizeSimulationImpact(
+    simulasi.pasokan_provinsi_baseline.ton_per_minggu,
+    simulasi.kabupaten,
+    geser,
+    simulasi.permintaan_provinsi_mingguan_ton,
+    simulasi.elastisitas_display.lookup,
+    WEEKS_OUT
+  );
   const lebihStabil = minHargaSesudah > minHargaSebelum;
 
   return (

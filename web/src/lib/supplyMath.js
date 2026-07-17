@@ -51,3 +51,52 @@ export function aggregateSupplyCurve(kabupatenList, kernel, mulaiPanenHari, gese
   }
   return total;
 }
+
+// Combines the province-wide before/after supply delta + interpolateHarga
+// into the exact summary HasilSimulasiPanel.jsx shows on screen. Extracted
+// here (rather than left inline in the component) so reportBuilder.js can
+// produce the identical numbers for the PDF report without duplicating the
+// math.
+//
+// `pasokanProvinsiBaseline` is the REAL province-wide curve (all 27
+// kabupaten, precomputed by the backend) - not a re-sum of just the sentra
+// list, which would understate it. "Sesudah" is derived from that baseline
+// by swapping out each shifted sentra's own unshifted contribution
+// (`k.pasokan_baseline_ton`) for its shifted one, leaving every other
+// kabupaten's contribution (including non-sentra ones already baked into
+// the baseline) untouched.
+export function summarizeSimulationImpact(pasokanProvinsiBaseline, kabupatenList, geserById, permintaanProvinsiMingguanTon, lookup, weeksOut) {
+  const sebelum = pasokanProvinsiBaseline;
+  const sesudah = [...sebelum];
+  for (const k of kabupatenList) {
+    const shift = geserById[k.id] || 0;
+    if (shift === 0) continue;
+
+    const oldCurve = k.pasokan_baseline_ton || new Array(weeksOut).fill(0);
+    for (let i = 0; i < weeksOut; i++) {
+      sesudah[i] -= oldCurve[i];
+      if (i >= shift) {
+        sesudah[i] += oldCurve[i - shift];
+      }
+    }
+  }
+
+  const chartData = sebelum.map((ton, i) => {
+    const tonSesudah = sesudah[i];
+    const rasioSebelum = ton / permintaanProvinsiMingguanTon;
+    const rasioSesudah = tonSesudah / permintaanProvinsiMingguanTon;
+    return {
+      minggu: `M${i}`,
+      hargaSebelum: Math.round(interpolateHarga(rasioSebelum, lookup)),
+      hargaSesudah: Math.round(interpolateHarga(rasioSesudah, lookup)),
+    };
+  });
+
+  const puncakSebelum = Math.max(...sebelum);
+  const puncakSesudah = Math.max(...sesudah);
+  const penurunanPuncakPct = puncakSebelum > 0 ? Math.round((1 - puncakSesudah / puncakSebelum) * 100) : 0;
+  const minHargaSebelum = Math.min(...chartData.map((d) => d.hargaSebelum));
+  const minHargaSesudah = Math.min(...chartData.map((d) => d.hargaSesudah));
+
+  return { chartData, penurunanPuncakPct, minHargaSebelum, minHargaSesudah };
+}

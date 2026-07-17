@@ -20,6 +20,8 @@ import RankedList from "../components/RankedList.jsx";
 import PanenDarurat from "./PanenDarurat.jsx";
 import PetaSimulasi from "./PetaSimulasi.jsx";
 import { aggregateSupplyCurve } from "../lib/supplyMath.js";
+import LaporanModal from "../components/LaporanModal.jsx";
+import { buildKabupatenReport, buildProvinsiReport } from "../lib/reportBuilder.js";
 
 // jsdom has no ResizeObserver — Recharts' ResponsiveContainer needs one to
 // measure its parent. Real browsers all have it natively; this stub exists
@@ -231,6 +233,46 @@ describe("pressure test: merged PetaSimulasi screen (map + planting popup + resu
       await waitFor(() => document.querySelectorAll(".jabar-map__region").length === 27);
     }
 
+    expect(errors).toEqual([]);
+    spy.mockRestore();
+  });
+});
+
+describe("pressure test: LaporanModal renders both report modes without throwing", () => {
+  it("renders a kabupaten-mode report with an active simulation section", () => {
+    const meta = readJson(DATA_DIR, "meta.json");
+    const mapData = readJson(DATA_DIR, "map.json");
+    const simulasi = readJson(DATA_DIR, "simulasi.json");
+    const kabupatenDetail = readJson(DATA_DIR, "kabupaten", "garut.json");
+    const errors = [];
+    const spy = vi.spyOn(console, "error").mockImplementation((...args) => errors.push(args));
+
+    const report = buildKabupatenReport({
+      mapData, kabupatenDetail, kabupatenId: "garut", simulasi,
+      geser: { garut: 4 }, meta, komoditasId: "cabai_rawit", minggu: meta.minggu_berjalan,
+      t: (key) => key, // garut is "measured" -> resolveKualitasCatatan never calls t(), this is unused
+    });
+
+    render(<LaporanModal report={report} onClose={() => {}} />);
+    expect(screen.getByText(/Kab\. Garut/)).toBeTruthy();
+    expect(document.querySelectorAll(".laporan-preview__section").length).toBeGreaterThanOrEqual(3);
+    expect(errors).toEqual([]);
+    spy.mockRestore();
+  });
+
+  it("renders a provinsi-mode report with a top-5 ranking and no simulation section", () => {
+    const meta = readJson(DATA_DIR, "meta.json");
+    const mapData = readJson(DATA_DIR, "map.json");
+    const errors = [];
+    const spy = vi.spyOn(console, "error").mockImplementation((...args) => errors.push(args));
+
+    const report = buildProvinsiReport({
+      mapData, meta, komoditasId: "cabai_rawit", minggu: meta.minggu_berjalan, coverageNote: "test coverage",
+    });
+
+    render(<LaporanModal report={report} onClose={() => {}} />);
+    expect(document.querySelectorAll(".laporan-preview__ranking li")).toHaveLength(5);
+    expect(document.querySelectorAll(".laporan-preview__section")).toHaveLength(2);
     expect(errors).toEqual([]);
     spy.mockRestore();
   });

@@ -10,6 +10,8 @@ import ProxyPanel from "../components/ProxyPanel.jsx";
 import TimelineSlider from "../components/TimelineSlider.jsx";
 import PlantingPopup from "../components/PlantingPopup.jsx";
 import HasilSimulasiPanel from "../components/HasilSimulasiPanel.jsx";
+import LaporanModal from "../components/LaporanModal.jsx";
+import { buildKabupatenReport, buildProvinsiReport } from "../lib/reportBuilder.js";
 import { loadGeo, loadMap, loadKabupaten, loadSimulasi } from "../lib/loadData.js";
 import { KOTA_IDS } from "../lib/wilayah.js";
 import { useT } from "../lib/i18n.jsx";
@@ -65,6 +67,8 @@ export default function PetaSimulasi({ meta }) {
   const [minggu, setMinggu] = useState(meta.minggu_berjalan);
   const [geser, setGeser] = useState({});
   const [error, setError] = useState(null);
+  const [laporanData, setLaporanData] = useState(null);
+  const [laporanLoading, setLaporanLoading] = useState(false);
 
   useEffect(() => {
     loadGeo().then(setGeo).catch((e) => setError(e.message));
@@ -135,6 +139,26 @@ export default function PetaSimulasi({ meta }) {
       ]
     : [];
 
+  async function handleBuatLaporan() {
+    setLaporanLoading(true);
+    try {
+      let detailForReport = kabupatenDetail;
+      if (selectedId && !selectedIsKota && !detailForReport) {
+        try {
+          detailForReport = await loadKabupaten(selectedId, komoditasId);
+        } catch {
+          detailForReport = null;
+        }
+      }
+      const report = selectedId && !selectedIsKota
+        ? buildKabupatenReport({ mapData, kabupatenDetail: detailForReport, kabupatenId: selectedId, simulasi, geser, meta, komoditasId, minggu, t })
+        : buildProvinsiReport({ mapData, meta, komoditasId, minggu, coverageNote });
+      setLaporanData(report);
+    } finally {
+      setLaporanLoading(false);
+    }
+  }
+
   return (
     <div className="peta-risiko">
       <div className="coverage-note">{coverageNote}</div>
@@ -156,8 +180,13 @@ export default function PetaSimulasi({ meta }) {
             {top.kpi.minggu_puncak === meta.minggu_berjalan ? t("now") : t("week_n", { n: top.kpi.minggu_puncak })}
           </span>
         </div>
-        <div className="kpi-chip" style={{ borderRight: "none" }}>
+        <div className="kpi-chip">
           <KomoditasSwitcher activeId={komoditasId} onChange={handleKomoditasChange} />
+        </div>
+        <div className="kpi-chip" style={{ borderRight: "none" }}>
+          <button type="button" className="btn-primary" onClick={handleBuatLaporan} disabled={laporanLoading}>
+            {laporanLoading ? t("laporan_membuat") : t("laporan_buat")}
+          </button>
         </div>
       </div>
       <div className="peta-risiko__body">
@@ -229,6 +258,7 @@ export default function PetaSimulasi({ meta }) {
           )}
         </div>
       </div>
+      {laporanData && <LaporanModal report={laporanData} onClose={() => setLaporanData(null)} />}
     </div>
   );
 }

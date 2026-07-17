@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { convolveSingleCohort, interpolateHarga, aggregateSupplyCurve } from "./supplyMath.js";
+import { convolveSingleCohort, interpolateHarga, aggregateSupplyCurve, summarizeSimulationImpact } from "./supplyMath.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = path.join(__dirname, "..", "..", "public", "data");
@@ -86,5 +86,46 @@ describe("interpolateHarga", () => {
   it("clamps to the table's edges instead of extrapolating", () => {
     expect(interpolateHarga(0.5, lookup)).toBe(25000);
     expect(interpolateHarga(3, lookup)).toBe(6000);
+  });
+});
+
+describe("summarizeSimulationImpact", () => {
+  const lookup = [
+    { rasio: 1, harga_rp: 25000 },
+    { rasio: 2, harga_rp: 6000 },
+  ];
+
+  it("computes before/after peak reduction and price impact from a shifted kabupaten's precomputed baseline curve", () => {
+    // Province baseline: two kabupaten each contributing 20 ton at week 0 -> peak 40 ton.
+    const pasokanProvinsiBaseline = [40, 0, 0, 0];
+    const kabupaten = [
+      { id: "a", pasokan_baseline_ton: [20, 0, 0, 0] },
+      { id: "b", pasokan_baseline_ton: [20, 0, 0, 0] },
+    ];
+    // Shifting "b" by 2 weeks moves its 20 ton from week 0 to week 2 ->
+    // province peak becomes 20 ton (a's untouched week-0 contribution).
+    const result = summarizeSimulationImpact(pasokanProvinsiBaseline, kabupaten, { b: 2 }, 20, lookup, 4);
+
+    expect(result.penurunanPuncakPct).toBe(50);
+    expect(result.chartData).toEqual([
+      { minggu: "M0", hargaSebelum: 6000, hargaSesudah: 25000 },
+      { minggu: "M1", hargaSebelum: 25000, hargaSesudah: 25000 },
+      { minggu: "M2", hargaSebelum: 25000, hargaSesudah: 25000 },
+      { minggu: "M3", hargaSebelum: 25000, hargaSesudah: 25000 },
+    ]);
+    expect(result.minHargaSebelum).toBe(6000);
+    expect(result.minHargaSesudah).toBe(25000);
+  });
+
+  it("leaves the baseline curve untouched when no kabupaten in the list has an active shift", () => {
+    const pasokanProvinsiBaseline = [40, 5, 0, 0];
+    const kabupaten = [
+      { id: "a", pasokan_baseline_ton: [20, 5, 0, 0] },
+      { id: "b", pasokan_baseline_ton: [20, 0, 0, 0] },
+    ];
+    const result = summarizeSimulationImpact(pasokanProvinsiBaseline, kabupaten, {}, 20, lookup, 4);
+
+    expect(result.penurunanPuncakPct).toBe(0);
+    expect(result.chartData.map((d) => d.hargaSesudah)).toEqual(result.chartData.map((d) => d.hargaSebelum));
   });
 });
