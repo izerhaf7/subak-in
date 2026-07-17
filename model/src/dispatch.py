@@ -2,8 +2,13 @@
 is locked as an M1 pre-compute, browser only renders `matches_per_kabupaten`).
 Sederhana - hardcoded weights, no ML, per the brief.
 
-# ASUMSI: absorbers.csv is currently the PLACEHOLDER directory (see its
-# header) - scores/uplift below are only as real as that data. selisih_vs_pasar
+# ASUMSI: absorbers.csv now names real organizations (named pasar induk
+# wholesale markets, a named cooperative, named processors/retailers/food
+# bank) for most rows - 3 rows (a2, a9, a12) are still un-curated
+# [PLACEHOLDER] entries with no confirmed real match found. kapasitas_ton/
+# harga_tawar_rp for every row (real or not) remain illustrative estimates,
+# not confirmed operational figures - nobody has actually contacted these
+# organizations to ask their real buying capacity/price. selisih_vs_pasar
 # uses cabai_rawit's current-week forecast price where available, falling back
 # to the full production-cost floor (ongkos_petik+biaya_produksi) for
 # kabupaten with no price series - documented, not hidden.
