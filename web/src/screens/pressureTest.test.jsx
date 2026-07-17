@@ -272,7 +272,7 @@ describe("pressure test: LaporanModal renders both report modes without throwing
 
     render(<LaporanModal report={report} onClose={() => {}} />);
     expect(document.querySelectorAll(".laporan-preview__ranking li")).toHaveLength(5);
-    expect(document.querySelector(".hasil-simulasi-panel")).toBeNull();
+    expect(document.querySelectorAll(".laporan-preview__section")).toHaveLength(2);
     expect(errors).toEqual([]);
     spy.mockRestore();
   });
