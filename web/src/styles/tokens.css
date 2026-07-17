@@ -328,6 +328,16 @@ body {
   filter: brightness(1.08);
 }
 
+/* Peta Beranda cuma pajangan: tidak ada kursor pointer dan tidak ada respons
+   hover, supaya tidak menjanjikan interaksi yang memang tidak ada. */
+.jabar-map__region--statis {
+  cursor: default;
+}
+
+.jabar-map__region--statis:hover {
+  filter: none;
+}
+
 .jabar-map__region--selected {
   stroke: var(--brand-yellow);
   stroke-width: 3.5;
