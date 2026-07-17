@@ -1,13 +1,13 @@
 id,nama,jenis,lat,lng,kapasitas_ton,harga_tawar_rp
-a1,Pasar Induk Guntur Ciawitali (Garut),Pasar Induk,-7.22,107.91,20,8500
-a2,[PLACEHOLDER] Bank Pangan Garut,Bank Pangan,-7.23,107.87,8,7000
-a3,Koperasi Bawang Merah Kabupaten Cirebon,Koperasi,-6.75,108.50,6,9000
-a4,Nion Nion (Pengolah Bawang Goreng),Pengolah,-6.70,108.55,10,8500
-a5,Borma Soreang,Pasar Modern,-7.04,107.53,4,11000
-a6,Food Bank Bandung (YAMAPAN),Bank Pangan,-6.95,107.65,12,7500
-a7,Pasar Tanjungsari (Sumedang),Pasar Induk,-6.88,107.80,20,8000
-a8,Pasar Cikurubuk (Tasikmalaya),Pasar Induk,-7.31,108.24,25,8200
-a9,[PLACEHOLDER] Pengolah Aneka Sambal Tasikmalaya,Pengolah,-7.35,108.22,6,9200
-a10,Pasar Pelita (Kota Sukabumi),Pasar Induk,-6.92,106.93,15,7800
-a11,Toserba Yogya Pelabuhan Ratu,Pasar Modern,-6.98,106.55,15,6800
-a12,[PLACEHOLDER] Pengolah Bumbu Instan Bandung Barat,Pengolah,-6.84,107.49,5,9800
+a1,Pasar Induk Guntur Ciawitali — Garut,Pasar Induk,-7.22,107.91,20,17000
+a2,[PLACEHOLDER] Bank Pangan Garut,Bank Pangan,-7.23,107.87,8,16800
+a3,Koperasi Bawang Merah — Kab. Cirebon,Koperasi,-6.75,108.50,6,16500
+a4,Nion Nion — Cirebon,Pengolah,-6.70,108.55,10,16000
+a5,Borma — Soreang (Kab. Bandung),Pasar Modern,-7.04,107.53,4,18500
+a6,Food Bank Bandung — Kota Bandung,Bank Pangan,-6.95,107.65,12,15500
+a7,Pasar Tanjungsari — Sumedang,Pasar Induk,-6.88,107.80,20,16000
+a8,Pasar Cikurubuk — Tasikmalaya,Pasar Induk,-7.31,108.24,25,16500
+a9,[PLACEHOLDER] Pengolah Aneka Sambal Tasikmalaya,Pengolah,-7.35,108.22,6,16800
+a10,Pasar Pelita — Kota Sukabumi,Pasar Induk,-6.92,106.93,15,15800
+a11,Toserba Yogya — Pelabuhan Ratu (Sukabumi),Pasar Modern,-6.98,106.55,15,17500
+a12,[PLACEHOLDER] Pengolah Bumbu Instan Bandung Barat,Pengolah,-6.84,107.49,5,17000

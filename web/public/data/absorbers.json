@@ -2,12 +2,12 @@
   "absorbers": [
     {
       "id": "a1",
-      "nama": "Pasar Induk Guntur Ciawitali (Garut)",
+      "nama": "Pasar Induk Guntur Ciawitali — Garut",
       "jenis": "Pasar Induk",
       "lat": -7.22,
       "lng": 107.91,
       "kapasitas_ton": 20,
-      "harga_tawar_rp": 8500
+      "harga_tawar_rp": 17000
     },
     {
       "id": "a2",
@@ -16,61 +16,61 @@
       "lat": -7.23,
       "lng": 107.87,
       "kapasitas_ton": 8,
-      "harga_tawar_rp": 7000
+      "harga_tawar_rp": 16800
     },
     {
       "id": "a3",
-      "nama": "Koperasi Bawang Merah Kabupaten Cirebon",
+      "nama": "Koperasi Bawang Merah — Kab. Cirebon",
       "jenis": "Koperasi",
       "lat": -6.75,
       "lng": 108.5,
       "kapasitas_ton": 6,
-      "harga_tawar_rp": 9000
+      "harga_tawar_rp": 16500
     },
     {
       "id": "a4",
-      "nama": "Nion Nion (Pengolah Bawang Goreng)",
+      "nama": "Nion Nion — Cirebon",
       "jenis": "Pengolah",
       "lat": -6.7,
       "lng": 108.55,
       "kapasitas_ton": 10,
-      "harga_tawar_rp": 8500
+      "harga_tawar_rp": 16000
     },
     {
       "id": "a5",
-      "nama": "Borma Soreang",
+      "nama": "Borma — Soreang (Kab. Bandung)",
       "jenis": "Pasar Modern",
       "lat": -7.04,
       "lng": 107.53,
       "kapasitas_ton": 4,
-      "harga_tawar_rp": 11000
+      "harga_tawar_rp": 18500
     },
     {
       "id": "a6",
-      "nama": "Food Bank Bandung (YAMAPAN)",
+      "nama": "Food Bank Bandung — Kota Bandung",
       "jenis": "Bank Pangan",
       "lat": -6.95,
       "lng": 107.65,
       "kapasitas_ton": 12,
-      "harga_tawar_rp": 7500
+      "harga_tawar_rp": 15500
     },
     {
       "id": "a7",
-      "nama": "Pasar Tanjungsari (Sumedang)",
+      "nama": "Pasar Tanjungsari — Sumedang",
       "jenis": "Pasar Induk",
       "lat": -6.88,
       "lng": 107.8,
       "kapasitas_ton": 20,
-      "harga_tawar_rp": 8000
+      "harga_tawar_rp": 16000
     },
     {
       "id": "a8",
-      "nama": "Pasar Cikurubuk (Tasikmalaya)",
+      "nama": "Pasar Cikurubuk — Tasikmalaya",
       "jenis": "Pasar Induk",
       "lat": -7.31,
       "lng": 108.24,
       "kapasitas_ton": 25,
-      "harga_tawar_rp": 8200
+      "harga_tawar_rp": 16500
     },
     {
       "id": "a9",
@@ -79,25 +79,25 @@
       "lat": -7.35,
       "lng": 108.22,
       "kapasitas_ton": 6,
-      "harga_tawar_rp": 9200
+      "harga_tawar_rp": 16800
     },
     {
       "id": "a10",
-      "nama": "Pasar Pelita (Kota Sukabumi)",
+      "nama": "Pasar Pelita — Kota Sukabumi",
       "jenis": "Pasar Induk",
       "lat": -6.92,
       "lng": 106.93,
       "kapasitas_ton": 15,
-      "harga_tawar_rp": 7800
+      "harga_tawar_rp": 15800
     },
     {
       "id": "a11",
-      "nama": "Toserba Yogya Pelabuhan Ratu",
+      "nama": "Toserba Yogya — Pelabuhan Ratu (Sukabumi)",
       "jenis": "Pasar Modern",
       "lat": -6.98,
       "lng": 106.55,
       "kapasitas_ton": 15,
-      "harga_tawar_rp": 6800
+      "harga_tawar_rp": 17500
     },
     {
       "id": "a12",
@@ -106,7 +106,7 @@
       "lat": -6.84,
       "lng": 107.49,
       "kapasitas_ton": 5,
-      "harga_tawar_rp": 9800
+      "harga_tawar_rp": 17000
     }
   ],
   "kabupaten_centroid": [
@@ -251,999 +251,803 @@
       {
         "absorber_id": "a10",
         "jarak_km": 39.4,
-        "skor": 60,
-        "selisih_vs_pasar_rp_per_kg": -6700,
-        "estimasi_uplift_juta": -100.5
+        "skor": 64,
+        "selisih_vs_pasar_rp_per_kg": 1300,
+        "estimasi_uplift_juta": 19.5
       },
       {
-        "absorber_id": "a1",
-        "jarak_km": 141.9,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
-      },
-      {
-        "absorber_id": "a4",
-        "jarak_km": 194.8,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
-      },
-      {
-        "absorber_id": "a7",
-        "jarak_km": 116.1,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
-      },
-      {
-        "absorber_id": "a8",
-        "jarak_km": 178.8,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
+        "absorber_id": "a11",
+        "jarak_km": 50.4,
+        "skor": 58,
+        "selisih_vs_pasar_rp_per_kg": 3000,
+        "estimasi_uplift_juta": 45.0
       }
     ],
     "sukabumi_kab": [
       {
         "absorber_id": "a10",
         "jarak_km": 0.4,
-        "skor": 91,
-        "selisih_vs_pasar_rp_per_kg": -6700,
-        "estimasi_uplift_juta": -100.5
+        "skor": 95,
+        "selisih_vs_pasar_rp_per_kg": 1300,
+        "estimasi_uplift_juta": 19.5
       },
       {
         "absorber_id": "a11",
         "jarak_km": 42.2,
+        "skor": 65,
+        "selisih_vs_pasar_rp_per_kg": 3000,
+        "estimasi_uplift_juta": 45.0
+      },
+      {
+        "absorber_id": "a6",
+        "jarak_km": 79.9,
         "skor": 55,
-        "selisih_vs_pasar_rp_per_kg": -7700,
-        "estimasi_uplift_juta": -115.5
+        "selisih_vs_pasar_rp_per_kg": 1000,
+        "estimasi_uplift_juta": 12.0
       },
       {
-        "absorber_id": "a1",
-        "jarak_km": 113.5,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
+        "absorber_id": "a12",
+        "jarak_km": 62.8,
+        "skor": 43,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 12.5
       },
       {
-        "absorber_id": "a4",
-        "jarak_km": 180.8,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
-      },
-      {
-        "absorber_id": "a7",
-        "jarak_km": 96.5,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
+        "absorber_id": "a5",
+        "jarak_km": 67.9,
+        "skor": 42,
+        "selisih_vs_pasar_rp_per_kg": 4000,
+        "estimasi_uplift_juta": 16.0
       }
     ],
     "cianjur": [
       {
         "absorber_id": "a10",
         "jarak_km": 26.1,
-        "skor": 70,
-        "selisih_vs_pasar_rp_per_kg": -6700,
-        "estimasi_uplift_juta": -100.5
+        "skor": 75,
+        "selisih_vs_pasar_rp_per_kg": 1300,
+        "estimasi_uplift_juta": 19.5
       },
       {
-        "absorber_id": "a1",
-        "jarak_km": 95.8,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
-      },
-      {
-        "absorber_id": "a4",
-        "jarak_km": 156.0,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
+        "absorber_id": "a11",
+        "jarak_km": 67.9,
+        "skor": 58,
+        "selisih_vs_pasar_rp_per_kg": 3000,
+        "estimasi_uplift_juta": 45.0
       },
       {
         "absorber_id": "a7",
         "jarak_km": 72.9,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 30.0
       },
       {
-        "absorber_id": "a8",
-        "jarak_km": 132.9,
+        "absorber_id": "a6",
+        "jarak_km": 57.9,
+        "skor": 55,
+        "selisih_vs_pasar_rp_per_kg": 1000,
+        "estimasi_uplift_juta": 12.0
+      },
+      {
+        "absorber_id": "a12",
+        "jarak_km": 38.5,
         "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 12.5
       }
     ],
     "bandung_kab": [
       {
+        "absorber_id": "a6",
+        "jarak_km": 15.2,
+        "skor": 83,
+        "selisih_vs_pasar_rp_per_kg": 1000,
+        "estimasi_uplift_juta": 12.0
+      },
+      {
         "absorber_id": "a5",
         "jarak_km": 1.4,
         "skor": 81,
-        "selisih_vs_pasar_rp_per_kg": -3500,
-        "estimasi_uplift_juta": -14.0
-      },
-      {
-        "absorber_id": "a6",
-        "jarak_km": 15.2,
-        "skor": 78,
-        "selisih_vs_pasar_rp_per_kg": -7000,
-        "estimasi_uplift_juta": -84.0
+        "selisih_vs_pasar_rp_per_kg": 4000,
+        "estimasi_uplift_juta": 16.0
       },
       {
         "absorber_id": "a7",
         "jarak_km": 33.3,
-        "skor": 65,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
+        "skor": 69,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 30.0
       },
       {
         "absorber_id": "a12",
         "jarak_km": 22.4,
-        "skor": 64,
-        "selisih_vs_pasar_rp_per_kg": -4700,
-        "estimasi_uplift_juta": -23.5
+        "skor": 65,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 12.5
       },
       {
         "absorber_id": "a1",
         "jarak_km": 45.6,
-        "skor": 57,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
+        "skor": 61,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 50.0
       }
     ],
     "garut": [
       {
         "absorber_id": "a1",
         "jarak_km": 0.7,
-        "skor": 93,
-        "selisih_vs_pasar_rp_per_kg": -22165,
-        "estimasi_uplift_juta": -443.3
+        "skor": 97,
+        "selisih_vs_pasar_rp_per_kg": -13665,
+        "estimasi_uplift_juta": -273.3
       },
       {
         "absorber_id": "a2",
         "jarak_km": 4.6,
-        "skor": 79,
-        "selisih_vs_pasar_rp_per_kg": -23665,
-        "estimasi_uplift_juta": -189.3
+        "skor": 88,
+        "selisih_vs_pasar_rp_per_kg": -13865,
+        "estimasi_uplift_juta": -110.9
       },
       {
         "absorber_id": "a8",
         "jarak_km": 38.1,
-        "skor": 62,
-        "selisih_vs_pasar_rp_per_kg": -22465,
-        "estimasi_uplift_juta": -561.6
+        "skor": 66,
+        "selisih_vs_pasar_rp_per_kg": -14165,
+        "estimasi_uplift_juta": -354.1
       },
       {
         "absorber_id": "a7",
         "jarak_km": 39.0,
-        "skor": 61,
-        "selisih_vs_pasar_rp_per_kg": -22665,
-        "estimasi_uplift_juta": -453.3
+        "skor": 65,
+        "selisih_vs_pasar_rp_per_kg": -14665,
+        "estimasi_uplift_juta": -293.3
       },
       {
         "absorber_id": "a6",
         "jarak_km": 40.9,
-        "skor": 58,
-        "selisih_vs_pasar_rp_per_kg": -23165,
-        "estimasi_uplift_juta": -278.0
+        "skor": 62,
+        "selisih_vs_pasar_rp_per_kg": -15165,
+        "estimasi_uplift_juta": -182.0
       }
     ],
     "tasikmalaya_kab": [
       {
         "absorber_id": "a8",
         "jarak_km": 6.8,
-        "skor": 87,
-        "selisih_vs_pasar_rp_per_kg": -28614,
-        "estimasi_uplift_juta": -715.4
+        "skor": 91,
+        "selisih_vs_pasar_rp_per_kg": -20314,
+        "estimasi_uplift_juta": -507.9
       },
       {
         "absorber_id": "a9",
         "jarak_km": 5.0,
-        "skor": 79,
-        "selisih_vs_pasar_rp_per_kg": -27614,
-        "estimasi_uplift_juta": -165.7
+        "skor": 81,
+        "selisih_vs_pasar_rp_per_kg": -20014,
+        "estimasi_uplift_juta": -120.1
       },
       {
         "absorber_id": "a1",
         "jarak_km": 32.1,
-        "skor": 67,
-        "selisih_vs_pasar_rp_per_kg": -28314,
-        "estimasi_uplift_juta": -566.3
+        "skor": 72,
+        "selisih_vs_pasar_rp_per_kg": -19814,
+        "estimasi_uplift_juta": -396.3
       },
       {
         "absorber_id": "a2",
         "jarak_km": 35.9,
-        "skor": 54,
-        "selisih_vs_pasar_rp_per_kg": -29814,
-        "estimasi_uplift_juta": -238.5
+        "skor": 62,
+        "selisih_vs_pasar_rp_per_kg": -20014,
+        "estimasi_uplift_juta": -160.1
       },
       {
-        "absorber_id": "a4",
-        "jarak_km": 80.8,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -28314,
-        "estimasi_uplift_juta": -283.1
+        "absorber_id": "a7",
+        "jarak_km": 65.1,
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": -20814,
+        "estimasi_uplift_juta": -416.3
       }
     ],
     "ciamis": [
       {
         "absorber_id": "a8",
         "jarak_km": 12.6,
-        "skor": 82,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
+        "skor": 87,
+        "selisih_vs_pasar_rp_per_kg": 2000,
+        "estimasi_uplift_juta": 50.0
       },
       {
         "absorber_id": "a9",
         "jarak_km": 15.0,
-        "skor": 71,
-        "selisih_vs_pasar_rp_per_kg": -5300,
-        "estimasi_uplift_juta": -31.8
+        "skor": 73,
+        "selisih_vs_pasar_rp_per_kg": 2300,
+        "estimasi_uplift_juta": 13.8
       },
       {
         "absorber_id": "a1",
         "jarak_km": 50.3,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
+        "skor": 58,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 50.0
       },
       {
         "absorber_id": "a4",
         "jarak_km": 72.9,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 15.0
       },
       {
         "absorber_id": "a7",
         "jarak_km": 78.7,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 30.0
       }
     ],
     "kuningan": [
       {
         "absorber_id": "a4",
         "jarak_km": 31.5,
-        "skor": 68,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
+        "skor": 71,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 15.0
       },
       {
         "absorber_id": "a3",
         "jarak_km": 25.1,
-        "skor": 62,
-        "selisih_vs_pasar_rp_per_kg": -5500,
-        "estimasi_uplift_juta": -33.0
+        "skor": 65,
+        "selisih_vs_pasar_rp_per_kg": 2000,
+        "estimasi_uplift_juta": 12.0
       },
       {
         "absorber_id": "a8",
         "jarak_km": 45.9,
-        "skor": 56,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
+        "skor": 60,
+        "selisih_vs_pasar_rp_per_kg": 2000,
+        "estimasi_uplift_juta": 50.0
       },
       {
         "absorber_id": "a1",
         "jarak_km": 68.9,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
+        "skor": 58,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 50.0
       },
       {
         "absorber_id": "a7",
         "jarak_km": 76.2,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 30.0
       }
     ],
     "cirebon_kab": [
       {
         "absorber_id": "a4",
         "jarak_km": 3.6,
-        "skor": 90,
-        "selisih_vs_pasar_rp_per_kg": -35344,
-        "estimasi_uplift_juta": -353.4
+        "skor": 93,
+        "selisih_vs_pasar_rp_per_kg": -27844,
+        "estimasi_uplift_juta": -278.4
       },
       {
         "absorber_id": "a3",
         "jarak_km": 6.1,
-        "skor": 78,
-        "selisih_vs_pasar_rp_per_kg": -34844,
-        "estimasi_uplift_juta": -209.1
-      },
-      {
-        "absorber_id": "a1",
-        "jarak_km": 89.3,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -35344,
-        "estimasi_uplift_juta": -706.9
-      },
-      {
-        "absorber_id": "a7",
-        "jarak_km": 84.7,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -35844,
-        "estimasi_uplift_juta": -716.9
+        "skor": 80,
+        "selisih_vs_pasar_rp_per_kg": -27344,
+        "estimasi_uplift_juta": -164.1
       },
       {
         "absorber_id": "a8",
         "jarak_km": 72.9,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -35644,
-        "estimasi_uplift_juta": -891.1
+        "skor": 57,
+        "selisih_vs_pasar_rp_per_kg": -27344,
+        "estimasi_uplift_juta": -683.6
+      },
+      {
+        "absorber_id": "a9",
+        "jarak_km": 77.9,
+        "skor": 45,
+        "selisih_vs_pasar_rp_per_kg": -27044,
+        "estimasi_uplift_juta": -162.3
       }
     ],
     "majalengka": [
       {
         "absorber_id": "a4",
         "jarak_km": 38.7,
-        "skor": 62,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
+        "skor": 65,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 15.0
       },
       {
         "absorber_id": "a3",
         "jarak_km": 31.6,
-        "skor": 57,
-        "selisih_vs_pasar_rp_per_kg": -5500,
-        "estimasi_uplift_juta": -33.0
-      },
-      {
-        "absorber_id": "a7",
-        "jarak_km": 47.4,
-        "skor": 54,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
+        "skor": 59,
+        "selisih_vs_pasar_rp_per_kg": 2000,
+        "estimasi_uplift_juta": 12.0
       },
       {
         "absorber_id": "a1",
         "jarak_km": 55.2,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
+        "skor": 58,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 50.0
+      },
+      {
+        "absorber_id": "a7",
+        "jarak_km": 47.4,
+        "skor": 58,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 30.0
       },
       {
         "absorber_id": "a8",
         "jarak_km": 52.7,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
+        "skor": 57,
+        "selisih_vs_pasar_rp_per_kg": 2000,
+        "estimasi_uplift_juta": 50.0
       }
     ],
     "sumedang": [
       {
         "absorber_id": "a7",
         "jarak_km": 13.4,
-        "skor": 81,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
+        "skor": 85,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 30.0
       },
       {
         "absorber_id": "a6",
         "jarak_km": 31.5,
-        "skor": 65,
-        "selisih_vs_pasar_rp_per_kg": -7000,
-        "estimasi_uplift_juta": -84.0
+        "skor": 70,
+        "selisih_vs_pasar_rp_per_kg": 1000,
+        "estimasi_uplift_juta": 12.0
       },
       {
         "absorber_id": "a1",
         "jarak_km": 40.2,
-        "skor": 61,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
+        "skor": 65,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 50.0
       },
       {
-        "absorber_id": "a4",
-        "jarak_km": 71.8,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
+        "absorber_id": "a2",
+        "jarak_km": 41.7,
+        "skor": 58,
+        "selisih_vs_pasar_rp_per_kg": 2300,
+        "estimasi_uplift_juta": 18.4
       },
       {
         "absorber_id": "a8",
         "jarak_km": 61.4,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
+        "skor": 57,
+        "selisih_vs_pasar_rp_per_kg": 2000,
+        "estimasi_uplift_juta": 50.0
       }
     ],
     "indramayu": [
       {
         "absorber_id": "a4",
         "jarak_km": 48.7,
-        "skor": 54,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
+        "skor": 57,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 15.0
       },
       {
-        "absorber_id": "a1",
-        "jarak_km": 109.2,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
-      },
-      {
-        "absorber_id": "a7",
-        "jarak_km": 84.2,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
-      },
-      {
-        "absorber_id": "a8",
-        "jarak_km": 109.7,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
-      },
-      {
-        "absorber_id": "a10",
-        "jarak_km": 167.1,
-        "skor": 51,
-        "selisih_vs_pasar_rp_per_kg": -6700,
-        "estimasi_uplift_juta": -100.5
+        "absorber_id": "a3",
+        "jarak_km": 51.1,
+        "skor": 45,
+        "selisih_vs_pasar_rp_per_kg": 2000,
+        "estimasi_uplift_juta": 12.0
       }
     ],
     "subang": [
       {
         "absorber_id": "a7",
         "jarak_km": 34.5,
-        "skor": 64,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
+        "skor": 68,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 30.0
       },
       {
         "absorber_id": "a6",
         "jarak_km": 43.7,
-        "skor": 55,
-        "selisih_vs_pasar_rp_per_kg": -7000,
-        "estimasi_uplift_juta": -84.0
+        "skor": 60,
+        "selisih_vs_pasar_rp_per_kg": 1000,
+        "estimasi_uplift_juta": 12.0
       },
       {
         "absorber_id": "a1",
         "jarak_km": 73.9,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
+        "skor": 58,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 50.0
       },
       {
-        "absorber_id": "a4",
-        "jarak_km": 88.4,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
+        "absorber_id": "a2",
+        "jarak_km": 74.1,
+        "skor": 51,
+        "selisih_vs_pasar_rp_per_kg": 2300,
+        "estimasi_uplift_juta": 18.4
       },
       {
-        "absorber_id": "a8",
-        "jarak_km": 97.6,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
+        "absorber_id": "a12",
+        "jarak_km": 42.1,
+        "skor": 49,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 12.5
       }
     ],
     "purwakarta": [
       {
         "absorber_id": "a12",
         "jarak_km": 32.0,
+        "skor": 57,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 12.5
+      },
+      {
+        "absorber_id": "a6",
+        "jarak_km": 49.4,
         "skor": 56,
-        "selisih_vs_pasar_rp_per_kg": -4700,
-        "estimasi_uplift_juta": -23.5
-      },
-      {
-        "absorber_id": "a1",
-        "jarak_km": 90.0,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
-      },
-      {
-        "absorber_id": "a4",
-        "jarak_km": 123.3,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
+        "selisih_vs_pasar_rp_per_kg": 1000,
+        "estimasi_uplift_juta": 12.0
       },
       {
         "absorber_id": "a7",
         "jarak_km": 53.4,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 30.0
       },
       {
-        "absorber_id": "a8",
-        "jarak_km": 121.5,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
+        "absorber_id": "a10",
+        "jarak_km": 69.6,
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1300,
+        "estimasi_uplift_juta": 19.5
+      },
+      {
+        "absorber_id": "a5",
+        "jarak_km": 54.6,
+        "skor": 42,
+        "selisih_vs_pasar_rp_per_kg": 4000,
+        "estimasi_uplift_juta": 16.0
       }
     ],
     "karawang": [
       {
-        "absorber_id": "a1",
-        "jarak_km": 118.1,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
+        "absorber_id": "a6",
+        "jarak_km": 77.8,
+        "skor": 55,
+        "selisih_vs_pasar_rp_per_kg": 1000,
+        "estimasi_uplift_juta": 12.0
       },
       {
-        "absorber_id": "a4",
-        "jarak_km": 140.4,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
-      },
-      {
-        "absorber_id": "a7",
-        "jarak_km": 80.3,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
-      },
-      {
-        "absorber_id": "a8",
-        "jarak_km": 148.3,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
-      },
-      {
-        "absorber_id": "a10",
-        "jarak_km": 80.2,
-        "skor": 51,
-        "selisih_vs_pasar_rp_per_kg": -6700,
-        "estimasi_uplift_juta": -100.5
+        "absorber_id": "a12",
+        "jarak_km": 59.9,
+        "skor": 43,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 12.5
       }
     ],
     "bekasi_kab": [
       {
-        "absorber_id": "a1",
-        "jarak_km": 136.1,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
-      },
-      {
-        "absorber_id": "a4",
-        "jarak_km": 161.5,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
-      },
-      {
-        "absorber_id": "a7",
-        "jarak_km": 99.6,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
-      },
-      {
-        "absorber_id": "a8",
-        "jarak_km": 167.7,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
-      },
-      {
         "absorber_id": "a10",
         "jarak_km": 78.9,
-        "skor": 51,
-        "selisih_vs_pasar_rp_per_kg": -6700,
-        "estimasi_uplift_juta": -100.5
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1300,
+        "estimasi_uplift_juta": 19.5
+      },
+      {
+        "absorber_id": "a12",
+        "jarak_km": 75.2,
+        "skor": 43,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 12.5
       }
     ],
     "bandung_barat": [
       {
         "absorber_id": "a12",
         "jarak_km": 0.5,
-        "skor": 81,
-        "selisih_vs_pasar_rp_per_kg": -4700,
-        "estimasi_uplift_juta": -23.5
+        "skor": 82,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 12.5
       },
       {
         "absorber_id": "a6",
         "jarak_km": 21.9,
-        "skor": 73,
-        "selisih_vs_pasar_rp_per_kg": -7000,
-        "estimasi_uplift_juta": -84.0
+        "skor": 78,
+        "selisih_vs_pasar_rp_per_kg": 1000,
+        "estimasi_uplift_juta": 12.0
+      },
+      {
+        "absorber_id": "a7",
+        "jarak_km": 35.0,
+        "skor": 68,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 30.0
       },
       {
         "absorber_id": "a5",
         "jarak_km": 22.8,
         "skor": 64,
-        "selisih_vs_pasar_rp_per_kg": -3500,
-        "estimasi_uplift_juta": -14.0
-      },
-      {
-        "absorber_id": "a7",
-        "jarak_km": 35.0,
-        "skor": 64,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
+        "selisih_vs_pasar_rp_per_kg": 4000,
+        "estimasi_uplift_juta": 16.0
       },
       {
         "absorber_id": "a1",
         "jarak_km": 63.1,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
+        "skor": 58,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 50.0
       }
     ],
     "pangandaran": [
       {
-        "absorber_id": "a1",
-        "jarak_km": 96.7,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
-      },
-      {
-        "absorber_id": "a4",
-        "jarak_km": 110.0,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
-      },
-      {
-        "absorber_id": "a7",
-        "jarak_km": 129.7,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
-      },
-      {
         "absorber_id": "a8",
         "jarak_km": 61.5,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
+        "skor": 57,
+        "selisih_vs_pasar_rp_per_kg": 2000,
+        "estimasi_uplift_juta": 50.0
       },
       {
-        "absorber_id": "a10",
-        "jarak_km": 208.0,
-        "skor": 51,
-        "selisih_vs_pasar_rp_per_kg": -6700,
-        "estimasi_uplift_juta": -100.5
+        "absorber_id": "a9",
+        "jarak_km": 60.3,
+        "skor": 45,
+        "selisih_vs_pasar_rp_per_kg": 2300,
+        "estimasi_uplift_juta": 13.8
       }
     ],
     "bogor_kota": [
       {
         "absorber_id": "a10",
         "jarak_km": 38.4,
-        "skor": 61,
-        "selisih_vs_pasar_rp_per_kg": -6700,
-        "estimasi_uplift_juta": -100.5
+        "skor": 65,
+        "selisih_vs_pasar_rp_per_kg": 1300,
+        "estimasi_uplift_juta": 19.5
       },
       {
-        "absorber_id": "a1",
-        "jarak_km": 140.2,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
-      },
-      {
-        "absorber_id": "a4",
-        "jarak_km": 193.0,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
-      },
-      {
-        "absorber_id": "a7",
-        "jarak_km": 114.2,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
-      },
-      {
-        "absorber_id": "a8",
-        "jarak_km": 177.0,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
+        "absorber_id": "a11",
+        "jarak_km": 51.1,
+        "skor": 58,
+        "selisih_vs_pasar_rp_per_kg": 3000,
+        "estimasi_uplift_juta": 45.0
       }
     ],
     "sukabumi_kota": [
       {
         "absorber_id": "a10",
         "jarak_km": 0.9,
-        "skor": 91,
-        "selisih_vs_pasar_rp_per_kg": -37489,
-        "estimasi_uplift_juta": -562.3
+        "skor": 95,
+        "selisih_vs_pasar_rp_per_kg": -29489,
+        "estimasi_uplift_juta": -442.3
       },
       {
         "absorber_id": "a11",
         "jarak_km": 42.3,
+        "skor": 65,
+        "selisih_vs_pasar_rp_per_kg": -27789,
+        "estimasi_uplift_juta": -416.8
+      },
+      {
+        "absorber_id": "a6",
+        "jarak_km": 79.5,
         "skor": 55,
-        "selisih_vs_pasar_rp_per_kg": -38489,
-        "estimasi_uplift_juta": -577.3
+        "selisih_vs_pasar_rp_per_kg": -29789,
+        "estimasi_uplift_juta": -357.5
       },
       {
-        "absorber_id": "a1",
-        "jarak_km": 112.9,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -36789,
-        "estimasi_uplift_juta": -735.8
+        "absorber_id": "a12",
+        "jarak_km": 62.6,
+        "skor": 43,
+        "selisih_vs_pasar_rp_per_kg": -28289,
+        "estimasi_uplift_juta": -141.4
       },
       {
-        "absorber_id": "a4",
-        "jarak_km": 180.6,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -36789,
-        "estimasi_uplift_juta": -367.9
-      },
-      {
-        "absorber_id": "a7",
-        "jarak_km": 96.2,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -37289,
-        "estimasi_uplift_juta": -745.8
+        "absorber_id": "a5",
+        "jarak_km": 67.4,
+        "skor": 42,
+        "selisih_vs_pasar_rp_per_kg": -26789,
+        "estimasi_uplift_juta": -107.2
       }
     ],
     "bandung_kota": [
       {
         "absorber_id": "a6",
         "jarak_km": 5.0,
-        "skor": 86,
-        "selisih_vs_pasar_rp_per_kg": -7000,
-        "estimasi_uplift_juta": -84.0
+        "skor": 91,
+        "selisih_vs_pasar_rp_per_kg": 1000,
+        "estimasi_uplift_juta": 12.0
       },
       {
         "absorber_id": "a7",
         "jarak_km": 20.4,
-        "skor": 75,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
+        "skor": 80,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 30.0
       },
       {
         "absorber_id": "a5",
         "jarak_km": 16.8,
         "skor": 69,
-        "selisih_vs_pasar_rp_per_kg": -3500,
-        "estimasi_uplift_juta": -14.0
+        "selisih_vs_pasar_rp_per_kg": 4000,
+        "estimasi_uplift_juta": 16.0
       },
       {
         "absorber_id": "a12",
         "jarak_km": 16.7,
-        "skor": 68,
-        "selisih_vs_pasar_rp_per_kg": -4700,
-        "estimasi_uplift_juta": -23.5
+        "skor": 69,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 12.5
       },
       {
         "absorber_id": "a1",
         "jarak_km": 46.5,
-        "skor": 56,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
+        "skor": 60,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 50.0
       }
     ],
     "cirebon_kota": [
       {
         "absorber_id": "a4",
         "jarak_km": 1.1,
-        "skor": 92,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
+        "skor": 95,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 15.0
       },
       {
         "absorber_id": "a3",
         "jarak_km": 8.0,
-        "skor": 76,
-        "selisih_vs_pasar_rp_per_kg": -5500,
-        "estimasi_uplift_juta": -33.0
-      },
-      {
-        "absorber_id": "a1",
-        "jarak_km": 91.5,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
-      },
-      {
-        "absorber_id": "a7",
-        "jarak_km": 85.8,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
+        "skor": 78,
+        "selisih_vs_pasar_rp_per_kg": 2000,
+        "estimasi_uplift_juta": 12.0
       },
       {
         "absorber_id": "a8",
         "jarak_km": 75.7,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
+        "skor": 57,
+        "selisih_vs_pasar_rp_per_kg": 2000,
+        "estimasi_uplift_juta": 50.0
       }
     ],
     "bekasi_kota": [
       {
-        "absorber_id": "a1",
-        "jarak_km": 148.4,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
-      },
-      {
-        "absorber_id": "a4",
-        "jarak_km": 178.8,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
-      },
-      {
-        "absorber_id": "a7",
-        "jarak_km": 113.6,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
-      },
-      {
-        "absorber_id": "a8",
-        "jarak_km": 181.5,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
-      },
-      {
         "absorber_id": "a10",
         "jarak_km": 76.2,
-        "skor": 51,
-        "selisih_vs_pasar_rp_per_kg": -6700,
-        "estimasi_uplift_juta": -100.5
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1300,
+        "estimasi_uplift_juta": 19.5
       }
     ],
     "depok": [
       {
-        "absorber_id": "a1",
-        "jarak_km": 153.1,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
-      },
-      {
-        "absorber_id": "a4",
-        "jarak_km": 196.8,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
-      },
-      {
-        "absorber_id": "a7",
-        "jarak_km": 123.1,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
-      },
-      {
-        "absorber_id": "a8",
-        "jarak_km": 188.8,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
+        "absorber_id": "a11",
+        "jarak_km": 69.6,
+        "skor": 58,
+        "selisih_vs_pasar_rp_per_kg": 3000,
+        "estimasi_uplift_juta": 45.0
       },
       {
         "absorber_id": "a10",
         "jarak_km": 59.5,
-        "skor": 51,
-        "selisih_vs_pasar_rp_per_kg": -6700,
-        "estimasi_uplift_juta": -100.5
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1300,
+        "estimasi_uplift_juta": 19.5
       }
     ],
     "cimahi": [
       {
         "absorber_id": "a6",
         "jarak_km": 14.1,
-        "skor": 79,
-        "selisih_vs_pasar_rp_per_kg": -7000,
-        "estimasi_uplift_juta": -84.0
+        "skor": 84,
+        "selisih_vs_pasar_rp_per_kg": 1000,
+        "estimasi_uplift_juta": 12.0
       },
       {
         "absorber_id": "a12",
         "jarak_km": 7.5,
-        "skor": 76,
-        "selisih_vs_pasar_rp_per_kg": -4700,
-        "estimasi_uplift_juta": -23.5
+        "skor": 77,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 12.5
       },
       {
         "absorber_id": "a7",
         "jarak_km": 28.6,
-        "skor": 69,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
+        "skor": 73,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 30.0
       },
       {
         "absorber_id": "a5",
         "jarak_km": 17.4,
         "skor": 68,
-        "selisih_vs_pasar_rp_per_kg": -3500,
-        "estimasi_uplift_juta": -14.0
+        "selisih_vs_pasar_rp_per_kg": 4000,
+        "estimasi_uplift_juta": 16.0
       },
       {
         "absorber_id": "a1",
         "jarak_km": 55.2,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
+        "skor": 58,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 50.0
       }
     ],
     "tasikmalaya_kota": [
       {
         "absorber_id": "a8",
         "jarak_km": 2.9,
-        "skor": 90,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
+        "skor": 94,
+        "selisih_vs_pasar_rp_per_kg": 2000,
+        "estimasi_uplift_juta": 50.0
       },
       {
         "absorber_id": "a9",
         "jarak_km": 2.5,
-        "skor": 81,
-        "selisih_vs_pasar_rp_per_kg": -5300,
-        "estimasi_uplift_juta": -31.8
+        "skor": 83,
+        "selisih_vs_pasar_rp_per_kg": 2300,
+        "estimasi_uplift_juta": 13.8
       },
       {
         "absorber_id": "a1",
         "jarak_km": 36.3,
-        "skor": 64,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
+        "skor": 69,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 50.0
+      },
+      {
+        "absorber_id": "a2",
+        "jarak_km": 40.2,
+        "skor": 59,
+        "selisih_vs_pasar_rp_per_kg": 2300,
+        "estimasi_uplift_juta": 18.4
       },
       {
         "absorber_id": "a4",
         "jarak_km": 78.7,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
-      },
-      {
-        "absorber_id": "a7",
-        "jarak_km": 68.0,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 15.0
       }
     ],
     "banjar": [
       {
         "absorber_id": "a8",
         "jarak_km": 33.1,
-        "skor": 66,
-        "selisih_vs_pasar_rp_per_kg": -6300,
-        "estimasi_uplift_juta": -157.5
-      },
-      {
-        "absorber_id": "a9",
-        "jarak_km": 34.7,
-        "skor": 55,
-        "selisih_vs_pasar_rp_per_kg": -5300,
-        "estimasi_uplift_juta": -31.8
+        "skor": 70,
+        "selisih_vs_pasar_rp_per_kg": 2000,
+        "estimasi_uplift_juta": 50.0
       },
       {
         "absorber_id": "a1",
         "jarak_km": 70.9,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -120.0
+        "skor": 58,
+        "selisih_vs_pasar_rp_per_kg": 2500,
+        "estimasi_uplift_juta": 50.0
+      },
+      {
+        "absorber_id": "a9",
+        "jarak_km": 34.7,
+        "skor": 57,
+        "selisih_vs_pasar_rp_per_kg": 2300,
+        "estimasi_uplift_juta": 13.8
       },
       {
         "absorber_id": "a4",
         "jarak_km": 74.7,
-        "skor": 53,
-        "selisih_vs_pasar_rp_per_kg": -6000,
-        "estimasi_uplift_juta": -60.0
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 15.0
       },
       {
-        "absorber_id": "a7",
-        "jarak_km": 97.7,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": -6500,
-        "estimasi_uplift_juta": -130.0
+        "absorber_id": "a2",
+        "jarak_km": 74.9,
+        "skor": 51,
+        "selisih_vs_pasar_rp_per_kg": 2300,
+        "estimasi_uplift_juta": 18.4
       }
     ]
   }
