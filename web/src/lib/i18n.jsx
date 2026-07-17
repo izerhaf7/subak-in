@@ -7,7 +7,6 @@ import { createContext, useContext } from "react";
 const STRINGS = {
   id: {
     product: "Panen Radar",
-    nav_beranda: "Beranda",
     nav_peta: "Peta Risiko",
     nav_simulasi: "Simulasi Tanam",
     nav_darurat: "Panen Darurat",
@@ -103,9 +102,9 @@ const STRINGS = {
     hasil_simulasi_title: "Hasil simulasi tanam",
     hasil_simulasi_note:
       "Kurva menunjukkan dampak provinsi dari jadwal tanam yang digeser terhadap kurva tanpa perubahan (kondisi awal). Indeks risiko kabupaten ini sendiri di peta tetap mengikuti minggu panennya yang baru — bukan hilang, hanya pindah minggu. Yang membaik di sini adalah sebaran beban panen di level provinsi, sehingga harga tidak jatuh sedalam skenario tanpa staggering.",
-    beranda_headline_1: "Harga anjlok bukan kejutan.",
-    beranda_headline_2: "Itu bisa dihitung.",
-    beranda_sub: "Radar kelebihan panen untuk {kab} kabupaten Jawa Barat — {minggu} minggu sebelum harga jatuh.",
+    beranda_headline_1: "Synchronize Harvests.",
+    beranda_headline_2: "Synchronize Price Crashes.",
+    beranda_sub: "A modeled Decision Support System that predicts harvests glut in Jawa Barat.",
     beranda_cta_utama: "Buka Peta Risiko",
     beranda_cta_kedua: "Panen Darurat",
     beranda_stat_turun_label: "turunnya harga {komoditas} di {nama} dalam {n} minggu",
@@ -115,6 +114,36 @@ const STRINGS = {
     beranda_stat_puncak_value: "W{n}",
     beranda_stat_puncak_label: "puncak risiko musim ini",
     beranda_stat_sumber: "Terukur · harga produsen PIHPS · {n} minggu terakhir",
+    landing_nav_beranda: "Beranda",
+    landing_nav_fitur: "Fitur",
+    landing_nav_faq: "FAQ",
+    landing_fitur_title: "Tiga fitur, satu keputusan",
+    landing_fitur_sub: "Dari deteksi risiko sampai jalan keluar saat panen sudah terlanjur menumpuk.",
+    landing_fitur_peta_judul: "Peta Risiko",
+    landing_fitur_peta_desc:
+      "Peta indeks risiko kelebihan panen per kabupaten, digeser minggu demi minggu — lihat kapan dan di mana panen raya berisiko menjatuhkan harga, sebelum itu terjadi.",
+    landing_fitur_simulasi_judul: "Simulasi Tanam",
+    landing_fitur_simulasi_desc:
+      "Geser jadwal tanam satu kabupaten dan lihat dampaknya ke harga tingkat provinsi — staggering yang tepat waktu meratakan beban panen, bukan menghilangkannya.",
+    landing_fitur_darurat_judul: "Panen Darurat",
+    landing_fitur_darurat_desc:
+      "Saat panen sudah terlanjur menumpuk, sistem mencocokkan surplus kabupaten dengan absorber (pengepul, industri olahan, dsb.) terdekat yang siap menyerap.",
+    landing_faq_title: "Pertanyaan yang sering diajukan",
+    landing_faq_1_q: "Apa yang membedakan SubakIn dari sekadar melihat harga pasar harian?",
+    landing_faq_1_a:
+      "Harga pasar cuma melaporkan apa yang SUDAH terjadi. SubakIn memproyeksikan risiko kelebihan panen beberapa minggu ke depan dari jadwal tanam dan pola musim, jadi peringatan datang sebelum harga anjlok — bukan sesudahnya.",
+    landing_faq_2_q: "Apakah rekomendasinya cuma tebakan kasar?",
+    landing_faq_2_a:
+      "Tidak — setiap angka punya sumber yang jelas. Data terukur (PIHPS, BPS, BMKG) ditandai berbeda dari estimasi model, dan sistem selalu terbuka soal kabupaten mana yang belum punya data harga langsung, alih-alih menyembunyikannya.",
+    landing_faq_3_q: "Kalau kabupaten saya tidak punya data harga, apa tetap kelihatan di peta?",
+    landing_faq_3_a:
+      "Ya. Kabupaten tanpa data PIHPS tetap dianalisis dan tetap tampil di peta sebagai estimasi model (ditandai jelas, bukan disembunyikan) — titik buta data juga bagian penting dari gambaran risiko.",
+    landing_faq_4_q: "Simulasi tanam ini benar-benar menghilangkan risiko glut?",
+    landing_faq_4_a:
+      "Tidak — menggeser jadwal tanam satu kabupaten memindahkan minggu panennya, bukan menghapus risikonya. Yang membaik adalah level provinsi: saat beberapa kabupaten tidak panen serempak, harga tidak jatuh sedalam skenario semua panen bersamaan.",
+    landing_faq_5_q: "Kalau panen sudah terlanjur menumpuk, apa yang bisa dilakukan?",
+    landing_faq_5_a:
+      "Fitur Panen Darurat mencocokkan surplus kabupaten dengan absorber terdekat — pengepul, industri olahan, atau lembaga penyerap lain — lengkap dengan estimasi harga tawar dan jarak, supaya penyaluran surplus bisa bergerak cepat.",
     laporan_buat: "Buat Laporan",
     laporan_membuat: "Menyiapkan...",
     laporan_preview_title: "Pratinjau Laporan",
@@ -137,7 +166,6 @@ const STRINGS = {
   },
   en: {
     product: "Panen Radar",
-    nav_beranda: "Home",
     nav_peta: "Risk Map",
     nav_simulasi: "Planting Simulator",
     nav_darurat: "Emergency Harvest",
@@ -235,7 +263,7 @@ const STRINGS = {
       "The curve shows the province-wide effect of the shifted planting schedule against the unchanged baseline. This regency's own risk index on the map still follows its new harvest week — it doesn't disappear, it just moves. What improves here is how the harvest load is spread across the province, so the price doesn't fall as deeply as it would without staggering.",
     beranda_headline_1: "A price crash is no surprise.",
     beranda_headline_2: "It can be calculated.",
-    beranda_sub: "Harvest-glut radar for {kab} West Java regencies — {minggu} weeks before the price falls.",
+    beranda_sub: "A modeled Decision Support System that predicts harvests glut in Jawa Barat.",
     beranda_cta_utama: "Open Risk Map →",
     beranda_cta_kedua: "Emergency Harvest",
     beranda_stat_turun_label: "drop in {komoditas} producer price in {nama} over {n} weeks",
@@ -245,6 +273,36 @@ const STRINGS = {
     beranda_stat_puncak_value: "W{n}",
     beranda_stat_puncak_label: "risk peak this season",
     beranda_stat_sumber: "Measured · PIHPS producer prices · last {n} weeks",
+    landing_nav_beranda: "Home",
+    landing_nav_fitur: "Features",
+    landing_nav_faq: "FAQ",
+    landing_fitur_title: "Three tools, one decision",
+    landing_fitur_sub: "From risk detection to a way out once the harvest has already piled up.",
+    landing_fitur_peta_judul: "Risk Map",
+    landing_fitur_peta_desc:
+      "A harvest-glut risk index map per regency, scrubbable week by week — see when and where the harvest peak risks crashing the price, before it happens.",
+    landing_fitur_simulasi_judul: "Planting Simulation",
+    landing_fitur_simulasi_desc:
+      "Shift one regency's planting schedule and see the province-wide price effect — well-timed staggering spreads the harvest load, it doesn't erase it.",
+    landing_fitur_darurat_judul: "Emergency Harvest",
+    landing_fitur_darurat_desc:
+      "Once the harvest has already piled up, the system matches a regency's surplus with the nearest ready absorbers (traders, processors, and more).",
+    landing_faq_title: "Frequently asked questions",
+    landing_faq_1_q: "What sets SubakIn apart from just watching daily market prices?",
+    landing_faq_1_a:
+      "Market prices only report what has ALREADY happened. SubakIn projects harvest-glut risk weeks ahead from planting schedules and seasonal patterns, so the warning arrives before the price crashes — not after.",
+    landing_faq_2_q: "Are the recommendations just rough guesses?",
+    landing_faq_2_a:
+      "No — every figure has a clear source. Measured data (PIHPS, BPS, BMKG) is marked distinctly from modeled estimates, and the system is always upfront about which regencies lack direct price data, instead of hiding it.",
+    landing_faq_3_q: "If my regency has no price data, does it still show up on the map?",
+    landing_faq_3_a:
+      "Yes. Regencies without PIHPS data are still analyzed and still shown on the map as a modeled estimate (clearly labeled, not hidden) — data blind spots are part of the risk picture too.",
+    landing_faq_4_q: "Does the planting simulation actually eliminate glut risk?",
+    landing_faq_4_a:
+      "No — shifting one regency's planting schedule moves its harvest week, it doesn't erase the risk. What improves is the province level: when regencies don't harvest all at once, the price doesn't fall as deeply as it would if everyone harvested together.",
+    landing_faq_5_q: "If the harvest has already piled up, what can be done?",
+    landing_faq_5_a:
+      "The Emergency Harvest feature matches a regency's surplus with the nearest absorbers — traders, processors, or other buyers — complete with estimated offer prices and distance, so surplus can move quickly.",
     laporan_buat: "Generate Report",
     laporan_membuat: "Preparing...",
     laporan_preview_title: "Report Preview",

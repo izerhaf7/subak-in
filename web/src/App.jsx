@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import PetaSimulasi from "./screens/PetaSimulasi.jsx";
 import PanenDarurat from "./screens/PanenDarurat.jsx";
-import Beranda from "./screens/Beranda.jsx";
+import Landing from "./screens/Landing.jsx";
 import { loadMeta, loadWeather } from "./lib/loadData.js";
 import { LangContext, useT } from "./lib/i18n.jsx";
 import "./styles/tokens.css";
 
 const NAV_ITEMS = [
-  { id: "beranda", labelKey: "nav_beranda" },
   { id: "peta_simulasi", labelKey: "nav_peta_simulasi" },
   { id: "panen_darurat", labelKey: "nav_darurat" },
 ];
@@ -17,7 +16,12 @@ function AppShell() {
   const [meta, setMeta] = useState(null);
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState(null);
-  const [screen, setScreen] = useState("beranda");
+  // Landing (hero/CTA) muncul SEBELUM shell aplikasi - tanpa topbar/sidebar -
+  // bukan salah satu tab di sidebar (lihat komentar di Landing.jsx). masuk
+  // jadi null selama landing tampil; begitu CTA diklik, terisi layar tujuan
+  // dan shell (topbar+sidebar) baru dirender.
+  const [masuk, setMasuk] = useState(null);
+  const [screen, setScreen] = useState("peta_simulasi");
   const [komoditasId, setKomoditasId] = useState("cabai_rawit");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
@@ -36,6 +40,17 @@ function AppShell() {
       month: "short",
     }).format(new Date(w.diambil_pada));
     return t("weather_badge", { date, rain, total });
+  }
+
+  if (!masuk) {
+    return (
+      <Landing
+        onMasuk={(tujuan) => {
+          setScreen(tujuan);
+          setMasuk(tujuan);
+        }}
+      />
+    );
   }
 
   return (
@@ -87,7 +102,6 @@ function AppShell() {
         </nav>
         {error && <p className="app-error">{t("load_error", { msg: error })}</p>}
         {!error && !meta && <p className="app-loading">{t("loading")}</p>}
-        {!error && meta && screen === "beranda" && <Beranda meta={meta} onMasuk={setScreen} />}
         {!error && meta && screen === "peta_simulasi" && (
           <PetaSimulasi meta={meta} komoditasId={komoditasId} onKomoditasChange={setKomoditasId} />
         )}

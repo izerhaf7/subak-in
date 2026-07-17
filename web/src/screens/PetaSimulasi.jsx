@@ -303,10 +303,12 @@ export default function PetaSimulasi({ meta, komoditasId, onKomoditasChange }) {
     }
   }
 
-  const todayLabel = new Intl.DateTimeFormat(lang === "id" ? "id-ID" : "en-GB", {
-    day: "numeric",
-    month: "short",
-  }).format(new Date());
+  // Tanggal disabled-select ini SENGAJA di-hardcode ke 18 Jul (bukan
+  // new Date()) untuk demo presentasi - laptop demo mungkin tidak diset ke
+  // tanggal yang sama dengan data (weather.json juga di-anchor ke 18 Jul),
+  // jadi hardcode menjaga kedua tanggal itu tetap konsisten satu sama lain
+  // di panggung, terlepas dari jam sistem yang sebenarnya.
+  const todayLabel = "18 Jul";
 
   return (
     <div className="peta-risiko">
