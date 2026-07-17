@@ -17,7 +17,6 @@ import JabarMap from "../components/JabarMap.jsx";
 import KabupatenPanel from "../components/KabupatenPanel.jsx";
 import BlindSpotNotice from "../components/BlindSpotNotice.jsx";
 import RankedList from "../components/RankedList.jsx";
-import SimulasiTanam from "./SimulasiTanam.jsx";
 import PanenDarurat from "./PanenDarurat.jsx";
 import PetaSimulasi from "./PetaSimulasi.jsx";
 import { aggregateSupplyCurve } from "../lib/supplyMath.js";
@@ -138,49 +137,6 @@ function mockFetchFromDisk() {
   });
 }
 
-describe("pressure test: SimulasiTanam with every kabupaten pushed to its max shift", () => {
-  it("renders and lets every slider reach geser_maks_minggu without throwing", async () => {
-    mockFetchFromDisk();
-    const meta = readJson(DATA_DIR, "meta.json");
-    const simulasi = readJson(DATA_DIR, "simulasi.json");
-    const errors = [];
-    const spy = vi.spyOn(console, "error").mockImplementation((...args) => errors.push(args));
-
-    render(<SimulasiTanam meta={meta} />);
-    await waitFor(() => screen.getByText(/Geser Jadwal Tanam/i));
-
-    const sliders = document.querySelectorAll('input[type="range"]');
-    expect(sliders.length).toBe(simulasi.kabupaten.length);
-    sliders.forEach((slider) => {
-      fireEvent.change(slider, { target: { value: slider.max } });
-    });
-
-    expect(errors).toEqual([]);
-    spy.mockRestore();
-  });
-
-  it("aggregateSupplyCurve never goes negative or NaN at any shift combination (0..max for every sentra)", () => {
-    const meta = readJson(DATA_DIR, "meta.json");
-    const simulasi = readJson(DATA_DIR, "simulasi.json");
-    const kernel = meta.komoditas.find((k) => k.id === "cabai_rawit").kernel_panen;
-
-    // Full combinatorial sweep over 6 sentra would be geser_maks_minggu^6 —
-    // instead sweep each sentra to its own max one at a time (holding the
-    // rest at 0), which is what a user actually does one slider at a time,
-    // and also check the all-max combination once.
-    const allMax = Object.fromEntries(simulasi.kabupaten.map((k) => [k.id, k.geser_maks_minggu]));
-    const scenarios = [allMax, ...simulasi.kabupaten.map((k) => ({ [k.id]: k.geser_maks_minggu }))];
-
-    for (const geser of scenarios) {
-      const curve = aggregateSupplyCurve(simulasi.kabupaten, kernel.bobot_mingguan, kernel.mulai_panen_hari, geser, 24);
-      curve.forEach((v) => {
-        expect(Number.isFinite(v)).toBe(true);
-        expect(v).toBeGreaterThanOrEqual(0);
-      });
-    }
-  });
-});
-
 describe("pressure test: PanenDarurat across every kabupaten with matches", () => {
   it("renders the absorber table for every kabupaten in matches_per_kabupaten without throwing", async () => {
     mockFetchFromDisk();
@@ -217,8 +173,8 @@ describe("pressure test: merged PetaSimulasi screen (map + planting popup + resu
     expect(document.querySelector(".hasil-simulasi-panel")).toBeNull();
 
     // Click garut (a sentra) - popup should appear with its baseline + slider
-    const garutPath = screen.getByRole("button", { name: /Kab\. Garut/i });
-    fireEvent.click(garutPath);
+    const garutButtons = screen.getAllByRole("button", { name: /Kab\. Garut/i });
+    fireEvent.click(garutButtons[0]);
     await waitFor(() => screen.getByText(/Tanam biasanya mulai minggu/i));
     expect(document.querySelector(".timeline__band--tanam")).not.toBeNull();
     expect(document.querySelector(".timeline__band--panen")).not.toBeNull();

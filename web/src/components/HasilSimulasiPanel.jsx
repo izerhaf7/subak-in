@@ -3,7 +3,7 @@ import { aggregateSupplyCurve, interpolateHarga } from "../lib/supplyMath.js";
 import { TOOLTIP_PROPS } from "../lib/chartStyle.js";
 import { useT } from "../lib/i18n.jsx";
 
-const WEEKS_OUT = 24;
+const WEEKS_OUT = 16;
 
 // Side-col panel (260px, narrow) showing the province-wide Before/After
 // supply+price effect of the active `geser` shifts — the same computation
@@ -11,15 +11,28 @@ const WEEKS_OUT = 24;
 // one overlaid chart since this panel lives in the narrow side column.
 export default function HasilSimulasiPanel({ simulasi, geser, kernel }) {
   const { t, lang } = useT();
-  const zeroShift = Object.fromEntries(simulasi.kabupaten.map((k) => [k.id, 0]));
 
-  const sebelum = aggregateSupplyCurve(simulasi.kabupaten, kernel.bobot_mingguan, kernel.mulai_panen_hari, zeroShift, WEEKS_OUT);
-  const sesudah = aggregateSupplyCurve(simulasi.kabupaten, kernel.bobot_mingguan, kernel.mulai_panen_hari, geser, WEEKS_OUT);
+  const sebelum = simulasi.pasokan_provinsi_baseline.ton_per_minggu;
+  
+  // Sesudah = sebelum - baseline_lama + baseline_lama_digeser
+  const sesudah = [...sebelum];
+  for (const k of simulasi.kabupaten) {
+    const shift = geser[k.id] || 0;
+    if (shift === 0) continue;
+    
+    const oldCurve = k.pasokan_baseline_ton || new Array(WEEKS_OUT).fill(0);
+    for (let i = 0; i < WEEKS_OUT; i++) {
+      sesudah[i] -= oldCurve[i];
+      if (i >= shift) {
+        sesudah[i] += oldCurve[i - shift];
+      }
+    }
+  }
 
   const chartData = sebelum.map((ton, i) => {
     const tonSesudah = sesudah[i];
-    const rasioSebelum = ton / simulasi.permintaan_mingguan_ton;
-    const rasioSesudah = tonSesudah / simulasi.permintaan_mingguan_ton;
+    const rasioSebelum = ton / simulasi.permintaan_provinsi_mingguan_ton;
+    const rasioSesudah = tonSesudah / simulasi.permintaan_provinsi_mingguan_ton;
     return {
       minggu: `M${i}`,
       hargaSebelum: Math.round(interpolateHarga(rasioSebelum, simulasi.elastisitas_display.lookup)),
