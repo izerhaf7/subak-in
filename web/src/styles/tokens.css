@@ -1200,12 +1200,37 @@ body {
 
 /* Beranda — halaman depan */
 .beranda {
+  position: relative;
+  /* isolate: bikin stacking context sendiri, supaya ::before di bawah bisa
+     pakai z-index negatif tanpa tembus ke belakang .app-body. */
+  isolation: isolate;
   flex: 1;
   min-width: 0;
   overflow-y: auto;
   padding: 2rem 2.2rem;
   display: flex;
   flex-direction: column;
+}
+
+/* Foto sawah terasering sebagai tekstur latar. Opacity dipasang di
+   pseudo-element, BUKAN di .beranda — kalau di elemennya, teks dan tombol
+   ikut pudar. Nilainya sengaja rendah: warna kontras di app ini sudah
+   diaudit WCAG di atas latar krem, dan foto yang terlalu pekat menggeser
+   latar itu sampai teks --ink-secondary bisa jatuh di bawah 4.5:1. */
+.beranda::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("/brand/sawah-terasering.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;
+  /* Sumbernya cuma 547x365 dan direntang selebar hero, jadi detailnya sudah
+     hilang duluan — contrast/saturate mengembalikan sebagian "gigi" foto yang
+     termakan opacity rendah, bukan menambah ketajaman yang memang tidak ada. */
+  filter: contrast(1.15) saturate(1.2);
+  pointer-events: none;
 }
 
 .beranda__hero {

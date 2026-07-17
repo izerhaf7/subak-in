@@ -69,7 +69,7 @@ function AppShell() {
         </nav>
         {error && <p className="app-error">{t("load_error", { msg: error })}</p>}
         {!error && !meta && <p className="app-loading">{t("loading")}</p>}
-        {!error && meta && screen === "beranda" && <Beranda meta={meta} onMasuk={setScreen} />}
+        {!error && meta && screen === "beranda" && <Beranda onMasuk={setScreen} />}
         {!error && meta && screen === "peta_simulasi" && <PetaSimulasi meta={meta} />}
         {!error && meta && screen === "panen_darurat" && <PanenDarurat />}
       </div>
