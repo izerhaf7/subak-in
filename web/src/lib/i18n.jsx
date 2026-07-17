@@ -61,7 +61,7 @@ const STRINGS = {
     sim_area_note:
       "luas per varian = estimasi proporsional dari rasio produksi (BPS hanya merilis luas gabungan)",
     dar_placeholder_note:
-      "Sebagian besar absorber di bawah ini organisasi nyata hasil riset publik (nama & lokasi terverifikasi) — tapi kapasitas & harga tawar masih angka ilustratif, belum dikonfirmasi langsung ke organisasinya. Entri dengan [PLACEHOLDER] di nama masih belum ketemu match nyata sama sekali. Jarak dan skor kecocokannya sudah dihitung otomatis di sistem, bukan dihitung ulang di sini.",
+      "Absorber di bawah ini organisasi nyata hasil riset publik (nama & lokasi terverifikasi) — tapi kapasitas & harga tawar masih angka ilustratif, belum dikonfirmasi langsung ke organisasinya. Jarak dan skor kecocokannya sudah dihitung otomatis di sistem, bukan dihitung ulang di sini.",
     dar_surplus: "Kabupaten surplus",
     dar_matched: "Absorber yang cocok",
     dar_best: "Kecocokan terbaik",
@@ -174,7 +174,7 @@ const STRINGS = {
     sim_area_note:
       "area per variant is a proportional estimate from production ratios (BPS only publishes the combined area)",
     dar_placeholder_note:
-      "Most absorbers below are real organizations found via public research (verified name & location) — but capacity and offer price are still illustrative estimates, not confirmed directly with the organization. Entries still marked [PLACEHOLDER] have no confirmed real match yet. Distance/score matching is precomputed in the backend, not recalculated here.",
+      "The absorbers below are real organizations found via public research (verified name & location) — but capacity and offer price are still illustrative estimates, not confirmed directly with the organization. Distance/score matching is precomputed in the backend, not recalculated here.",
     dar_surplus: "Surplus regency",
     dar_matched: "Matched absorbers",
     dar_best: "Best match",

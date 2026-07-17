@@ -10,15 +10,6 @@
       "harga_tawar_rp": 17000
     },
     {
-      "id": "a2",
-      "nama": "[PLACEHOLDER] Bank Pangan Garut",
-      "jenis": "Bank Pangan",
-      "lat": -7.23,
-      "lng": 107.87,
-      "kapasitas_ton": 8,
-      "harga_tawar_rp": 16800
-    },
-    {
       "id": "a3",
       "nama": "Koperasi Bawang Merah — Kab. Cirebon",
       "jenis": "Koperasi",
@@ -73,15 +64,6 @@
       "harga_tawar_rp": 16500
     },
     {
-      "id": "a9",
-      "nama": "[PLACEHOLDER] Pengolah Aneka Sambal Tasikmalaya",
-      "jenis": "Pengolah",
-      "lat": -7.35,
-      "lng": 108.22,
-      "kapasitas_ton": 6,
-      "harga_tawar_rp": 16800
-    },
-    {
       "id": "a10",
       "nama": "Pasar Pelita — Kota Sukabumi",
       "jenis": "Pasar Induk",
@@ -98,15 +80,6 @@
       "lng": 106.55,
       "kapasitas_ton": 15,
       "harga_tawar_rp": 17500
-    },
-    {
-      "id": "a12",
-      "nama": "[PLACEHOLDER] Pengolah Bumbu Instan Bandung Barat",
-      "jenis": "Pengolah",
-      "lat": -6.84,
-      "lng": 107.49,
-      "kapasitas_ton": 5,
-      "harga_tawar_rp": 17000
     }
   ],
   "kabupaten_centroid": [
@@ -286,13 +259,6 @@
         "estimasi_uplift_juta": 12.0
       },
       {
-        "absorber_id": "a12",
-        "jarak_km": 62.8,
-        "skor": 43,
-        "selisih_vs_pasar_rp_per_kg": 2500,
-        "estimasi_uplift_juta": 12.5
-      },
-      {
         "absorber_id": "a5",
         "jarak_km": 67.9,
         "skor": 42,
@@ -330,11 +296,11 @@
         "estimasi_uplift_juta": 12.0
       },
       {
-        "absorber_id": "a12",
-        "jarak_km": 38.5,
-        "skor": 52,
-        "selisih_vs_pasar_rp_per_kg": 2500,
-        "estimasi_uplift_juta": 12.5
+        "absorber_id": "a5",
+        "jarak_km": 49.5,
+        "skor": 42,
+        "selisih_vs_pasar_rp_per_kg": 4000,
+        "estimasi_uplift_juta": 16.0
       }
     ],
     "bandung_kab": [
@@ -360,18 +326,18 @@
         "estimasi_uplift_juta": 30.0
       },
       {
-        "absorber_id": "a12",
-        "jarak_km": 22.4,
-        "skor": 65,
-        "selisih_vs_pasar_rp_per_kg": 2500,
-        "estimasi_uplift_juta": 12.5
-      },
-      {
         "absorber_id": "a1",
         "jarak_km": 45.6,
         "skor": 61,
         "selisih_vs_pasar_rp_per_kg": 2500,
         "estimasi_uplift_juta": 50.0
+      },
+      {
+        "absorber_id": "a10",
+        "jarak_km": 68.7,
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1300,
+        "estimasi_uplift_juta": 19.5
       }
     ],
     "garut": [
@@ -381,13 +347,6 @@
         "skor": 97,
         "selisih_vs_pasar_rp_per_kg": -13665,
         "estimasi_uplift_juta": -273.3
-      },
-      {
-        "absorber_id": "a2",
-        "jarak_km": 4.6,
-        "skor": 88,
-        "selisih_vs_pasar_rp_per_kg": -13865,
-        "estimasi_uplift_juta": -110.9
       },
       {
         "absorber_id": "a8",
@@ -409,6 +368,13 @@
         "skor": 62,
         "selisih_vs_pasar_rp_per_kg": -15165,
         "estimasi_uplift_juta": -182.0
+      },
+      {
+        "absorber_id": "a5",
+        "jarak_km": 46.0,
+        "skor": 45,
+        "selisih_vs_pasar_rp_per_kg": -12165,
+        "estimasi_uplift_juta": -48.7
       }
     ],
     "tasikmalaya_kab": [
@@ -420,13 +386,6 @@
         "estimasi_uplift_juta": -507.9
       },
       {
-        "absorber_id": "a9",
-        "jarak_km": 5.0,
-        "skor": 81,
-        "selisih_vs_pasar_rp_per_kg": -20014,
-        "estimasi_uplift_juta": -120.1
-      },
-      {
         "absorber_id": "a1",
         "jarak_km": 32.1,
         "skor": 72,
@@ -434,18 +393,25 @@
         "estimasi_uplift_juta": -396.3
       },
       {
-        "absorber_id": "a2",
-        "jarak_km": 35.9,
-        "skor": 62,
-        "selisih_vs_pasar_rp_per_kg": -20014,
-        "estimasi_uplift_juta": -160.1
-      },
-      {
         "absorber_id": "a7",
         "jarak_km": 65.1,
         "skor": 56,
         "selisih_vs_pasar_rp_per_kg": -20814,
         "estimasi_uplift_juta": -416.3
+      },
+      {
+        "absorber_id": "a6",
+        "jarak_km": 72.0,
+        "skor": 55,
+        "selisih_vs_pasar_rp_per_kg": -21314,
+        "estimasi_uplift_juta": -255.8
+      },
+      {
+        "absorber_id": "a3",
+        "jarak_km": 73.2,
+        "skor": 45,
+        "selisih_vs_pasar_rp_per_kg": -20314,
+        "estimasi_uplift_juta": -121.9
       }
     ],
     "ciamis": [
@@ -455,13 +421,6 @@
         "skor": 87,
         "selisih_vs_pasar_rp_per_kg": 2000,
         "estimasi_uplift_juta": 50.0
-      },
-      {
-        "absorber_id": "a9",
-        "jarak_km": 15.0,
-        "skor": 73,
-        "selisih_vs_pasar_rp_per_kg": 2300,
-        "estimasi_uplift_juta": 13.8
       },
       {
         "absorber_id": "a1",
@@ -483,6 +442,13 @@
         "skor": 56,
         "selisih_vs_pasar_rp_per_kg": 1500,
         "estimasi_uplift_juta": 30.0
+      },
+      {
+        "absorber_id": "a3",
+        "jarak_km": 66.1,
+        "skor": 45,
+        "selisih_vs_pasar_rp_per_kg": 2000,
+        "estimasi_uplift_juta": 12.0
       }
     ],
     "kuningan": [
@@ -543,13 +509,6 @@
         "skor": 57,
         "selisih_vs_pasar_rp_per_kg": -27344,
         "estimasi_uplift_juta": -683.6
-      },
-      {
-        "absorber_id": "a9",
-        "jarak_km": 77.9,
-        "skor": 45,
-        "selisih_vs_pasar_rp_per_kg": -27044,
-        "estimasi_uplift_juta": -162.3
       }
     ],
     "majalengka": [
@@ -612,18 +571,18 @@
         "estimasi_uplift_juta": 50.0
       },
       {
-        "absorber_id": "a2",
-        "jarak_km": 41.7,
-        "skor": 58,
-        "selisih_vs_pasar_rp_per_kg": 2300,
-        "estimasi_uplift_juta": 18.4
-      },
-      {
         "absorber_id": "a8",
         "jarak_km": 61.4,
         "skor": 57,
         "selisih_vs_pasar_rp_per_kg": 2000,
         "estimasi_uplift_juta": 50.0
+      },
+      {
+        "absorber_id": "a4",
+        "jarak_km": 71.8,
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 15.0
       }
     ],
     "indramayu": [
@@ -665,28 +624,14 @@
         "estimasi_uplift_juta": 50.0
       },
       {
-        "absorber_id": "a2",
-        "jarak_km": 74.1,
-        "skor": 51,
-        "selisih_vs_pasar_rp_per_kg": 2300,
-        "estimasi_uplift_juta": 18.4
-      },
-      {
-        "absorber_id": "a12",
-        "jarak_km": 42.1,
-        "skor": 49,
-        "selisih_vs_pasar_rp_per_kg": 2500,
-        "estimasi_uplift_juta": 12.5
+        "absorber_id": "a5",
+        "jarak_km": 57.9,
+        "skor": 42,
+        "selisih_vs_pasar_rp_per_kg": 4000,
+        "estimasi_uplift_juta": 16.0
       }
     ],
     "purwakarta": [
-      {
-        "absorber_id": "a12",
-        "jarak_km": 32.0,
-        "skor": 57,
-        "selisih_vs_pasar_rp_per_kg": 2500,
-        "estimasi_uplift_juta": 12.5
-      },
       {
         "absorber_id": "a6",
         "jarak_km": 49.4,
@@ -723,13 +668,6 @@
         "skor": 55,
         "selisih_vs_pasar_rp_per_kg": 1000,
         "estimasi_uplift_juta": 12.0
-      },
-      {
-        "absorber_id": "a12",
-        "jarak_km": 59.9,
-        "skor": 43,
-        "selisih_vs_pasar_rp_per_kg": 2500,
-        "estimasi_uplift_juta": 12.5
       }
     ],
     "bekasi_kab": [
@@ -739,23 +677,9 @@
         "skor": 56,
         "selisih_vs_pasar_rp_per_kg": 1300,
         "estimasi_uplift_juta": 19.5
-      },
-      {
-        "absorber_id": "a12",
-        "jarak_km": 75.2,
-        "skor": 43,
-        "selisih_vs_pasar_rp_per_kg": 2500,
-        "estimasi_uplift_juta": 12.5
       }
     ],
     "bandung_barat": [
-      {
-        "absorber_id": "a12",
-        "jarak_km": 0.5,
-        "skor": 82,
-        "selisih_vs_pasar_rp_per_kg": 2500,
-        "estimasi_uplift_juta": 12.5
-      },
       {
         "absorber_id": "a6",
         "jarak_km": 21.9,
@@ -783,6 +707,13 @@
         "skor": 58,
         "selisih_vs_pasar_rp_per_kg": 2500,
         "estimasi_uplift_juta": 50.0
+      },
+      {
+        "absorber_id": "a10",
+        "jarak_km": 62.0,
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1300,
+        "estimasi_uplift_juta": 19.5
       }
     ],
     "pangandaran": [
@@ -792,13 +723,6 @@
         "skor": 57,
         "selisih_vs_pasar_rp_per_kg": 2000,
         "estimasi_uplift_juta": 50.0
-      },
-      {
-        "absorber_id": "a9",
-        "jarak_km": 60.3,
-        "skor": 45,
-        "selisih_vs_pasar_rp_per_kg": 2300,
-        "estimasi_uplift_juta": 13.8
       }
     ],
     "bogor_kota": [
@@ -840,13 +764,6 @@
         "estimasi_uplift_juta": -357.5
       },
       {
-        "absorber_id": "a12",
-        "jarak_km": 62.6,
-        "skor": 43,
-        "selisih_vs_pasar_rp_per_kg": -28289,
-        "estimasi_uplift_juta": -141.4
-      },
-      {
         "absorber_id": "a5",
         "jarak_km": 67.4,
         "skor": 42,
@@ -877,18 +794,18 @@
         "estimasi_uplift_juta": 16.0
       },
       {
-        "absorber_id": "a12",
-        "jarak_km": 16.7,
-        "skor": 69,
-        "selisih_vs_pasar_rp_per_kg": 2500,
-        "estimasi_uplift_juta": 12.5
-      },
-      {
         "absorber_id": "a1",
         "jarak_km": 46.5,
         "skor": 60,
         "selisih_vs_pasar_rp_per_kg": 2500,
         "estimasi_uplift_juta": 50.0
+      },
+      {
+        "absorber_id": "a10",
+        "jarak_km": 76.1,
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1300,
+        "estimasi_uplift_juta": 19.5
       }
     ],
     "cirebon_kota": [
@@ -948,13 +865,6 @@
         "estimasi_uplift_juta": 12.0
       },
       {
-        "absorber_id": "a12",
-        "jarak_km": 7.5,
-        "skor": 77,
-        "selisih_vs_pasar_rp_per_kg": 2500,
-        "estimasi_uplift_juta": 12.5
-      },
-      {
         "absorber_id": "a7",
         "jarak_km": 28.6,
         "skor": 73,
@@ -974,6 +884,13 @@
         "skor": 58,
         "selisih_vs_pasar_rp_per_kg": 2500,
         "estimasi_uplift_juta": 50.0
+      },
+      {
+        "absorber_id": "a10",
+        "jarak_km": 67.6,
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1300,
+        "estimasi_uplift_juta": 19.5
       }
     ],
     "tasikmalaya_kota": [
@@ -985,13 +902,6 @@
         "estimasi_uplift_juta": 50.0
       },
       {
-        "absorber_id": "a9",
-        "jarak_km": 2.5,
-        "skor": 83,
-        "selisih_vs_pasar_rp_per_kg": 2300,
-        "estimasi_uplift_juta": 13.8
-      },
-      {
         "absorber_id": "a1",
         "jarak_km": 36.3,
         "skor": 69,
@@ -999,18 +909,25 @@
         "estimasi_uplift_juta": 50.0
       },
       {
-        "absorber_id": "a2",
-        "jarak_km": 40.2,
-        "skor": 59,
-        "selisih_vs_pasar_rp_per_kg": 2300,
-        "estimasi_uplift_juta": 18.4
-      },
-      {
         "absorber_id": "a4",
         "jarak_km": 78.7,
         "skor": 56,
         "selisih_vs_pasar_rp_per_kg": 1500,
         "estimasi_uplift_juta": 15.0
+      },
+      {
+        "absorber_id": "a7",
+        "jarak_km": 68.0,
+        "skor": 56,
+        "selisih_vs_pasar_rp_per_kg": 1500,
+        "estimasi_uplift_juta": 30.0
+      },
+      {
+        "absorber_id": "a6",
+        "jarak_km": 75.7,
+        "skor": 55,
+        "selisih_vs_pasar_rp_per_kg": 1000,
+        "estimasi_uplift_juta": 12.0
       }
     ],
     "banjar": [
@@ -1029,13 +946,6 @@
         "estimasi_uplift_juta": 50.0
       },
       {
-        "absorber_id": "a9",
-        "jarak_km": 34.7,
-        "skor": 57,
-        "selisih_vs_pasar_rp_per_kg": 2300,
-        "estimasi_uplift_juta": 13.8
-      },
-      {
         "absorber_id": "a4",
         "jarak_km": 74.7,
         "skor": 56,
@@ -1043,11 +953,11 @@
         "estimasi_uplift_juta": 15.0
       },
       {
-        "absorber_id": "a2",
-        "jarak_km": 74.9,
-        "skor": 51,
-        "selisih_vs_pasar_rp_per_kg": 2300,
-        "estimasi_uplift_juta": 18.4
+        "absorber_id": "a3",
+        "jarak_km": 69.2,
+        "skor": 45,
+        "selisih_vs_pasar_rp_per_kg": 2000,
+        "estimasi_uplift_juta": 12.0
       }
     ]
   }
