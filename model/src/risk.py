@@ -58,12 +58,111 @@ def score_overlap(weekly_ton: np.ndarray) -> np.ndarray:
     "concentrated" relative to itself - so callers MUST multiply this
     function's output by magnitude_factor() before feeding it into
     composite_risk. This function alone is now just the timing/concentration
-    half of the signal, not a complete risk score."""
+    half of the signal, not a complete risk score.
+
+    SUPERSEDED for map.json's actual risk_mingguan by score_overlap_provinsi()
+    below (kept here as the simpler building block score_overlap_provinsi
+    reduces to, and because riskMath.test.js/supplyMath.test.js still exercise
+    it directly)."""
     baseline = weekly_ton.mean()
     if baseline <= 0:
         return np.zeros_like(weekly_ton)
     ratio = weekly_ton / baseline
     return np.clip((ratio - 1) * 60, 0, 100)
+
+
+
+
+def score_overlap_provinsi(kabupaten_ton: np.ndarray, provinsi_ton: np.ndarray,
+                            max_kabupaten_ton: np.ndarray) -> np.ndarray:
+    """Province-aware overlap: how much of the PROVINCE's glut this specific
+    kabupaten's supply explains that week, not just whether the kabupaten's
+    own curve looks concentrated relative to itself.
+
+    BUG FOUND (via user question): score_overlap() (above) scores kabupaten X
+    purely against X's OWN mean - it has no reference to what any other
+    kabupaten is doing. This has a specific, non-obvious failure mode the
+    user found: if ALL kabupaten with the same harvest timing (e.g. every
+    generic-fallback kabupaten, which share one DEFAULT_ZOM_STATUS -> same
+    cohort shape -> same relative timing) are staggered by the SAME amount
+    simultaneously, real economics says the pileup should be UNCHANGED - it
+    still lands in one week together, just a different one. But
+    score_overlap(X) only sees X's own curve moving in isolation and reports
+    X as "less concentrated" purely because X's new position happens to sit
+    closer to X's own historical average - even though every other kabupaten
+    moved in lockstep and the province-wide pileup is identical. That's a
+    real modeling gap, not a rounding error: score_overlap has no way to
+    detect "everyone bunched together, just moved together".
+
+    Fix (v1): score how elevated the PROVINCE's total supply is that week
+    (provinsi_ton vs its own mean - this part is genuinely province-wide,
+    unlike score_overlap's kabupaten-own-mean), then weight it by X's SHARE
+    of the province's TOTAL supply that week.
+
+    BUG FOUND #1 (via user screenshot: every kabupaten showing implausibly LOW
+    scores during an actual harvest peak): v1 weighted by kabupaten_ton /
+    EXCESS (ton above the province's mean) - that looks reasonable
+    per-kabupaten, but doesn't sum correctly across kabupaten: since excess is
+    much smaller than total ton, and each kabupaten's share was independently
+    clipped to [0,1], the SAME excess got "explained" more than once -
+    verified in real data, bandung_kab (24% of total ton) + garut (33%) alone
+    summed to ~98% of one week's excess, and ALL 18 simulated kabupaten
+    together summed to ~173% of it. That inflated denominator crushed every
+    individual score. Switched the denominator to TOTAL province ton, which
+    sums to ~1 across kabupaten (confirmed empirically) - fixed the
+    double-count, BUT:
+
+    BUG FOUND #2 (via user, immediately after fixing #1): a linear share of
+    TOTAL province ton is a hard ceiling on any kabupaten's own score. garut
+    is ~33% of province ton even at its OWN peak week, so with a plain linear
+    share garut's overlap can never exceed ~33 no matter how elevated the
+    province is (confirmed: raising the deviation scale constant from 60 to
+    300 changed nothing - deviasi_provinsi was already saturating at 100, the
+    ceiling was entirely the 33% multiplier). Tried raising the share to a
+    fractional exponent (share**0.4) to lift the ceiling - but this raises
+    EVERY kabupaten's contribution, including negligible ones (share=0.03%
+    still read as overlap~12-18, clearly wrong for a producer that's
+    essentially a rounding error).
+
+    Fix (v3, current): normalize each kabupaten's ton against whichever
+    kabupaten is the LARGEST contributor that specific week (max_kabupaten_ton),
+    not against total province ton. The biggest player that week gets
+    kontribusi=1 (reads as the full province deviation - correctly high-risk
+    during a real peak); a kabupaten at half that player's tonnage gets ~0.5;
+    a negligible kabupaten (a small fraction of the top player's tonnage)
+    correctly stays near zero, regardless of how many OTHER kabupaten are
+    also contributing that week (unlike the exponent approach, this doesn't
+    lift kabupaten just because everyone else's share got compressed).
+
+    Truth table this restores:
+    - X shifts ALONE, away from where others still peak -> X's tonnage at its
+      new week (and thus its ratio to that week's biggest player) drops ->
+      X's score drops (real destaggering).
+    - ALL kabupaten (same timing) shift by the SAME amount together -> the
+      whole province's pileup (including whichever kabupaten is biggest)
+      moves together to a different week - the RATIO between any kabupaten
+      and that week's top player is unchanged -> scores barely move
+      (correctly reflects "postponed the same glut", not "fixed" it).
+    - The single largest producer during an actual province-wide peak reads
+      as genuinely high-risk (kontribusi=1 for whichever kabupaten IS that
+      week's top player), not capped at its raw percentage share.
+    """
+    kabupaten_ton = np.asarray(kabupaten_ton, dtype=float)
+    provinsi_ton = np.asarray(provinsi_ton, dtype=float)
+    max_kabupaten_ton = np.asarray(max_kabupaten_ton, dtype=float)
+    provinsi_mean = provinsi_ton.mean()
+    if provinsi_mean <= 0:
+        return np.zeros_like(kabupaten_ton)
+
+    provinsi_ratio = provinsi_ton / provinsi_mean
+    deviasi_provinsi = np.clip((provinsi_ratio - 1) * 60, 0, 100)
+
+    kontribusi = np.divide(
+        kabupaten_ton, max_kabupaten_ton,
+        out=np.zeros_like(kabupaten_ton), where=max_kabupaten_ton > 0,
+    )
+    kontribusi = np.clip(kontribusi, 0, 1)
+    return deviasi_provinsi * kontribusi
 
 
 def score_price_gap(price_rp, ongkos_petik_rp: float, biaya_produksi_rp: float) -> float:

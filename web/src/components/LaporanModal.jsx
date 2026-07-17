@@ -136,7 +136,7 @@ export default function LaporanModal({ report, onClose }) {
                   <div>
                     <span className="laporan-preview__kpi-label">{t("laporan_harga_dasar")}</span>
                     <span className="laporan-preview__kpi-value">
-                      {formatRp(report.simulasi.hargaDasarSebelum)} → {formatRp(report.simulasi.hargaDasarSesudah)}
+                      {formatRp(report.simulasi.hargaDasarSebelum)}/kg → {formatRp(report.simulasi.hargaDasarSesudah)}/kg
                     </span>
                   </div>
                 </div>

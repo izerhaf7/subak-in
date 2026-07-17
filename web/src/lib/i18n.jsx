@@ -83,7 +83,7 @@ const STRINGS = {
     kota_notice:
       "{nama} adalah wilayah kota — bukan wilayah produksi hortikultura, jadi tidak ikut dianalisis di peta risiko. Data harga eceran dari kota justru dipakai sebagai sinyal proxy untuk kabupaten di sekitarnya.",
     proxy_caption:
-      "Kabupaten ini tidak punya data harga produsen. Garis di bawah adalah harga eceran {sumber} (data asli), dan pita adalah rentang estimasi harga produsen (rasio transmisi p25–p75) — estimasi tidak langsung, BUKAN harga terukur.",
+      "Tidak ada data harga produsen di sini. Garis = harga eceran {sumber} (data asli). Pita = estimasi harga produsen, bukan angka terukur.",
     proxy_band_label: "Rentang estimasi produsen",
     retail_line_label: "Harga eceran {sumber}",
     nav_peta_simulasi: "Peta & Simulasi",
@@ -91,13 +91,14 @@ const STRINGS = {
     band_panen: "Panen Raya",
     popup_close: "✕ Tutup",
     popup_baseline: "Tanam biasanya mulai minggu W{w}",
-    popup_no_shift: "Sesuai jadwal tanam biasa",
+    popup_no_shift: "Tidak digeser (tanam W{w})",
     popup_slider_aria: "Geser jadwal tanam — {nama}",
     popup_hint: "Geser slider untuk menunda tanam beberapa minggu dan lihat efeknya di panel hasil simulasi.",
     popup_not_sentra: "Kabupaten ini belum termasuk sentra yang datanya lengkap untuk simulasi tanam — belum ada jadwal tanam yang bisa disimulasikan di sini.",
+    popup_zom_generik: "⚠ Kabupaten ini belum punya data awal musim hujan BMKG — jadwal tanam di atas dimodelkan mendekati kondisi asli (asumsi musim generik), akan disempurnakan saat data lengkap tersedia.",
     hasil_simulasi_title: "Hasil simulasi tanam",
     hasil_simulasi_note:
-      "Kurva menunjukkan dampak provinsi dari jadwal tanam yang digeser terhadap kurva tanpa perubahan (kondisi awal).",
+      "Kurva menunjukkan dampak provinsi dari jadwal tanam yang digeser terhadap kurva tanpa perubahan (kondisi awal). Indeks risiko kabupaten ini sendiri di peta tetap mengikuti minggu panennya yang baru — bukan hilang, hanya pindah minggu. Yang membaik di sini adalah sebaran beban panen di level provinsi, sehingga harga tidak jatuh sedalam skenario tanpa staggering.",
     laporan_buat: "Buat Laporan",
     laporan_membuat: "Menyiapkan...",
     laporan_preview_title: "Pratinjau Laporan",
@@ -196,7 +197,7 @@ const STRINGS = {
     kota_notice:
       "{nama} is a city — not a horticulture production area, so it is excluded from the risk map analysis. Its retail price data is instead used as a proxy signal for the surrounding regencies.",
     proxy_caption:
-      "This regency has no producer price data. The line below is {sumber} retail prices (real data), and the band is an estimated producer price range (p25–p75 transmission ratio) — an indirect estimate, NOT a measured price.",
+      "No producer price data here. Line = {sumber} retail price (real data). Band = estimated producer price, not a measured figure.",
     proxy_band_label: "Estimated producer range",
     retail_line_label: "{sumber} retail price",
     nav_peta_simulasi: "Map & Simulation",
@@ -204,13 +205,14 @@ const STRINGS = {
     band_panen: "Peak Harvest",
     popup_close: "✕ Close",
     popup_baseline: "Planting usually starts week W{w}",
-    popup_no_shift: "Following the usual planting schedule",
+    popup_no_shift: "Not shifted (planting W{w})",
     popup_slider_aria: "Shift planting schedule — {nama}",
     popup_hint: "Drag the slider to delay planting by a few weeks and see the effect in the simulation result panel.",
     popup_not_sentra: "This regency isn't one of the scraped sentra for planting simulation — there's no planting-schedule data to simulate here yet.",
+    popup_zom_generik: "⚠ This regency has no real BMKG monsoon-onset data yet — the planting schedule above is modeled to approximate real conditions (generic seasonal assumption), and will be refined once full data is available.",
     hasil_simulasi_title: "Planting simulation result",
     hasil_simulasi_note:
-      "The curve shows the province-wide effect of the shifted planting schedule against the unchanged baseline.",
+      "The curve shows the province-wide effect of the shifted planting schedule against the unchanged baseline. This regency's own risk index on the map still follows its new harvest week — it doesn't disappear, it just moves. What improves here is how the harvest load is spread across the province, so the price doesn't fall as deeply as it would without staggering.",
     laporan_buat: "Generate Report",
     laporan_membuat: "Preparing...",
     laporan_preview_title: "Report Preview",

@@ -21,9 +21,14 @@ export default function PlantingPopup({ kabupaten, geser, onChange, onClose }) {
         {t("popup_baseline", { w: kabupaten.baseline_tanam_minggu })}
       </p>
       <p className="planting-popup__status">{t(`status_${kabupaten.status_musim_hujan}`)}</p>
+      {!kabupaten.zom_asli && (
+        <p className="planting-popup__badge-generik">{t("popup_zom_generik")}</p>
+      )}
       <div className="planting-popup__slider-row">
         <span className="planting-popup__slider-value">
-          {isShifted ? t("plus_weeks", { n: geser }) : t("popup_no_shift")}
+          {isShifted
+            ? t("plus_weeks", { n: geser })
+            : t("popup_no_shift", { w: kabupaten.baseline_tanam_minggu })}
         </span>
         <input
           type="range"

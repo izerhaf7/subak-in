@@ -3,7 +3,7 @@ import { summarizeSimulationImpact } from "../lib/supplyMath.js";
 import { TOOLTIP_PROPS } from "../lib/chartStyle.js";
 import { useT } from "../lib/i18n.jsx";
 
-const WEEKS_OUT = 16;
+const WEEKS_OUT = 20; // matches model/run_all.py's FORECAST_HORIZON
 
 // Side-col panel (260px, narrow) showing the province-wide Before/After
 // supply+price effect of the active `geser` shifts — the same computation
@@ -39,7 +39,7 @@ export default function HasilSimulasiPanel({ simulasi, geser, kernel, onReset })
             {lang === "id" ? "Harga dasar" : "Base price"}
           </span>
           <span className="hasil-simulasi-panel__kpi-value">
-            Rp{minHargaSebelum.toLocaleString("id-ID")} → Rp{minHargaSesudah.toLocaleString("id-ID")}
+            Rp{minHargaSebelum.toLocaleString("id-ID")}/kg → Rp{minHargaSesudah.toLocaleString("id-ID")}/kg
           </span>
           {lebihStabil && (
             <span className="hasil-simulasi-panel__kpi-sub">

@@ -33,10 +33,34 @@ import weather
 import export
 
 WIB = timezone(timedelta(hours=7))
-FORECAST_HORIZON = 16   # covers map.json / pasokan_mingguan's 16-week window
+# BUG FOUND (via user screenshot: dominant producer's risk index only reached
+# ~53 "even at panen raya"): score_overlap_provinsi's max-normalization fix
+# was correct, but the TRUE province-wide peak (found by inspecting
+# provinsi_ton_wide's full OVERLAP_MEAN_HORIZON=32-week curve) fell at week
+# index ~16 - just PAST where the displayed/exported window used to end
+# (FORECAST_HORIZON was 16, i.e. indices 0-15). The map/timeline was always
+# showing an incomplete, still-climbing lead-up to the real peak, never the
+# peak itself - not a calibration bug, a window-length bug. Widened to 20 so
+# the displayed window comfortably covers the true peak for this dataset.
+FORECAST_HORIZON = 20   # covers map.json / pasokan_mingguan's window
 DISPLAY_FORECAST = 12   # kabupaten/*.json's shorter displayed price forecast
 HISTORIS_WEEKS = 52
 DEFAULT_ZOM_STATUS = "transisi_sebelum_cutoff"  # ASUMSI fallback for the 21 kabupaten with no BMKG onset row
+# BUG FOUND (via user staggering a kabupaten in the frontend and seeing its
+# risk score barely move / saturate at the window's edge): score_overlap's
+# ratio-to-own-mean is computed over exactly FORECAST_HORIZON=16 weeks, but a
+# kabupaten whose harvest_peak_week falls near/after week 16 relative to "now"
+# (common for the generic-fallback kabupaten, whose DEFAULT_HARVEST_PEAK_WEEK
+# often lands late in the window) never shows its harvest's full rise-and-fall
+# within 16 weeks - the window always catches an incomplete, still-climbing
+# tail, whose mean is biased low, so every week near the end of the window
+# scores near-saturated (100) almost regardless of how the planting schedule
+# is shifted. Fix: compute score_overlap's MEAN over a wider lookahead window
+# (still anchored the same way via harvest_convolution's lookback cycles) so
+# the mean reflects a fuller harvest cycle, then slice back to FORECAST_HORIZON
+# for what's actually displayed/exported. Display width is unchanged - only
+# the basis for the ratio-to-mean calculation is widened.
+OVERLAP_MEAN_HORIZON = 32
 # DEFAULT_HARVEST_PEAK_WEEK: fallback when STL trough can't be computed (not
 # enough price history, or modeled kabupaten with no PIHPS data at all).
 # Derived as median across measured kabupaten per commodity in run_all() below,
@@ -236,26 +260,25 @@ def main():
     # size, because score_overlap normalizes against each series' OWN mean
     # (mathematically scale-invariant) and most modeled kabupaten share the
     # same default status_musim_hujan (-> same cohort shape -> same kernel ->
-    # same ratio-to-own-mean). Fix: scale overlap by each kabupaten's share of
-    # the province's annual production for that commodity, so a
-    # 0.0006%-share kabupaten (cirebon_kota/cabai_rawit, confirmed in real
-    # data) stops showing the same alarm as an 11.9%-share one (cianjur).
-    production_share = {}  # (region_id, komoditas_id) -> share of province annual produksi_ton (%)
-    for komoditas_id in export.KOMODITAS_IDS:
-        sub = bps_allocated[bps_allocated.komoditas_id == komoditas_id]
-        latest_year = sub["tahun"].max()
-        latest = sub[sub["tahun"] == latest_year]
-        total = latest["produksi_ton"].sum()
-        for _, row in latest.iterrows():
-            production_share[(row["region_id"], komoditas_id)] = (
-                100 * row["produksi_ton"] / total if total > 0 else 0.0
-            )
+    # same ratio-to-own-mean). Originally fixed by scaling overlap by each
+    # kabupaten's share of the province's annual production (magnitude_factor);
+    # SUPERSEDED by score_overlap_provinsi below, which derives a kabupaten's
+    # effective weight from its actual weekly contribution to province supply
+    # instead of a static annual share - see risk.py's score_overlap_provinsi
+    # docstring for why annual share alone also missed a second bug (identical
+    # kabupaten staggered in lockstep incorrectly reads as "de-staggered").
 
     supply_cache = {}
     risk_cache = {}
+    risk_inputs_cache = {}
+
+    # Pass 1: compute every (region, komoditas)'s wide supply curve first, and
+    # sum them into a province-wide curve per komoditas. score_overlap_provinsi
+    # (pass 2, below) needs the WHOLE province's curve as a reference before it
+    # can score any single kabupaten's contribution to it.
+    provinsi_ton_wide = {komoditas_id: np.zeros(OVERLAP_MEAN_HORIZON) for komoditas_id in export.KOMODITAS_IDS}
     for region_id in ra.all_ids():
         status_musim = zom_status.get(region_id, DEFAULT_ZOM_STATUS)
-        w_mod = weather_mod.get(region_id, 0.0)
         for komoditas_id in export.KOMODITAS_IDS:
             ton, luas_ha, produktivitas, tahun_sumber = supply.supply_weekly_ton(
                 bps_allocated, region_id, komoditas_id, status_musim,
@@ -265,26 +288,75 @@ def main():
             supply_cache[(region_id, komoditas_id)] = {
                 "ton": ton, "luas_ha": luas_ha, "produktivitas": produktivitas, "tahun_sumber": tahun_sumber,
             }
+            if ton is None:
+                continue
+            # score_overlap_provinsi's ratio-to-mean uses a WIDER window than
+            # what's displayed (see OVERLAP_MEAN_HORIZON comment above) so
+            # kabupaten whose harvest peak falls near/after week 16 don't
+            # get a mean biased low by an incomplete, still-climbing tail.
+            ton_wide, _, _, _ = supply.supply_weekly_ton(
+                bps_allocated, region_id, komoditas_id, status_musim,
+                harvest_peak_week=harvest_peak_weeks[(region_id, komoditas_id)],
+                weeks_out=OVERLAP_MEAN_HORIZON
+            )
+            supply_cache[(region_id, komoditas_id)]["ton_wide"] = ton_wide
+            provinsi_ton_wide[komoditas_id] += ton_wide
 
+    # max_ton_wide: per komoditas, the LARGEST single kabupaten's ton_wide at
+    # each week - score_overlap_provinsi normalizes every kabupaten's
+    # contribution against whichever kabupaten is the biggest player THAT
+    # WEEK, so the top contributor can read as genuinely high-risk instead of
+    # being capped at its own percentage share (see score_overlap_provinsi's
+    # docstring for the full derivation).
+    max_ton_wide = {komoditas_id: np.zeros(OVERLAP_MEAN_HORIZON) for komoditas_id in export.KOMODITAS_IDS}
+    for (region_id, komoditas_id), cached in supply_cache.items():
+        ton_wide = cached.get("ton_wide")
+        if ton_wide is not None:
+            max_ton_wide[komoditas_id] = np.maximum(max_ton_wide[komoditas_id], ton_wide)
+
+    # Pass 2: score each (region, komoditas) against the province-wide curve
+    # computed above.
+    for region_id in ra.all_ids():
+        w_mod = weather_mod.get(region_id, 0.0)
+        for komoditas_id in export.KOMODITAS_IDS:
+            ton = supply_cache[(region_id, komoditas_id)]["ton"]
             if ton is None:
                 risk_cache[(region_id, komoditas_id)] = None
+                risk_inputs_cache[(region_id, komoditas_id)] = None
                 continue
 
-            share_pct = production_share.get((region_id, komoditas_id), 0.0)
-            overlap = risk.score_overlap(ton) * risk.magnitude_factor(share_pct)
+            ton_wide = supply_cache[(region_id, komoditas_id)]["ton_wide"]
+            overlap = risk.score_overlap_provinsi(
+                ton_wide, provinsi_ton_wide[komoditas_id], max_ton_wide[komoditas_id]
+            )[:FORECAST_HORIZON]
             fc = forecast_cache[(region_id, komoditas_id)]
             price_series = fc["forecast_16"]
             thresholds = export.json.load(open(export.DATA_CURATED / "price_thresholds.json", encoding="utf-8"))[komoditas_id]
 
             weekly_scores = []
+            price_gap_mingguan = []
             for i in range(FORECAST_HORIZON):
                 price_gap = None
                 if price_series is not None:
                     price_gap = risk.score_price_gap(
                         price_series[i], thresholds["ongkos_petik_rp"], thresholds["biaya_produksi_rp"]
                     )
+                price_gap_mingguan.append(price_gap)
                 weekly_scores.append(risk.composite_risk(overlap[i], price_gap, w_mod))
             risk_cache[(region_id, komoditas_id)] = weekly_scores
+            # Cached so the frontend can recompute composite_risk() live when a
+            # sentra's planting schedule is shifted in Simulasi Tanam: overlap
+            # depends on the (shiftable) supply curve, but weather_modifier/
+            # price_gap don't change with planting timing, so they're exposed
+            # as inputs rather than baked only into the precomputed score
+            # above. share_pct is no longer needed here - score_overlap_provinsi
+            # derives a kabupaten's effective weight from its actual weekly
+            # contribution to province supply, making the old annual-share
+            # scaling redundant (see risk.py's score_overlap_provinsi docstring).
+            risk_inputs_cache[(region_id, komoditas_id)] = {
+                "weather_modifier": round(float(w_mod), 4),
+                "price_gap_mingguan": [None if p is None else round(float(p), 2) for p in price_gap_mingguan],
+            }
     print("  done.")
 
     print("\n[6/6] writing map.json (+ per-commodity siblings) and kabupaten/*.json...")
@@ -317,9 +389,12 @@ def main():
                 "risk_mingguan": risk_mingguan,
                 "kpi": kpi,
                 "estimasi_unit_lahan": unit_lahan_lookup.get(region_id),
+                "risk_inputs": risk_inputs_cache.get((region_id, komoditas_id)),
             })
         filename = "map.json" if komoditas_id == "cabai_rawit" else f"map_{komoditas_id}.json"
-        export.write_json(filename, export.build_map(komoditas_id, region_rows))
+        export.write_json(filename, export.build_map(
+            komoditas_id, region_rows, provinsi_ton_wide[komoditas_id], max_ton_wide[komoditas_id]
+        ))
 
     # Bug found via user question: previously only wrote a kabupaten detail
     # file when status_data was measured/measured_stale, so a kabupaten that's
@@ -463,21 +538,60 @@ def main():
     # sourced per commodity - flagged like the other price_thresholds numbers.
     with open(export.DATA_CURATED / "price_thresholds.json", encoding="utf-8") as f:
         all_thresholds = export.json.load(f)
+    # BUG FOUND (via user: "harga dasar 5k perkilo untuk cabe rawit itu murah
+    # banget"): the un-anchored geometric continuation below (~50% decay every
+    # +0.5 ratio, forever) crashed straight through ongkos_petik_rp with no
+    # floor - real glut peaks land around ratio~2.1-2.5, which this table
+    # priced at Rp3.000-6.000/kg, i.e. WELL below the Rp2.500/kg cost of
+    # merely harvesting the crop. Direction was right (glut -> crash, even
+    # below biaya_produksi_rp is a valid signal that farmers are losing
+    # money) but the specific number floated freely with no anchor at all.
+    # Fix: floor the curve at ongkos_petik_rp (price_thresholds.json, cited
+    # from the contract) - below that price a rational farmer abandons the
+    # harvest rather than sell at a loss on labor alone, so the model
+    # shouldn't imply price keeps sliding past that point. Still ASUMSI (this
+    # is a reasoned floor, not a measured price point), but now anchored to
+    # an already-cited number instead of an arbitrary continuation.
+    # BUG history (via user: "harga dasar 5k perkilo itu murah banget"):
+    # tried floor-only-at-tail (ratio>=3.0) first - changed nothing, because
+    # the real glut ratio this app hits in practice (~2.1-2.5, per
+    # FORECAST_HORIZON's 20-week display window) falls between the 2.0/2.5
+    # points, which the tail-only floor never touched. Tried a flat floor
+    # across every point >=1.5 next - technically fixed the number, but
+    # flattened the curve entirely from ratio 1.5 upward, so EVERY staggering
+    # scenario in that range showed the identical price - defeating the
+    # feature's whole point of showing staggering's price benefit.
+    # Fix: keep a gradual monotonic decline (so "before/after staggering"
+    # comparisons still show a real difference), but re-anchor the WHOLE
+    # curve's floor to biaya_produksi_rp (Rp12.000, full production cost)
+    # instead of letting it approach zero. This explicitly overrides the
+    # contract example's 2.0/2.5 points (originally 6.000/3.000, both below
+    # biaya_produksi_rp) - flagged because that's a real, deliberate
+    # deviation from the contract's stated reference numbers, not a silent
+    # tweak. Values below are ASUMSI (reasoned re-scaling, not independently
+    # priced), same epistemic status as price_thresholds.json's other flags.
+    biaya_produksi_cabai_rawit = all_thresholds["cabai_rawit"]["biaya_produksi_rp"]
     BASE_LOOKUP_CABAI_RAWIT = [
-        {"rasio": 1.0, "harga_rp": 25000}, {"rasio": 1.5, "harga_rp": 12000}, {"rasio": 2.0, "harga_rp": 6000},
-        # ASUMSI: extrapolated continuation of the ~0.5x price decay per +0.5
-        # ratio step observed in the 3 contract-sourced points above - not
-        # independently sourced beyond ratio 2.0, same epistemic status as
-        # price_thresholds.json's flagged placeholders. Added because real
-        # glut scenarios (e.g. Kab. Bandung staggering) commonly hit ratios
-        # of 2.0-2.5+, where the old table had zero price resolution.
-        {"rasio": 2.5, "harga_rp": 3000}, {"rasio": 3.0, "harga_rp": 1500},
+        {"rasio": 1.0, "harga_rp": 25000}, {"rasio": 1.5, "harga_rp": 18000},
+        {"rasio": 2.0, "harga_rp": 15000}, {"rasio": 2.5, "harga_rp": 13000},
+        {"rasio": 3.0, "harga_rp": biaya_produksi_cabai_rawit},
+        {"rasio": 4.0, "harga_rp": biaya_produksi_cabai_rawit},  # floor - price can't rationally fall further
     ]
     base_full_cost = all_thresholds["cabai_rawit"]["ongkos_petik_rp"] + all_thresholds["cabai_rawit"]["biaya_produksi_rp"]
 
+    # Simulasi tanam mencakup SEMUA kabupaten (bukan cuma 6 sentra dengan BMKG
+    # asli) supaya pitch bisa mendemonstrasikan staggering provinsi-lebar, bukan
+    # cuma di 6 titik. Kabupaten tanpa baris BMKG memakai DEFAULT_ZOM_STATUS
+    # sebagai model generik ("dimodelkan mendekati kondisi asli, akan
+    # disempurnakan dengan data BMKG lengkap") - flag zom_asli membedakan
+    # keduanya secara eksplisit ke frontend, konsisten dengan prinsip
+    # measured/modeled yang dipakai di seluruh proyek ini.
+    SIMULASI_REGION_IDS = [r for r in ra.all_ids() if r not in KOTA_IDS]
+
     for komoditas_id in export.KOMODITAS_IDS:
         simulasi_rows = []
-        for region_id in export.SENTRA_SIMULASI:
+        for region_id in SIMULASI_REGION_IDS:
+            zom_asli = region_id in zom_status
             status = zom_status.get(region_id, DEFAULT_ZOM_STATUS)
             luas_ha, produktivitas, tahun = supply.latest_luas_dan_produktivitas(bps_allocated, region_id, komoditas_id)
             if luas_ha is None:
@@ -493,11 +607,21 @@ def main():
             # add shifted without needing the full model to recompute provincially)
             sentra_ton = supply_cache.get((region_id, komoditas_id), {}).get("ton")
             pasokan_baseline = [round(float(t), 1) for t in sentra_ton] if sentra_ton is not None else None
+            # Wider curve (OVERLAP_MEAN_HORIZON weeks) for the frontend's live
+            # risk recompute when a planting schedule is shifted - shifting the
+            # narrower 16-week pasokan_baseline_ton's own index silently drops
+            # whatever the shift pushes past week 16, which understated the
+            # mean and made score_overlap saturate near-100 regardless of shift
+            # for kabupaten whose harvest peak falls late in the window (see
+            # OVERLAP_MEAN_HORIZON's definition above for the full bug writeup).
+            sentra_ton_wide = supply_cache.get((region_id, komoditas_id), {}).get("ton_wide")
+            pasokan_baseline_wide = [round(float(t), 1) for t in sentra_ton_wide] if sentra_ton_wide is not None else None
 
             simulasi_rows.append({
                 "id": region_id,
                 "nama": ra.nama_resmi(region_id),
                 "status_musim_hujan": status,
+                "zom_asli": zom_asli,
                 "kohort_tanam": [{"minggu_relatif": w, "luas_ha": round(ha, 1)} for w, ha in cohort],
                 "geser_maks_minggu": geser_maks,
                 # 6dp, not the usual display-rounded 2dp: this value feeds the JS
@@ -511,6 +635,7 @@ def main():
                 "harvest_peak_week_iso": harvest_peak_w,
                 "baseline_tanam_minggu": baseline_tanam,
                 "pasokan_baseline_ton": pasokan_baseline,
+                "pasokan_baseline_ton_wide": pasokan_baseline_wide,
                 **windows,
             })
 
@@ -518,9 +643,11 @@ def main():
             print(f"  {komoditas_id}: tidak ada sentra dengan data luas - simulasi_{komoditas_id}.json dilewati")
             continue
 
-        # Sentra-only demand proxy (for the per-kabupaten simulasi chart)
+        # Demand proxy scoped to the kabupaten actually included in simulasi_rows
+        # (now all non-kota kabupaten with luas data, not just the 6 original sentra)
+        simulasi_ids = {row["id"] for row in simulasi_rows}
         total_sentra_ton = 0
-        for region_id in export.SENTRA_SIMULASI:
+        for region_id in simulasi_ids:
             sub = bps_allocated[(bps_allocated.region_id == region_id) & (bps_allocated.komoditas_id == komoditas_id)]
             if len(sub):
                 total_sentra_ton += sub.sort_values("tahun").iloc[-1]["produksi_ton"]

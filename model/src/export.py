@@ -29,8 +29,6 @@ KOMODITAS_NAMA = {"cabai_rawit": "Cabai Rawit", "bawang_merah": "Bawang Merah", 
 KOMODITAS_TIER = {"cabai_rawit": 1, "bawang_merah": 1, "cabai_besar": 2}
 KOMODITAS_SUMBER_HARGA = {"cabai_rawit": "pihps_produsen", "bawang_merah": "pihps_produsen", "cabai_besar": None}
 
-SENTRA_SIMULASI = ["garut", "cirebon_kab", "bandung_kab", "sumedang", "tasikmalaya_kab", "sukabumi_kota"]
-
 
 def _round_or_none(x, ndigits=0):
     if x is None or (isinstance(x, float) and np.isnan(x)):
@@ -92,10 +90,31 @@ def build_meta(minggu_berjalan: int, label_minggu: list, estimasi_unit_lahan_tot
     }
 
 
-def build_map(komoditas_id: str, region_rows: list) -> dict:
+def build_map(komoditas_id: str, region_rows: list, provinsi_ton_wide: list = None,
+              max_ton_wide: list = None) -> dict:
     """region_rows: list of dicts with keys id, nama, status_data, risk_mingguan
-    (list of {minggu, skor}), kpi (dict), estimasi_unit_lahan."""
-    return {"komoditas_id": komoditas_id, "kabupaten": region_rows}
+    (list of {minggu, skor}), kpi (dict), estimasi_unit_lahan.
+
+    provinsi_ton_wide: the OVERLAP_MEAN_HORIZON-week province-wide supply
+    curve (sum of every kabupaten's own wide curve) that risk.py's
+    score_overlap_provinsi() scored every kabupaten's risk_mingguan against.
+
+    max_ton_wide: per week, the LARGEST single kabupaten's ton_wide that week
+    - score_overlap_provinsi normalizes every kabupaten's own contribution
+    against this (not against provinsi_ton_wide directly) so the top
+    contributor in a given week can read as genuinely high-risk instead of
+    being capped at its raw percentage share of the province total.
+
+    Both exposed so the frontend's live risk recompute (shifting a
+    kabupaten's planting schedule in Simulasi Tanam) can rebuild the SAME
+    province reference the backend used, instead of re-deriving risk from a
+    kabupaten-only view that has no way to detect province-wide effects."""
+    out = {"komoditas_id": komoditas_id, "kabupaten": region_rows}
+    if provinsi_ton_wide is not None:
+        out["provinsi_ton_wide"] = [round(float(t), 1) for t in provinsi_ton_wide]
+    if max_ton_wide is not None:
+        out["max_ton_wide"] = [round(float(t), 1) for t in max_ton_wide]
+    return out
 
 
 def build_kabupaten_detail(region_id: str, nama: str, status_data: str,

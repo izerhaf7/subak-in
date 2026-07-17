@@ -2,40 +2,37 @@
   "komoditas_id": "bawang_merah",
   "kabupaten": [
     {
-      "id": "garut",
-      "nama": "Kab. Garut",
+      "id": "bogor_kab",
+      "nama": "Kab. Bogor",
       "status_musim_hujan": "transisi_sebelum_cutoff",
+      "zom_asli": false,
       "kohort_tanam": [
         {
           "minggu_relatif": 0,
-          "luas_ha": 500.8
+          "luas_ha": 2.4
         },
         {
           "minggu_relatif": 1,
-          "luas_ha": 375.6
+          "luas_ha": 1.8
         },
         {
           "minggu_relatif": 2,
-          "luas_ha": 250.4
+          "luas_ha": 1.2
         },
         {
           "minggu_relatif": 3,
-          "luas_ha": 125.2
+          "luas_ha": 0.6
         }
       ],
       "geser_maks_minggu": 4,
-      "produktivitas_ton_per_ha": 9.87279,
-      "harvest_peak_week_iso": 48,
-      "baseline_tanam_minggu": 40,
+      "produktivitas_ton_per_ha": 7.345556,
+      "harvest_peak_week_iso": 44,
+      "baseline_tanam_minggu": 36,
       "pasokan_baseline_ton": [
-        0.0,
-        65.8,
-        3177.6,
-        4063.6,
-        2909.7,
-        1673.6,
-        454.0,
-        16.4,
+        10.4,
+        6.0,
+        1.6,
+        0.1,
         0.0,
         0.0,
         0.0,
@@ -43,37 +40,91 @@
         0.0,
         0.0,
         0.0,
-        0.0
+        0.0,
+        0.0,
+        0.0,
+        0.2,
+        11.3,
+        14.5,
+        10.4,
+        6.0,
+        1.6
+      ],
+      "pasokan_baseline_ton_wide": [
+        10.4,
+        6.0,
+        1.6,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.2,
+        11.3,
+        14.5,
+        10.4,
+        6.0,
+        1.6,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.2
       ],
       "jendela_tanam": {
-        "mulai_iso": 40,
-        "akhir_iso": 43
+        "mulai_iso": 36,
+        "akhir_iso": 39
       },
       "jendela_panen": {
-        "mulai_iso": 47,
-        "akhir_iso": 50
+        "mulai_iso": 43,
+        "akhir_iso": 46
       }
     },
     {
-      "id": "cirebon_kab",
-      "nama": "Kab. Cirebon",
-      "status_musim_hujan": "onset_diskrit",
+      "id": "sukabumi_kab",
+      "nama": "Kab. Sukabumi",
+      "status_musim_hujan": "transisi_sebelum_cutoff",
+      "zom_asli": false,
       "kohort_tanam": [
         {
           "minggu_relatif": 0,
-          "luas_ha": 747.7
+          "luas_ha": 15.9
         },
         {
           "minggu_relatif": 1,
-          "luas_ha": 320.4
+          "luas_ha": 11.9
+        },
+        {
+          "minggu_relatif": 2,
+          "luas_ha": 7.9
+        },
+        {
+          "minggu_relatif": 3,
+          "luas_ha": 4.0
         }
       ],
-      "geser_maks_minggu": 2,
-      "produktivitas_ton_per_ha": 10.015416,
-      "harvest_peak_week_iso": 43,
-      "baseline_tanam_minggu": 35,
+      "geser_maks_minggu": 4,
+      "produktivitas_ton_per_ha": 3.351805,
+      "harvest_peak_week_iso": 44,
+      "baseline_tanam_minggu": 36,
       "pasokan_baseline_ton": [
-        42.7,
+        31.3,
+        18.0,
+        4.9,
+        0.2,
         0.0,
         0.0,
         0.0,
@@ -84,25 +135,153 @@
         0.0,
         0.0,
         0.0,
+        0.7,
+        34.2,
+        43.7,
+        31.3,
+        18.0,
+        4.9
+      ],
+      "pasokan_baseline_ton_wide": [
+        31.3,
+        18.0,
+        4.9,
+        0.2,
         0.0,
         0.0,
-        99.6,
-        4780.8,
-        4582.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.7,
+        34.2,
+        43.7,
+        31.3,
+        18.0,
+        4.9,
+        0.2,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.7
       ],
       "jendela_tanam": {
-        "mulai_iso": 35,
-        "akhir_iso": 36
+        "mulai_iso": 36,
+        "akhir_iso": 39
       },
       "jendela_panen": {
-        "mulai_iso": 42,
-        "akhir_iso": 45
+        "mulai_iso": 43,
+        "akhir_iso": 46
+      }
+    },
+    {
+      "id": "cianjur",
+      "nama": "Kab. Cianjur",
+      "status_musim_hujan": "transisi_sebelum_cutoff",
+      "zom_asli": false,
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 9.4
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 7.0
+        },
+        {
+          "minggu_relatif": 2,
+          "luas_ha": 4.7
+        },
+        {
+          "minggu_relatif": 3,
+          "luas_ha": 2.3
+        }
+      ],
+      "geser_maks_minggu": 4,
+      "produktivitas_ton_per_ha": 9.0,
+      "harvest_peak_week_iso": 44,
+      "baseline_tanam_minggu": 36,
+      "pasokan_baseline_ton": [
+        49.6,
+        28.5,
+        7.7,
+        0.3,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.1,
+        54.1,
+        69.2,
+        49.6,
+        28.5,
+        7.7
+      ],
+      "pasokan_baseline_ton_wide": [
+        49.6,
+        28.5,
+        7.7,
+        0.3,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.1,
+        54.1,
+        69.2,
+        49.6,
+        28.5,
+        7.7,
+        0.3,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.1
+      ],
+      "jendela_tanam": {
+        "mulai_iso": 36,
+        "akhir_iso": 39
+      },
+      "jendela_panen": {
+        "mulai_iso": 43,
+        "akhir_iso": 46
       }
     },
     {
       "id": "bandung_kab",
       "nama": "Kab. Bandung",
       "status_musim_hujan": "transisi_sebelum_cutoff",
+      "zom_asli": true,
       "kohort_tanam": [
         {
           "minggu_relatif": 0,
@@ -141,7 +320,45 @@
         0.0,
         0.0,
         155.4,
-        7509.2
+        7509.2,
+        9603.1,
+        6876.2,
+        3955.2,
+        1072.9
+      ],
+      "pasokan_baseline_ton_wide": [
+        6876.2,
+        3955.2,
+        1072.9,
+        38.9,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        155.4,
+        7509.2,
+        9603.1,
+        6876.2,
+        3955.2,
+        1072.9,
+        38.9,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        155.4
       ],
       "jendela_tanam": {
         "mulai_iso": 36,
@@ -153,34 +370,41 @@
       }
     },
     {
-      "id": "sumedang",
-      "nama": "Kab. Sumedang",
+      "id": "garut",
+      "nama": "Kab. Garut",
       "status_musim_hujan": "transisi_sebelum_cutoff",
+      "zom_asli": true,
       "kohort_tanam": [
         {
           "minggu_relatif": 0,
-          "luas_ha": 18.1
+          "luas_ha": 500.8
         },
         {
           "minggu_relatif": 1,
-          "luas_ha": 13.6
+          "luas_ha": 375.6
         },
         {
           "minggu_relatif": 2,
-          "luas_ha": 9.1
+          "luas_ha": 250.4
         },
         {
           "minggu_relatif": 3,
-          "luas_ha": 4.5
+          "luas_ha": 125.2
         }
       ],
       "geser_maks_minggu": 4,
-      "produktivitas_ton_per_ha": 12.027757,
-      "harvest_peak_week_iso": 8,
-      "baseline_tanam_minggu": 52,
+      "produktivitas_ton_per_ha": 9.87279,
+      "harvest_peak_week_iso": 48,
+      "baseline_tanam_minggu": 40,
       "pasokan_baseline_ton": [
-        20.0,
-        0.7,
+        0.0,
+        65.8,
+        3177.6,
+        4063.6,
+        2909.7,
+        1673.6,
+        454.0,
+        16.4,
         0.0,
         0.0,
         0.0,
@@ -188,6 +412,38 @@
         0.0,
         0.0,
         0.0,
+        0.0,
+        0.0,
+        0.0,
+        65.8,
+        3177.6
+      ],
+      "pasokan_baseline_ton_wide": [
+        0.0,
+        65.8,
+        3177.6,
+        4063.6,
+        2909.7,
+        1673.6,
+        454.0,
+        16.4,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        65.8,
+        3177.6,
+        4063.6,
+        2909.7,
+        1673.6,
+        454.0,
+        16.4,
         0.0,
         0.0,
         0.0,
@@ -197,18 +453,19 @@
         0.0
       ],
       "jendela_tanam": {
-        "mulai_iso": 52,
-        "akhir_iso": 3
+        "mulai_iso": 40,
+        "akhir_iso": 43
       },
       "jendela_panen": {
-        "mulai_iso": 7,
-        "akhir_iso": 10
+        "mulai_iso": 47,
+        "akhir_iso": 50
       }
     },
     {
       "id": "tasikmalaya_kab",
       "nama": "Kab. Tasikmalaya",
       "status_musim_hujan": "basah_kontinu",
+      "zom_asli": true,
       "kohort_tanam": [
         {
           "minggu_relatif": 0,
@@ -255,7 +512,45 @@
         0.0,
         0.0,
         0.0,
-        1.9
+        1.9,
+        2.6,
+        2.2,
+        1.7,
+        1.0
+      ],
+      "pasokan_baseline_ton_wide": [
+        2.2,
+        1.7,
+        1.0,
+        0.4,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.9,
+        2.6,
+        2.2,
+        1.7,
+        1.0,
+        0.4,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "jendela_tanam": {
         "mulai_iso": 36,
@@ -267,43 +562,710 @@
       }
     },
     {
-      "id": "sukabumi_kota",
-      "nama": "Kota Sukabumi",
-      "status_musim_hujan": "basah_kontinu",
+      "id": "ciamis",
+      "nama": "Kab. Ciamis",
+      "status_musim_hujan": "transisi_sebelum_cutoff",
+      "zom_asli": false,
       "kohort_tanam": [
         {
           "minggu_relatif": 0,
-          "luas_ha": 0.4
+          "luas_ha": 3.1
         },
         {
           "minggu_relatif": 1,
-          "luas_ha": 0.4
+          "luas_ha": 2.3
         },
         {
           "minggu_relatif": 2,
-          "luas_ha": 0.3
+          "luas_ha": 1.5
         },
         {
           "minggu_relatif": 3,
+          "luas_ha": 0.8
+        }
+      ],
+      "geser_maks_minggu": 4,
+      "produktivitas_ton_per_ha": 7.586957,
+      "harvest_peak_week_iso": 44,
+      "baseline_tanam_minggu": 36,
+      "pasokan_baseline_ton": [
+        13.7,
+        7.9,
+        2.1,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3,
+        15.0,
+        19.1,
+        13.7,
+        7.9,
+        2.1
+      ],
+      "pasokan_baseline_ton_wide": [
+        13.7,
+        7.9,
+        2.1,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3,
+        15.0,
+        19.1,
+        13.7,
+        7.9,
+        2.1,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3
+      ],
+      "jendela_tanam": {
+        "mulai_iso": 36,
+        "akhir_iso": 39
+      },
+      "jendela_panen": {
+        "mulai_iso": 43,
+        "akhir_iso": 46
+      }
+    },
+    {
+      "id": "kuningan",
+      "nama": "Kab. Kuningan",
+      "status_musim_hujan": "transisi_sebelum_cutoff",
+      "zom_asli": false,
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 48.7
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 36.5
+        },
+        {
+          "minggu_relatif": 2,
+          "luas_ha": 24.3
+        },
+        {
+          "minggu_relatif": 3,
+          "luas_ha": 12.2
+        }
+      ],
+      "geser_maks_minggu": 4,
+      "produktivitas_ton_per_ha": 10.839178,
+      "harvest_peak_week_iso": 44,
+      "baseline_tanam_minggu": 36,
+      "pasokan_baseline_ton": [
+        310.4,
+        178.6,
+        48.4,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        7.0,
+        339.0,
+        433.5,
+        310.4,
+        178.6,
+        48.4
+      ],
+      "pasokan_baseline_ton_wide": [
+        310.4,
+        178.6,
+        48.4,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        7.0,
+        339.0,
+        433.5,
+        310.4,
+        178.6,
+        48.4,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        7.0
+      ],
+      "jendela_tanam": {
+        "mulai_iso": 36,
+        "akhir_iso": 39
+      },
+      "jendela_panen": {
+        "mulai_iso": 43,
+        "akhir_iso": 46
+      }
+    },
+    {
+      "id": "cirebon_kab",
+      "nama": "Kab. Cirebon",
+      "status_musim_hujan": "onset_diskrit",
+      "zom_asli": true,
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 747.7
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 320.4
+        }
+      ],
+      "geser_maks_minggu": 2,
+      "produktivitas_ton_per_ha": 10.015416,
+      "harvest_peak_week_iso": 43,
+      "baseline_tanam_minggu": 35,
+      "pasokan_baseline_ton": [
+        42.7,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        99.6,
+        4780.8,
+        4582.0,
+        1193.1,
+        42.7,
+        0.0,
+        0.0
+      ],
+      "pasokan_baseline_ton_wide": [
+        42.7,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        99.6,
+        4780.8,
+        4582.0,
+        1193.1,
+        42.7,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        99.6,
+        4780.8
+      ],
+      "jendela_tanam": {
+        "mulai_iso": 35,
+        "akhir_iso": 36
+      },
+      "jendela_panen": {
+        "mulai_iso": 42,
+        "akhir_iso": 45
+      }
+    },
+    {
+      "id": "majalengka",
+      "nama": "Kab. Majalengka",
+      "status_musim_hujan": "transisi_sebelum_cutoff",
+      "zom_asli": false,
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 356.1
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 267.1
+        },
+        {
+          "minggu_relatif": 2,
+          "luas_ha": 178.1
+        },
+        {
+          "minggu_relatif": 3,
+          "luas_ha": 89.0
+        }
+      ],
+      "geser_maks_minggu": 4,
+      "produktivitas_ton_per_ha": 11.972389,
+      "harvest_peak_week_iso": 44,
+      "baseline_tanam_minggu": 36,
+      "pasokan_baseline_ton": [
+        2509.2,
+        1443.3,
+        391.5,
+        14.2,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        56.7,
+        2740.2,
+        3504.3,
+        2509.2,
+        1443.3,
+        391.5
+      ],
+      "pasokan_baseline_ton_wide": [
+        2509.2,
+        1443.3,
+        391.5,
+        14.2,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        56.7,
+        2740.2,
+        3504.3,
+        2509.2,
+        1443.3,
+        391.5,
+        14.2,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        56.7
+      ],
+      "jendela_tanam": {
+        "mulai_iso": 36,
+        "akhir_iso": 39
+      },
+      "jendela_panen": {
+        "mulai_iso": 43,
+        "akhir_iso": 46
+      }
+    },
+    {
+      "id": "sumedang",
+      "nama": "Kab. Sumedang",
+      "status_musim_hujan": "transisi_sebelum_cutoff",
+      "zom_asli": true,
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 18.1
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 13.6
+        },
+        {
+          "minggu_relatif": 2,
+          "luas_ha": 9.1
+        },
+        {
+          "minggu_relatif": 3,
+          "luas_ha": 4.5
+        }
+      ],
+      "geser_maks_minggu": 4,
+      "produktivitas_ton_per_ha": 12.027757,
+      "harvest_peak_week_iso": 8,
+      "baseline_tanam_minggu": 52,
+      "pasokan_baseline_ton": [
+        20.0,
+        0.7,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pasokan_baseline_ton_wide": [
+        20.0,
+        0.7,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "jendela_tanam": {
+        "mulai_iso": 52,
+        "akhir_iso": 3
+      },
+      "jendela_panen": {
+        "mulai_iso": 7,
+        "akhir_iso": 10
+      }
+    },
+    {
+      "id": "indramayu",
+      "nama": "Kab. Indramayu",
+      "status_musim_hujan": "transisi_sebelum_cutoff",
+      "zom_asli": false,
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 38.8
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 29.1
+        },
+        {
+          "minggu_relatif": 2,
+          "luas_ha": 19.4
+        },
+        {
+          "minggu_relatif": 3,
+          "luas_ha": 9.7
+        }
+      ],
+      "geser_maks_minggu": 4,
+      "produktivitas_ton_per_ha": 7.803294,
+      "harvest_peak_week_iso": 44,
+      "baseline_tanam_minggu": 36,
+      "pasokan_baseline_ton": [
+        178.3,
+        102.5,
+        27.8,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        4.0,
+        194.7,
+        249.0,
+        178.3,
+        102.5,
+        27.8
+      ],
+      "pasokan_baseline_ton_wide": [
+        178.3,
+        102.5,
+        27.8,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        4.0,
+        194.7,
+        249.0,
+        178.3,
+        102.5,
+        27.8,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        4.0
+      ],
+      "jendela_tanam": {
+        "mulai_iso": 36,
+        "akhir_iso": 39
+      },
+      "jendela_panen": {
+        "mulai_iso": 43,
+        "akhir_iso": 46
+      }
+    },
+    {
+      "id": "subang",
+      "nama": "Kab. Subang",
+      "status_musim_hujan": "transisi_sebelum_cutoff",
+      "zom_asli": false,
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 4.7
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 3.5
+        },
+        {
+          "minggu_relatif": 2,
+          "luas_ha": 2.3
+        },
+        {
+          "minggu_relatif": 3,
+          "luas_ha": 1.2
+        }
+      ],
+      "geser_maks_minggu": 4,
+      "produktivitas_ton_per_ha": 12.101714,
+      "harvest_peak_week_iso": 44,
+      "baseline_tanam_minggu": 36,
+      "pasokan_baseline_ton": [
+        33.2,
+        19.1,
+        5.2,
+        0.2,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.8,
+        36.3,
+        46.4,
+        33.2,
+        19.1,
+        5.2
+      ],
+      "pasokan_baseline_ton_wide": [
+        33.2,
+        19.1,
+        5.2,
+        0.2,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.8,
+        36.3,
+        46.4,
+        33.2,
+        19.1,
+        5.2,
+        0.2,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.8
+      ],
+      "jendela_tanam": {
+        "mulai_iso": 36,
+        "akhir_iso": 39
+      },
+      "jendela_panen": {
+        "mulai_iso": 43,
+        "akhir_iso": 46
+      }
+    },
+    {
+      "id": "purwakarta",
+      "nama": "Kab. Purwakarta",
+      "status_musim_hujan": "transisi_sebelum_cutoff",
+      "zom_asli": false,
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 0.3
+        },
+        {
+          "minggu_relatif": 1,
           "luas_ha": 0.2
         },
         {
-          "minggu_relatif": 4,
+          "minggu_relatif": 2,
           "luas_ha": 0.1
         },
         {
-          "minggu_relatif": 5,
-          "luas_ha": 0.0
+          "minggu_relatif": 3,
+          "luas_ha": 0.1
         }
       ],
-      "geser_maks_minggu": 6,
-      "produktivitas_ton_per_ha": 0.209195,
-      "harvest_peak_week_iso": 46,
-      "baseline_tanam_minggu": 38,
+      "geser_maks_minggu": 4,
+      "produktivitas_ton_per_ha": 3.75,
+      "harvest_peak_week_iso": 44,
+      "baseline_tanam_minggu": 36,
       "pasokan_baseline_ton": [
+        0.6,
+        0.3,
         0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.6,
+        0.8,
+        0.6,
+        0.3,
+        0.1
+      ],
+      "pasokan_baseline_ton_wide": [
+        0.6,
+        0.3,
         0.1,
-        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.6,
+        0.8,
+        0.6,
+        0.3,
         0.1,
         0.0,
         0.0,
@@ -319,16 +1281,384 @@
         0.0
       ],
       "jendela_tanam": {
-        "mulai_iso": 38,
-        "akhir_iso": 43
+        "mulai_iso": 36,
+        "akhir_iso": 39
       },
       "jendela_panen": {
-        "mulai_iso": 45,
-        "akhir_iso": 48
+        "mulai_iso": 43,
+        "akhir_iso": 46
+      }
+    },
+    {
+      "id": "karawang",
+      "nama": "Kab. Karawang",
+      "status_musim_hujan": "transisi_sebelum_cutoff",
+      "zom_asli": false,
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 0.1
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 0.0
+        },
+        {
+          "minggu_relatif": 2,
+          "luas_ha": 0.0
+        },
+        {
+          "minggu_relatif": 3,
+          "luas_ha": 0.0
+        }
+      ],
+      "geser_maks_minggu": 4,
+      "produktivitas_ton_per_ha": 4.0,
+      "harvest_peak_week_iso": 44,
+      "baseline_tanam_minggu": 36,
+      "pasokan_baseline_ton": [
+        0.2,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.2,
+        0.2,
+        0.2,
+        0.1,
+        0.0
+      ],
+      "pasokan_baseline_ton_wide": [
+        0.2,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.2,
+        0.2,
+        0.2,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "jendela_tanam": {
+        "mulai_iso": 36,
+        "akhir_iso": 39
+      },
+      "jendela_panen": {
+        "mulai_iso": 43,
+        "akhir_iso": 46
+      }
+    },
+    {
+      "id": "bekasi_kab",
+      "nama": "Kab. Bekasi",
+      "status_musim_hujan": "transisi_sebelum_cutoff",
+      "zom_asli": false,
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 4.6
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 3.5
+        },
+        {
+          "minggu_relatif": 2,
+          "luas_ha": 2.3
+        },
+        {
+          "minggu_relatif": 3,
+          "luas_ha": 1.2
+        }
+      ],
+      "geser_maks_minggu": 4,
+      "produktivitas_ton_per_ha": 6.265123,
+      "harvest_peak_week_iso": 44,
+      "baseline_tanam_minggu": 36,
+      "pasokan_baseline_ton": [
+        17.0,
+        9.8,
+        2.7,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.4,
+        18.5,
+        23.7,
+        17.0,
+        9.8,
+        2.7
+      ],
+      "pasokan_baseline_ton_wide": [
+        17.0,
+        9.8,
+        2.7,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.4,
+        18.5,
+        23.7,
+        17.0,
+        9.8,
+        2.7,
+        0.1,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.4
+      ],
+      "jendela_tanam": {
+        "mulai_iso": 36,
+        "akhir_iso": 39
+      },
+      "jendela_panen": {
+        "mulai_iso": 43,
+        "akhir_iso": 46
+      }
+    },
+    {
+      "id": "bandung_barat",
+      "nama": "Kab. Bandung Barat",
+      "status_musim_hujan": "transisi_sebelum_cutoff",
+      "zom_asli": false,
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 15.8
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 11.9
+        },
+        {
+          "minggu_relatif": 2,
+          "luas_ha": 7.9
+        },
+        {
+          "minggu_relatif": 3,
+          "luas_ha": 4.0
+        }
+      ],
+      "geser_maks_minggu": 4,
+      "produktivitas_ton_per_ha": 6.943929,
+      "harvest_peak_week_iso": 44,
+      "baseline_tanam_minggu": 36,
+      "pasokan_baseline_ton": [
+        64.6,
+        37.2,
+        10.1,
+        0.4,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.5,
+        70.6,
+        90.2,
+        64.6,
+        37.2,
+        10.1
+      ],
+      "pasokan_baseline_ton_wide": [
+        64.6,
+        37.2,
+        10.1,
+        0.4,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.5,
+        70.6,
+        90.2,
+        64.6,
+        37.2,
+        10.1,
+        0.4,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.5
+      ],
+      "jendela_tanam": {
+        "mulai_iso": 36,
+        "akhir_iso": 39
+      },
+      "jendela_panen": {
+        "mulai_iso": 43,
+        "akhir_iso": 46
+      }
+    },
+    {
+      "id": "pangandaran",
+      "nama": "Kab. Pangandaran",
+      "status_musim_hujan": "transisi_sebelum_cutoff",
+      "zom_asli": false,
+      "kohort_tanam": [
+        {
+          "minggu_relatif": 0,
+          "luas_ha": 3.1
+        },
+        {
+          "minggu_relatif": 1,
+          "luas_ha": 2.3
+        },
+        {
+          "minggu_relatif": 2,
+          "luas_ha": 1.5
+        },
+        {
+          "minggu_relatif": 3,
+          "luas_ha": 0.8
+        }
+      ],
+      "geser_maks_minggu": 4,
+      "produktivitas_ton_per_ha": 4.117391,
+      "harvest_peak_week_iso": 44,
+      "baseline_tanam_minggu": 36,
+      "pasokan_baseline_ton": [
+        7.4,
+        4.3,
+        1.2,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.2,
+        8.1,
+        10.4,
+        7.4,
+        4.3,
+        1.2
+      ],
+      "pasokan_baseline_ton_wide": [
+        7.4,
+        4.3,
+        1.2,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.2,
+        8.1,
+        10.4,
+        7.4,
+        4.3,
+        1.2,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.2
+      ],
+      "jendela_tanam": {
+        "mulai_iso": 36,
+        "akhir_iso": 39
+      },
+      "jendela_panen": {
+        "mulai_iso": 43,
+        "akhir_iso": 46
       }
     }
   ],
-  "permintaan_mingguan_ton": 3047.6,
+  "permintaan_mingguan_ton": 3838.2,
   "elastisitas_display": {
     "keterangan": "harga = f(rasio pasokan/permintaan); frontend interpolasi dari lookup",
     "lookup": [
@@ -338,19 +1668,23 @@
       },
       {
         "rasio": 1.5,
-        "harga_rp": 14900.0
+        "harga_rp": 22300.0
       },
       {
         "rasio": 2.0,
-        "harga_rp": 7400.0
+        "harga_rp": 18600.0
       },
       {
         "rasio": 2.5,
-        "harga_rp": 3700.0
+        "harga_rp": 16100.0
       },
       {
         "rasio": 3.0,
-        "harga_rp": 1900.0
+        "harga_rp": 14900.0
+      },
+      {
+        "rasio": 4.0,
+        "harga_rp": 14900.0
       }
     ]
   },
@@ -408,7 +1742,11 @@
       0.0,
       99.6,
       5009.7,
-      15643.9
+      15643.9,
+      15339.5,
+      10172.6,
+      5892.8,
+      4758.9
     ],
     "catatan": "jumlah supply model 27 kabupaten Jabar pada jadwal tanam baseline. Frontend: untuk simulasi staggering satu kabupaten, hitung pasokan_provinsi_baseline - kabupaten.pasokan_baseline_ton + convolve_single_cohort(kohort_digeser) agar agregat provinsi ikut berubah."
   },

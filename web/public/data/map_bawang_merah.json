@@ -8,11 +8,11 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 1
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 1
+          "skor": 0
         },
         {
           "minggu": 31,
@@ -68,15 +68,56 @@
         },
         {
           "minggu": 44,
-          "skor": 1
+          "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
-        "risk_puncak": 1,
-        "minggu_puncak": 29,
+        "risk_puncak": 0,
+        "minggu_puncak": 44,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "sukabumi_kab",
@@ -85,11 +126,11 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 4
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 4
+          "skor": 0
         },
         {
           "minggu": 31,
@@ -145,15 +186,56 @@
         },
         {
           "minggu": 44,
-          "skor": 4
+          "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
-        "risk_puncak": 4,
+        "risk_puncak": 0,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "cianjur",
@@ -162,11 +244,11 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 6
+          "skor": 1
         },
         {
           "minggu": 30,
-          "skor": 6
+          "skor": 0
         },
         {
           "minggu": 31,
@@ -222,15 +304,56 @@
         },
         {
           "minggu": 44,
-          "skor": 6
+          "skor": 1
+        },
+        {
+          "minggu": 45,
+          "skor": 1
+        },
+        {
+          "minggu": 46,
+          "skor": 1
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
-        "risk_puncak": 6,
+        "risk_puncak": 1,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": 31031
+      "estimasi_unit_lahan": 31031,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "bandung_kab",
@@ -243,11 +366,11 @@
         },
         {
           "minggu": 30,
-          "skor": 90
+          "skor": 47
         },
         {
           "minggu": 31,
-          "skor": 0
+          "skor": 9
         },
         {
           "minggu": 32,
@@ -295,11 +418,27 @@
         },
         {
           "minggu": 43,
-          "skor": 0
+          "skor": 1
         },
         {
           "minggu": 44,
           "skor": 90
+        },
+        {
+          "minggu": 45,
+          "skor": 90
+        },
+        {
+          "minggu": 46,
+          "skor": 90
+        },
+        {
+          "minggu": 47,
+          "skor": 47
+        },
+        {
+          "minggu": 48,
+          "skor": 9
         }
       ],
       "kpi": {
@@ -307,7 +446,32 @@
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": 28680
+      "estimasi_unit_lahan": 28680,
+      "risk_inputs": {
+        "weather_modifier": -0.1,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "garut",
@@ -377,14 +541,55 @@
         {
           "minggu": 44,
           "skor": 1
+        },
+        {
+          "minggu": 45,
+          "skor": 1
+        },
+        {
+          "minggu": 46,
+          "skor": 2
+        },
+        {
+          "minggu": 47,
+          "skor": 5
+        },
+        {
+          "minggu": 48,
+          "skor": 16
         }
       ],
       "kpi": {
-        "risk_puncak": 2,
-        "minggu_puncak": 41,
-        "harga_proyeksi_puncak_rp": 28639
+        "risk_puncak": 16,
+        "minggu_puncak": 48,
+        "harga_proyeksi_puncak_rp": 29481
       },
-      "estimasi_unit_lahan": 60453
+      "estimasi_unit_lahan": 60453,
+      "risk_inputs": {
+        "weather_modifier": -0.1,
+        "price_gap_mingguan": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          3.74,
+          16.14,
+          19.72,
+          20.44,
+          19.25,
+          16.7,
+          17.2,
+          16.75,
+          18.64,
+          22.48,
+          18.11
+        ]
+      }
     },
     {
       "id": "tasikmalaya_kab",
@@ -454,6 +659,22 @@
         {
           "minggu": 44,
           "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
@@ -461,7 +682,32 @@
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": 72684
+      "estimasi_unit_lahan": 72684,
+      "risk_inputs": {
+        "weather_modifier": -0.1,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "ciamis",
@@ -470,11 +716,11 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 2
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 2
+          "skor": 0
         },
         {
           "minggu": 31,
@@ -530,15 +776,56 @@
         },
         {
           "minggu": 44,
-          "skor": 2
+          "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
-        "risk_puncak": 2,
-        "minggu_puncak": 29,
+        "risk_puncak": 0,
+        "minggu_puncak": 44,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "kuningan",
@@ -547,11 +834,11 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 40
+          "skor": 5
         },
         {
           "minggu": 30,
-          "skor": 40
+          "skor": 2
         },
         {
           "minggu": 31,
@@ -607,15 +894,56 @@
         },
         {
           "minggu": 44,
-          "skor": 40
+          "skor": 5
+        },
+        {
+          "minggu": 45,
+          "skor": 5
+        },
+        {
+          "minggu": 46,
+          "skor": 5
+        },
+        {
+          "minggu": 47,
+          "skor": 2
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
-        "risk_puncak": 40,
-        "minggu_puncak": 29,
+        "risk_puncak": 5,
+        "minggu_puncak": 44,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "cirebon_kab",
@@ -624,7 +952,7 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 4
+          "skor": 7
         },
         {
           "minggu": 30,
@@ -680,19 +1008,60 @@
         },
         {
           "minggu": 43,
-          "skor": 58
+          "skor": 36
         },
         {
           "minggu": 44,
-          "skor": 58
+          "skor": 47
+        },
+        {
+          "minggu": 45,
+          "skor": 24
+        },
+        {
+          "minggu": 46,
+          "skor": 10
+        },
+        {
+          "minggu": 47,
+          "skor": 6
+        },
+        {
+          "minggu": 48,
+          "skor": 6
         }
       ],
       "kpi": {
-        "risk_puncak": 58,
+        "risk_puncak": 47,
         "minggu_puncak": 44,
-        "harga_proyeksi_puncak_rp": 12207
+        "harga_proyeksi_puncak_rp": 12197
       },
-      "estimasi_unit_lahan": 21241
+      "estimasi_unit_lahan": 21241,
+      "risk_inputs": {
+        "weather_modifier": -0.1,
+        "price_gap_mingguan": [
+          45.61,
+          50.35,
+          51.01,
+          51.57,
+          53.34,
+          63.98,
+          69.49,
+          70.02,
+          70.96,
+          73.08,
+          75.49,
+          75.01,
+          74.53,
+          71.93,
+          68.56,
+          69.34,
+          69.92,
+          69.81,
+          69.36,
+          69.47
+        ]
+      }
     },
     {
       "id": "majalengka",
@@ -701,15 +1070,15 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 100
+          "skor": 36
         },
         {
           "minggu": 30,
-          "skor": 100
+          "skor": 19
         },
         {
           "minggu": 31,
-          "skor": 0
+          "skor": 4
         },
         {
           "minggu": 32,
@@ -761,15 +1130,56 @@
         },
         {
           "minggu": 44,
-          "skor": 100
+          "skor": 36
+        },
+        {
+          "minggu": 45,
+          "skor": 36
+        },
+        {
+          "minggu": 46,
+          "skor": 36
+        },
+        {
+          "minggu": 47,
+          "skor": 19
+        },
+        {
+          "minggu": 48,
+          "skor": 4
         }
       ],
       "kpi": {
-        "risk_puncak": 100,
+        "risk_puncak": 36,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": 30636
+      "estimasi_unit_lahan": 30636,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "sumedang",
@@ -778,7 +1188,7 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 11
+          "skor": 3
         },
         {
           "minggu": 30,
@@ -839,14 +1249,55 @@
         {
           "minggu": 44,
           "skor": 4
+        },
+        {
+          "minggu": 45,
+          "skor": 4
+        },
+        {
+          "minggu": 46,
+          "skor": 4
+        },
+        {
+          "minggu": 47,
+          "skor": 4
+        },
+        {
+          "minggu": 48,
+          "skor": 3
         }
       ],
       "kpi": {
-        "risk_puncak": 11,
-        "minggu_puncak": 29,
-        "harga_proyeksi_puncak_rp": 30435
+        "risk_puncak": 4,
+        "minggu_puncak": 41,
+        "harga_proyeksi_puncak_rp": 18204
       },
-      "estimasi_unit_lahan": 20815
+      "estimasi_unit_lahan": 20815,
+      "risk_inputs": {
+        "weather_modifier": -0.1,
+        "price_gap_mingguan": [
+          14.93,
+          19.96,
+          23.46,
+          23.84,
+          24.23,
+          37.15,
+          44.44,
+          44.79,
+          45.14,
+          46.01,
+          49.21,
+          49.28,
+          49.43,
+          48.7,
+          46.48,
+          46.99,
+          46.93,
+          46.83,
+          46.79,
+          39.08
+        ]
+      }
     },
     {
       "id": "indramayu",
@@ -855,11 +1306,11 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 23
+          "skor": 3
         },
         {
           "minggu": 30,
-          "skor": 23
+          "skor": 1
         },
         {
           "minggu": 31,
@@ -915,15 +1366,56 @@
         },
         {
           "minggu": 44,
-          "skor": 23
+          "skor": 3
+        },
+        {
+          "minggu": 45,
+          "skor": 3
+        },
+        {
+          "minggu": 46,
+          "skor": 3
+        },
+        {
+          "minggu": 47,
+          "skor": 1
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
-        "risk_puncak": 23,
+        "risk_puncak": 3,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "subang",
@@ -932,11 +1424,11 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 4
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 4
+          "skor": 0
         },
         {
           "minggu": 31,
@@ -992,15 +1484,56 @@
         },
         {
           "minggu": 44,
-          "skor": 4
+          "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
-        "risk_puncak": 4,
+        "risk_puncak": 0,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "purwakarta",
@@ -1070,6 +1603,22 @@
         {
           "minggu": 44,
           "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
@@ -1077,7 +1626,32 @@
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "karawang",
@@ -1147,6 +1721,22 @@
         {
           "minggu": 44,
           "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
@@ -1154,7 +1744,32 @@
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "bekasi_kab",
@@ -1163,11 +1778,11 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 2
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 2
+          "skor": 0
         },
         {
           "minggu": 31,
@@ -1223,15 +1838,56 @@
         },
         {
           "minggu": 44,
-          "skor": 2
+          "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
-        "risk_puncak": 2,
-        "minggu_puncak": 29,
+        "risk_puncak": 0,
+        "minggu_puncak": 44,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "bandung_barat",
@@ -1240,11 +1896,11 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 8
+          "skor": 1
         },
         {
           "minggu": 30,
-          "skor": 8
+          "skor": 0
         },
         {
           "minggu": 31,
@@ -1300,15 +1956,56 @@
         },
         {
           "minggu": 44,
-          "skor": 8
+          "skor": 1
+        },
+        {
+          "minggu": 45,
+          "skor": 1
+        },
+        {
+          "minggu": 46,
+          "skor": 1
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
-        "risk_puncak": 8,
-        "minggu_puncak": 29,
+        "risk_puncak": 1,
+        "minggu_puncak": 44,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "pangandaran",
@@ -1317,11 +2014,11 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 1
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 1
+          "skor": 0
         },
         {
           "minggu": 31,
@@ -1377,15 +2074,56 @@
         },
         {
           "minggu": 44,
-          "skor": 1
+          "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
-        "risk_puncak": 1,
+        "risk_puncak": 0,
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "bogor_kota",
@@ -1455,6 +2193,22 @@
         {
           "minggu": 44,
           "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
@@ -1462,7 +2216,32 @@
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "sukabumi_kota",
@@ -1483,7 +2262,7 @@
         },
         {
           "minggu": 32,
-          "skor": 3
+          "skor": 2
         },
         {
           "minggu": 33,
@@ -1532,6 +2311,22 @@
         {
           "minggu": 44,
           "skor": 5
+        },
+        {
+          "minggu": 45,
+          "skor": 5
+        },
+        {
+          "minggu": 46,
+          "skor": 5
+        },
+        {
+          "minggu": 47,
+          "skor": 4
+        },
+        {
+          "minggu": 48,
+          "skor": 4
         }
       ],
       "kpi": {
@@ -1539,7 +2334,32 @@
         "minggu_puncak": 42,
         "harga_proyeksi_puncak_rp": 11285
       },
-      "estimasi_unit_lahan": 662
+      "estimasi_unit_lahan": 662,
+      "risk_inputs": {
+        "weather_modifier": -0.1,
+        "price_gap_mingguan": [
+          29.92,
+          29.88,
+          24.8,
+          29.03,
+          24.91,
+          24.86,
+          29.2,
+          45.46,
+          56.78,
+          58.29,
+          59.49,
+          63.55,
+          71.27,
+          72.38,
+          72.01,
+          66.51,
+          58.26,
+          54.55,
+          51.32,
+          52.06
+        ]
+      }
     },
     {
       "id": "bandung_kota",
@@ -1548,11 +2368,11 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 1
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 1
+          "skor": 0
         },
         {
           "minggu": 31,
@@ -1608,15 +2428,56 @@
         },
         {
           "minggu": 44,
-          "skor": 1
+          "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
-        "risk_puncak": 1,
-        "minggu_puncak": 29,
+        "risk_puncak": 0,
+        "minggu_puncak": 45,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "cirebon_kota",
@@ -1625,11 +2486,11 @@
       "risk_mingguan": [
         {
           "minggu": 29,
-          "skor": 1
+          "skor": 0
         },
         {
           "minggu": 30,
-          "skor": 1
+          "skor": 0
         },
         {
           "minggu": 31,
@@ -1685,15 +2546,56 @@
         },
         {
           "minggu": 44,
-          "skor": 1
+          "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
-        "risk_puncak": 1,
-        "minggu_puncak": 29,
+        "risk_puncak": 0,
+        "minggu_puncak": 44,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "bekasi_kota",
@@ -1763,6 +2665,22 @@
         {
           "minggu": 44,
           "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
@@ -1770,7 +2688,32 @@
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "depok",
@@ -1840,14 +2783,55 @@
         {
           "minggu": 44,
           "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
         "risk_puncak": 0,
-        "minggu_puncak": 29,
+        "minggu_puncak": 44,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "cimahi",
@@ -1917,14 +2901,55 @@
         {
           "minggu": 44,
           "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
         "risk_puncak": 0,
-        "minggu_puncak": 29,
+        "minggu_puncak": 44,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "tasikmalaya_kota",
@@ -1994,14 +3019,55 @@
         {
           "minggu": 44,
           "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
         "risk_puncak": 0,
-        "minggu_puncak": 29,
+        "minggu_puncak": 45,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     },
     {
       "id": "banjar",
@@ -2071,6 +3137,22 @@
         {
           "minggu": 44,
           "skor": 0
+        },
+        {
+          "minggu": 45,
+          "skor": 0
+        },
+        {
+          "minggu": 46,
+          "skor": 0
+        },
+        {
+          "minggu": 47,
+          "skor": 0
+        },
+        {
+          "minggu": 48,
+          "skor": 0
         }
       ],
       "kpi": {
@@ -2078,7 +3160,100 @@
         "minggu_puncak": 29,
         "harga_proyeksi_puncak_rp": null
       },
-      "estimasi_unit_lahan": null
+      "estimasi_unit_lahan": null,
+      "risk_inputs": {
+        "weather_modifier": 0.0,
+        "price_gap_mingguan": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
     }
+  ],
+  "provinsi_ton_wide": [
+    10192.6,
+    5893.6,
+    4758.9,
+    4121.3,
+    2909.9,
+    1673.7,
+    454.0,
+    16.4,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    99.6,
+    5009.7,
+    15643.9,
+    15339.5,
+    10172.6,
+    5892.8,
+    4758.9,
+    4121.3,
+    2909.9,
+    1673.7,
+    454.0,
+    16.4,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    99.6,
+    5009.7
+  ],
+  "max_ton_wide": [
+    6876.2,
+    3955.2,
+    3177.6,
+    4063.6,
+    2909.7,
+    1673.6,
+    454.0,
+    16.4,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    99.6,
+    4780.8,
+    7509.2,
+    9603.1,
+    6876.2,
+    3955.2,
+    3177.6,
+    4063.6,
+    2909.7,
+    1673.6,
+    454.0,
+    16.4,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    99.6,
+    4780.8
   ]
 }

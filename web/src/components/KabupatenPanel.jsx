@@ -33,7 +33,7 @@ function formatRp(rp) {
   return `Rp${rp.toLocaleString("id-ID")}`;
 }
 
-export default function KabupatenPanel({ kabupaten }) {
+export default function KabupatenPanel({ kabupaten, compact = false }) {
   const { t } = useT();
   const data = buildChartData(kabupaten);
   const hasRetail = Boolean(kabupaten.retail_overlay);
@@ -45,10 +45,21 @@ export default function KabupatenPanel({ kabupaten }) {
 
   return (
     <aside className="kabupaten-panel">
-      <header className="kabupaten-panel__header">
-        <h2>{kabupaten.nama}</h2>
-        <StatusBadge status={kabupaten.status_data} />
-      </header>
+      {/* compact: PlantingPopup already shows the region name + a close
+          button right below this (rendered together for sentra kabupaten,
+          see PetaSimulasi.jsx) - a second identical name header would be
+          redundant. The status badge still matters here, so it moves down
+          next to the KPI list instead of disappearing. */}
+      {compact ? (
+        <div className="kabupaten-panel__status-only">
+          <StatusBadge status={kabupaten.status_data} />
+        </div>
+      ) : (
+        <header className="kabupaten-panel__header">
+          <h2>{kabupaten.nama}</h2>
+          <StatusBadge status={kabupaten.status_data} />
+        </header>
+      )}
       <dl className="kabupaten-panel__kpi">
         {lastMeasured && (
           <div>

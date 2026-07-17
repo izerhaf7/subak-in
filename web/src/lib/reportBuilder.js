@@ -3,7 +3,7 @@ import { summarizeSimulationImpact } from "./supplyMath.js";
 
 const MEASURED_STATUSES = new Set(["measured", "measured_stale"]);
 const TOP_RANKING_COUNT = 5;
-const SIMULASI_WEEKS_OUT = 16; // matches HasilSimulasiPanel.jsx's WEEKS_OUT
+const SIMULASI_WEEKS_OUT = 20; // matches HasilSimulasiPanel.jsx's WEEKS_OUT / model's FORECAST_HORIZON
 
 function buildMingguKonteks(meta, minggu) {
   return {

@@ -224,7 +224,7 @@ describe("pressure test: merged PetaSimulasi screen (map + planting popup + resu
     const resetButton = screen.getByText(/Reset semua/i);
     fireEvent.click(resetButton);
     await waitFor(() => expect(document.querySelector(".hasil-simulasi-panel")).toBeNull());
-    expect(screen.getByText(/Sesuai jadwal tanam biasa/i)).toBeTruthy();
+    expect(screen.getByText(/Tidak digeser \(tanam W\d+\)/i)).toBeTruthy();
 
     expect(errors).toEqual([]);
     spy.mockRestore();

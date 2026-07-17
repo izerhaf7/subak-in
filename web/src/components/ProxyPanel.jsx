@@ -7,7 +7,7 @@ import { useT } from "../lib/i18n.jsx";
 // eceran (data asli) + rentang estimasi harga produsen (eceran x rasio
 // transmisi p25-p75). Rentang, bukan angka tunggal — kejujuran tentang
 // ketidakpastian adalah bagian dari desain.
-export default function ProxyPanel({ kabupaten }) {
+export default function ProxyPanel({ kabupaten, compact = false }) {
   const { t } = useT();
   const proxy = kabupaten.proxy_eceran;
   const bandByMinggu = new Map(proxy.band.map((b) => [b.minggu, [b.rp_lo, b.rp_hi]]));
@@ -20,10 +20,18 @@ export default function ProxyPanel({ kabupaten }) {
 
   return (
     <aside className="kabupaten-panel">
-      <header className="kabupaten-panel__header">
-        <h2>{kabupaten.nama}</h2>
-        <StatusBadge status="modeled" />
-      </header>
+      {/* compact: see KabupatenPanel.jsx's identical note - PlantingPopup
+          already shows the region name for sentra kabupaten. */}
+      {compact ? (
+        <div className="kabupaten-panel__status-only">
+          <StatusBadge status="modeled" />
+        </div>
+      ) : (
+        <header className="kabupaten-panel__header">
+          <h2>{kabupaten.nama}</h2>
+          <StatusBadge status="modeled" />
+        </header>
+      )}
       <p className="blind-spot-notice__text" style={{ marginBottom: "0.75rem" }}>
         {t("proxy_caption", { sumber: proxy.sumber_nama })}
       </p>

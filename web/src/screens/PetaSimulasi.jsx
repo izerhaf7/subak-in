@@ -14,6 +14,7 @@ import LaporanModal from "../components/LaporanModal.jsx";
 import { buildKabupatenReport, buildProvinsiReport } from "../lib/reportBuilder.js";
 import { loadGeo, loadMap, loadKabupaten, loadSimulasi } from "../lib/loadData.js";
 import { KOTA_IDS } from "../lib/wilayah.js";
+import { recomputeAllRiskMingguan } from "../lib/riskMath.js";
 import { useT } from "../lib/i18n.jsx";
 
 const MEASURED_STATUSES = new Set(["measured", "measured_stale"]);
@@ -54,6 +55,104 @@ function pickBandKabupaten(simulasi, mapData, selectedId) {
     if (!best || puncak > best.puncak) best = { id: k.id, puncak };
   }
   return best ? simulasi.kabupaten.find((k) => k.id === best.id) ?? null : null;
+}
+
+// Recomputes EVERY kabupaten's risk_mingguan (not just the shifted one) live
+// when a planting schedule is shifted, so the map/ranking reflect the
+// PROVINCE-WIDE effect of the shift, not just an isolated recompute of the
+// shifted kabupaten's own curve.
+//
+// BUG FOUND #1 (via user pressure-testing the live recolor): an earlier
+// version recomputed the shifted curve with convolveSingleCohort(kohort_tanam
+// +shift, ...) - but that function does a ONE-SHOT convolution with no
+// cyclical lookback (by design - it's what simulasi.json's test_vector
+// exercises, a single explicit cohort with no repeating cycles). Real
+// kabupaten curves come from harvest_convolution() on the Python side, which
+// DOES simulate several lookback cycles before "now" so in-progress harvests
+// from earlier plantings are captured - re-deriving from kohort_tanam alone
+// silently dropped that context, so shifting by even 1 week could shove most
+// of a cohort's harvest past week 16 and make the curve (and its mean, and
+// therefore the overlap score) collapse toward zero for reasons that had
+// nothing to do with staggering actually working. Fix: never re-convolve.
+// Shift pasokan_baseline_ton_wide's OWN index (the wider curve backing
+// score_overlap_provinsi's mean, not the narrower displayed one) exactly
+// like supplyMath.js's summarizeSimulationImpact already does for the
+// provincial chart.
+//
+// BUG FOUND #2 (via user question: "kalau semua kabupaten yang timing-nya
+// sama di-stagger serentak dengan jumlah sama, index harusnya cuma pindah
+// minggu, bukan turun ke hijau"): scoring the shifted kabupaten against its
+// OWN mean curve (risk.py's original score_overlap) has no way to detect
+// "every kabupaten with matching timing moved together, the pileup is
+// unchanged, just later" - it only sees ITS OWN curve looking less
+// concentrated relative to itself and drops the score, even though the
+// province-wide pileup those kabupaten create together hasn't gone away.
+// Fix: risk.py's score_overlap_provinsi (ported here as
+// recomputeAllRiskMingguan) scores every kabupaten against the ACTUAL
+// province-wide curve instead - a kabupaten shifting ALONE away from where
+// others still peak correctly drops; kabupaten shifting together correctly
+// stay elevated.
+function shiftCurve(baselineTon, shift) {
+  const n = baselineTon.length;
+  const out = new Array(n).fill(0);
+  for (let i = 0; i < n; i++) {
+    if (i - shift >= 0 && i - shift < n) out[i] = baselineTon[i - shift];
+  }
+  return out;
+}
+
+function withLiveRisk(mapData, simulasi, geser, mingguBerjalan) {
+  if (!mapData || !simulasi) return mapData;
+  const shiftedEntries = Object.entries(geser).filter(([, v]) => v > 0);
+  if (shiftedEntries.length === 0) return mapData;
+
+  const simById = Object.fromEntries(simulasi.kabupaten.map((k) => [k.id, k]));
+
+  // Only kabupaten present in simulasi.json have a pasokan_baseline_ton_wide
+  // curve to recompute against - kota and any kabupaten without luas data
+  // stay at their backend-computed baseline score, since there's no
+  // individual curve for them to re-score (their contribution to the
+  // province sum is already correctly baked into map.json's provinsi_ton_wide).
+  const shiftedCurves = {};
+  for (const [id, shift] of shiftedEntries) {
+    const simRow = simById[id];
+    if (!simRow?.pasokan_baseline_ton_wide) continue;
+    shiftedCurves[id] = {
+      before: simRow.pasokan_baseline_ton_wide,
+      after: shiftCurve(simRow.pasokan_baseline_ton_wide, shift),
+    };
+  }
+  if (Object.keys(shiftedCurves).length === 0) return mapData;
+
+  const curveById = {};
+  const riskInputsById = {};
+  for (const k of mapData.kabupaten) {
+    const simRow = simById[k.id];
+    if (!simRow?.pasokan_baseline_ton_wide || !k.risk_inputs) continue;
+    const shifted = shiftedCurves[k.id];
+    curveById[k.id] = shifted ? shifted.after : simRow.pasokan_baseline_ton_wide;
+    riskInputsById[k.id] = k.risk_inputs;
+  }
+
+  const recomputed = recomputeAllRiskMingguan(
+    mapData.provinsi_ton_wide, mapData.max_ton_wide, shiftedCurves, curveById, riskInputsById, mingguBerjalan
+  );
+
+  const kabupaten = mapData.kabupaten.map((k) => {
+    const risk_mingguan = recomputed[k.id];
+    if (!risk_mingguan) return k;
+    const peakIdx = risk_mingguan.reduce((best, r, i) => (r.skor > risk_mingguan[best].skor ? i : best), 0);
+    return {
+      ...k,
+      risk_mingguan,
+      kpi: {
+        ...k.kpi,
+        risk_puncak: risk_mingguan[peakIdx].skor,
+        minggu_puncak: risk_mingguan[peakIdx].minggu,
+      },
+    };
+  });
+  return { ...mapData, kabupaten };
 }
 
 export default function PetaSimulasi({ meta }) {
@@ -101,7 +200,7 @@ export default function PetaSimulasi({ meta }) {
   const selectedIsKota = selectedId ? KOTA_IDS.has(selectedId) : false;
 
   useEffect(() => {
-    if (!selectedId || selectedIsSentra || selectedIsKota) return;
+    if (!selectedId || selectedIsKota) return;
     setKabupatenDetail(null);
     // Loads for BOTH measured (real forecast) and modeled (possible
     // proxy_eceran) kabupaten - the backend writes a detail file whenever
@@ -109,8 +208,14 @@ export default function PetaSimulasi({ meta }) {
     // (no proxy signal, no BPS supply) has no file at all; that 404 is an
     // expected "nothing to show" state here, not an app-level failure, so it
     // resolves to null rather than surfacing the blocking error banner.
+    // Also loaded for SENTRA kabupaten now (previously skipped): clicking a
+    // sentra used to show ONLY the planting-shift slider, with no price info
+    // until a shift was made (found via user: "bisa gak tampilin harga...
+    // gak cuma ketika kita geser slider simulasi tanam?"). Sentra can be
+    // measured/modeled/proxy just like any other kabupaten, independent of
+    // whether it's also simulasi-eligible.
     loadKabupaten(selectedId, komoditasId).then(setKabupatenDetail).catch(() => setKabupatenDetail(null));
-  }, [selectedId, komoditasId, selectedIsSentra, selectedIsKota]);
+  }, [selectedId, komoditasId, selectedIsKota]);
 
   function handleKomoditasChange(id) {
     setKomoditasId(id);
@@ -120,18 +225,23 @@ export default function PetaSimulasi({ meta }) {
 
   const hasActiveSimulation = Object.values(geser).some((v) => v > 0);
 
+  const kernel = meta.komoditas.find((k) => k.id === komoditasId)?.kernel_panen;
+  const liveMapData = useMemo(
+    () => withLiveRisk(mapData, simulasi, geser, meta.minggu_berjalan),
+    [mapData, simulasi, geser, meta.minggu_berjalan]
+  );
+
   if (error) return <p className="app-error">{t("load_error", { msg: error })}</p>;
   if (!geo || !mapData || !simulasi) return <p className="app-loading">{t("loading_map")}</p>;
 
-  const top = topRisikoKpi(mapData, minggu);
+  const top = topRisikoKpi(liveMapData, minggu);
   const measuredCount = mapData.kabupaten.filter((k) => MEASURED_STATUSES.has(k.status_data)).length;
   const coverageNote =
     lang === "id"
       ? meta.catatan_coverage?.[komoditasId] ?? t("coverage_fallback", { m: measuredCount })
       : t("coverage_fallback", { m: measuredCount });
 
-  const kernel = meta.komoditas.find((k) => k.id === komoditasId).kernel_panen;
-  const bandKab = pickBandKabupaten(simulasi, mapData, selectedId);
+  const bandKab = pickBandKabupaten(simulasi, liveMapData, selectedId);
   const bands = bandKab
     ? [
         { label: `${t("band_tanam")} · ${bandKab.nama}`, mulai: bandKab.jendela_tanam.mulai_iso, akhir: bandKab.jendela_tanam.akhir_iso, jenis: "tanam" },
@@ -151,8 +261,8 @@ export default function PetaSimulasi({ meta }) {
         }
       }
       const report = selectedId && !selectedIsKota
-        ? buildKabupatenReport({ mapData, kabupatenDetail: detailForReport, kabupatenId: selectedId, simulasi, geser, meta, komoditasId, minggu, t })
-        : buildProvinsiReport({ mapData, meta, komoditasId, minggu, coverageNote });
+        ? buildKabupatenReport({ mapData: liveMapData, kabupatenDetail: detailForReport, kabupatenId: selectedId, simulasi, geser, meta, komoditasId, minggu, t })
+        : buildProvinsiReport({ mapData: liveMapData, meta, komoditasId, minggu, coverageNote });
       setLaporanData(report);
     } finally {
       setLaporanLoading(false);
@@ -198,7 +308,7 @@ export default function PetaSimulasi({ meta }) {
           <p className="map-hint">{t("map_hint_sim")}</p>
           <JabarMap
             geo={geo}
-            mapData={mapData}
+            mapData={liveMapData}
             minggu={minggu}
             selectedId={selectedId}
             onSelect={setSelectedId}
@@ -229,12 +339,19 @@ export default function PetaSimulasi({ meta }) {
           </div>
 
           {selectedIsSentra && (
-            <PlantingPopup
-              kabupaten={selectedSentra}
-              geser={geser[selectedId] ?? 0}
-              onChange={(v) => setGeser((prev) => ({ ...prev, [selectedId]: v }))}
-              onClose={() => setSelectedId(null)}
-            />
+            <>
+              {selectedIsMeasured ? (
+                kabupatenDetail && <KabupatenPanel kabupaten={kabupatenDetail} compact />
+              ) : kabupatenDetail?.proxy_eceran ? (
+                <ProxyPanel kabupaten={kabupatenDetail} compact />
+              ) : null}
+              <PlantingPopup
+                kabupaten={selectedSentra}
+                geser={geser[selectedId] ?? 0}
+                onChange={(v) => setGeser((prev) => ({ ...prev, [selectedId]: v }))}
+                onClose={() => setSelectedId(null)}
+              />
+            </>
           )}
 
           {!selectedIsSentra && selectedId && (

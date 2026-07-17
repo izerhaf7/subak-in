@@ -68,7 +68,7 @@ describe("buildKabupatenReport", () => {
     expect(report.kualitasData.catatan).toBeNull();
     expect(report.simulasi).not.toBeNull();
     expect(report.simulasi.geserMinggu).toBe(4);
-    expect(report.simulasi.chartData).toHaveLength(16);
+    expect(report.simulasi.chartData).toHaveLength(20);
   });
 
   it("bandung_kab (modeled sentra with proxy, no active shift): quality note is the proxy caption, simulasi section absent", () => {
